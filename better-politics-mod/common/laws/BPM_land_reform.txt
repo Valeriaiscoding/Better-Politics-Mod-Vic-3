@@ -62,14 +62,20 @@ INJECT:law_expanded_latifundias = {
 
 INJECT:law_commercialized_agriculture = {
 	modifier = {
-		building_group_bg_agriculture_allowed_collectivization_add = 0.2
-		building_group_bg_ranching_allowed_collectivization_add = 0.2
+		#building_group_bg_agriculture_allowed_collectivization_add = 0.2
+		#building_group_bg_ranching_allowed_collectivization_add = 0.2
+		building_group_bg_agriculture_self_investment_chance_add = 0.4
+		building_group_bg_ranching_self_investment_chance_add = 0.4
+		building_group_bg_plantations_self_investment_chance_add = 0.25
 	}
 
 	institution = institution_economy
 	institution_modifier = {
-		building_group_bg_agriculture_allowed_collectivization_add = -0.04
-		building_group_bg_ranching_allowed_collectivization_add = -0.04
+		#building_group_bg_agriculture_allowed_collectivization_add = -0.04
+		#building_group_bg_ranching_allowed_collectivization_add = -0.04
+		building_group_bg_agriculture_self_investment_chance_add = -0.05
+		building_group_bg_ranching_self_investment_chance_add = -0.05
+		building_group_bg_plantations_self_investment_chance_add = -0.05
 		state_farmers_investment_pool_efficiency_mult = 0.05
 	}
 }
@@ -82,8 +88,11 @@ INJECT:law_homesteading = {
 	}
 	institution = institution_economy
 	institution_modifier = {
-		building_group_bg_agriculture_allowed_collectivization_add = 0.05
-		building_group_bg_ranching_allowed_collectivization_add = 0.05
+		#building_group_bg_agriculture_allowed_collectivization_add = 0.05
+		#building_group_bg_ranching_allowed_collectivization_add = 0.05
+		building_group_bg_agriculture_self_investment_chance_add = 0.05
+		building_group_bg_ranching_self_investment_chance_add = 0.05
+		building_group_bg_plantations_self_investment_chance_add = 0.05
 		state_farmers_investment_pool_efficiency_mult = 0.05
 		state_shopkeepers_investment_pool_efficiency_mult = 0.05
 	}
@@ -96,6 +105,11 @@ INJECT:law_collectivized_agriculture = {
 		building_group_bg_agriculture_allowed_collectivization_add = -0.25
 		building_group_bg_ranching_allowed_collectivization_add = -0.25
 		building_group_bg_plantations_allowed_collectivization_add = -1
+
+		# protects from privatization
+		building_group_bg_agriculture_self_investment_chance_add = 1
+		building_group_bg_ranching_self_investment_chance_add = 1
+		building_group_bg_plantations_self_investment_chance_add = 1
 	}
 
 	institution = institution_economy
