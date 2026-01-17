@@ -35,19 +35,6 @@ REPLACE:law_monarchy = {
 		#country_legitimacy_govt_total_clout_add = 100
 	}
 	
-#	pop_support = {
-#		value = 0	
-#		add = {
-#			desc = "POP_ARISTOCRATS"
-#			if = {
-#				limit = { 
-#					is_pop_type = aristocrats
-#				}
-#				value = 0.33
-#			}
-#		}
-#	}
-	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -199,26 +186,6 @@ REPLACE:law_presidential_republic = {
 		#country_legitimacy_govt_total_clout_add = 100
 
 	}
-	
-#	pop_support = {
-#		value = 0
-#
-#		add = {
-#			desc = "POP_ANGRY_UNSTABLE"
-#			
-#			if = {
-#				limit = { 
-#					owner = { 
-#						var:bpm_political_stability <= 33	
-#					}
-#					NOT = { strata = upper }
-#				}
-#				add = {
-#					value = pop_radical_fraction
-#				}
-#			}
-#		}		
-#	}
 	
 	ai_will_do = {
 		exists = ruler
@@ -420,22 +387,10 @@ REPLACE:law_theocracy = {
 		country_bpm_labor_consciousness_target_mult = -0.25
 		#country_legitimacy_govt_total_clout_add = 100
 
+		country_ig_devout_state_institutional_bool = yes
+
 	}
 
-#	pop_support = {
-#		value = 0
-#		
-#		add = {
-#			desc = "POP_CLERGYMEN"
-#			if = {
-#				limit = { 
-#					is_pop_type = clergymen
-#				}
-#				value = 0.33
-#			}
-#		}
-#	}
-	
 	ai_will_do = {
 		always = no
 	}
@@ -530,27 +485,7 @@ REPLACE:law_council_republic = {
 		country_bpm_labor_consciousness_target_mult = 0.35
 		#country_legitimacy_govt_total_clout_add = 100
 	}
-	
-#	pop_support = {
-#		value = 0
-#
-#		add = {
-#			desc = "POP_ANGRY_UNSTABLE"
-#			
-#			if = {
-#				limit = { 
-#					owner = { 
-#						var:bpm_political_stability <= 33	
-#					}
-#					NOT = { strata = upper }
-#				}
-#				add = {
-#					value = pop_radical_fraction
-#				}
-#			}
-#		}		
-#	}
-	
+		
 	ai_will_do = {
 		exists = ruler
 		OR = {

@@ -179,6 +179,8 @@ REPLACE:law_corporatized_unions = {
 		interest_group_ig_trade_unions_pop_attraction_mult = -0.1
 		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.25
 		bpm_decorative_trade_unions_force_leader_moderate = yes
+
+		country_ig_trade_unions_state_institutional_bool = yes
 	}
 
 	on_activate = {
@@ -340,6 +342,7 @@ law_syndicalism = {
 		country_peasants_pol_str_mult = -0.5
 		country_farmers_pol_str_mult = -0.5
 		country_bpm_auth_suppress_labor_disabled = yes
+		country_ig_trade_unions_state_institutional_bool = yes
 	}
 	
 	on_activate = {

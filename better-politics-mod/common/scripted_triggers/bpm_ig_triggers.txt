@@ -633,37 +633,23 @@ bpm_ig_is_rural_institutional = {
 	}
 }
 
+bpm_specific_ig_is_state_institutional = {
+	is_interest_group_type = $IG$
+	owner.modifier:country_$IG$_state_institutional = yes
+}
+
 bpm_ig_is_state_institutional = {
 	custom_tooltip = {
 		text = "tooltip_bpm_ig_is_state_institutional"
 		OR = {
-			is_interest_group_type = ig_armed_forces
-			
-			AND = {
-				owner = { has_law = law_type:law_hereditary_bureaucrats }
-				is_interest_group_type = ig_landowners
-			}
-
-			AND = {
-				owner = { NOT = { has_law = law_type:law_hereditary_bureaucrats } }
-				is_interest_group_type = ig_petty_bourgeoisie
-			}
-
-			AND = {
-				owner = { OR = {
-					has_law = law_type:law_corporatized_unions
-					has_law = law_type:law_syndicalism
-				} }
-				is_interest_group_type = ig_trade_unions
-			}
-
-			AND = {
-				owner = { OR = {
-					has_law = law_type:law_laissez_faire
-					has_law = law_type:law_interventionism
-				} }
-				is_interest_group_type = ig_industrialists
-			}
+			bpm_specific_ig_is_state_institutional = { IG = ig_armed_forces }
+			bpm_specific_ig_is_state_institutional = { IG = ig_landowners }
+			bpm_specific_ig_is_state_institutional = { IG = ig_petty_bourgeoisie }
+			bpm_specific_ig_is_state_institutional = { IG = ig_trade_unions }
+			bpm_specific_ig_is_state_institutional = { IG = ig_industrialists }
+			bpm_specific_ig_is_state_institutional = { IG = ig_rural_folk }
+			bpm_specific_ig_is_state_institutional = { IG = ig_intelligentsia }
+			bpm_specific_ig_is_state_institutional = { IG = ig_devout }
 		}
 	}
 }

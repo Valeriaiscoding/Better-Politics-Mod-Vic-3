@@ -502,6 +502,52 @@ country_bpm_labor_consciousness_target_mult = {
 	color = good
 }
 
+# Institutional igs
+
+country_ig_armed_forces_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+
+country_ig_landowners_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+
+country_ig_petty_bourgeoisie_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+
+country_ig_trade_unions_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+country_ig_industrialists_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+country_ig_rural_folk_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+country_ig_intelligentsia_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+country_ig_devout_state_institutional_bool = {
+	decimals=1
+	color=neutral
+	boolean=yes
+}
+
 # extra
 
 REPLACE:state_academics_investment_pool_efficiency_mult={

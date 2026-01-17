@@ -1,0 +1,3 @@
+INJECT:base_values = {
+    country_ig_armed_forces_state_institutional_bool = yes
+}

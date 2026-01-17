@@ -350,3 +350,22 @@
 
 ### Organization
   interest_group_bpm_organization_ideological_rate_add: 0 "[Concept('concept_bpm_ideological_ig','Ideological Interest Group')] Organization Change Rate"
+
+### IG institutionalization
+
+ country_ig_armed_forces_state_institutional_bool:0 "[GetInterestGroupVariant('ig_armed_forces', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_armed_forces_state_institutional_bool_desc:0 ""
+ country_ig_landowners_state_institutional_bool:0 "[GetInterestGroupVariant('ig_landowners', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_landowners_state_institutional_bool_desc:0
+ country_ig_petty_bourgeoisie_state_institutional_bool:0 "[GetInterestGroupVariant('ig_petty_bourgeoisie', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_petty_bourgeoisie_state_institutional_bool_desc:0
+ country_ig_trade_unions_state_institutional_bool:0 "[GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_trade_unions_state_institutional_bool_desc:0
+ country_ig_industrialists_state_institutional_bool:0 "[GetInterestGroupVariant('ig_industrialists', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_industrialists_state_institutional_bool_desc:0
+ country_ig_rural_folk_state_institutional_bool:0 "[GetInterestGroupVariant('ig_rural_folk', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_rural_folk_state_institutional_bool_desc:0
+ country_ig_intelligentsia_state_institutional_bool:0 "[GetInterestGroupVariant('ig_intelligentsia', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_intelligentsia_state_institutional_bool:0
+ country_ig_devout_state_institutional_bool:0 "[GetInterestGroupVariant('ig_devout', GetPlayer).GetName] is considered [Concept('concept_bpm_ig_is_state_institutional', '$concept_bpm_ig_is_state_institutional$')] [Concept('concept_interest_group', 'Interest Group')]"
+ country_ig_devout_state_institutional_bool_desc:0

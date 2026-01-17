@@ -94,6 +94,8 @@ INJECT:law_interventionism = {
 		state_pop_pol_str_add = -5
 		state_political_strength_from_wealth_mult = 0.5
 		country_capitalists_pol_str_mult = 0.75
+
+		country_ig_industrialists_state_institutional_bool = yes
 	}
 
 	can_enact = {
@@ -205,6 +207,8 @@ INJECT:law_laissez_faire = {
 		state_pop_pol_str_add = -7
 		state_political_strength_from_wealth_mult = 0.75 
 		country_capitalists_pol_str_mult = 1.5
+
+		country_ig_industrialists_state_institutional_bool = yes
 	}
 
 	institution = institution_economy
