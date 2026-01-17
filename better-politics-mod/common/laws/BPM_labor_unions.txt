@@ -42,69 +42,28 @@ REPLACE:law_right_to_associate = {
 	}
 }
 
-REPLACE:law_guild_system = {
+REPLACE:law_guild_system = { 
 	group = lawgroup_labour_associations
 
-	icon = "gfx/interface/icons/law_icons/guild_system.dds"
+	icon = "gfx/interface/icons/law_icons/combination_acts.dds"
 
-	progressiveness = -50
+	progressiveness = 0
 
 	parent = law_right_to_associate
 
 	is_visible = {
-		#bpm_country_is_in_europe = yes
-		always = no
-	}
-
-	on_enact = {
-		if = {
-			limit = {
-				OR = {
-					has_law_or_variant = law_type:law_right_to_associate
-					has_law_or_variant = law_type:law_corporatized_unions
-				}
-			}
-			custom_tooltip = trade_unions_more_radical_effect_tt
+		OR = {
+			has_law = law_type:law_guild_system
+			has_game_started = no
 		}
-		if = {
-			limit = {
-					has_law_or_variant = law_type:law_corporatized_unions
-			}
-			custom_tooltip = trade_unions_less_corporatist_effect_tt
-		}
-	}
-
-	disallowing_laws = {
-		law_laissez_faire
 	}
 
 	modifier = {
-		# Limits building to self-investing
-
-		building_group_bg_manufacturing_allowed_collectivization_add = 0.25
-		building_group_bg_mining_allowed_collectivization_add = 0.25
-		building_group_bg_extraction_allowed_collectivization_add = 0.25
-		building_group_bg_power_allowed_collectivization_add = 0.25
-		building_group_bg_private_infrastructure_allowed_collectivization_add = 0.25
-		building_group_bg_arts_allowed_collectivization_add = 0.25
-
-		country_shopkeepers_pol_str_mult = 0.25
-
-		state_pop_qualifications_mult = -0.30
+		interest_group_ig_trade_unions_pop_attraction_mult = -1
 	}
 
 	ai_will_do = {
-		NOT = { has_technology_researched = corporatism }
-		any_interest_group = {
-			is_in_government = yes
-			leader ?= {
-				OR = {
-					has_ideology = ideology:ideology_traditionalist
-					has_ideology = ideology:ideology_traditionalist_minoritarian
-					has_ideology = ideology:ideology_legitimist
-				}
-			}
-		}
+		always = no
 	}
 
 	ai_enact_weight_modifier = { #Petitions
@@ -212,6 +171,12 @@ REPLACE:law_anti_strike_laws = {
 		law_enforcement
 	}
 
+	can_enact = {
+		ig:ig_trade_unions = {
+			is_marginal = no
+		}
+	}
+
 	modifier = {
 		interest_group_ig_trade_unions_pol_str_mult = -0.25
 		interest_group_ig_trade_unions_pop_attraction_mult = -0.25
@@ -258,6 +223,9 @@ REPLACE:law_factory_councils = {
 
 	can_enact = {
 		is_revolutionary = yes
+		ig:ig_trade_unions = {
+			is_marginal = no
+		}
 	}
 
 	on_enact = {
@@ -320,6 +288,12 @@ law_syndicalism = {
 	
 	icon = "gfx/interface/icons/law_icons/syndicalism.dds"
 
+	can_enact = {
+		ig:ig_trade_unions = {
+			is_marginal = no
+		}
+	}
+
 	progressiveness = 50
 
 	unlocking_technologies = {
@@ -329,6 +303,7 @@ law_syndicalism = {
 	unlocking_laws = {
 		law_council_republic
 	}
+	
 	
 	modifier = {
 		interest_group_ig_trade_unions_pol_str_mult = 0.5
@@ -362,10 +337,6 @@ law_syndicalism = {
 		}
 	}
 
-#	pop_support = {
-#		value = 0
-#	}	
-	
 	ai_enact_weight_modifier = {
 		value = 0
 		
@@ -381,6 +352,12 @@ law_socialist_labor_unions = {
 	group = lawgroup_labour_associations
 	
 	icon = "gfx/interface/icons/law_icons/socialist_unions_only.dds"
+
+	can_enact = {
+		ig:ig_trade_unions = {
+			is_marginal = no
+		}
+	}
 
 	progressiveness = 50
 
@@ -410,26 +387,6 @@ law_socialist_labor_unions = {
 		}
 	}
 
-#	pop_support = {
-#		value = 0
-#
-#		add = {
-#			desc = "POP_DANGEROUS_JOBS"		
-#			if = {
-#				limit = { 
-#					NOT = { strata = upper }
-#					OR = {
-#						pop_employment_building_group = bg_mining
-#						pop_employment_building_group = bg_manufacturing
-#					}
-#				}
-#				add = {
-#					value = literacy_rate
-#					divide = 2
-#				}
-#			}			
-#		}
-#	}	
 	
 	ai_enact_weight_modifier = {
 		value = 0

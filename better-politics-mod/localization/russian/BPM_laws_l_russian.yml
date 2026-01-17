@@ -143,6 +143,8 @@
  lawgroup_labour_associations:0 "Профсоюзы"
  lawgroup_labour_associations_desc:0 "Эти законы определяют ландшафт представительства труда, регулируя, как рабочие могут организовываться и защищать свои права, придерживаясь различных идеологических и государственных ограничений."
 
+ law_guild_system:0 "Профсоюзы Не Существуют"
+ law_guild_system_desc:0 "Профсоюзное движение практически не существует, впрочем другие организации трудящихся, например гильдии могутсуществовать."
  law_combination_acts:0 "Незаконные профсоюзы"
  law_combination_acts_desc:0 "Любая форма профсоюза строго запрещена, и участие в таких организациях является незаконным."
  law_corporatized_unions:0 "Государственные профсоюзы"
@@ -166,6 +168,8 @@
  bpm_decorative_trade_unions_force_leader_vanguardist_desc:0 "Лидеры [GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] приобретут идеологию [GetIdeology('ideology_vanguardist').GetName]."
  interest_group_bpm_intelligentsia_force_leader_non_moderate:0 "Назначить неумеренных лидеров для [GetInterestGroupVariant('ig_intelligentsia', GetPlayer).GetName]"
  interest_group_bpm_intelligentsia_force_leader_non_moderate_desc:0 "Лидеры [GetInterestGroupVariant('ig_intelligentsia', GetPlayer).GetName] никогда не приобретут идеологию [GetIdeology('ideology_moderate').GetName]."
+ bpm_amendment_artisan_guilds: "Ремесленные Гильдии"
+ bpm_amendment_artisan_guilds_desc: "Система, в которой для занятия определенными видами деятельности необходимо вступить в официальную ремесленную или торговую гильдию."
 
 # Laws Centralization
  lawgroup_centralization:0 "Централизация"

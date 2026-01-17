@@ -1,0 +1,61 @@
+﻿bpm_amendment_artisan_guilds = {
+	parent = law_industry_banned
+
+	allowed_laws = {
+		law_guild_system
+	}
+
+	modifier = {
+		bpm_france_artisanal_lowest_level_pm = yes
+		country_shopkeepers_pol_str_mult = 0.25
+		interest_group_ig_intelligentsia_pol_str_mult = 0.25
+
+		building_group_bg_manufacturing_allowed_collectivization_add = 0.33
+		building_group_bg_extraction_allowed_collectivization_add = 0.33
+		building_group_bg_private_infrastructure_allowed_collectivization_add = 0.33
+
+		state_pop_qualifications_mult = -0.25
+		country_production_tech_spread_mult = -0.15
+	}
+
+	possible = {
+		OR = {
+			has_law_or_variant = law_type:law_traditionalism
+			has_law_or_variant = law_type:law_agrarianism
+			has_law_or_variant = law_type:law_mercantilism
+			has_law_or_variant = law_type:law_industry_banned
+			has_law = law_type:law_canton_system
+		}
+	}
+
+	would_sponsor = {
+		always = no 
+	}
+
+	ai_will_revoke = {
+		always = yes
+	}
+
+	on_activate = {
+		ig:ig_intelligentsia = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_guild_artisan
+			bpm_reorder_ideologies = yes
+		}
+	}
+	on_deactivate = {
+		ig:ig_intelligentsia = {
+			if = {
+				limit = { has_ideology = ideology:ideology_eco_guild_artisan }
+				bpm_remove_all_eco_ideologies = yes
+				bpm_reorder_ideologies = yes
+			}
+		}
+	}
+	
+	can_repeal = {
+		always = no
+	}
+
+	amendment_activism_multiplier = 0.75
+}
