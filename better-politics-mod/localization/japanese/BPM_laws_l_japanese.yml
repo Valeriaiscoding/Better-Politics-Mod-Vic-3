@@ -143,7 +143,7 @@
  lawgroup_labour_associations:0 "Labor Unions"
  lawgroup_labour_associations_desc:0 "These laws shape the landscape of labor representation, guiding how workers can organize and advocate for their rights while adhering to various ideological and governmental constraints."
 
- law_guild_system:0 "No labor unions"
+ law_guild_system:0 "No Labor Unions"
  law_guild_system_desc:0 "Labor unions are virtually non-existent, but other labor associations, such as guilds, may exist."
  law_combination_acts:0 "Illegal Unions"
  law_combination_acts_desc:0 "Any form of labor union is strictly prohibited, and participation in such organizations is against the law."

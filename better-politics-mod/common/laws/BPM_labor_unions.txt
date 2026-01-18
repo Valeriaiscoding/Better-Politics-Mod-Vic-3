@@ -1,4 +1,4 @@
-﻿# group = this is the law_group a law belongs to
+# group = this is the law_group a law belongs to
 # icon = graphical icon shown in-game
 # modifier = {} modifier on country for having adopted this law
 
@@ -55,7 +55,7 @@ REPLACE:law_guild_system = {
 
 	progressiveness = 0
 
-	parent = law_right_to_associate
+	#parent = law_right_to_associate
 
 	is_visible = {
 		OR = {
@@ -65,7 +65,7 @@ REPLACE:law_guild_system = {
 	}
 
 	modifier = {
-		interest_group_ig_trade_unions_pop_attraction_mult = -1
+		interest_group_ig_trade_unions_pop_attraction_mult = -1 # for convenience, as law is removed when unions ig is enabled
 	}
 
 	ai_will_do = {
@@ -91,6 +91,10 @@ REPLACE:law_combination_acts = {
 	can_enact = {
 		ig:ig_trade_unions = {
 			is_marginal = no
+		}
+		NAND = {
+			law_no_home_affairs
+			law_no_police
 		}
 	}
 	

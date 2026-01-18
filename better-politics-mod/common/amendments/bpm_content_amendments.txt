@@ -16,6 +16,8 @@
 
 		state_pop_qualifications_mult = -0.25
 		country_production_tech_spread_mult = -0.15
+
+		cosmetic_disallow_ig_trade_unions_bool = yes
 	}
 
 	possible = {
@@ -24,6 +26,8 @@
 			has_law_or_variant = law_type:law_agrarianism
 			has_law_or_variant = law_type:law_mercantilism
 			has_law_or_variant = law_type:law_industry_banned
+			has_law_or_variant = law_type:law_serfdom
+			has_law_or_variant = law_type:law_ad_hoc_centralization
 			has_law = law_type:law_canton_system
 		}
 	}
@@ -54,7 +58,15 @@
 	}
 	
 	can_repeal = {
-		always = no
+		NOR = {
+			has_law_or_variant = law_type:law_traditionalism
+			has_law_or_variant = law_type:law_agrarianism
+			has_law_or_variant = law_type:law_mercantilism
+			has_law_or_variant = law_type:law_industry_banned
+			has_law_or_variant = law_type:law_serfdom
+			has_law_or_variant = law_type:law_ad_hoc_centralization
+			has_law = law_type:law_canton_system
+		}
 	}
 
 	amendment_activism_multiplier = 0.75

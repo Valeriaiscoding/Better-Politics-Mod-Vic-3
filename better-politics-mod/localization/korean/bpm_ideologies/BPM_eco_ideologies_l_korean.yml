@@ -61,5 +61,5 @@
 
  ideology_eco_colonial_slavery_supporter: "Colonial Slavery Supporter"
  ideology_eco_colonial_slavery_supporter_desc:0 "#lore This group represents economic interests of conservative landowners who benefit from colonial slave labor. They seek to preserve slavery in the colonies but are unwilling to reinstate it on the mainland. #!"
- ideology_eco_guild_artisan: "Guild Artisans"
- ideology_eco_guild_artisan:0 "#lore This group represents economic interests of artisanal guilds and seek to protect their rights and priviliges. #!"
+ ideology_eco_guild_artisan:0 "Guild Artisans"
+ ideology_eco_guild_artisan_desc:0 "#lore This group represents economic interests of artisanal guilds and seek to protect their rights and priviliges. #!"

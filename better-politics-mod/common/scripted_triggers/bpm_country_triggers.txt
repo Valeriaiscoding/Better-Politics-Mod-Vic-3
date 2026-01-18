@@ -119,9 +119,11 @@ bpm_country_starts_with_liberalism = {
 		bpm_country_is_in_new_world = yes
 		bpm_country_is_republic = yes
 		# bpm_country_laws_no_voting = no
-		this = c:RUS
-		this = c:TUR
-		this = c:EGY
+		this ?= c:RUS
+		this ?= c:FIN
+		this ?= c:UBD
+		this ?= c:TUR
+		this ?= c:EGY
 	}
 }
 
@@ -154,13 +156,16 @@ bpm_country_laws_are_racist = {
 		has_law = law_type:law_ethnostate
 		has_law = law_type:law_national_supremacy
 		has_law = law_type:law_racial_segregation
+		active_law:lawgroup_citizenship ? = {
+			has_amendment = amendment_type:amendment_racialized_subjecthood
+		}
 	}
 }
 
 bpm_country_laws_are_patriarchal = {
 	OR = {
-		has_law = law_type:law_no_womens_rights
-		has_law = law_type:law_women_own_property
+		has_law_or_variant = law_type:law_no_womens_rights
+		has_law_or_variant = law_type:law_women_own_property
 	}
 }
 
@@ -338,10 +343,10 @@ bpm_country_laws_are_protectionist = {
 
 bpm_country_laws_have_traditional_economics = {
 	OR = {
-		has_law = law_type:law_agrarianism
-		has_law = law_type:law_traditionalism
-		has_law = law_type:law_isolationism
-		has_law = law_type:law_mercantilism
+		has_law_or_variant = law_type:law_agrarianism
+		has_law_or_variant = law_type:law_traditionalism
+		has_law_or_variant = law_type:law_isolationism
+		has_law_or_variant = law_type:law_mercantilism
 	}
 }
 

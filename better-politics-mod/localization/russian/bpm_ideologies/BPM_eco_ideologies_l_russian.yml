@@ -61,5 +61,5 @@
 
  ideology_eco_colonial_slavery_supporter: "Сторонник Колониального Рабства"
  ideology_eco_colonial_slavery_supporter_desc:0 "#lore Эта группа представляет экономические интересы консервативных землевладельцев, которые извлекают выгоду из колониального рабского труда. Они стремятся сохранить рабство в колониях, но не желают восстанавливать его в метрополии. #!"
- ideology_eco_guild_artisan: "Guild Artisans"
- ideology_eco_guild_artisan:0 "#lore This group represents economic interests of artisanal guilds and seek to protect their rights and priviliges. #!"
+ ideology_eco_guild_artisan:0 "Guild Artisans"
+ ideology_eco_guild_artisan_desc:0 "#lore This group represents economic interests of artisanal guilds and seek to protect their rights and priviliges. #!"
