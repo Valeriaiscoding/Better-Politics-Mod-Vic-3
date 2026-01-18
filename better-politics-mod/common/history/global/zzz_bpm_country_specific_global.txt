@@ -260,8 +260,10 @@
 		}
 	}
 	every_country = {
-		limit = { is_subject_of = c:GBR }
-		activate_law = law_type:law_anti_strike_laws
+		limit = { 
+			is_subject_of = c:GBR
+			
+		}
 		if = {
 			limit = { bpm_country_is_in_new_world = yes }
 			activate_law = law_type:law_national_militia
@@ -1128,9 +1130,49 @@
 		}
 	}
 
-	# LABOR LAWS
-	
-
+	# LABOR UNIONS
+	every_country = {
+		if = {
+			limit = {
+				OR = { 
+					this ?= c:BEL
+					this ?= c:FRA
+					this ?= c:NET
+				}
+			}
+			activate_law = law_type:law_combination_acts
+		}
+		else_if = {
+			limit = {
+				OR = {
+					this ?= c:GBR
+					AND = {
+						is_subject_of = c:GBR
+						NOR = {
+							has_law_or_variant = law_type:law_traditionalism
+							has_law_or_variant = law_type:law_extraction_economy
+						}
+					}
+				}
+			}
+			activate_law = law_type:law_anti_strike_laws
+		}
+		else_if = {
+			limit = {
+				OR  = {
+					this ?= c:USA
+				}
+			}
+			activate_law = law_type:law_right_to_associate
+		}
+		else = {
+			activate_law = law_type:law_guild_system
+			bpm_codify_law = { 
+				law = law_type:law_guild_system
+				level = traditional
+			}
+		}
+	}
 	every_country = {
 		limit = {
 			OR = {
@@ -1138,29 +1180,23 @@
 				this ?= c:RUS
 				this ?= c:FIN
 				this ?= c:UBD
-				this ?= c:CHI
 				this ?= c:JAP
-				
+				this ?= c:CHI
 			}
-		}
-		active_law:lawgroup_labour_associations ?= {
-			add_amendment = {
-				type = bpm_amendment_artisan_guilds
-				sponsor = PREV.ig:ig_intelligentsia
+			active_law:lawgroup_labour_associations ?= {
+				add_amendment = {
+					type = bpm_amendment_artisan_guilds
+					sponsor = PREV.ig:ig_intelligentsia
+					cooldown = 12 # technically was "amended" long before game starting date
+				}
 			}
 		}
 	}
 	every_country = {
 		limit = {
-			has_law = law_type:law_guild_system
-			this != c:RUS
-			this != c:FIN
-			this != c:UBD
+			NOT = { has_law = law_type:law_guild_system }
 		}
-		bpm_codify_law = { 
-			law = law_type:law_guild_system
-			level = traditional
-		}
+		bpm_initialize_trade_unions = yes
 	}
 
 	every_country = {
