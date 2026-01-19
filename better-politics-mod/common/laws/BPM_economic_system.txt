@@ -8,6 +8,10 @@ INJECT:law_traditionalism = {
 		country_rigidity_baseline_add = 10
 		state_pop_pol_str_add = -8
 		country_institution_economy_max_investment_add = -5
+		building_self_investment_chance_add = -0.25
+		building_group_bg_manufacturing_self_investment_chance_add = 0.25
+		building_group_bg_extraction_self_investment_chance_add = 0.25
+		building_group_bg_infrastructure_self_investment_chance_add = 0.25
 	}
 
 	institution = institution_economy
@@ -95,14 +99,6 @@ INJECT:law_interventionism = {
 		state_political_strength_from_wealth_mult = 0.5
 		country_capitalists_pol_str_mult = 0.75
 	}
-
-	# can_enact = {
-	# 	NOT = {
-	# 		active_law:lawgroup_economic_system = {
-	# 			has_amendment = amendment_type:bpm_amendment_artisanal_economy
-	# 		}
-	# 	}
-	# }
 
 	institution = institution_economy
 	institution_modifier = {
@@ -364,7 +360,7 @@ REPLACE:law_command_economy = {
 					owner = {
 						OR = {
 							ig:ig_christian_democrats ?= {
-								has_ideology = ideology_eco_centralized_economy
+								has_ideology = ideology:ideology_eco_centralized_economy
 								is_in_government = yes
 							}
 							ig:ig_christian_democrats = {

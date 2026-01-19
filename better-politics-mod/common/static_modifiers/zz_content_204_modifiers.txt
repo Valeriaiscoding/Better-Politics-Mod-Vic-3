@@ -26,3 +26,14 @@ bpm_alexander_ii_reforms = {
 	country_law_enactment_time_mult = -1
 	country_law_enactment_success_add = 0.2
 }
+
+decline_of_guilds_modifier = {
+    #icon = "gfx/interface/icons/timed_modifier_icons/icon_shopkeepers_negative.dds"
+    interest_group_ig_intelligentsia_pol_str_mult = -0.4
+	building_group_bg_manufacturing_allowed_collectivization_add = -0.4
+	building_group_bg_extraction_allowed_collectivization_add = -0.4
+	building_group_bg_private_infrastructure_allowed_collectivization_add = -0.4
+    state_pop_qualifications_mult = 0.25
+    country_production_tech_spread_mult = 0.2
+	building_economy_of_scale_level_cap_add = 5
+}   

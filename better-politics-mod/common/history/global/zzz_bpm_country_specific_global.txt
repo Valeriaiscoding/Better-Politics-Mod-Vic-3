@@ -1138,6 +1138,7 @@
 					this ?= c:BEL
 					this ?= c:FRA
 					this ?= c:NET
+					this ?= c:PRU
 				}
 			}
 			activate_law = law_type:law_combination_acts

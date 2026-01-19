@@ -1387,10 +1387,6 @@ ideology_eco_guild_artisan = {
 		law_graduated_taxation = strongly_disapprove
 	}
 
-	lawgroup_labour_associations = {
-		law_guild_system = strongly_approve
-	}
-
     lawgroup_slavery = {
 		law_slavery_banned = neutral
 		law_debt_slavery = disapprove
