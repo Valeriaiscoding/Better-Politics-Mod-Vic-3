@@ -77,13 +77,6 @@ bpm_initialize_trade_unions = {
 			bpm_reorder_ideologies = yes
 		}
 		bpm_rename_igs = yes
-
-		owner = {
-			if = {
-				limit = { NOT = { has_variable = union_law_introduced_var } }
-				trigger_event = bpm_union_laws.1
-			}
-		}
 	}
 }
 

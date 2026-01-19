@@ -6,7 +6,7 @@ on_monthly_pulse_country = {
 
 on_bpm_france_monthly_pulse = {
 	effect = {
-		bpm_france_make_igs_support_artisanal_econ = yes
+		#bpm_france_make_igs_support_artisanal_econ = yes
 	}
 }
 

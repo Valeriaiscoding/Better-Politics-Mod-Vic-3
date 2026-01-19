@@ -65,7 +65,7 @@ REPLACE:law_guild_system = {
 	}
 
 	modifier = {
-		interest_group_ig_trade_unions_pop_attraction_mult = -1 # for convenience, as law is removed when unions ig is enabled
+		interest_group_ig_trade_unions_pop_attraction_mult = -0.75
 	}
 
 	ai_will_do = {

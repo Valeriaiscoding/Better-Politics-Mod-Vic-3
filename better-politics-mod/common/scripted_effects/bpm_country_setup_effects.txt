@@ -684,10 +684,11 @@ bpm_setup_basic_igs = {
 	}
 	if = {
 		limit = {
+			has_game_started = yes
 			ig:ig_trade_unions ?= { has_ideology = ideology:ideology_nonexistent }
 			NOT = { has_law_or_variant = law_type:law_traditionalism }
 			NOT = {
-				active_law:lawgroup_economic_system ?= {
+				active_law:lawgroup_labour_associations ?= {
 					has_amendment = amendment_type:bpm_amendment_artisan_guilds
 				}
 			}

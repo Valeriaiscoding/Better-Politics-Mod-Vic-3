@@ -18,10 +18,10 @@ bpm_union_laws.1 = {
 		has_technology_researched = law_enforcement
 		has_technology_researched = labor_movement
 		ig:ig_trade_unions = { bpm_ig_is_marginal = no }
-		has_law_or_variant = law_type:law_right_to_associate # inc guild system
+		has_law_or_variant = law_type:law_right_to_associate
 		NOR = {
 			has_law_or_variant = law_type:law_traditionalism
-			active_law:lawgroup_economic_system ?= {
+			active_law:lawgroup_labour_associations ?= {
 				has_amendment = amendment_type:bpm_amendment_artisan_guilds
 			}
 		}
@@ -41,14 +41,38 @@ bpm_union_laws.1 = {
 				has_law = law_type:law_protected_speech
 				has_law = law_type:law_worker_protections
 			}
+			NAND = {
+				has_law = law_type:law_no_home_affairs
+				has_law = law_type:law_no_police
+			}
 		}
 		ai_chance = {
 			base = 50
 		}
 		activate_law = law_type:law_combination_acts
+		bpm_codify_law = { 
+			law = law_type:law_combination_acts
+			level = decree
+		}
 		add_radicals = {
-			strata = lower
+			pop_type = laborers
 			value = large_radicals
+		}
+		add_radicals = {
+			pop_type = machinists
+			value = large_radicals
+		}
+		add_radicals = {
+			pop_type = clerks
+			value = large_radicals
+		}
+		add_radicals = {
+			pop_type = engineers
+			value = medium_radicals
+		}
+		add_radicals = {
+			pop_type = academics
+			value = medium_radicals
 		}
 	}
 
@@ -59,9 +83,25 @@ bpm_union_laws.1 = {
 			base = 50
 		}
 		activate_law = law_type:law_anti_strike_laws
+		bpm_codify_law = { 
+			law = law_type:law_anti_strike_laws
+			level = decree
+		}
 		add_radicals = {
-			strata = lower
+			pop_type = laborers
 			value = medium_radicals
+		}
+		add_radicals = {
+			pop_type = machinists
+			value = medium_radicals
+		}
+		add_radicals = {
+			pop_type = clerks
+			value = medium_radicals
+		}
+		add_radicals = {
+			pop_type = engineers
+			value = small_radicals
 		}
 	}
 
@@ -74,8 +114,20 @@ bpm_union_laws.1 = {
 			base = 100
 		}
 		activate_law = law_type:law_corporatized_unions
+		bpm_codify_law = { 
+			law = law_type:law_corporatized_unions
+			level = decree
+		}
 		add_radicals = {
-			strata = lower
+			pop_type = laborers
+			value = small_radicals
+		}
+		add_radicals = {
+			pop_type = machinists
+			value = small_radicals
+		}
+		add_radicals = {
+			pop_type = clerks
 			value = small_radicals
 		}
 	}
@@ -87,18 +139,35 @@ bpm_union_laws.1 = {
 		}
 		trigger = {
 			OR = { 
+				AND = {
+					has_law = law_type:law_no_home_affairs
+					has_law = law_type:law_no_police
+				}
+				has_law = law_type:law_right_of_assembly
 				has_law = law_type:law_guaranteed_liberties
 				has_law = law_type:law_protected_speech
 			}
+			NOT = {
+				has_law = law_type:law_extraction_economy
+			}
 		}
 		activate_law = law_type:law_right_to_associate
+		bpm_codify_law = { 
+			law = law_type:law_right_to_associate
+			level = traditional
+		}
+
 		add_radicals = {
 			strata = upper
 			value = large_radicals
 		}
 		add_radicals = {
-			strata = middle
-			value = medium_radicals
+			pop_type = shopkeepers
+			value = large_radicals
+		}
+		add_radicals = {
+			pop_type = farmers
+			value = large_radicals
 		}
 	}
 }

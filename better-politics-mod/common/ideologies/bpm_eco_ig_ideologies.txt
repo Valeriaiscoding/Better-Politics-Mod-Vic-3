@@ -1,4 +1,4 @@
-﻿# Economy category
+# Economy category
 
 ideology_eco_laissez_faire = {
 	icon = "gfx/interface/icons/ideology_icons/eco_ideology/laissez_faire.dds"
@@ -62,7 +62,7 @@ ideology_eco_artisan = {
 		law_interventionism = strongly_disapprove
 		law_agrarianism = disapprove
 		law_laissez_faire = strongly_approve
-		law_industry_banned = neutral
+		law_industry_banned = approve
 		law_cooperative_ownership = approve
 		law_command_economy = strongly_disapprove
 		law_extraction_economy = strongly_disapprove
@@ -1358,10 +1358,10 @@ ideology_eco_guild_artisan = {
 		law_interventionism = neutral
 		law_agrarianism = disapprove
 		law_laissez_faire = approve
-		law_industry_banned = neutral #
-		law_cooperative_ownership = approve
-		law_command_economy = strongly_disapprove # 
-		law_extraction_economy = strongly_disapprove #
+		law_industry_banned = approve 
+		law_cooperative_ownership = neutral
+		law_command_economy = strongly_disapprove 
+		law_extraction_economy = strongly_disapprove 
 	}
 
     lawgroup_trade_policy = {
@@ -1385,6 +1385,10 @@ ideology_eco_guild_artisan = {
 		law_per_capita_based_taxation = approve
 		law_proportional_taxation = disapprove
 		law_graduated_taxation = strongly_disapprove
+	}
+
+	lawgroup_labour_associations = {
+		law_guild_system = strongly_approve
 	}
 
     lawgroup_slavery = {

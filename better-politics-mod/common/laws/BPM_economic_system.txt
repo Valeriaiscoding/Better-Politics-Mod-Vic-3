@@ -96,13 +96,13 @@ INJECT:law_interventionism = {
 		country_capitalists_pol_str_mult = 0.75
 	}
 
-	can_enact = {
-		NOT = {
-			active_law:lawgroup_economic_system = {
-				has_amendment = amendment_type:bpm_amendment_artisanal_economy
-			}
-		}
-	}
+	# can_enact = {
+	# 	NOT = {
+	# 		active_law:lawgroup_economic_system = {
+	# 			has_amendment = amendment_type:bpm_amendment_artisanal_economy
+	# 		}
+	# 	}
+	# }
 
 	institution = institution_economy
 	institution_modifier = {
@@ -459,12 +459,128 @@ REPLACE:law_command_economy = {
 
 INJECT:law_industry_banned = {
 
-	visible = {
+	disallowing_laws = {
+		law_traditionalism
+	}
+
+	is_visible = {
 		NOT = { 			
 			active_law:lawgroup_economic_system = {
 				has_amendment = amendment_type:bpm_amendment_artisanal_economy
 			} 
 		} 
 	}
+	can_enact = {
+		# any_interest_group = {
+		# 	law_stance = {
+		# 		law = law_type:law_industry_banned
+		# 		value > neutral
+		# 	}
+		# 	is_in_government = yes
+		# }
+	}
+	on_enact = {
+		active_law:lawgroup_economic_system ?= {
+			add_amendment = {
+				type = bpm_amendment_artisanal_economy
+				sponsor = PREV.ig:ig_intelligentsia
+			}
+		}
+		cancel_enactment = yes
+	}
 }
 
+# REPLACE:law_industry_banned = {
+# 	group = lawgroup_economic_system
+
+# 	icon = "gfx/interface/icons/law_icons/industry_banned.dds"
+# 	progressiveness = -50
+
+# 	disallowing_laws = {
+#		law_traditionalism
+# 		law_command_economy
+# 		law_anarchy
+# 		law_factory_councils
+#		law_syndicalism
+# 	}
+
+# 	unlocking_technologies = {
+# 		romanticism
+# 	}
+
+# 	is_visible = {
+# 		NOT = { 			
+# 			active_law:lawgroup_economic_system = {
+# 				has_amendment = amendment_type:bpm_amendment_artisanal_economy
+# 			} 
+# 		} 
+# 	}
+# 	can_enact = {
+# 		any_interest_group = {
+# 			law_stance = {
+# 				law = law_type:law_industry_banned
+# 				value > neutral
+# 			}
+# 			is_in_government = yes
+# 		}
+# 	}
+# 	on_enact = {
+# 		ig:ig_intelligentsia = {
+# 			bpm_remove_all_eco_ideologies = yes
+# 			add_ideology = ideology_eco_artisan
+# 			bpm_reorder_ideologies = yes
+# 		}
+# 		ig:ig_petty_bourgeoisie = {
+# 			bpm_remove_all_eco_ideologies = yes
+# 			add_ideology = ideology_eco_artisan
+# 			bpm_reorder_ideologies = yes
+# 		}
+# 		ig:ig_armed_forces = {
+# 			bpm_remove_all_eco_ideologies = yes
+# 			add_ideology = ideology_eco_artisan
+# 			bpm_reorder_ideologies = yes
+# 		}
+# 		ig:ig_industrialists = { # Idk how accurate it is
+# 			bpm_remove_all_eco_ideologies = yes
+# 			add_ideology = ideology_eco_interventionist
+# 			bpm_reorder_ideologies = yes
+# 		}
+# 		custom_tooltip = {
+# 			text = bpm_artisanal_economy_enactment_tt
+# 			active_law:lawgroup_economic_system ?= {
+# 				add_amendment = {
+# 					type = bpm_amendment_artisanal_economy
+# 					sponsor = PREV.ig:ig_intelligentsia
+# 				}
+# 			}
+# 			cancel_enactment = yes
+# 		}
+		
+# 	}
+
+# 	modifier = {
+# 		bpm_france_artisanal_lowest_level_pm = yes
+# 		country_production_tech_spread_mult = -0.25
+# 		country_shopkeepers_pol_str_mult = 0.25
+# 		interest_group_ig_intelligentsia_pol_str_mult = 0.5
+# 		state_capitalists_investment_pool_efficiency_mult = -0.25
+# 		interest_group_ig_industrialists_pol_str_mult = -0.75
+# 		building_group_bg_manufacturing_allowed_collectivization_add = 0.9
+# 		building_group_bg_extraction_allowed_collectivization_add = 0.9
+# 		building_group_bg_private_infrastructure_allowed_collectivization_add = 0.9
+# 		building_company_worker_dividends_add = 0.5
+# 	}
+# 	institution = institution_economy
+# 	institution_modifier = {
+# 		state_shopkeepers_investment_pool_efficiency_mult = 0.05
+# 	}
+
+# 	ai_enact_weight_modifier = { #Petitions
+# 		value = 0
+
+# 		if = {
+# 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
+# 			add = 750
+# 		}
+# 	}
+# }
