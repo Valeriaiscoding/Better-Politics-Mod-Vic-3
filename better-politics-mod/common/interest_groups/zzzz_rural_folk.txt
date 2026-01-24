@@ -141,6 +141,27 @@ REPLACE:ig_rural_folk = {
 		}
 
 		if = {
+			limit = { 
+				bpm_pop_employment_is_rural = yes
+				OR = { is_pop_type = laborers is_pop_type = shopkeepers is_pop_type = peasants is_pop_type = farmers }
+				owner = { 
+					any_active_law = {
+						has_amendment = amendment_type:bpm_amendment_artisanal_economy
+					}
+					# OR = {
+					# 	active_law:lawgroup_economic_system ?= { has_amendment = amendment_type:bpm_amendment_artisanal_economy }
+					# 	active_law:lawgroup_labour_associations ?= { has_amendment = amendment_type:bpm_amendment_artisan_guilds }
+					# }
+				} 
+			}
+			add = {
+				desc = "POP_ARTISANS"
+				value = 300
+				multiply = workplace.self_ownership_fraction
+			}
+		}
+
+		if = {
 			limit = {
 				c:BIC ?= owner
 				culture = {

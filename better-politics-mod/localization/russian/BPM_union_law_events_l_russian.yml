@@ -7,6 +7,12 @@
  bpm_union_laws.1.c:0 "Государство должно их поглотить!"
  bpm_union_laws.1.d:0 "Подумав, кому это вообще нужно?"
 
+ bpm_union_laws.2.t:0 "Fate of the guilds"
+ bpm_union_laws.2.desc:0 "As we have recently establish legistation regarding labor unions, now legal status of guild comes into question."
+ bpm_union_laws.2.f:0 "In that the abolition of any kind of citizen's guild in the same trade or of the same profession is one of the fundamental bases of the French Constitution, it is forbidden to reestablish them under any pretext or in any form whatsoever.\n\n—The Le Chapelier Law, 1791"
+ bpm_union_laws.2.a:0 "Ban them."
+ bpm_union_laws.2.b:0 "Leave them be."
+
  communism.1.a:1 "Предложить им более высокую заработную плату за их труд."
  communism.1.b:1 "Избавить последних рабовладельцев от мучений."
  communism.1.c:1 "Гарантировать лучшие условия для рабочих."

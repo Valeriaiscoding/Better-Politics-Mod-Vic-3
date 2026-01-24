@@ -50,6 +50,7 @@ ideology_wel_laborist = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = neutral
 		law_syndicalism = neutral
+		law_guild_system = neutral
 	}
 }
 

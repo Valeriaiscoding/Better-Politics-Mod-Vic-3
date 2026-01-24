@@ -273,3 +273,4 @@ bpm_colonial_admin_activate_effect = {
 		}
 	}
 }
+

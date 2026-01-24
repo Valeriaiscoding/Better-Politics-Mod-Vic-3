@@ -260,8 +260,10 @@
 		}
 	}
 	every_country = {
-		limit = { is_subject_of = c:GBR }
-		activate_law = law_type:law_anti_strike_laws
+		limit = { 
+			is_subject_of = c:GBR
+			
+		}
 		if = {
 			limit = { bpm_country_is_in_new_world = yes }
 			activate_law = law_type:law_national_militia
@@ -310,6 +312,12 @@
 			bpm_do_market_liberal_split = yes
 		}
 		activate_law = law_type:law_combination_acts
+		activate_law = law_type:law_homesteading
+		add_modifier = {
+			name = bpm_urban_collectivization_workaround
+			multiplier = 0.9
+			months = 1
+		}
 
 		#bpm_initialize_cabinet = yes
 		#every_scope_character = {
@@ -1140,7 +1148,90 @@
 		}
 	}
 
-	
+	# LABOR UNIONS
+	every_country = {
+		if = {
+			limit = {
+				OR = { 
+					this ?= c:BEL
+					this ?= c:FRA
+					this ?= c:NET
+					this ?= c:PRU
+				}
+			}
+			activate_law = law_type:law_combination_acts
+		}
+		else_if = {
+			limit = {
+				OR = {
+					this ?= c:GBR
+					AND = {
+						is_subject_of = c:GBR
+						NOR = {
+							has_law_or_variant = law_type:law_traditionalism
+							has_law_or_variant = law_type:law_extraction_economy
+						}
+					}
+				}
+			}
+			activate_law = law_type:law_anti_strike_laws
+		}
+		else_if = {
+			limit = {
+				OR  = {
+					this ?= c:USA
+				}
+			}
+			activate_law = law_type:law_right_to_associate
+		}
+		else = {
+			activate_law = law_type:law_guild_system
+			if = {
+				limit = {
+					OR = {
+						bpm_country_is_in_europe = yes
+						this ?= c:RUS
+						this ?= c:FIN
+						this ?= c:UBD
+						this ?= c:JAP
+						this ?= c:CHI
+					}
+				}
+				active_law:lawgroup_labour_associations ?= {
+					add_amendment = {
+						type = bpm_amendment_artisan_guilds
+						sponsor = PREV.ig:ig_intelligentsia
+					}
+				}
+			}
+		}
+	}
+	every_country = {
+		limit = { NOT = { has_law = law_type:law_guild_system } }
+		add_technology_researched = labor_movement
+		set_variable = union_law_introduced_var
+	}
+	every_country = {
+		limit = {
+			bpm_country_is_in_europe = yes
+			this != c:GBR
+			this != c:FRA
+			this != c:BEL
+			NOT = { has_law = law_type:law_guild_system }
+		}
+		add_modifier = {
+			name = declining_guilds
+			months = 120
+		}
+		active_law:lawgroup_labour_associations ?= {
+			add_amendment = {
+				type = bpm_amendment_weakened_artisan_guilds
+				sponsor = PREV.ig:ig_intelligentsia
+				timeout = 180
+			}
+		}
+
+	}
 
 	every_country = {
 		if = {
