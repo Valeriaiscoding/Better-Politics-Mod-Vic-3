@@ -78,8 +78,8 @@ ideology_eco_artisan = {
     lawgroup_land_reform = {
 		law_serfdom = strongly_disapprove
 		law_tenant_farmers = disapprove
-		law_homesteading = neutral
-		law_commercialized_agriculture = approve
+		law_homesteading = approve
+		law_commercialized_agriculture = neutral
 		law_collectivized_agriculture = strongly_disapprove
 	}
 
@@ -96,7 +96,7 @@ ideology_eco_artisan = {
 		law_debt_slavery = neutral
 		law_slave_trade = strongly_disapprove
 		law_legacy_slavery = disapprove
-		law_colonial_slavery = disapprove
+		law_colonial_slavery = neutral
 	}
 
 	lawgroup_repeatable_economy = {
