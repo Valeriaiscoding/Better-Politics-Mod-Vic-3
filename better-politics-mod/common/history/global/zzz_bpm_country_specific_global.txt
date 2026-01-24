@@ -312,6 +312,12 @@
 			bpm_do_market_liberal_split = yes
 		}
 		activate_law = law_type:law_combination_acts
+		activate_law = law_type:law_homesteading
+		add_modifier = {
+			name = bpm_urban_collectivization_workaround
+			multiplier = 0.9
+			months = 1
+		}
 
 		#bpm_initialize_cabinet = yes
 		#every_scope_character = {
@@ -1168,10 +1174,6 @@
 		}
 		else = {
 			activate_law = law_type:law_guild_system
-			bpm_codify_law = { 
-				law = law_type:law_guild_system
-				level = traditional
-			}
 			if = {
 				limit = {
 					OR = {
@@ -1193,10 +1195,30 @@
 		}
 	}
 	every_country = {
+		limit = { NOT = { has_law = law_type:law_guild_system } }
+		add_technology_researched = labor_movement
+		set_variable = union_law_introduced_var
+	}
+	every_country = {
 		limit = {
+			bpm_country_is_in_europe = yes
+			this != c:GBR
+			this != c:FRA
+			this != c:BEL
 			NOT = { has_law = law_type:law_guild_system }
 		}
-		bpm_initialize_trade_unions = yes
+		add_modifier = {
+			name = declining_guilds
+			months = 120
+		}
+		active_law:lawgroup_labour_associations ?= {
+			add_amendment = {
+				type = bpm_amendment_weakened_artisan_guilds
+				sponsor = PREV.ig:ig_intelligentsia
+				timeout = 180
+			}
+		}
+
 	}
 
 	every_country = {

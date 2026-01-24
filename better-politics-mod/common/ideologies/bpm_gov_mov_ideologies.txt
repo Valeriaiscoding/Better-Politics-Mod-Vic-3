@@ -115,6 +115,7 @@ ideology_gov_socialist = {
 		law_syndicalism = approve
 		law_right_to_associate = strongly_approve
 		law_socialist_labor_unions = approve
+		law_guild_system = neutral
 	}
 }
 
@@ -272,5 +273,6 @@ ideology_gov_reformist_socialist = {
 		law_syndicalism = disapprove
 		law_right_to_associate = strongly_approve
 		law_socialist_labor_unions = strongly_disapprove
+		law_guild_system = neutral
 	}
 }

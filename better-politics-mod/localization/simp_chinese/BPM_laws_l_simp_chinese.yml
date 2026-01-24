@@ -188,3 +188,5 @@
  interest_group_bpm_intelligentsia_force_leader_non_moderate_desc:0 "[GetInterestGroupVariant('ig_intelligentsia', GetPlayer).GetName] leaders will never gain [GetIdeology('ideology_moderate').GetName] ideology"
  bpm_amendment_artisan_guilds: "行会制度"
  bpm_amendment_artisan_guilds_desc: "这种制度下，只有正式的工艺或商业行会的成员才有资格在相应领域从业。"
+ bpm_amendment_weakened_artisan_guilds: "弱勢工匠公會"
+ bpm_amendment_weakened_artisan_guilds_desc: "$bpm_amendment_artisan_guilds_desc$"

@@ -2650,6 +2650,7 @@ ideology_socialist_leader = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = neutral
+		law_guild_system = neutral
 	}
 
 	lawgroup_labor_rights = {		
@@ -2879,6 +2880,7 @@ ideology_syndicalist = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = strongly_approve
+		law_guild_system = neutral
 	}
 
 	lawgroup_repeatable_economy = {
@@ -3093,6 +3095,7 @@ REPLACE:ideology_social_democrat = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = neutral
+		law_guild_system = neutral
 	}
 
 	lawgroup_repeatable_economy = {
@@ -3320,6 +3323,7 @@ REPLACE:ideology_communist = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = approve
 		law_syndicalism = neutral
+		law_guild_system = neutral
 	}
 
 	lawgroup_repeatable_economy = {
@@ -3654,6 +3658,7 @@ REPLACE:ideology_vanguardist = {
 		law_right_to_associate = neutral
 		law_socialist_labor_unions = strongly_approve
 		law_syndicalism = neutral
+		law_guild_system = neutral
 	}
 
 	lawgroup_party_laws = {
@@ -4427,6 +4432,7 @@ REPLACE:ideology_anarchist = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = neutral
+		law_guild_system = neutral
 	}
 
 	lawgroup_repeatable_economy = {
@@ -4676,6 +4682,7 @@ ideology_anarchist_syndicalist = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = strongly_approve
+		law_guild_system = neutral
 	}
 
 	lawgroup_repeatable_economy = {
@@ -7457,6 +7464,7 @@ REPLACE:ideology_corporatist_leader = {
 		law_right_to_associate = strongly_disapprove
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
+		law_guild_system = neutral
 	}
 	
 	interest_group_leader_trigger = {
@@ -9733,6 +9741,17 @@ ideology_reactionary_anti_capitalist = {
 					is_interest_group_type = ig_national_liberals
 					is_interest_group_type = ig_conservatives
 					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_intelligentsia
+				owner = {
+					active_law:lawgroup_labour_associations = {
+						has_amendment = amendment_type:bpm_amendment_artisan_guilds
+					}
 				}
 			}
 			add = 50

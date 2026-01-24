@@ -11,18 +11,18 @@ bpm_amendment_artisanal_economy = {
 	modifier = {
 		bpm_france_artisanal_lowest_level_pm = yes
 		country_production_tech_spread_mult = -0.25
-
+		state_capitalists_investment_pool_efficiency_mult = -0.25
+		country_capitalits_pol_str_mult = -0.75
 		country_shopkeepers_pol_str_mult = 0.25
 		interest_group_ig_intelligentsia_pol_str_mult = 0.5
-		state_capitalists_investment_pool_efficiency_mult = -0.25
-		interest_group_ig_industrialists_pol_str_mult = -0.75
-
-		building_group_bg_manufacturing_allowed_collectivization_add = 0.9
-		building_group_bg_extraction_allowed_collectivization_add = 0.9
-		building_group_bg_private_infrastructure_allowed_collectivization_add = 0.9
-		building_company_worker_dividends_add = 0.5
-
-		building_economy_of_scale_level_cap_add = -15
+		#building_group_bg_manufacturing_allowed_collectivization_add = 0.9
+		#building_group_bg_extraction_allowed_collectivization_add = 0.9
+		#building_group_bg_private_infrastructure_allowed_collectivization_add = 0.9
+		building_group_bg_manufacturing_self_investment_chance_add = 0.9
+		building_group_bg_extraction_self_investment_chance_add = 0.9
+		building_group_bg_infrastructure_self_investment_chance_add = 0.9		
+		country_company_throughput_bonus_add = -0.1
+		country_company_construction_efficiency_bonus_add = -0.25
 	}
 	institution = institution_economy
 	institution_modifier = {
@@ -43,46 +43,82 @@ bpm_amendment_artisanal_economy = {
 
 	on_activate = {
 		ig:ig_intelligentsia = {
-			set_interest_group_name = ig_artisanal_guilds
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_artisan
-			bpm_reorder_ideologies = yes
+			hidden_effect = { set_interest_group_name = ig_artisanal_guilds }
+			if = {
+				limit = { NOT = { has_ideology = ideology:ideology_eco_artisan } }
+				bpm_remove_all_eco_ideologies = yes
+				add_ideology = ideology_eco_artisan
+				bpm_reorder_ideologies = yes
+			}
 		}
 		ig:ig_petty_bourgeoisie = {
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_artisan
-			bpm_reorder_ideologies = yes
+			if = {
+				limit = { NOT = { has_ideology = ideology:ideology_eco_artisan } }
+				bpm_remove_all_eco_ideologies = yes
+				add_ideology = ideology_eco_artisan
+				bpm_reorder_ideologies = yes
+			}
 		}
 		ig:ig_armed_forces = {
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_artisan
-			bpm_reorder_ideologies = yes
+			if = {
+				limit = { NOT = { has_ideology = ideology:ideology_eco_artisan } }
+				bpm_remove_all_eco_ideologies = yes
+				add_ideology = ideology_eco_artisan
+				bpm_reorder_ideologies = yes
+			}
 		}
-		ig:ig_industrialists = { # Idk how accurate it is maybe remove
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_interventionist
-			bpm_reorder_ideologies = yes
+		ig:ig_rural_folk = {
+			if = {
+				limit = { NOT = { has_ideology = ideology:ideology_eco_anti_industry } }
+				bpm_remove_all_eco_ideologies = yes
+				add_ideology = ideology_eco_anti_industry
+				bpm_reorder_ideologies = yes
+			}
+		}
+		ig:ig_industrialists = { 
+			if = {
+				limit = { NOT = { has_ideology = ideology:ideology_eco_modernizer } }
+				bpm_remove_all_eco_ideologies = yes
+				add_ideology = ideology_eco_modernizer
+				bpm_reorder_ideologies = yes
+			}
 		}
 	}
 	on_deactivate = {
 		ig:ig_intelligentsia = {
 			if = {
 				limit = { has_ideology = ideology:ideology_eco_artisan }
-				bpm_remove_all_eco_ideologies = yes
-				bpm_reorder_ideologies = yesx
+				remove_ideology = ideology_eco_artisan
+				bpm_reorder_ideologies = yes
 			}
 		}
 		ig:ig_petty_bourgeoisie = {
 			if = {
 				limit = { has_ideology = ideology:ideology_eco_artisan }
-				bpm_remove_all_eco_ideologies = yes
+				remove_ideology = ideology_eco_artisan
 				bpm_reorder_ideologies = yes
 			}
 		}
 		ig:ig_armed_forces = {
 			if = {
 				limit = { has_ideology = ideology:ideology_eco_artisan }
-				bpm_remove_all_eco_ideologies = yes
+				remove_ideology = ideology_eco_artisan
+				bpm_reorder_ideologies = yes
+			}
+		}
+		ig:ig_rural_folk = {
+			if = {
+				limit = { has_ideology = ideology:ideology_eco_anti_industry }
+				remove_ideology = ideology_eco_anti_industry
+				add_ideology = ideology_eco_modern_agrarian
+				bpm_reorder_ideologies = yes
+			}
+		}
+		ig:ig_industrialists = { 
+			if = {
+				limit = { has_ideology = ideology:ideology_eco_modernizer }
+				remove_ideology = ideology_eco_modernizer
+				add_ideology = ideology_eco_laisses_faire
 				bpm_reorder_ideologies = yes
 			}
 		}

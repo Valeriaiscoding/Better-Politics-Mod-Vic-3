@@ -170,6 +170,8 @@
  interest_group_bpm_intelligentsia_force_leader_non_moderate_desc:0 "Лидеры [GetInterestGroupVariant('ig_intelligentsia', GetPlayer).GetName] никогда не приобретут идеологию [GetIdeology('ideology_moderate').GetName]."
  bpm_amendment_artisan_guilds: "Ремесленные Гильдии"
  bpm_amendment_artisan_guilds_desc: "Система, в которой для занятия определенными видами деятельности необходимо вступить в официальную ремесленную или торговую гильдию."
+ bpm_amendment_weakened_artisan_guilds: "Слабые Ремесленные Гильдии"
+ bpm_amendment_weakened_artisan_guilds_desc: "$bpm_amendment_artisan_guilds_desc$"
 
 # Laws Centralization
  lawgroup_centralization:0 "Централизация"

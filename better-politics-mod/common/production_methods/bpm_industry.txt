@@ -418,5 +418,65 @@ INJECT:pm_assembly_lines_building_munition_plant = {
 		bpm_amendment_artisanal_economy
 		bpm_amendment_artisan_guilds
 	}
+}
 
+INJECT:pm_diesel_pump_building_coal_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_steam_donkey_building_coal_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_diesel_pump_building_iron_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_steam_donkey_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_diesel_pump_building_lead_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_diesel_pump_building_sulfur_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_diesel_pump_building_gold_mine = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_steam_donkey_building_logging_camp = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_electric_saw_mills = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
+}
+INJECT:pm_chainsaws = {
+	disallowing_amendments = {
+		bpm_amendment_artisanal_economy
+		bpm_amendment_artisan_guilds
+	}
 }

@@ -36,6 +36,7 @@ ideology_dop_party_socialist = {
 		law_socialist_labor_unions = strongly_approve
 		law_syndicalism = neutral
 		law_factory_councils = strongly_approve
+		law_guild_system = neutral
 	}
 }
 
@@ -75,6 +76,7 @@ ideology_dop_anarchist = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_factory_councils = strongly_approve
+		law_guild_system = neutral
 	}
 }
 
@@ -114,6 +116,7 @@ ideology_dop_party_state = {
 		law_right_to_associate = strongly_disapprove
 		law_socialist_labor_unions = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -154,6 +157,7 @@ ideology_dop_radical_democrat = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = disapprove
 		law_factory_councils = disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -195,6 +199,7 @@ ideology_dop_moderate_democrat = {
 		law_right_to_associate = disapprove
 		law_socialist_labor_unions = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -234,6 +239,7 @@ ideology_dop_authoritarian_democrat = {
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -275,6 +281,7 @@ ideology_dop_autocrat = {
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -317,6 +324,7 @@ ideology_dop_oligarch = {
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -365,6 +373,7 @@ ideology_dop_technocrat = {
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -405,6 +414,7 @@ ideology_dop_traditional_power = {
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -461,6 +471,7 @@ ideology_dop_meritocratic_autocrat = {
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -492,6 +503,7 @@ ideology_dop_unionist = {
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = neutral
 		law_factory_councils = disapprove
+		law_guild_system = neutral
 	}
 
 }
@@ -507,6 +519,7 @@ ideology_dop_state_unionist = {
 		law_factory_councils = strongly_disapprove
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = strongly_disapprove
+		law_guild_system = neutral
 	}
     
 	lawgroup_bureaucracy = {
@@ -541,6 +554,7 @@ ideology_dop_syndical_unionist = {
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = approve
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -576,6 +590,7 @@ ideology_dop_syndicalist = {
 		law_socialist_labor_unions = disapprove
 		law_syndicalism = approve
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -611,6 +626,7 @@ ideology_dop_anarcho_syndicalist = {
 		law_right_to_associate = neutral
 		law_socialist_labor_unions = disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -680,6 +696,7 @@ ideology_dop_christian_democrat = {
 		law_right_to_associate = strongly_approve
 		law_socialist_labor_unions = strongly_disapprove
 		law_factory_councils = disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -720,6 +737,7 @@ ideology_dop_divine_democrat = {
 		law_right_to_associate = neutral
 		law_socialist_labor_unions = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -760,6 +778,7 @@ icon = "gfx/interface/icons/ideology_icons/dop_ideology/conservative_democrat.dd
 		law_right_to_associate = neutral
   	  	law_socialist_labor_unions = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -800,6 +819,7 @@ ideology_dop_organic_democrat = {
 		law_right_to_associate = approve
 		law_factory_councils = strongly_disapprove
 		law_socialist_labor_unions = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -840,6 +860,7 @@ ideology_dop_organic_power = {
 		law_right_to_associate = strongly_disapprove
     	law_socialist_labor_unions = strongly_disapprove
 		law_factory_councils = strongly_disapprove
+		law_guild_system = neutral
 	}
 }
 
@@ -875,5 +896,6 @@ ideology_dop_doctrinaire_democrat = {
 		law_right_to_associate = approve
 		law_socialist_labor_unions = strongly_disapprove
 		law_syndicalism = strongly_disapprove
+		law_guild_system = neutral
 	}
 }

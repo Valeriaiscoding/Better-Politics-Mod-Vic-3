@@ -161,16 +161,26 @@ REPLACE:ig_intelligentsia = {
 		}
 		if = {
 			limit = { 
+				bpm_pop_employment_is_rural = no
+				OR = { is_pop_type = laborers is_pop_type = shopkeepers }
 				owner = { 
-					OR = {
-						active_law:lawgroup_economic_system ?= { has_amendment = amendment_type:bpm_amendment_artisanal_economy }
-						active_law:lawgroup_labour_associations ?= { has_amendment = amendment_type:bpm_amendment_artisan_guilds }
+					any_active_law = {
+						OR = {
+							has_amendment = amendment_type:bpm_amendment_artisanal_economy
+							has_amendment = amendment_type:bpm_amendment_artisan_guilds
+							has_amendment = amendment_type:bpm_weakened_amendment_artisan_guilds
+						}
 					}
-			} 
-			OR = { is_pop_type = laborers is_pop_type = shopkeepers }}
+					# OR = {
+					# 	active_law:lawgroup_economic_system ?= { has_amendment = amendment_type:bpm_amendment_artisanal_economy }
+					# 	active_law:lawgroup_labour_associations ?= { has_amendment = amendment_type:bpm_amendment_artisan_guilds }
+					# }
+				} 
+			}
 			add = {
 				desc = "POP_ARTISANS"
 				value = 300
+				multiply = workplace.self_ownership_fraction
 			}
 		}
 		add = {
