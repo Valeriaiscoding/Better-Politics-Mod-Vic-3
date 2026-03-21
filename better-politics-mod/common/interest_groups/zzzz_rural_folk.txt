@@ -153,7 +153,10 @@ REPLACE:ig_rural_folk = {
 			}
 		}
 
-		multiply = ig_attraction_to_interests_from_stability
+		if = {
+			limit = { NOT = { owner.modifier:bpm_ig_rural_fork_non_institutional_bool = yes } }
+			multiply = ig_attraction_to_interests_from_stability
+		}
 
 		multiply = {
 			desc = "TRADITIONAL_ECONOMIES"	

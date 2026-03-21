@@ -246,7 +246,12 @@ REPLACE:ig_petty_bourgeoisie = {
 			}
 		}
 
-		multiply = ig_attraction_to_interests_from_stability	
+		if = {
+			limit = {
+				NOT = { owner.modifier:bpm_ig_petty_bourgeoisie_non_institutional_bool = yes }
+			}
+			multiply = ig_attraction_to_interests_from_stability	
+		}	
 		if = {
 			limit = {
 				scope:interest_group = {

@@ -137,7 +137,7 @@ REPLACE:law_combination_acts = {
 		state_political_strength_from_wealth_mult = 0.1
 		interest_group_ig_trade_unions_pol_str_mult = -0.5
 		interest_group_ig_trade_unions_pop_attraction_mult = -0.5
-		bpm_decorative_trade_unions_non_institutional = yes
+		bpm_ig_trade_unions_non_institutional_bool = yes
 	}
 
 	on_activate = {

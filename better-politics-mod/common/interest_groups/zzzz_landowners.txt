@@ -344,7 +344,10 @@ REPLACE:ig_landowners = {
 			}
 		}
 
-		multiply = ig_attraction_to_interests_from_stability	
+		if = {
+			limit = { NOT = { owner.modifier:bpm_ig_landowners_non_institutional_bool = yes } }
+			multiply = ig_attraction_to_interests_from_stability
+		}	
 		if = {
 			limit = {
 				scope:interest_group = {

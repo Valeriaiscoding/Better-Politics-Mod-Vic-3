@@ -548,6 +548,46 @@ country_ig_devout_state_institutional_bool = {
 	boolean=yes
 }
 
+bpm_ig_trade_unions_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_petty_bourgeoisie_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_landowners_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_intelligentsia_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_devout_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_industrialists_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_armed_forces_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_ig_rural_fork_non_institutional_bool = {
+	color = neutral
+	boolean = yes
+}
+
 # extra
 
 REPLACE:state_academics_investment_pool_efficiency_mult={

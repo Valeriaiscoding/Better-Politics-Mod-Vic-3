@@ -187,7 +187,10 @@ REPLACE:ig_armed_forces = {
 			}
 		}
 
-		multiply = ig_attraction_to_interests_from_stability
+		if = {
+			limit = { NOT = { owner.modifier:bpm_ig_armed_forces_non_institutional_bool = yes } }
+			multiply = ig_attraction_to_interests_from_stability
+		}
 		multiply = {
 			desc = "IN_WAR"	
 			value = 1.0
