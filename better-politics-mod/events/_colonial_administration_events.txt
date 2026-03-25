@@ -55,8 +55,14 @@ colonial_administration_events.1 = {
 			text = colonial_administration_events.1_tt_1
 			scope:newly_formed_colonial_nation_scope = {
 				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_oligarchy
-				activate_law = law_type:law_racial_segregation
+				activate_law = law_type:law_colonial_administration
+				activate_law = law_type:law_subjecthood
+				active_law:lawgroup_citizenship ?= { # Subjecthood
+					add_amendment = {
+						type = amendment_racialized_subjecthood
+						sponsor = PREV.ig:ig_armed_forces
+					}
+				}
 				activate_law = law_type:law_extraction_economy
 				activate_law = law_type:law_colonial_exploitation
 				activate_law = law_type:law_no_schools
@@ -66,6 +72,8 @@ colonial_administration_events.1 = {
 				activate_law = law_type:law_child_labor_allowed
 				activate_law = law_type:law_no_social_security
 				activate_law = law_type:law_migration_controls
+				activate_law = law_type:law_combination_acts
+				activate_law = law_type:law_unregulated_work_time
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
@@ -146,8 +154,14 @@ colonial_administration_events.1 = {
 			text = colonial_administration_events.1_tt_2
 			scope:newly_formed_colonial_nation_scope = {
 				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_oligarchy
-				activate_law = law_type:law_racial_segregation
+				activate_law = law_type:law_colonial_administration
+				activate_law = law_type:law_subjecthood
+				active_law:lawgroup_citizenship ?= { # Subjecthood
+					add_amendment = {
+						type = amendment_racialized_subjecthood
+						sponsor = PREV.ig:ig_armed_forces
+					}
+				}
 				activate_law = law_type:law_extraction_economy
 				activate_law = law_type:law_colonial_exploitation
 				activate_law = law_type:law_state_religion
@@ -158,6 +172,8 @@ colonial_administration_events.1 = {
 				activate_law = law_type:law_child_labor_allowed
 				activate_law = law_type:law_no_social_security
 				activate_law = law_type:law_migration_controls
+				activate_law = law_type:law_combination_acts
+				activate_law = law_type:law_unregulated_work_time
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
@@ -231,8 +247,14 @@ colonial_administration_events.1 = {
 			text = colonial_administration_events.1_tt_3
 			scope:newly_formed_colonial_nation_scope = {
 				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_oligarchy
-				activate_law = law_type:law_racial_segregation
+				activate_law = law_type:law_colonial_administration
+				activate_law = law_type:law_subjecthood
+				active_law:lawgroup_citizenship ?= { # Subjecthood
+					add_amendment = {
+						type = amendment_racialized_subjecthood
+						sponsor = PREV.ig:ig_armed_forces
+					}
+				}
 				activate_law = law_type:law_agrarianism
 				activate_law = law_type:law_colonial_resettlement
 				activate_law = law_type:law_no_schools
@@ -242,6 +264,8 @@ colonial_administration_events.1 = {
 				activate_law = law_type:law_child_labor_allowed
 				activate_law = law_type:law_no_social_security
 				activate_law = law_type:law_migration_controls
+				activate_law = law_type:law_combination_acts
+				activate_law = law_type:law_unregulated_work_time
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
@@ -287,8 +311,14 @@ colonial_administration_events.1 = {
 			text = colonial_administration_events.1_tt_4
 			scope:newly_formed_colonial_nation_scope = {
 				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_autocracy
-				activate_law = law_type:law_racial_segregation
+				activate_law = law_type:law_colonial_administration
+				activate_law = law_type:law_subjecthood
+				active_law:lawgroup_citizenship ?= { # Subjecthood
+					add_amendment = {
+						type = amendment_racialized_subjecthood
+						sponsor = PREV.ig:ig_armed_forces
+					}
+				}
 				activate_law = law_type:law_extraction_economy
 				activate_law = law_type:law_colonial_exploitation
 				activate_law = law_type:law_no_schools
@@ -299,6 +329,9 @@ colonial_administration_events.1 = {
 				activate_law = law_type:law_no_social_security
 				activate_law = law_type:law_migration_controls
 				activate_law = law_type:law_slave_trade
+				activate_law = law_type:law_combination_acts
+				activate_law = law_type:law_unregulated_work_time
+				activate_law = law_type:law_party_reactionary_only
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {

@@ -348,24 +348,27 @@
 			add_ideology = ideology_wel_religious_welfare
 		}	
 	}
-
-	c:PCO = {
-		bpm_set_colony_law = yes
-		bpm_setup_country = yes
-	}
-
+	
 	every_country = {
 		limit = {
-			this != BIC
-			is_country_type = colonial
 			OR = {
-				has_law_or_variant = law_type:law_autocracy
-				has_law_or_variant = law_type:law_oligarchy
+				is_country_type = colonial
+				is_country_type = company
 			}
 		}
-		bpm_set_colony_law = yes
+		activate_law = law_type:law_presidential_republic
+		if = {
+			limit = {
+				OR = {
+					has_law_or_variant = law_type:law_autocracy
+					has_law_or_variant = law_type:law_oligarchy
+				}
+			}
+			bpm_set_colony_law = yes
+			bpm_setup_country = yes
+		}
 	} 
-	
+
 	c:SPA = {
 		add_technology_researched = egalitarianism
 		activate_law = law_type:law_separated_powers
@@ -626,7 +629,7 @@
 			bpm_remove_all_gov_ideologies = yes
 			add_ideology = ideology_gov_liberal_republican
 			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_meritocratic_autocrat
+			add_ideology = ideology_dop_metropole_loyalist
 			bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_eco_colonialist
 			bpm_remove_all_wel_ideologies = yes
@@ -638,7 +641,7 @@
 			bpm_remove_all_gov_ideologies = yes
 			add_ideology = ideology_gov_liberal_republican
 			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_oligarch
+			add_ideology = ideology_dop_metropole_loyalist
 			bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_eco_colonialist
 			bpm_remove_all_wel_ideologies = yes
@@ -663,7 +666,7 @@
 			bpm_remove_all_gov_ideologies = yes
 			add_ideology = ideology_gov_liberal_republican
 			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_meritocratic_autocrat
+			add_ideology = ideology_dop_metropole_loyalist
 			bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_eco_colonialist
 			bpm_remove_all_wel_ideologies = yes
@@ -685,15 +688,15 @@
 
 		ig:ig_industrialists = {
 			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_autocrat
+			add_ideology = ideology_dop_metropole_loyalist
 		}
 		ig:ig_petty_bourgeoisie = {
 			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_meritocratic_autocrat
+			add_ideology = ideology_dop_metropole_loyalist
 		}
 		ig:ig_armed_forces = {
 			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_autocrat
+			add_ideology = ideology_dop_metropole_loyalist
 			bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_eco_colonialist
 		}
@@ -903,6 +906,8 @@
 				has_law = law_type:law_theocracy
 			}
 			NOR = {
+				is_country_type = colonial
+				is_country_type = company
 				this = c:GBR
 				this = c:NET
 				this = c:BEL
@@ -913,6 +918,17 @@
 			}
 		}
 		activate_law = law_type:law_noble_officers
+	}
+
+	every_country = {
+		limit = {
+			OR = {
+				is_country_type = colonial
+				is_country_type = company
+			}
+			has_law = law_type:law_peasant_levies
+		}
+		activate_law = law_type:law_professional_army
 	}
 
 	every_country = {
@@ -995,6 +1011,8 @@
 			limit = {
 				OR = {
 					is_country_type = recognized
+					is_country_type = colonial
+					is_country_type = company
 					AND = {
 						bpm_country_is_in_new_world = yes
 						NOT = { is_country_type = decentralized }
