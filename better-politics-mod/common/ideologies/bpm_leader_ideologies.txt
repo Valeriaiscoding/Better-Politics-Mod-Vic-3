@@ -8566,12 +8566,6 @@ REPLACE:ideology_carlist_2 = {
 		ig:ig_reactionaries = {
 			bpm_ig_is_paternalistic = yes		
 		}
-		NOR = {
-			any_interest_group = {
-				has_ideology = ideology:ideology_republican_paternalistic
-			}
-			has_variable = monarchy_stamped_out_var
-		}
 	}
 
 	interest_group_leader_trigger = {
@@ -9056,12 +9050,6 @@ REPLACE:ideology_miguelist_2 = {
 		country_has_primary_culture = cu:portuguese
 		ig:ig_reactionaries = {
 			bpm_ig_is_paternalistic = yes		
-		}
-		NOR = {
-			any_interest_group = {
-				has_ideology = ideology:ideology_republican_paternalistic
-			}
-			has_variable = monarchy_stamped_out_var
 		}
 	}
 
