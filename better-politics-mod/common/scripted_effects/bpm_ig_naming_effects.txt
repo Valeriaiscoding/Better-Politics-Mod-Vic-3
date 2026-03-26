@@ -1442,7 +1442,9 @@ bpm_rename_reactionary_ig = {
 	else_if = {
 		limit = {
 			this = c:POR
-			ig:ig_reactionaries ?= { NOT = { has_ideology = ideology:ideology_sta_organic_state } }
+			NOT = {
+				has_variable = stamped_out_monarchy_var
+			}
 		}
 		ig:ig_reactionaries ?= { set_interest_group_name = ig_miguelists }
 	}
