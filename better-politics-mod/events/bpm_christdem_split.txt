@@ -2660,6 +2660,8 @@ bpm_papal_encyclicals.3 = { # Rerum novarum
 						bpm_reorder_ideologies = yes
 					}
 
+					bpm_update_carlist_miguelist_ideology = yes
+
 					ig:ig_devout = {
 						add_ideology = ideology_corporatist
 						bpm_remove_all_wel_ideologies = yes

@@ -290,3 +290,75 @@ bpm_frankfurt_member_update = {
 		add_to_global_variable_list = {name = frankfurt_boycott target = THIS}
 	}
 }
+
+bpm_update_carlist_miguelist_ideology = {
+	if = {
+		limit = {
+			OR = {
+				any_political_movement = {
+					has_ideology = ideology:ideology_carlist
+				}
+				any_scope_character = {
+					has_ideology = ideology:ideology_carlist
+				}
+			}
+		}
+		custom_tooltip = {
+			text = carlist_amended_tt
+			every_character = {
+				limit = {
+					has_ideology = ideology:ideology_carlist
+					OR = {
+						owner ?= ROOT
+						home_country ?= ROOT
+					}
+				}
+				set_ideology = ideology:ideology_carlist_2
+			}
+			every_political_movement = {
+				limit = {
+					has_core_ideology = ideology:ideology_carlist_2
+				}
+				set_core_ideology = ideology_carlist_2
+			}
+			every_interest_group = {
+				limit = {
+					has_ideology = ideology:ideology_carlist_ig
+				}
+				remove_ideology = ideology_carlist_ig
+				add_ideology = ideology_carlist_ig_2
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				any_political_movement = {
+					has_ideology = ideology:ideology_miguelist
+				}
+				any_scope_character = {
+					has_ideology = ideology:ideology_miguelist
+				}
+			}
+		}
+		custom_tooltip = {
+			text = miguelist_amended_tt
+			every_character = {
+				limit = {
+					has_ideology = ideology:ideology_miguelist
+					OR = {
+						owner ?= ROOT
+						home_country ?= ROOT
+					}
+				}
+				set_ideology = ideology:ideology_miguelist_2
+			}
+			every_political_movement = {
+				limit = {
+					has_core_ideology = ideology:ideology_miguelist
+				}
+				set_core_ideology = ideology_miguelist_2
+			}
+		}
+	}
+}

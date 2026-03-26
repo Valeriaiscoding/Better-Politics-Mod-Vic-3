@@ -8259,7 +8259,6 @@ REPLACE:ideology_carlist = {
 		law_monarchy = strongly_approve
 		law_presidential_republic = disapprove
 		law_parliamentary_republic = disapprove
-		law_corporate_state = neutral
 		law_theocracy = disapprove
 		law_council_republic = strongly_disapprove
 	}
@@ -8278,7 +8277,6 @@ REPLACE:ideology_carlist = {
 	lawgroup_distribution_of_power = {
 		law_oligarchy = approve
 		law_autocracy = strongly_approve # Were opposed to absolutism, but the game defines Oligarchy as a bourgeois system
-		law_single_party_state = strongly_disapprove
 		law_landed_voting = disapprove
 		law_wealth_voting = strongly_disapprove
 		law_census_voting = strongly_disapprove
@@ -8318,11 +8316,8 @@ REPLACE:ideology_carlist = {
 			country_has_primary_culture = cu:catalan # ...without the S
 			country_has_primary_culture = cu:basque # ...without the A
 		}
-		NOR = {
-			any_interest_group = {
-				has_ideology = ideology:ideology_republican_paternalistic
-			}
-			has_variable = monarchy_stamped_out_var
+		ig:ig_reactionaries = {
+			bpm_ig_is_paternalistic = no		
 		}
 	}
 
@@ -8337,7 +8332,7 @@ REPLACE:ideology_carlist = {
 			owner = {
 				has_law_or_variant = law_type:law_monarchy
 				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_oligarchy
+				has_law_or_variant = law_type:law_autocracy
 				has_law_or_variant = law_type:law_subjecthood
 				has_law_or_variant = law_type:law_state_religion
 			}
@@ -8385,7 +8380,7 @@ REPLACE:ideology_carlist = {
 			limit = {
 				owner = {
 					has_law_or_variant = law_type:law_monarchy
-					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
 				}
 				ig_approval < 0
 			}
@@ -8397,7 +8392,7 @@ REPLACE:ideology_carlist = {
 			limit = {
 				owner = {
 					NOT = { has_law_or_variant = law_type:law_monarchy }
-					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
 				}
 				ig_approval < 0
 			}
@@ -8457,7 +8452,7 @@ REPLACE:ideology_carlist = {
 			limit = {
 				owner = {
 					has_law_or_variant = law_type:law_monarchy
-					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
 				}
 				interest_group.ig_approval < 0
 			}
@@ -8469,7 +8464,260 @@ REPLACE:ideology_carlist = {
 			limit = {
 				owner = {
 					NOT = { has_law_or_variant = law_type:law_monarchy }
-					NOT = { ruler ?= { has_ideology = ideology:ideology_carlist } }
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 25
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+}
+
+REPLACE:ideology_carlist_2 = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_carlist.dds"
+
+	character_ideology = yes
+
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_approve
+		law_presidential_republic = disapprove
+		law_parliamentary_republic = disapprove
+		law_corporate_state = neutral
+		law_theocracy = approve
+		law_council_republic = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = neutral
+		law_agrarianism = strongly_approve
+		law_interventionism = approve
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
+	}
+
+	lawgroup_distribution_of_power = {
+		law_oligarchy = approve
+		law_autocracy = strongly_approve # Were opposed to absolutism, but the game defines Oligarchy as a bourgeois system
+		law_landed_voting = disapprove
+		law_wealth_voting = disapprove
+		law_census_voting = disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+		law_technocracy = strongly_disapprove
+		law_organic_democracy = neutral
+	}
+
+	lawgroup_citizenship = {
+		law_ethnostate = neutral
+		law_subjecthood = approve
+		law_national_supremacy = neutral
+		law_racial_segregation = neutral
+		law_cultural_exclusion = neutral
+		law_multicultural = disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_centralization = {
+		law_unitary = disapprove
+		law_devolved = strongly_approve
+		law_federated = approve
+		law_confederated = neutral
+		law_ad_hoc_centralization = disapprove
+	}
+
+	country_trigger = {
+		OR = {
+			country_has_primary_culture = cu:spanish # I am in Spain...
+			country_has_primary_culture = cu:catalan # ...without the S
+			country_has_primary_culture = cu:basque # ...without the A
+		}
+		ig:ig_reactionaries = {
+			bpm_ig_is_paternalistic = yes		
+		}
+		NOR = {
+			any_interest_group = {
+				has_ideology = ideology:ideology_republican_paternalistic
+			}
+			has_variable = monarchy_stamped_out_var
+		}
+	}
+
+	interest_group_leader_trigger = {
+		ideology_carlist_valid_trigger = yes
+	}
+
+	non_interest_group_leader_trigger = {
+		# Agitators should have an ideology at odds with current laws
+		NAND = {
+			has_role = agitator
+			owner = {
+				has_law = law_type:law_monarchy
+				has_law = law_type:law_agrarianism
+				has_law = law_type:law_autocracy
+				has_law = law_type:law_subjecthood
+				has_law = law_type:law_state_religion
+			}
+		}
+		interest_group = {
+			ideology_carlist_valid_trigger = yes
+		}
+	}
+
+	interest_group_leader_weight = { # Provisional weights
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+				}
+				ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not Carlist
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_monarchy
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
+				}
+				ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
+				}
+				ig_approval < 0
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+				}
+				interest_group.ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not Carlist
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_monarchy
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { ruler ?= { character_has_carlist_ideology = yes } }
 				}
 				interest_group.ig_approval < 0
 			}
@@ -8510,7 +8758,6 @@ REPLACE:ideology_miguelist = {
 		law_monarchy = strongly_approve
 		law_presidential_republic = disapprove
 		law_parliamentary_republic = disapprove
-		law_corporate_state = neutral
 		law_theocracy = disapprove
 		law_council_republic = strongly_disapprove
 	}
@@ -8529,7 +8776,6 @@ REPLACE:ideology_miguelist = {
 	lawgroup_distribution_of_power = {
 		law_oligarchy = approve
 		law_autocracy = strongly_approve # Were opposed to absolutism, but the game defines Oligarchy as a bourgeois system
-		law_single_party_state = strongly_disapprove
 		law_landed_voting = disapprove
 		law_wealth_voting = strongly_disapprove
 		law_census_voting = strongly_disapprove
@@ -8565,11 +8811,8 @@ REPLACE:ideology_miguelist = {
 
 	country_trigger = {
 		country_has_primary_culture = cu:portuguese
-		NOR = {
-			any_interest_group = {
-				has_ideology = ideology:ideology_republican_paternalistic
-			}
-			has_variable = monarchy_stamped_out_var
+		ig:ig_reactionaries = {
+			bpm_ig_is_paternalistic = no		
 		}
 	}
 
@@ -8584,7 +8827,7 @@ REPLACE:ideology_miguelist = {
 			owner = {
 				has_law_or_variant = law_type:law_monarchy
 				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_oligarchy
+				has_law_or_variant = law_type:law_autocracy
 				has_law_or_variant = law_type:law_subjecthood
 				has_law_or_variant = law_type:law_state_religion
 			}
@@ -8632,7 +8875,7 @@ REPLACE:ideology_miguelist = {
 			limit = {
 				owner = {
 					has_law_or_variant = law_type:law_monarchy
-					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
 				}
 				ig_approval < 0
 			}
@@ -8644,7 +8887,7 @@ REPLACE:ideology_miguelist = {
 			limit = {
 				owner = {
 					NOT = { has_law_or_variant = law_type:law_monarchy }
-					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
 				}
 				ig_approval < 0
 			}
@@ -8704,7 +8947,7 @@ REPLACE:ideology_miguelist = {
 			limit = {
 				owner = {
 					has_law_or_variant = law_type:law_monarchy
-					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
 				}
 				interest_group.ig_approval < 0
 			}
@@ -8716,7 +8959,256 @@ REPLACE:ideology_miguelist = {
 			limit = {
 				owner = {
 					NOT = { has_law_or_variant = law_type:law_monarchy }
-					NOT = { ruler ?= { has_ideology = ideology:ideology_miguelist } }
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 25
+		}
+
+		# conservative and/or reactionary leaders have a higher spawn chance if you win the Two Spains as the conservatives.
+		if = {
+			limit = {
+				has_variable = spa_two_spains_conservative_victory
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+}
+
+REPLACE:ideology_miguelist_2 = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_miguelist.dds"
+
+	character_ideology = yes
+
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_approve
+		law_presidential_republic = disapprove
+		law_parliamentary_republic = disapprove
+		law_corporate_state = neutral
+		law_theocracy = disapprove
+		law_council_republic = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_traditionalism = neutral
+		law_agrarianism = strongly_approve
+		law_interventionism = approve
+		law_industry_banned = disapprove
+		law_laissez_faire = disapprove
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
+	}
+
+	lawgroup_distribution_of_power = {
+		law_oligarchy = approve
+		law_autocracy = strongly_approve # Were opposed to absolutism, but the game defines Oligarchy as a bourgeois system
+		law_landed_voting = neutral
+		law_wealth_voting = disapprove
+		law_census_voting = disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+		law_technocracy = strongly_disapprove
+		law_organic_democracy = neutral
+	}
+
+	lawgroup_citizenship = {
+		law_ethnostate = neutral
+		law_subjecthood = approve
+		law_national_supremacy = neutral
+		law_racial_segregation = neutral
+		law_cultural_exclusion = neutral
+		law_multicultural = disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_approve
+		law_freedom_of_conscience = disapprove
+		law_total_separation = strongly_disapprove
+		law_state_atheism = strongly_disapprove
+	}
+
+	lawgroup_centralization = {
+		law_unitary = approve
+		law_devolved = strongly_approve
+		law_federated = disapprove
+		law_confederated = disapprove
+		law_ad_hoc_centralization = disapprove
+	}
+
+	country_trigger = {
+		country_has_primary_culture = cu:portuguese
+		ig:ig_reactionaries = {
+			bpm_ig_is_paternalistic = yes		
+		}
+		NOR = {
+			any_interest_group = {
+				has_ideology = ideology:ideology_republican_paternalistic
+			}
+			has_variable = monarchy_stamped_out_var
+		}
+	}
+
+	interest_group_leader_trigger = {
+		ideology_miguelist_valid_trigger = yes
+	}
+
+	non_interest_group_leader_trigger = {
+		# Agitators should have an ideology at odds with current laws
+		NAND = {
+			has_role = agitator
+			owner = {
+				has_law_or_variant = law_type:law_monarchy
+				has_law_or_variant = law_type:law_traditionalism
+				has_law_or_variant = law_type:law_autocracy
+				has_law_or_variant = law_type:law_subjecthood
+				has_law_or_variant = law_type:law_state_religion
+			}
+		}
+		interest_group = {
+			ideology_miguelist_valid_trigger = yes
+		}
+	}
+
+	interest_group_leader_weight = { # Provisional weights
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law = law_type:law_monarchy }
+				}
+				ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not miguelist
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_monarchy
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
+				}
+				ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
+				}
+				ig_approval < 0
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 200
+		# less likely in a theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			add = -75
+		}
+		# less likely if IG is happy in a republic
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+				}
+				interest_group.ig_approval > 0
+			}
+			add = -100
+		}
+
+		# more likely for LO and Devout
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_landowners
+					is_interest_group_type = ig_devout
+				}
+			}
+			add = 50
+		}
+
+		# more likely if the IG is unhappy with the monarchy, and that monarchy is not miguelist
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_monarchy
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
+				}
+				interest_group.ig_approval < 0
+			}
+			add = 75
+		}
+
+		# reduced unhappy modifier if it's not a monarchy
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_law_or_variant = law_type:law_monarchy }
+					NOT = { ruler ?= { character_has_miguelist_ideology = yes } }
 				}
 				interest_group.ig_approval < 0
 			}

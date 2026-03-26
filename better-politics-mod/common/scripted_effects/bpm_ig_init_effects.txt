@@ -697,6 +697,7 @@ bpm_initialize_patcons = {
 			}
 		}
 
+		bpm_update_carlist_miguelist_ideology = yes
 		bpm_rename_igs = yes
 	}
 }

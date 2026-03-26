@@ -1441,10 +1441,12 @@ REPLACE:movement_carlist = {
 		if = {
 			limit = {
 				owner = {
-					has_technology_researched = corporatism
+					ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
 				}
 			}
-			set_core_ideology = ideology_carlist_movement_2
+			set_core_ideology = ideology_carlist_2
 		}
 	}
 
@@ -2015,10 +2017,12 @@ REPLACE:movement_miguelist = {
 		if = {
 			limit = {
 				owner = {
-					has_technology_researched = corporatism
+					ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
 				}
 			}
-			set_core_ideology = ideology_miguelist_movement_2
+			set_core_ideology = ideology_miguelist_2
 		}
 	}
 
