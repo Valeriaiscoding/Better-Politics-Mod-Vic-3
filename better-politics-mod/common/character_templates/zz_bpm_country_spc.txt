@@ -22,14 +22,16 @@ REPLACE:SPC_carlos_v_de_borbon_template = { # Carlos María Isidro Benito de Bor
     }
     on_created = {
         set_variable = house_bourbon
-        # if = {
-        #     limit = {
-        #         owner ?= {
-        #             has_technology_researched = corporatism
-        #         }
-        #     }
-        #     set_ideology = ideology:ideology_carlist_2
-        # }
+        if = {
+            limit = {
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_is_paternalistic = yes
+                    }
+                }
+            }
+            set_ideology = ideology:ideology_carlist_2
+        }
     }
 }
 
@@ -50,14 +52,16 @@ REPLACE:SPC_carlos_vi_de_borbon_template = { # Carlos Luis María de Borbón, Co
     on_created = {
         set_variable = house_bourbon
 		set_variable = legitimist_leader
-        # if = {
-        #     limit = {
-        #         owner ?= {
-        #             has_technology_researched = corporatism
-        #         }
-        #     }
-        #     set_ideology = ideology:ideology_carlist_2
-        # }
+        if = {
+            limit = {
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_is_paternalistic = yes
+                    }
+                }
+            }
+            set_ideology = ideology:ideology_carlist_2
+        }
     }
 }
 
@@ -78,14 +82,16 @@ REPLACE:SPC_juan_iii_de_borbon_template = { # Juan Carlos María Isidro de Borb�
     on_created = {
         set_variable = house_bourbon
 		set_variable = legitimist_leader
-        # if = {
-        #     limit = {
-        #         owner ?= {
-        #             has_technology_researched = corporatism
-        #         }
-        #     }
-        #     set_ideology = ideology:ideology_carlist_2
-        # }
+        if = {
+            limit = {
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_is_paternalistic = yes
+                    }
+                }
+            }
+            set_ideology = ideology:ideology_carlist_2
+        }
     }
 }
 
@@ -106,14 +112,16 @@ REPLACE:SPC_carlos_vii_de_borbon_template = { # Carlos de Borbón y Austria-Este
     on_created = {
         set_variable = house_bourbon
 		set_variable = legitimist_leader
-        # if = {
-        #     limit = {
-        #         owner ?= {
-        #             has_technology_researched = corporatism
-        #         }
-        #     }
-        #     set_ideology = ideology:ideology_carlist_2
-        # }
+        if = {
+            limit = {
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_is_paternalistic = yes
+                    }
+                }
+            }
+            set_ideology = ideology:ideology_carlist_2
+        }
     }
 }
 
@@ -134,14 +142,16 @@ REPLACE:SPC_jaime_iii_de_borbon_template = { # Jaime de Borbón y de Borbón-Par
     on_created = {
         set_variable = house_bourbon
 		set_variable = legitimist_leader
-        # if = {
-        #     limit = {
-        #         owner ?= {
-        #             has_technology_researched = corporatism
-        #         }
-        #     }
-        #     set_ideology = ideology:ideology_carlist_2
-        # }
+        if = {
+            limit = {
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_is_paternalistic = yes
+                    }
+                }
+            }
+            set_ideology = ideology:ideology_carlist_2
+        }
     }
 }
 
@@ -163,14 +173,16 @@ REPLACE:SPC_alfonso_i_de_borbon_template = { # Alfonso Carlos de Borbón
     on_created = {
         set_variable = house_bourbon
 		set_variable = legitimist_leader
-        # if = {
-        #     limit = {
-        #         owner ?= {
-        #             has_technology_researched = corporatism
-        #         }
-        #     }
-        #     set_ideology = ideology:ideology_carlist_2
-        # }
+        if = {
+            limit = {
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_is_paternalistic = yes
+                    }
+                }
+            }
+            set_ideology = ideology:ideology_carlist_2
+        }
     }
 }
 

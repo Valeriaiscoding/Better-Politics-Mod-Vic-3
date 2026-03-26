@@ -120,12 +120,15 @@ REPLACE:POR_miguel_i_de_braganca_template = {
         set_variable = house_braganca
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_miguelist_2
         }
+        
     }
 }
 
@@ -147,8 +150,10 @@ REPLACE:POR_maria_das_neves_de_braganca_template = {
         set_variable = house_braganca
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_miguelist_2
@@ -173,8 +178,10 @@ REPLACE:POR_miguel_januario_de_braganca_template = {
         set_variable = house_braganca
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_miguelist_2
@@ -200,8 +207,10 @@ REPLACE:POR_miguel_maximiliano_de_braganca_template = {
         set_variable = house_braganca
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_miguelist_2
@@ -226,8 +235,10 @@ REPLACE:POR_duarte_nuno_de_braganca_template = {
         set_variable = house_braganca
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_miguelist_2
@@ -1321,8 +1332,10 @@ REPLACE:POR_henrique_paiva_couceiro = { # Henrique Mitchell de Paiva Couceiro
     on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_miguelist_2

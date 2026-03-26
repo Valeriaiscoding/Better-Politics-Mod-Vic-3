@@ -287,8 +287,10 @@ REPLACE:SPA_maria_fortuny_i_portell = { # Marià Fortuny i Portell
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -577,8 +579,10 @@ REPLACE:SPA_jose_caixal = { # Joan Josep Caixal i Estradé
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1091,8 +1095,10 @@ REPLACE:SPA_juan_vazquez_de_mella = { # Juan Vázquez de Mella
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1576,8 +1582,10 @@ REPLACE:SPA_ramon_altarriba = { # Ramón Altarriba y Villanueva, conde de Altarr
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1621,8 +1629,10 @@ REPLACE:SPA_rafael_tristany = { # Rafael Tristany
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1666,8 +1676,10 @@ REPLACE:SPA_francisco_savalls = { # Francisco Savalls i Massot
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1709,8 +1721,10 @@ REPLACE:SPA_alfonso_caserta = { # Alfonso de Borbón-Dos Sicilias, conde de Case
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1754,8 +1768,10 @@ REPLACE:SPA_pascual_cucala = { # Pascual Cucala y Parreño
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
             set_ideology = ideology:ideology_carlist_2
@@ -1800,11 +1816,13 @@ REPLACE:SPA_torcuato_mendiry = { # Torcuato Mendiry (Mendiri) y Corera, marqués
 	on_created = {
         if = {
             limit = {
-                owner ?= {
-                    has_technology_researched = corporatism
+                owner = {
+                    ig:ig_reactionaries = {
+                        bpm_ig_paternalitstic = yes
+                    }
                 }
             }
-            set_ideology = ideology:ideology_carlist_2
+            set_ideology = ideology:ideology_miguelist_2
         }
 	}
 }
