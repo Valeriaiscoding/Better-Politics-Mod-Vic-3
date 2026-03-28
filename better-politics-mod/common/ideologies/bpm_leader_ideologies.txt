@@ -21,13 +21,26 @@ REPLACE:ideology_moderate = {
 	}
 	
 	interest_group_leader_weight = {
-		value = 10
+		value = 20
 		# angry IG's more likely to have opinions
+
+		# The End of History
+		add = {
+			value = owner.loyalist_fraction
+			multiply = 100
+		}
 		if = {
 			limit = {
 				ig_approval < -5
 			}
 			add = -200
+		}
+		# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
+		if = {
+			limit = {
+				ig_approval > 5
+			}
+			add = 25
 		}
 		if = {
 			limit = {
@@ -50,7 +63,7 @@ REPLACE:ideology_moderate = {
 			limit = {
 				is_interest_group_type = ig_christian_democrats
 			}
-			add = 50
+			add = 75
 		}
 	}
 
@@ -63,7 +76,30 @@ REPLACE:ideology_moderate = {
 	
 	non_interest_group_leader_weight = {
 		interest_group = {
-			value = 10
+			value = 20
+			# The End of History
+			add = {
+				value = owner.loyalist_fraction
+				multiply = 100
+			}
+			# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
+			if = {
+				limit = {
+					interest_group.ig_approval > 5
+				}
+				add = 25
+			}
+			# Military personnel are more inclined to be neutral
+			if = {
+				limit = {
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+				}
+				add = 50
+			}
+			
 			# angry IG's more likely to have opinions
 			if = {
 				limit = {
@@ -87,6 +123,12 @@ REPLACE:ideology_moderate = {
 				}
 				add = 20
 			}
+			if = {
+				limit = {
+					is_interest_group_type = ig_christian_democrats
+				}
+				add = 75
+			}
 		}
 	}
 }
@@ -98,62 +140,19 @@ ideology_center_leader = {
 	show_in_list = no
 
 	interest_group_leader_trigger = {
-		OR = {
-			bpm_ig_is_institutional = no
-			is_interest_group_type = ig_trade_unions
-		}
+		always = no
 	}
 	
 	interest_group_leader_weight = {
-		value = 10
-		# Agitators tend to be less orthodox
-
-		# Radicals are more disciplined
-		if = {
-			limit = {
-				OR = {
-					bpm_ig_is_socialist = yes
-					bpm_ig_is_radical_left = yes
-				}
-			}
-			add = 10
-		}
-
-		if = {
-			limit = {
-				is_interest_group_type = ig_christian_democrats
-			}
-
-			add = 25
-		}
+		value = 0
 	}
 
 	non_interest_group_leader_trigger = {
-        interest_group = {
-    		OR = {
-    			bpm_ig_is_institutional = no
-    			is_interest_group_type = ig_trade_unions
-    		}
-    	}
-		NOT = { has_role = agitator }
-		#value = 100 
-		#if = {
-		#	limit = {
-		#		has_role = agitator
-		#	}
-		#	add = -50
-		#}
+        always = no
 	}
 	
 	non_interest_group_leader_weight = {
-		value = 20
-		# Agitators tend to be less orthodox
-		if = {
-			limit = {
-				has_role = agitator
-			}
-			add = -50
-		}
+		value = 0
 	}
 }
 
