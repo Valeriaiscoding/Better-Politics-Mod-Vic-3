@@ -21,7 +21,8 @@ REPLACE:ideology_moderate = {
 	}
 	
 	interest_group_leader_weight = {
-		value = 20
+		value = -50
+		add = owner.var:bpm_political_stability
 		# angry IG's more likely to have opinions
 
 		# The End of History
@@ -33,14 +34,20 @@ REPLACE:ideology_moderate = {
 			limit = {
 				ig_approval < -5
 			}
-			add = -200
+			add = {
+				value = interest_group.ig_approval
+				multiply = 20
+			}
 		}
 		# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
 		if = {
 			limit = {
 				ig_approval > 5
 			}
-			add = 25
+			add = {
+				value = interest_group.ig_approval
+				multiply = 3
+			}
 		}
 		if = {
 			limit = {
@@ -76,18 +83,33 @@ REPLACE:ideology_moderate = {
 	
 	non_interest_group_leader_weight = {
 		interest_group = {
-			value = 20
+			value = -50
+			add = owner.var:bpm_political_stability
 			# The End of History
 			add = {
 				value = owner.loyalist_fraction
 				multiply = 100
 			}
+
 			# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
 			if = {
 				limit = {
-					interest_group.ig_approval > 5
+					ig_approval < -5
 				}
-				add = 25
+				add = {
+					value = interest_group.ig_approval
+					multiply = 20
+				}
+			}
+			# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
+			if = {
+				limit = {
+					ig_approval > 5
+				}
+				add = {
+					value = interest_group.ig_approval
+					multiply = 3
+				}
 			}
 			# Military personnel are more inclined to be neutral
 			if = {
@@ -98,14 +120,6 @@ REPLACE:ideology_moderate = {
 					}
 				}
 				add = 50
-			}
-			
-			# angry IG's more likely to have opinions
-			if = {
-				limit = {
-					ig_approval < -5
-				}
-				add = -200
 			}
 			if = {
 				limit = {
