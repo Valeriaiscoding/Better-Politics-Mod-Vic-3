@@ -23,20 +23,30 @@ REPLACE:ideology_moderate = {
 	interest_group_leader_weight = {
 		value = -50
 		add = owner.var:bpm_political_stability
-		# angry IG's more likely to have opinions
-
-		# The End of History
-		add = {
-			value = owner.loyalist_fraction
-			multiply = 100
+		
+		if = {
+			limit = { bpm_ig_is_institutional = yes }
+			add = 25		
+			if = {
+				limit = {
+					bpm_ig_is_state_institutional = yes
+				}
+				add = 25
+			}
+			# The End of History
+			add = {
+				value = owner.loyalist_fraction
+				multiply = 100
+			}
 		}
+		# angry IG's more likely to have opinions
 		if = {
 			limit = {
 				ig_approval < -5
 			}
 			add = {
 				value = interest_group.ig_approval
-				multiply = 20
+				multiply = 10
 			}
 		}
 		# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
@@ -49,19 +59,18 @@ REPLACE:ideology_moderate = {
 				multiply = 3
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					bpm_ig_is_radical_liberal = yes
-					bpm_ig_is_proletarian = yes
-				}
-			}
-			add = -200
-		}
 		# Powerful IGs are more likely to be moderate
 		if = {
 			limit = {
 				is_powerful = yes
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				OR = {
+					bpm_ig_is_radical_left = yes
+				}
 			}
 			add = 20
 		}
@@ -71,6 +80,18 @@ REPLACE:ideology_moderate = {
 				is_interest_group_type = ig_christian_democrats
 			}
 			add = 75
+		}
+		if = {
+			limit = {
+				bpm_ig_is_very_radical_opposition = yes
+			}
+			add = -50
+		}
+		else_if = {
+			limit = {
+				bpm_ig_is_very_radical_opposition = yes
+			}
+			add = -25
 		}
 	}
 
@@ -82,67 +103,76 @@ REPLACE:ideology_moderate = {
 	}
 	
 	non_interest_group_leader_weight = {
-		interest_group = {
-			value = -50
-			add = owner.var:bpm_political_stability
+		value = -50
+		add = owner.var:bpm_political_stability
+		
+		if = {
+			limit = { bpm_ig_is_institutional = yes }
 			# The End of History
 			add = {
 				value = owner.loyalist_fraction
 				multiply = 100
 			}
+			if = {
+				limit = {
+					bpm_ig_is_state_institutional = yes
+				}
+				add = 25
+			}
+		}
+		# angry IG's more likely to have opinions
+		if = {
+			limit = {
+				ig_approval < -5
+			}
+			add = {
+				value = interest_group.ig_approval
+				multiply = 10
+			}
+		}
+		# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
+		if = {
+			limit = {
+				ig_approval > 5
+			}
+			add = {
+				value = interest_group.ig_approval
+				multiply = 3
+			}
+		}
+		# Powerful IGs are more likely to be moderate
+		if = {
+			limit = {
+				is_powerful = yes
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				OR = {
+					bpm_ig_is_radical_left = yes
+				}
+			}
+			add = 20
+		}
 
-			# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
-			if = {
-				limit = {
-					ig_approval < -5
-				}
-				add = {
-					value = interest_group.ig_approval
-					multiply = 20
-				}
+		if = {
+			limit = {
+				is_interest_group_type = ig_christian_democrats
 			}
-			# what makes a man turn neutral? lust for gold? power? or were you just born with a heart full of neutrality?
-			if = {
-				limit = {
-					ig_approval > 5
-				}
-				add = {
-					value = interest_group.ig_approval
-					multiply = 3
-				}
+			add = 75
+		}
+		if = {
+			limit = {
+				bpm_ig_is_very_radical_opposition = yes
 			}
-			# Military personnel are more inclined to be neutral
-			if = {
-				limit = {
-					OR = {
-						has_role = general
-						has_role = admiral
-					}
-				}
-				add = 50
+			add = -50
+		}
+		else_if = {
+			limit = {
+				bpm_ig_is_very_radical_opposition = yes
 			}
-			if = {
-				limit = {
-					OR = {
-						bpm_ig_is_radical_liberal = yes
-						bpm_ig_is_proletarian = yes
-					}
-				}
-				add = -200
-			}
-			# Powerful IGs are more likely to be moderate
-			if = {
-				limit = {
-					is_powerful = yes
-				}
-				add = 20
-			}
-			if = {
-				limit = {
-					is_interest_group_type = ig_christian_democrats
-				}
-				add = 75
-			}
+			add = -25
 		}
 	}
 }
