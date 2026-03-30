@@ -345,7 +345,7 @@ REPLACE:ig_landowners = {
 		}
 
 		if = {
-			limit = { NOT = { owner.modifier:bpm_ig_landowners_non_institutional_bool = yes } }
+			limit = { owner.modifier:bpm_ig_landowners_non_institutional_bool = no }
 			multiply = ig_attraction_to_interests_from_stability
 		}	
 		if = {

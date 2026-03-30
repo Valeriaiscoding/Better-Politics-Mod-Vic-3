@@ -154,7 +154,7 @@ REPLACE:ig_rural_folk = {
 		}
 
 		if = {
-			limit = { NOT = { owner.modifier:bpm_ig_rural_fork_non_institutional_bool = yes } }
+			limit = { owner.modifier:bpm_ig_rural_folk_non_institutional_bool = no }
 			multiply = ig_attraction_to_interests_from_stability
 		}
 

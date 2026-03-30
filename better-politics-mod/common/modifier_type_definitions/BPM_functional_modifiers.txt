@@ -583,7 +583,7 @@ bpm_ig_armed_forces_non_institutional_bool = {
 	boolean = yes
 }
 
-bpm_ig_rural_fork_non_institutional_bool = {
+bpm_ig_rural_folk_non_institutional_bool = {
 	color = neutral
 	boolean = yes
 }

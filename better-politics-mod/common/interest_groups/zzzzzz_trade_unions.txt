@@ -205,7 +205,7 @@ REPLACE:ig_trade_unions = {
 
 		if = {
 			limit = {
-				NOT = { owner.modifier:bpm_ig_trade_unions_non_institutional_bool = yes }
+				owner.modifier:bpm_ig_trade_unions_non_institutional_bool = no
 			}
 			multiply = ig_attraction_to_interests_from_stability	
 		}	
