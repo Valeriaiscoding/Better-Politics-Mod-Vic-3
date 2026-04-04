@@ -3,6 +3,23 @@ bpm_additional_radicalism_factors = {
 	if = {
 		limit = {
 			OR = {
+				bpm_movement_is_nationalist = yes
+				bpm_movement_is_modernizer = yes
+				bpm_movement_is_socialist = yes
+			}
+			owner = { 
+				OR = {
+					has_law_or_variant = law_type:law_extraction_economy
+					has_law_or_variant = law_type:law_colonial_administration
+				}
+			}
+		}
+		add = 0.25
+
+	}
+	else_if = {
+		limit = {
+			OR = {
 				bpm_movement_is_socialist = yes
 				bpm_movement_is_liberal_bourgeois = yes
 			}
@@ -31,7 +48,22 @@ bpm_additional_radicalism_factors = {
 	}
 	else_if = {
 		limit = {
-			owner = { bpm_country_laws_are_liberal_democratic = no }
+			owner = {
+				bpm_country_laws_are_very_undemocratic = yes
+			}
+			bpm_movement_is_liberal_bourgeois = yes
+		}
+		add = 0.2
+	}
+	else_if = {
+		limit = {
+			owner = { 
+				OR = {
+					bpm_country_laws_are_liberal_democratic = no
+					bpm_country_laws_unfair_voting = yes
+				}
+				
+			}
 			bpm_movement_is_progressive_liberal = yes
 		}
 		add = 0.15
@@ -55,19 +87,44 @@ bpm_additional_radicalism_factors = {
 	}
 	if = {
 		limit = {
-			bpm_movement_is_socialist = yes
-			owner = { bpm_country_is_constitutional_monarchy = yes }
+			OR = {
+				bpm_movement_is_progressive_liberal = yes
+				bpm_movement_is_laissez_faire = yes
+				bpm_movement_is_modernizer = yes
+			}
+			owner = { 
+				bpm_country_laws_have_traditional_economics = yes
+			 }
 		}
 		add = 0.1
 	}
 	if = {
 		limit = {
-			OR = {
-				bpm_movement_is_modernizer = yes
+			owner = { bpm_country_laws_are_very_capitalist = no }
+			bpm_movement_is_laissez_faire = yes
+		}
+		add = 0.2
+	}
+	if = {
+		limit = {
+			owner = { bpm_country_laws_have_max_welfare = yes }
+			bpm_movement_is_laissez_faire = yes
+		}
+		add = 0.2
+	}
+	else_if = {
+		limit = {
+			bpm_country_laws_has_market_welfare = no
+			bpm_movement_is_laissez_faire = yes
+		}
+		add = 0.1
+	}
+	if = {
+		limit = {
+			bpm_movement_is_liberal_bourgeois = yes
+			owner = { 
+				bpm_country_laws_has_socialist_economics = yes
 			}
-			owner = { OR = {
-				bpm_country_laws_have_traditional_economics = yes
-			} }
 		}
 		add = 0.1
 	}
@@ -120,12 +177,15 @@ bpm_additional_radicalism_factors = {
 	if = {
 		limit = {
 			bpm_movement_is_regressive = yes
+			OR = {
+				bpm_movement_is_nationalist = no
+				is_political_movement_type = movement_fascist
+				is_political_movement_type = movement_reactionary
+			}
 			owner = { OR = {
 				bpm_country_laws_has_socialist_economics = yes
 				bpm_country_laws_are_liberal_democratic = yes
 				bpm_country_laws_are_moderately_liberal_democratic = yes
-				bpm_country_is_republic = yes
-				bpm_country_is_constitutional_monarchy = yes
 			} }
 		}
 		add = 0.25
@@ -172,18 +232,6 @@ bpm_additional_radicalism_factors = {
 	}
 	if = {
 		limit = {
-			OR = {
-				bpm_movement_is_nationalist = yes
-				bpm_movement_is_modernizer = yes
-				bpm_movement_is_socialist = yes
-			}
-			owner = { has_law_or_variant = law_type:law_extraction_economy }
-		}
-		add = 0.25
-
-	}
-	if = {
-		limit = {
 			bpm_movement_is_nationalist = yes
 			bpm_movement_is_minority = no
 			owner = {
@@ -191,6 +239,7 @@ bpm_additional_radicalism_factors = {
 					has_law_or_variant = law_type:law_subjecthood
 					has_law_or_variant = law_type:law_racial_segregation
 					has_law_or_variant = law_type:law_multicultural
+					has_law_or_variant = law_type:law_ad_hoc_centralization
 				}
 			}
 		}
