@@ -147,13 +147,12 @@ REPLACE:ideology_moderate = {
 			}
 			add = 20
 		}
+		# Radicals are more disciplined
 		if = {
 			limit = {
-				OR = {
-					bpm_ig_is_radical_left = yes
-				}
+				bpm_ig_is_socialist = yes
 			}
-			add = 20
+			add = 10
 		}
 
 		if = {
