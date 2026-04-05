@@ -41,10 +41,17 @@ bpm_additional_radicalism_factors = {
 	}
 	else_if = {
 		limit = {
-			owner = {
-				bpm_country_laws_are_very_undemocratic = yes
+			owner = { bpm_country_laws_unfair_voting = yes }
+			bpm_movement_is_progressive_liberal = yes
+		}
+		add = 0.2
+	}
+	else_if = {
+		limit = {
+			owner = { 
+				bpm_country_laws_are_moderately_undemocratic = yes
 			}
-			bpm_movement_is_liberal_bourgeois = yes
+			bpm_movement_is_progressive_liberal = yes
 		}
 		add = 0.2
 	}
