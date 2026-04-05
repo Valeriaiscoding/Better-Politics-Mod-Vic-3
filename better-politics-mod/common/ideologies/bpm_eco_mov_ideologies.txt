@@ -124,7 +124,7 @@ ideology_eco_modernizer_mov = {
 
     lawgroup_slavery = {
 		law_slave_trade = strongly_disapprove
-		law_debt_slavery = disapprove
+		law_debt_slavery = strongly_disapprove
 	}
 
 	lawgroup_trade_policy = {
@@ -186,6 +186,10 @@ ideology_eco_modernizer_mov = {
 
 	lawgroup_centralization = {
 		law_ad_hoc_centralization = strongly_disapprove
+	}
+
+	lawgroup_labour_associations = {
+		law_right_to_associate = disapprove # just so they hate guilds where applicable
 	}
 }
 
