@@ -131,15 +131,7 @@ REPLACE:calculate_national_identity_progress = {
 	# From Interest Groups
 	every_interest_group = {
 		limit = {
-			OR = {
-				has_ideology = ideology:ideology_cit_immigrant_nationalist
-				has_ideology = ideology:ideology_cit_liberal_nationalist
-				has_ideology = ideology:ideology_cit_nationalist
-				has_ideology = ideology:ideology_cit_multiethnic_nationalist
-				has_ideology = ideology:ideology_cit_segregationist
-				has_ideology = ideology:ideology_cit_ethnonationalist
-				has_ideology = ideology:ideology_cit_traditional_culture
-			}
+			bpm_ig_is_nationalist = yes
 		}
 		ROOT = {
 			set_variable = { name = ig_weight value = prev.ig_clout } 
