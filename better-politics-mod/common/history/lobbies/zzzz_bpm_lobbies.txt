@@ -494,12 +494,6 @@ LOBBIES = {
 			add_interest_group = ig:ig_reactionaries
 			add_interest_group = ig:ig_landowners
 		}
-		create_political_lobby = {
-			type = lobby_anti_overlord
-			target = c:GBR
-			add_interest_group = ig:ig_agrarian_populists
-			add_interest_group = ig:ig_radicals
-		}
 	}
 
 	c:DEI ?= {
@@ -510,12 +504,6 @@ LOBBIES = {
 			add_interest_group = ig:ig_industrialists
 			add_interest_group = ig:ig_petty_bourgeoisie
 			add_interest_group = ig:ig_landowners
-		}
-		create_political_lobby = {
-			type = lobby_anti_overlord
-			target = c:NET
-			add_interest_group = ig:ig_agrarian_populists
-			add_interest_group = ig:ig_radicals
 		}
 	}
 
