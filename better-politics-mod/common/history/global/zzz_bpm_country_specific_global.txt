@@ -264,7 +264,15 @@
 	}
 	every_country = {
 		limit = { is_subject_of = c:GBR }
-		activate_law = law_type:law_anti_strike_laws
+		if = {
+			limit = { 
+				NOR = {
+					has_law_or_variant = law_type:law_extraction_economy
+					has_law_or_variant = law_type:law_traditionalism
+				}
+			}
+			activate_law = law_type:law_anti_strike_laws	
+		}
 		if = {
 			limit = { bpm_country_is_in_new_world = yes }
 			activate_law = law_type:law_national_militia
@@ -328,6 +336,7 @@
 		bpm_setup_country = yes
 		activate_law = law_type:law_advisory_body
 		activate_law = law_type:law_no_separate_hog
+		activate_law = law_type:law_combination_acts
 	}
 
 	c:POR = {

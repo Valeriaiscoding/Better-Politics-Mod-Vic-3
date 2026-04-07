@@ -39,15 +39,15 @@
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_guild_system
 				NOR = {
+					# Guilds outside Europe
 					this ?= c:TUR
 					this ?= c:EGY
 					this ?= c:JAP
 					this ?= c:CHI
 				}
 			}
-			activate_law = law_type:law_right_to_associate
+			activate_law = law_type:law_no_labor_unions
 		}
 	}
 

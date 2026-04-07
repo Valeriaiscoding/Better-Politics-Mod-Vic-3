@@ -82,7 +82,7 @@ bpm_ig_is_radical_opposition_status_quo = {
 			NOT = { has_law = law_type:law_separated_powers }
 			NOR = { 
 				has_law = law_type:law_anti_strike_laws
-				has_law = law_type:law_right_to_associate
+				has_law_or_variant = law_type:law_right_to_associate
 			}
 			NOT = { has_law = law_type:law_universal_suffrage }
 		}

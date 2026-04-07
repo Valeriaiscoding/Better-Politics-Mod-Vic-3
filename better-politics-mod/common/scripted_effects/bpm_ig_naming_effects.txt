@@ -305,7 +305,7 @@ bpm_rename_trade_unions_ig = {
 	}
 	else_if = {
 		limit = {
-			has_law = law_type:law_right_to_associate
+			has_law_or_variant = law_type:law_right_to_associate
 			NOT = { has_variable = union_law_introduced_var }
 		}
 		ig:ig_trade_unions ?= { set_interest_group_name = ig_urban_workers }

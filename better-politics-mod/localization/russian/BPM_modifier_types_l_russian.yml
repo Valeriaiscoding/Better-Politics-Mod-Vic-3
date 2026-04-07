@@ -23,6 +23,9 @@
   state_clergymen_education_access_add: "Доступ к образованию для [GetPopType('clergymen').GetName]"
   state_clergymen_education_access_add_desc: "Бонус или штраф к доступу к образованию для [GetPopType('clergymen').GetName]"
 
+  building_group_bg_private_infrastructure_self_investment_chance_add: "Вероятность самоинвестиций в сооружениях обрабатывающей промышленности"
+  building_group_bg_private_infrastructure_self_investment_chance_add_desc: "Бонус или штраф к вероятности, что [Concept('concept_workforce', 'рабочая сила')] в [Concept('concept_building','сооружениях')] обрабатывающей промышленности будет владеть новыми уровнями с инвестициями."
+
   state_academics_education_access_add: "Доступ к образованию для [GetPopType('academics').GetName]"
   state_academics_education_access_add_desc: "Бонус или штраф к доступу к образованию для [GetPopType('academics').GetName]"
 

@@ -23,6 +23,9 @@
   state_clergymen_education_access_add: "Education Access for [GetPopType('clergymen').GetName]"
   state_clergymen_education_access_add_desc: "A bonus or penalty to education access for [GetPopType('clergymen').GetName]"
 
+  building_group_bg_private_infrastructure_self_investment_chance_add: "$bg_private_infrastructure$ $concept_building$ Self-Investment Chance"
+  building_group_bg_private_infrastructure_self_investment_chance_add_desc: "An increase or decrease to the chance that the [concept_workforce] of $bg_private_infrastructure$ [Concept('concept_building','$concept_buildings$')] will be the owners of new invested levels."
+
   state_academics_education_access_add: "Education Access for [GetPopType('academics').GetName]"
   state_academics_education_access_add_desc: "A bonus or penalty to education access for [GetPopType('academics').GetName]"
 

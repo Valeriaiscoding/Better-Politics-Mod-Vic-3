@@ -538,6 +538,15 @@ state_clergymen_education_access_add={
 	}
 }
 
+building_group_bg_private_infrastructure_self_investment_chance_add={
+	decimals=0
+	color=neutral
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
 state_academics_education_access_add={
 	decimals=0
 	color=good
