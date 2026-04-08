@@ -1,6 +1,6 @@
 ﻿bpm_country_laws_has_market_welfare = {
 	weighted_calc_true_if = {
-		amount >= 3
+		amount >= 4
 		1 = { has_law_or_variant = law_type:law_private_health_insurance }
 		1 = { has_law_or_variant = law_type:law_no_workers_rights }
 		1 = { has_law_or_variant = law_type:law_private_schools }

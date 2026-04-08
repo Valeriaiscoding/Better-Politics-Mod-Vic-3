@@ -149,6 +149,8 @@ bpm_country_laws_are_moralist = {
 }
 
 bpm_country_laws_are_liberal_democratic = {
+	bpm_country_laws_are_very_repressive = no
+	bpm_country_laws_unfair_voting = no
 	has_law_or_variant = law_type:law_universal_suffrage
 	has_law_or_variant = law_type:law_separated_powers
 	OR = {
@@ -163,15 +165,17 @@ bpm_country_laws_are_liberal_democratic = {
 }
 
 bpm_country_laws_are_moderately_liberal_democratic = {
-	NOT = { 
+	bpm_country_laws_are_very_repressive = no
+	NOR = { 
 		has_law_or_variant = law_type:law_advisory_body
+		has_law_or_variant = law_type:law_hereditary_bureaucrats
 	}
 	weighted_calc_true_if = {
-		amount >= 3
-		2 = {
+		amount >= 4
+		3 = {
 			has_law_or_variant = law_type:law_universal_suffrage
 		}
-		1 = { 
+		2 = { 
 			OR = {
 				has_law_or_variant = law_type:law_wealth_voting
 				has_law_or_variant = law_type:law_census_voting
@@ -283,7 +287,7 @@ bpm_country_laws_are_moderately_undemocratic = {
 	weighted_calc_true_if = {
 		amount >= 3
 		3 = { has_law_or_variant = law_type:law_outlawed_dissent }
-		1 = { bpm_country_laws_unfair_voting = yes }
+		2 = { bpm_country_laws_unfair_voting = yes }
 		1 = { bpm_country_laws_have_unelected_bureaucrats = yes }
 		1 = { has_law_or_variant = law_type:law_censorship }
 		1 = { has_law_or_variant = law_type:law_secret_police }
