@@ -680,9 +680,16 @@ bpm_setup_basic_igs = {
 			}
 			trigger_if = {
 				limit = {
-					bpm_country_is_latin_american = yes
+					OR = {
+						bpm_country_is_latin_american = yes
+						has_law = law_type:law_guild_system
+						bpm_country_laws_have_traditional_economics = yes
+					}
 				}
 				has_technology_researched = labor_movement
+			}
+			NOT = {
+				has_law_or_variant = law_type:law_traditionalism
 			}
 		}
 		bpm_initialize_trade_unions = yes

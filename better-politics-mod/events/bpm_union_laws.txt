@@ -15,28 +15,19 @@ bpm_union_laws.1 = {
 	duration = 3
 
 	trigger = {
-		has_technology_researched = law_enforcement
-		ig:ig_trade_unions = { 
-			bpm_ig_is_marginal = no
-			bpm_ig_enabled = yes
-		}
-		has_law_or_variant = law_type:law_right_to_associate
+		has_technology_researched = law_enforcement	
+		has_law_or_variant = law_type:law_no_labor_unions
 		trigger_if = {
 			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-			}
-			NOR = {
-				has_law_or_variant = law_type:law_mercantilism
-				has_law_or_variant = law_type:law_isolationism
-			}
-			NOT = {
-				has_law_or_variant = law_type:law_serfdom
-			}
+			bpm_country_laws_have_traditional_economics = no
 			NOT = {
 				has_law_or_variant = law_type:law_ad_hoc_centralization
+			}
+		}
+		trigger_else = {
+			ig:ig_trade_unions = { 
+				bpm_ig_is_marginal = no
+				bpm_ig_enabled = yes
 			}
 		}
 		NOT = { has_variable = union_law_introduced_var }
