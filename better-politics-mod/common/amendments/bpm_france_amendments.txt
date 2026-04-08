@@ -20,14 +20,25 @@ bpm_amendment_artisanal_economy = {
 
 		country_company_throughput_bonus_add = -0.15
 		country_company_construction_efficiency_bonus_add = -0.4
-		building_company_worker_dividends_add = 0.33
+		
+		building_group_bg_manufacturing_allowed_collectivization_add = 0.3
+		building_group_bg_extraction_allowed_collectivization_add = 0.3
+		building_group_bg_private_infrastructure_allowed_collectivization_add = 0.3
 
-		building_group_bg_manufacturing_allowed_collectivization_add = 0.75
-		building_group_bg_extraction_allowed_collectivization_add = 0.75
-		building_group_bg_private_infrastructure_allowed_collectivization_add = 0.75
+		building_group_bg_manufacturing_self_investment_chance_add = 0.6
+		building_group_bg_extraction_self_investment_chance_add = 0.6
+		building_group_bg_private_infrastructure_self_investment_chance_add = 0.6
 	}
 
 	on_activate = {
+		if = {
+			limit = { game_date < 1836.1.2 }
+			add_modifier = {
+				name = bpm_urban_collectivization_workaround
+				multiplier = 0.6
+				months = 1
+			}
+		}
 		ig:ig_intelligentsia = {
 			bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_eco_artisan
