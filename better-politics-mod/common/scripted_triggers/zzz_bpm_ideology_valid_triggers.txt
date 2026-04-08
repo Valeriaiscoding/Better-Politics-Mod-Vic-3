@@ -356,7 +356,7 @@ REPLACE:ideology_ethno_nationalist_valid_trigger = {
 		bpm_ig_is_left_wing = no
 }
 
-REPLACE:ideology_theocrat_valid_trigger = {
+REPLACE:ideology_theocrat_valid_trigger = { 
 	bpm_interest_group_is_activated = yes
 		OR = {
 			owner = {
@@ -804,12 +804,24 @@ REPLACE:ideology_legitimist_valid_trigger = {
 	}
 }
 
-REPLACE:ideology_utopian_valid_trigger = { # TODO?
+REPLACE:ideology_utopian_valid_trigger = { 
+	owner = {
+		has_technology_researched = egalitarianism
+		NOT = {
+			has_technology_researched = socialism
+			has_technology_researched = anarchism
+			has_technology_researched = corporatism
+		}
+	}
 	OR = {
-		is_interest_group_type = ig_rural_folk
-		is_interest_group_type = ig_petty_bourgeoisie
+		bpm_ig_is_lower_institutional = yes
+		bpm_ig_is_radical_left = yes
+		is_interest_group_type = ig_agrarian_populists
 		is_interest_group_type = ig_intelligentsia
-		is_interest_group_type = ig_trade_unions
+	}
+	trigger_if = {
+		limit = { is_interest_group_type = ig_trade_unions }
+		bpm_labor_unions_ideology_valid_moderate_socialists = yes
 	}
 }
 
