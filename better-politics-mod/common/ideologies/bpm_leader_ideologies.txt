@@ -89,7 +89,7 @@ REPLACE:ideology_moderate = {
 		}
 		else_if = {
 			limit = {
-				bpm_ig_is_very_radical_opposition = yes
+				bpm_ig_is_radical_opposition = yes
 			}
 			add = -25
 		}
