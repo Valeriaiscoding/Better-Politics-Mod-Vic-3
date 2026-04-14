@@ -178,7 +178,9 @@ bpm_centralization_institution_colony_workaround = {
 				add_modifier = { 
 					name = institution_$VARIABLE$_colony_workaround
 					multiplier = {
-						value = root.owner.institution:institution_centralization.investment
+						value = 1
+						subtract = incorporation_progress
+						multiply = root.owner.institution:institution_centralization.investment
 					}
 				}
 			}
@@ -228,7 +230,94 @@ bpm_all_centralization_institution_workaround = {
 	bpm_centralization_institution_ai_balance = yes
 }
 
+bpm_remove_work_time_workaround_modifiers = {
+	remove_modifier = bpm_worktime_bg_manufacturing_workaround
+	remove_modifier = bpm_worktime_bg_service_workaround
+	remove_modifier = bpm_worktime_bg_government_workaround
+	remove_modifier = bpm_worktime_bg_infrastructure_workaround
+	remove_modifier = bpm_worktime_bg_extraction_workaround
+	remove_modifier = bpm_worktime_bg_staple_crops_workaround
+	remove_modifier = bpm_worktime_bg_ranching_workaround
+	remove_modifier = bpm_worktime_bg_plantations_workaround
+}
+
+bpm_work_time_law_workaround = {
+	if = {
+		limit = { 
+			is_building_group = $BG$
+			bpm_building_can_use_slaves = no
+		}	
+		add_modifier = {
+			name = bpm_worktime_$BG$_workaround
+			multiplier = {
+				value = 0.05
+			}
+		}
+		add_modifier = {
+			name = bpm_worktime_sol_workaround
+			multiplier = modifier:building_bpm_modify_sol_per_workplace_safety_investment
+		}
+	}
+}
+
+bpm_all_work_time_law_workaround = {
+	every_scope_state = {
+		remove_modifier = bpm_worktime_institution_workaround_state
+		remove_modifier = bpm_worktime_institution_slavery_workaround
+		remove_modifier = bpm_worktime_institution_rural_workaround
+		if = {
+			limit = { is_slave_state = yes }
+			add_modifier = {
+				name = bpm_worktime_institution_slavery_workaround
+				multiplier = {
+					value = owner.modifier:country_bpm_incorporated_employment_mult
+					multiply = incorporation_progress
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = { OR = { has_law_or_variant = law_type:law_serfdom has_law_or_variant = law_type:law_tenant_farmers } } 
+			}
+			add_modifier = {
+				name = bpm_worktime_institution_rural_workaround
+				multiplier = {
+					value = owner.modifier:country_bpm_incorporated_employment_mult
+					multiply = incorporation_progress
+				}
+			}
+		}
+		else = {
+			add_modifier = {
+				name = bpm_worktime_institution_workaround_state
+				multiplier = {
+					value = owner.modifier:country_bpm_incorporated_employment_mult
+					multiply = incorporation_progress
+				}
+			}
+		}
+		every_scope_building ?= {
+			bpm_remove_work_time_workaround_modifiers = yes
+			bpm_work_time_law_workaround = { BG = bg_manufacturing }
+			bpm_work_time_law_workaround = { BG = bg_service }
+			bpm_work_time_law_workaround = { BG = bg_government }
+			bpm_work_time_law_workaround = { BG = bg_infrastructure }
+			bpm_work_time_law_workaround = { BG = bg_extraction }
+			if = {
+				limit = { 
+					owner = { NOR = { has_law_or_variant = law_type:law_serfdom has_law_or_variant = law_type:law_tenant_farmers } }
+				}
+				bpm_work_time_law_workaround = { BG = bg_staple_crops }
+				bpm_work_time_law_workaround = { BG = bg_ranching }
+				bpm_work_time_law_workaround = { BG = bg_plantations }
+			}
+		}
+		
+	}
+}
+
 bpm_institution_workaround_effect = {
 	bpm_all_suffrage_institution_workaround = yes
 	bpm_all_centralization_institution_workaround = yes
+	bpm_all_work_time_law_workaround = yes
 }

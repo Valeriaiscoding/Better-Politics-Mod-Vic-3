@@ -518,6 +518,21 @@ state_peasants_standard_of_living_add={
 	}
 }
 
+building_bpm_modify_sol_per_workplace_safety_investment = {
+	color=good
+	boolean = no
+	decimals = 2
+}
+
+country_bpm_incorporated_employment_mult = {
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
 country_bpm_ig_trade_unions_non_institutional_bool = {
 	color = neutral
 	boolean = yes

@@ -1,0 +1,13 @@
+bpm_building_can_use_slaves = {
+	state = { is_slave_state = yes }
+	OR = {
+		is_building_group = bg_agriculture
+		is_building_group = bg_ranching
+		is_building_group = bg_plantations
+		is_building_group = bg_mining
+		is_building_group = bg_logging
+		is_building_group = bg_rubber
+		is_building_group = bg_trade
+		is_building_group = bg_construction
+	}
+}

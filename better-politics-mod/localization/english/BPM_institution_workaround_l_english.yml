@@ -10,3 +10,4 @@
  institution_law_devolved_colony_workaround:0 "Regional Administration due to $law_devolved$ Law (Unincorporated State)"
  institution_law_unitary_colony_workaround:0 "Regional Administration due to $law_unitary$ Law (Unincorporated State)"
  institution_ai_centralization_workaround:0 "AI Centralization bonus"
+ bpm_worktime_incorporated_workaround:0 "Increased demand for workforce in urban and extractive building due to [GetActiveLawFromGroup('lawgroup_work_time_regulations',active law)]  in [GetLawGroup('lawgroup_work_time_regulations').GetName]"
