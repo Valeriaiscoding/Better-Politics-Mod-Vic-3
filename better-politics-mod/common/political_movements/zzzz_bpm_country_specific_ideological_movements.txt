@@ -524,7 +524,8 @@ REPLACE:movement_bonapartist = {
 						owner = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
-								bpm_movement_is_national_liberal = yes
+								bpm_movement_is_liberal_nationalist = yes
+								bpm_movement_is_regressive = no # Excluding fascists
 							}
 						}
 					}

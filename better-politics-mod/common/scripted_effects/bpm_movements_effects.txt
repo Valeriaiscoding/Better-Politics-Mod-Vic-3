@@ -187,7 +187,8 @@ bpm_do_ai_splits = {
 	}
 	random_political_movement = {
 		limit = {
-			bpm_movement_is_national_liberal = yes
+			bpm_movement_is_liberal_nationalist = yes
+			bpm_movement_is_liberal_bourgeois = yes # Excluding fascists
 		}
 		save_scope_as = movement_national_liberal
 	}
