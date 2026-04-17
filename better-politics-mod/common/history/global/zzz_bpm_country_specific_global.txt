@@ -761,6 +761,10 @@
 
 	every_country = {
 		if = {
+			limit = { bpm_country_does_not_have_independent_diplomacy = yes }
+			activate_law = law_type:law_no_indedendent_foreign_policy
+		}
+		else_if = {
 			limit = {
 				OR = {
 					this = c:SWI

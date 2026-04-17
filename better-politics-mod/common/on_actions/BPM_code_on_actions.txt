@@ -545,20 +545,48 @@ bpm_on_actions_colonial_check = {
 			remove_variable = bpm_on_col_adm
 			every_interest_group = {
 				limit = {
-					OR = {
-						is_interest_group_type = ig_landowners
-						is_interest_group_type = ig_industrialists
-						is_interest_group_type = ig_armed_forces
-						is_interest_group_type = ig_conservatives
-					}
+					has_ideology = ideology:ideology_dop_metropole_loyalist
 				}
 				remove_ideology = ideology_dop_metropole_loyalist
+				if = {
+					limit = { OR = { is_interest_group_type = ig_petty_bourgeoise is_interest_group_type = ig_armed_forces } }
+					add_ideology = ideology_dop_state_power
+				}
+				else_if = {
+					limit = { is_interest_group_type = ig_conservatives }
+					add_ideology = ideology_dop_authoritarian_democrat
+				}
+				else_if = {
+					limit = { is_interest_group_type = ig_reactionaries }
+					add_ideology = ideology_dop_oligarch
+				}
 				bpm_reorder_ideologies = yes
+			}
+		}
+		if = {
+			limit = { 
+				bpm_country_does_not_have_independent_diplomacy = yes 
+				NOT = { has_law = law_type:law_no_indedendent_foreign_policy }
+			}
+			activate_law = law_type:law_no_indedendent_foreign_policy
+		}
+		else_if = {
+			limit = {
+				has_law = law_type:law_no_indedendent_foreign_policy
+				bpm_country_does_not_have_independent_diplomacy = no
+			}
+			if = {
+				limit = { 
+					is_country_type = unrecognized
+				}
+				activate_law = law_type:law_premodern_diplomacy
+			}
+			else = {
+				activate_law = law_type:law_flexible_foreign_policy
 			}
 		}
 	}
 }
-
 on_bpm_law_activated = {
 	effect = {
 		if = {

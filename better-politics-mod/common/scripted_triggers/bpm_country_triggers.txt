@@ -511,3 +511,14 @@ bpm_country_is_fascist = {
 		}
 	}
 }
+
+bpm_country_does_not_have_independent_diplomacy = {
+	is_subject = yes
+	OR = {
+		is_subject_type = subject_type_puppet
+		is_subject_type = subject_type_vassal
+		is_subject_type = subject_type_colony
+		is_subject_type = subject_type_personal_union
+		is_subject_type = subject_type_crown_land
+	}
+}
