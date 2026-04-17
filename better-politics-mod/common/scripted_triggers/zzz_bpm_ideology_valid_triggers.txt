@@ -957,6 +957,12 @@ ideology_syndicalist_valid_trigger = {
 
 ideology_reconstructionist_valid_trigger = {
 	bpm_interest_group_is_activated = yes
+	owner = {
+		OR = {
+			country_has_primary_culture = cu:yankee
+			country_has_primary_culture = cu:dixie
+		}
+	}
 	OR = {
 		is_interest_group_type = ig_radicals
 		is_interest_group_type = ig_agrarian_populists
@@ -1027,9 +1033,13 @@ ideology_leader_liberal_paternalistic_valid_trigger = {
 ideology_serfdom_reformer_valid_trigger = {
 	bpm_interest_group_is_activated = yes
 		# NOT = { is_interest_group_type = ig_landowners }
-		bpm_ig_is_right_wing = yes
+		OR = {
+			is_interest_group_type = ig_petty_bourgeoisie
+			bpm_ig_is_right_wing = yes
+			bpm_ig_is_state_institutional = yes
+		}
 		owner = {
-			has_law = law_type:law_serfdom
+			has_law_or_variant = law_type:law_serfdom
 			has_variable = bpm_political_stability
 		}
 }

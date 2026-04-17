@@ -1023,36 +1023,14 @@ REPLACE:conservative_party = {
 					country_is_colonial_or_company = yes
 					bpm_country_laws_has_colonial_government = yes
 				}
-			}
-			if = {
-				limit = { 
-					OR = {
-						bpm_ig_is_colonialist = yes
-						bpm_ig_is_metropole_loyalist = yes
-						bpm_ig_is_state_institutional = yes
-					}
-				}
-				add = {
-					value = 25
-					desc = "bpm_from_colonialist"
+				OR = {
+					bpm_ig_is_metropole_loyalist = yes
+					bpm_ig_is_state_institutional = yes
 				}
 			}
-			else_if = {
-				limit = {
-					OR = {
-						bpm_ig_is_lower_institutional = yes
-						is_interest_group_type = ig_landowners
-						is_interest_group_type = ig_national_liberals
-						is_interest_group_type = ig_intelligentsia
-						leader = {
-							has_ideology = ideology:ideology_sovereignist_leader
-						}
-					}
-				}
-				add = {
-					value = -25
-					desc = "bpm_from_colonialist"
-				}
+			add = {
+				value = 20
+				desc = "bpm_from_colonialist"
 			}
 		}
 

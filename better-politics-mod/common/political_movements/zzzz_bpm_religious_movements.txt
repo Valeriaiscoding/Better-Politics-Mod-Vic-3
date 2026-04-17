@@ -42,6 +42,18 @@ REPLACE:movement_religious_majority = {
 			}		
 		}
 	}
+
+	can_pressure_interest_group = {
+		bpm_ig_is_non_religious = no
+		trigger_if = {
+			limit = { 
+				is_interest_group_type = ig_christian_democrats
+			}
+			scope:political_movement = { 
+				religion = rel:catholic
+			}
+		}
+	}
 	
 	religion_selection_trigger = {
 		is_state_religion = scope:country
@@ -54,9 +66,12 @@ REPLACE:movement_religious_majority = {
 		religion = scope:religion
 		OR = {
 			is_interest_group_type = ig_devout
+			is_interest_group_type = ig_christian_democrats
+			interest_group = { bpm_ig_is_religious = yes }
 			has_ideology = ideology:ideology_traditionalist
 			has_ideology = ideology:ideology_theocrat
 			has_ideology = ideology:ideology_integralist
+			has_trait = pious
 		}		
 	}
 	character_support_weight = {
@@ -85,6 +100,14 @@ REPLACE:movement_religious_majority = {
 		else_if = {
 			limit = {
 				has_ideology = ideology:ideology_integralist
+			}
+			multiply = {
+				value = 2
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = pious
 			}
 			multiply = {
 				value = 2
@@ -198,38 +221,33 @@ REPLACE:movement_religious_majority = {
 			}
 		}
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_religious_majority
+				limit = {
+					exists = scope:political_movement
+					scope:political_movement ?= {
 						OR = {
 							is_being_suppressed = yes
 							is_being_bolstered = yes
 						}
-						save_temporary_scope_as = affected_movement
+					}
+				}
+				if = {
+					limit = {
+						scope:political_movement = {
+							is_being_suppressed = yes
+						}
+					}
+					multiply = {
+						value = bpm_movement_suppression_attraction_impact
+						desc = "concept_suppressed"
+					}
+				}
+				else = {
+					multiply = {
+						value = bpm_movement_bolster_attraction_impact
+						desc = "concept_bolstered"
 					}
 				}
 			}
-			if = {
-				limit = {
-					scope:affected_movement = {
-						is_being_suppressed = yes
-					}
-				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
-				}
-			}
-		}
 	}
 	
 	revolution = {
@@ -377,23 +395,7 @@ REPLACE:movement_religious_majority = {
 			desc = "STANDARD_OF_LIVING_FOR_RELIGION"
 		}
 
-		if = {
-			limit = {
-				religion = rel:catholic
-				exists = c:PAP
-				c:PAP ?= {
-					country_has_state_religion = rel:catholic
-					has_law_or_variant = law_type:law_theocracy
-				}
-				"owner.relations(c:PAP)" < 0
-			}
-			add = {
-				desc = "POOR_RELATIONS_WITH_PAPACY"
-				value = "owner.relations(c:PAP)"
-				divide = 100
-				multiply = -0.25
-			}
-		}
+		
 
 		if = {
 			limit = {
@@ -436,6 +438,22 @@ REPLACE:movement_religious_minority = {
 	creation_weight = {
 		value = 200
 	}		
+	can_pressure_interest_group = {
+		OR = {
+			bpm_ig_is_moralist = no
+			owner = { country_has_state_religion = rel:atheist }
+			AND = {
+				is_interest_group_type = ig_christian_democrats
+				scope:political_movement = { 
+					religion = rel:catholic
+				}
+			}
+		}
+		
+		bpm_ig_is_non_religious = no
+		bpm_ig_is_right_wing = no
+	}
+
 	on_created = {}
 
 	disband_trigger = {
@@ -517,9 +535,12 @@ REPLACE:movement_religious_minority = {
 				OR = {
 					has_ideology = ideology:ideology_traditionalist
 					has_ideology = ideology:ideology_theocrat
+					interest_group = { bpm_ig_is_religious = yes }
 				}
 			}
 			has_ideology = ideology:ideology_traditionalist_minoritarian
+			has_trait = pious
+			is_interest_group_type = ig_christian_democrats
 		}		
 	}
 	character_support_weight = {
@@ -717,38 +738,33 @@ REPLACE:movement_religious_minority = {
 			}
 		}
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_religious_minority
+				limit = {
+					exists = scope:political_movement
+					scope:political_movement ?= {
 						OR = {
 							is_being_suppressed = yes
 							is_being_bolstered = yes
 						}
-						save_temporary_scope_as = affected_movement
 					}
 				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
-						is_being_suppressed = yes
+				if = {
+					limit = {
+						scope:political_movement = {
+							is_being_suppressed = yes
+						}
+					}
+					multiply = {
+						value = bpm_movement_suppression_attraction_impact
+						desc = "concept_suppressed"
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
+				else = {
+					multiply = {
+						value = bpm_movement_bolster_attraction_impact
+						desc = "concept_bolstered"
+					}
 				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
-				}
-			}
-		}	
+			}	
 	}	
 	
 	secession = {
@@ -830,24 +846,6 @@ REPLACE:movement_religious_minority = {
 			subtract = political_movement_identity_support
 			min = 0
 			desc = "LOW_MOVEMENT_IDENTITY_SUPPORT"
-		}
-
-		if = {
-			limit = {
-				religion = rel:catholic
-				exists = c:PAP
-				c:PAP ?= {
-					country_has_state_religion = rel:catholic
-					has_law_or_variant = law_type:law_theocracy
-				}
-				"owner.relations(c:PAP)" < 0
-			}
-			add = {
-				desc = "POOR_RELATIONS_WITH_PAPACY"
-				value = "owner.relations(c:PAP)"
-				divide = 100
-				multiply = -0.25
-			}
 		}
 
 		if = {

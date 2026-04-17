@@ -42,16 +42,35 @@ REPLACE:movement_cultural_majority = {
 	creation_weight = {
 		value = 50
 	}
-	on_created = {}
+
+	can_pressure_interest_group = {
+		bpm_ig_is_internationalist = no
+		trigger_if = {
+			limit = { 
+				owner = {
+					active_law:lawgroup_citizenship = {
+						has_amendment = amendment_type:amendment_racialized_subjecthood
+					}
+				}
+			}
+			bpm_ig_is_metropole_loyalist = yes
+		}
+	}
+
+	on_created = {
+	}
+
+	disband_trigger = {
+		primary_cultures_percent_country <= 0.05
+	}
 
 	character_support_trigger = {
 		culture = {
 			is_primary_culture_of = root.owner
 		}
 		OR = {
-			has_ideology = ideology:ideology_fascist
-			has_ideology = ideology:ideology_jingoist_leader
-			has_ideology = ideology:ideology_ethno_nationalist
+			bpm_leader_is_nationalist = yes
+			bpm_leader_is_conservative = yes
 		}
 		NOT = {
 			has_variable = anti_nationalist_var
@@ -69,10 +88,7 @@ REPLACE:movement_cultural_majority = {
 		}
 		else_if = {
 			limit = {
-				OR = {
-					has_ideology = ideology:ideology_fascist
-					has_ideology = ideology:ideology_jingoist_leader
-				}
+				bpm_leader_is_nationalist = yes
 			}
 			multiply = {
 				value = 2
@@ -222,6 +238,7 @@ REPLACE:movement_cultural_majority = {
 		multiply = { # Illiterate pops participate at 1/8 the rate of fully literate pops
 			desc = "POP_LITERACY"
 			value = literacy_rate
+			multiply = literacy_rate
 			add = 0.15
 			max = 1 # Caps out below ideological movements.
 		}
@@ -287,35 +304,30 @@ REPLACE:movement_cultural_majority = {
 			}
 		}
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_cultural_majority
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -484,11 +496,38 @@ REPLACE:movement_cultural_minority = {
 	ideology = ideology_pluralist_movement_1
 	character_ideologies = {
 		ideology_reformer
+		ideology_humanitarian
 	}
 
 	can_cause_obstinance = yes
 
 	creation_trigger = {}
+
+	can_pressure_interest_group = {
+		OR = {
+			has_ideology = ideology:ideology_cit_placeholder
+			AND = {
+				scope:political_movement = { has_ideology:ideology_pluralist_movement_4 }
+				bpm_ig_is_internationalist = yes
+			}
+			AND = {
+				scope:political_movement = { has_ideology:ideology_pluralist_movement_3 }
+				OR = {
+					has_ideology = ideology:ideology_cit_liberal_nationalist
+					has_ideology = ideology:ideology_cit_immigrant_nationalist
+					has_ideology = ideology:ideology_cit_multiethnic_nationalist
+				}
+			}
+			AND = {
+				scope:political_movement = { has_ideology:ideology_pluralist_movement_2 }
+				bpm_ig_is_segregationist = no
+			}
+			AND = {
+				scope:political_movement = { has_ideology:ideology_pluralist_movement_1 }
+				NOT = { has_ideology = ideology:ideology_cit_ethnonationalist }
+			}
+		}
+	}
 	creation_weight = {
 		value = 50
 		if = {
@@ -951,6 +990,7 @@ REPLACE:movement_cultural_minority = {
 			multiply = { # Illiterate pops participate at 1/3 the rate of fully literate pops
 				desc = "POP_LITERACY"
 				value = literacy_rate
+				multiply = literacy_rate
 				add = 0.33
 			}
 		}
@@ -958,6 +998,7 @@ REPLACE:movement_cultural_minority = {
 			multiply = { # Illiterate pops participate at 1/8 the rate of fully literate pops
 				desc = "POP_LITERACY"
 				value = literacy_rate
+				multiply = literacy_rate
 				add = 0.15
 			}
 		}
@@ -1081,35 +1122,30 @@ REPLACE:movement_cultural_minority = {
 			}
 		}
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_cultural_minority
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -1375,6 +1411,7 @@ REPLACE:movement_minority_rights = {
 	ideology = ideology_pluralist_movement_3
 	character_ideologies = {
 		ideology_reformer
+		ideology_humanitarian
 	}
 
 	creation_trigger = {}
@@ -1390,6 +1427,11 @@ REPLACE:movement_minority_rights = {
 				value = 2
 			}
 		}
+	}
+
+	can_pressure_interest_group = {
+		bpm_ig_is_segregationist = no
+		bpm_ig_is_nationalist = no
 	}
 
 	character_support_trigger = {
@@ -1568,7 +1610,10 @@ REPLACE:movement_minority_rights = {
 
 		multiply = { # Illiterate pops participate at 1/8 the rate of fully literate pops
 			desc = "POP_LITERACY"
+
 			value = literacy_rate
+			multiply = literacy_rate
+
 			add = 0.15
 			max = 1 # Caps out below ideological movements.
 		}
@@ -1677,35 +1722,30 @@ REPLACE:movement_minority_rights = {
 			}
 		}
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_minority_rights
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}

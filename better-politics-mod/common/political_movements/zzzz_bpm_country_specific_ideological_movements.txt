@@ -32,10 +32,7 @@ REPLACE:movement_orleanist = {
 						owner = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
-								OR = {
-									is_political_movement_type = movement_market_liberal
-									is_political_movement_type = movement_orleanist
-								}
+								bpm_movement_is_laissez_faire = yes
 							}
 						}
 					}
@@ -48,6 +45,19 @@ REPLACE:movement_orleanist = {
 	}	
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
+	}
+	
+	disband_trigger = {
+		OR = {
+			has_variable = monarchy_stamped_out_var
+			AND = {
+				OR = {
+					has_variable = legitimist_restoration_var
+					has_variable = bonapartist_restoration_var
+				}
+				has_variable = one_true_french_dynasty
+			}
+		}
 	}
 	
 	character_support_trigger = {
@@ -337,39 +347,34 @@ REPLACE:movement_orleanist = {
 		}
 		multiply = {
 			value = owner.bpm_consciousness_liberal_percent
-			desc = "BPM_CONSCIOUSNESS_LIBERAL"
+			desc = "BPM_LIBERAL_CONSCIOUSNESS"
 		}
 		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_market_liberal
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -481,22 +486,6 @@ REPLACE:movement_orleanist = {
 				value = 0.2
 				desc = "NON_ORLEANIST_MONARCH"
 			}
-		}		
-		if = {
-			limit = { has_institution = institution_schools }
-			
-			add = {
-				value = 3
-				subtract = "institution_investment_level(institution_schools)"
-				multiply = 0.05
-				desc = "INSTITUTION_FUNDING_LEVEL_schools"
-			}
-		}
-		else = {
-			add = {
-				value = 0.1
-				desc = "NO_INSTITUTION_schools"
-			}		
 		}
 	}
 }
@@ -535,10 +524,7 @@ REPLACE:movement_bonapartist = {
 						owner = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
-								OR = {
-									is_political_movement_type = movement_national_liberal
-									is_political_movement_type = movement_bonapartist
-								}
+								bpm_movement_is_national_liberal = yes
 							}
 						}
 					}
@@ -549,6 +535,19 @@ REPLACE:movement_bonapartist = {
 			}
 		}
 	}	
+
+	disband_trigger = {
+		OR = {
+			has_variable = monarchy_stamped_out_var
+			AND = {
+				OR = {
+					has_variable = legitimist_restoration_var
+					has_variable = orleanist_restoration_var
+				}
+				has_variable = one_true_french_dynasty
+			}
+		}
+	}
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
 	}
@@ -876,39 +875,34 @@ REPLACE:movement_bonapartist = {
 		}
 		multiply = {
 			value = owner.bpm_consciousness_liberal_percent
-			desc = "BPM_CONSCIOUSNESS_LIBERAL"
+			desc = "BPM_LIBERAL_CONSCIOUSNESS"
 		}
 		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_national_liberal
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -1037,7 +1031,7 @@ REPLACE:movement_legitimist = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
 								OR = {
-									bpm_movement_is_reactionary_monarchist = yes
+									bpm_movement_is_absolutist_monarchist = yes
 									religion = rel:catholic
 								}
 							}
@@ -1054,6 +1048,19 @@ REPLACE:movement_legitimist = {
 		add_movement_enthusiasm_modifier = yes
 	}
 	
+	disband_trigger = {
+		OR = {
+			has_variable = monarchy_stamped_out_var
+			AND = {
+				OR = {
+					has_variable = bonapartist_restoration_var
+					has_variable = orleanist_restoration_var
+				}
+				has_variable = one_true_french_dynasty
+			}
+		}
+	}
+
 	character_support_trigger = {
 		trigger_if = {
 			limit = {
@@ -1364,35 +1371,30 @@ REPLACE:movement_legitimist = {
 
 		multiply = BPM_REACTIONARY_STRENGTH
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_legitimist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -1426,36 +1428,6 @@ REPLACE:movement_legitimist = {
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
 		if = {
-				limit = {		
-					has_law = law_type:law_monarchy
-				}
-				
-				if = {
-					limit = {
-						OR = {
-							is_enacting_law = law_type:law_presidential_republic
-							is_enacting_law = law_type:law_parliamentary_republic
-							is_enacting_law = law_type:law_corporate_state
-							is_enacting_law = law_type:law_theocracy
-							is_enacting_law = law_type:law_council_republic	
-						}					
-					}
-					
-					add = {
-						value = 0.25
-						desc = "MONARCHY_BEING_ABOLISHED"
-					}					
-				}
-				# else = {
-				# 	add = { # Only care about legitimacy in the context of a monarchy that isn't under direct threat
-				# 		value = 50
-				# 		subtract = legitimacy
-				# 		multiply = 0.005
-				# 		desc = "concept_legitimacy"
-				# 	}				
-				# }
-			}
-		if = {
 			limit = {
 				owner ?= {
 					has_law = law_type:law_monarchy
@@ -1470,23 +1442,7 @@ REPLACE:movement_legitimist = {
 				value = 0.2
 				desc = "NON_LEGITIMIST_MONARCH"
 			}
-		}	
-		if = {
-			limit = {
-				exists = c:PAP
-				c:PAP ?= {
-					country_has_state_religion = rel:catholic
-					has_law_or_variant = law_type:law_theocracy
-				}
-				"owner.relations(c:PAP)" < 0
-			}
-			add = {
-				desc = "POOR_RELATIONS_WITH_PAPACY"
-				value = "owner.relations(c:PAP)"
-				divide = 100
-				multiply = -0.15
-			}
-		}	
+		}		
 	}
 }
 
@@ -1522,7 +1478,7 @@ REPLACE:movement_carlist = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
 								OR = {
-									bpm_movement_is_reactionary_monarchist = yes
+									bpm_movement_is_absolutist_monarchist = yes
 									religion = rel:catholic
 								}
 							}
@@ -1935,35 +1891,30 @@ REPLACE:movement_carlist = {
 
 		multiply = BPM_REACTIONARY_STRENGTH
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_carlist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -2028,36 +1979,6 @@ REPLACE:movement_carlist = {
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
 		if = {
-				limit = {		
-					has_law = law_type:law_monarchy
-				}
-				
-				if = {
-					limit = {
-						OR = {
-							is_enacting_law = law_type:law_presidential_republic
-							is_enacting_law = law_type:law_parliamentary_republic
-							is_enacting_law = law_type:law_corporate_state
-							is_enacting_law = law_type:law_theocracy
-							is_enacting_law = law_type:law_council_republic	
-						}					
-					}
-					
-					add = {
-						value = 0.25
-						desc = "MONARCHY_BEING_ABOLISHED"
-					}					
-				}
-				# else = {
-				# 	add = { # Only care about legitimacy in the context of a monarchy that isn't under direct threat
-				# 		value = 50
-				# 		subtract = legitimacy
-				# 		multiply = 0.005
-				# 		desc = "concept_legitimacy"
-				# 	}				
-				# }
-			}
-		if = {
 			limit = {
 				owner ?= {
 					has_law = law_type:law_monarchy
@@ -2071,22 +1992,6 @@ REPLACE:movement_carlist = {
 			add = {
 				value = 0.2
 				desc = "NON_CARLIST_MONARCH"
-			}
-		}
-		if = {
-			limit = {
-				exists = c:PAP
-				c:PAP ?= {
-					country_has_state_religion = rel:catholic
-					has_law_or_variant = law_type:law_theocracy
-				}
-				"owner.relations(c:PAP)" < 0
-			}
-			add = {
-				desc = "POOR_RELATIONS_WITH_PAPACY"
-				value = "owner.relations(c:PAP)"
-				divide = 100
-				multiply = -0.15
 			}
 		}
 		if = {
@@ -2132,7 +2037,7 @@ REPLACE:movement_miguelist = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
 								OR = {
-									bpm_movement_is_reactionary_monarchist = yes
+									bpm_movement_is_absolutist_monarchist = yes
 									religion = rel:catholic
 								}
 							}
@@ -2520,35 +2425,30 @@ REPLACE:movement_miguelist = {
 
 		multiply = BPM_REACTIONARY_STRENGTH
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_miguelist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -2604,36 +2504,6 @@ REPLACE:movement_miguelist = {
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
 		if = {
-				limit = {		
-					has_law = law_type:law_monarchy
-				}
-				
-				if = {
-					limit = {
-						OR = {
-							is_enacting_law = law_type:law_presidential_republic
-							is_enacting_law = law_type:law_parliamentary_republic
-							is_enacting_law = law_type:law_corporate_state
-							is_enacting_law = law_type:law_theocracy
-							is_enacting_law = law_type:law_council_republic	
-						}					
-					}
-					
-					add = {
-						value = 0.25
-						desc = "MONARCHY_BEING_ABOLISHED"
-					}					
-				}
-				# else = {
-				# 	add = { # Only care about legitimacy in the context of a monarchy that isn't under direct threat
-				# 		value = 50
-				# 		subtract = legitimacy
-				# 		multiply = 0.005
-				# 		desc = "concept_legitimacy"
-				# 	}				
-				# }
-			}
-		if = {
 			limit = {
 				owner ?= {
 					has_law = law_type:law_monarchy
@@ -2649,22 +2519,6 @@ REPLACE:movement_miguelist = {
 				desc = "NON_MIGUELIST_MONARCH"
 			}
 		}
-		if = {
-			limit = {
-				exists = c:PAP
-				c:PAP ?= {
-					country_has_state_religion = rel:catholic
-					has_law_or_variant = law_type:law_theocracy
-				}
-				"owner.relations(c:PAP)" < 0
-			}
-			add = {
-				desc = "POOR_RELATIONS_WITH_PAPACY"
-				value = "owner.relations(c:PAP)"
-				divide = 100
-				multiply = -0.15
-			}
-		}
 	}
 }
 
@@ -2675,6 +2529,7 @@ movement_kaikoku = {
 	
 	ideology = ideology_eco_kaikoku_ha
 	character_ideologies = {
+		ideology_modernizer_leader
 		ideology_market_liberal
 		ideology_liberal_leader
 		ideology_republican_leader
@@ -3074,39 +2929,34 @@ movement_kaikoku = {
 		}
 		multiply = {
 			value = owner.bpm_consciousness_liberal_percent
-			desc = "BPM_CONSCIOUSNESS_LIBERAL"
+			desc = "BPM_LIBERAL_CONSCIOUSNESS"
 		}
 		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_kaikoku
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -3147,32 +2997,5 @@ movement_kaikoku = {
 	
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
-		owner = {
-			if = {
-				limit = { has_institution = institution_schools }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_schools)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_schools"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_schools"
-				}		
-			}	
-			if = {
-				limit = {
-					bpm_country_is_pre_modern_absolutist = yes
-				}
-				add = {
-					value = 0.1
-					desc = "IS_PRE_MODERN_ABSOLUTIST"
-				}
-			}			
-		}
 	}		
 }

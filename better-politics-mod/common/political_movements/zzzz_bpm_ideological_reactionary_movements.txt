@@ -76,7 +76,7 @@ REPLACE:movement_royalist_absolutist = {
 						owner = {
 							prestige > ROOT.owner.prestige
 							any_political_movement = {
-								bpm_movement_is_reactionary_monarchist = yes
+								bpm_movement_is_absolutist_monarchist = yes
 							}
 						}
 					}
@@ -373,35 +373,30 @@ REPLACE:movement_royalist_absolutist = {
 
 		multiply = BPM_REACTIONARY_STRENGTH
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_royalist_absolutist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -410,6 +405,7 @@ REPLACE:movement_royalist_absolutist = {
 
 	can_pressure_interest_group = {
 		bpm_ig_is_left_wing = no
+		bpm_ig_is_republican = no
 	}
 	
 	revolution = {
@@ -481,38 +477,6 @@ REPLACE:movement_royalist_absolutist = {
 	
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
-		owner ?= {
-			if = {
-				limit = {		
-					has_law = law_type:law_monarchy
-				}
-				
-				if = {
-					limit = {
-						OR = {
-							is_enacting_law = law_type:law_presidential_republic
-							is_enacting_law = law_type:law_parliamentary_republic
-							is_enacting_law = law_type:law_corporate_state
-							is_enacting_law = law_type:law_theocracy
-							is_enacting_law = law_type:law_council_republic	
-						}					
-					}
-					
-					add = {
-						value = 0.5
-						desc = "MONARCHY_BEING_ABOLISHED"
-					}					
-				}
-				# else = {
-				# 	add = { # Only care about legitimacy in the context of a monarchy that isn't under direct threat
-				# 		value = 50
-				# 		subtract = legitimacy
-				# 		multiply = 0.005
-				# 		desc = "concept_legitimacy"
-				# 	}				
-				# }
-			}		
-		}
 	}
 }
 
@@ -867,35 +831,30 @@ REPLACE:movement_reactionary = {
 
 		multiply = BPM_REACTIONARY_STRENGTH
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_reactionary
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -997,10 +956,8 @@ REPLACE:movement_fascist = {
 	
 	character_support_trigger = {
 		OR = {
-			has_ideology = ideology:ideology_fascist
-			has_ideology = ideology:ideology_integralist
+			bpm_leader_is_fascist = yes
 			has_ideology = ideology:ideology_corporatist_leader
-			has_ideology = ideology:ideology_ethno_nationalist
 		}
 	}
 	character_support_weight = {
@@ -1212,20 +1169,24 @@ REPLACE:movement_fascist = {
 			}
 		}
 
-		
-		owner = {
-			if = {
-				limit = {
-					number_of_claims > 0
+		if = {
+			limit = {
+				owner.number_of_claims > 0
+				OR = {
+					strata = upper
+					strata = middle
+					is_pop_type = soldiers
+					is_pop_type = officers
 				}
+			}
 
-				add = {
-					value = 5 # Add a base value for having claims at all
-					add = number_of_claims
-					multiply = 5
-					max = 50
-					desc = "NUMBER_OF_CLAIMS"
-				}
+			add = {
+				value = 5 # Add a base value for having claims at all
+				add = owner.number_of_claims
+				multiply = culture.culture_current_fervor
+				divide = 20
+				max = 50
+				desc = "NUMBER_OF_CLAIMS"
 			}
 		}
 
@@ -1315,35 +1276,30 @@ REPLACE:movement_fascist = {
 
 		multiply = BPM_REACTIONARY_STRENGTH
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_fascist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
-					}
-				}
-			}
-			if = {
-				limit = {
-					scope:affected_movement = {
+        	limit = {
+            	exists = scope:political_movement
+            	scope:political_movement ?= {
+					OR = {
 						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
+        }
+        if = {
+            limit = {
+                scope:political_movement = {
+                    is_being_suppressed = yes
+                }
+            }
+            multiply = {
+                value = bpm_movement_suppression_attraction_impact
+                desc = "concept_suppressed"
+            }
+        }
+        else = {
+            multiply = {
+                value = bpm_movement_bolster_attraction_impact
+                desc = "concept_bolstered"
 				}
 			}
 		}
@@ -1422,6 +1378,18 @@ REPLACE:movement_fascist = {
 					max = 0.3
 					desc = "NUMBER_OF_CLAIMS"
 				}				
+			}
+		}
+		if = { # Support translates 1:1 to Activism
+			limit = {
+				owner = {
+					bpm_country_is_fascist = no
+				}
+			}
+			add = {
+				desc = "FASCIST_MOVEMENT_WILL_TO_POWER"
+				add = this.political_movement_support
+				max = 0.5
 			}
 		}
 	}	
