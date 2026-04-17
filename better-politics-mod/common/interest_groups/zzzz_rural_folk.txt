@@ -86,7 +86,7 @@ REPLACE:ig_rural_folk = {
 				any_primary_culture = { cu:spanish = this }
 			}
 			cultures = {
-				filipino
+				 filipino
 			}
 		}
 		rule = {
