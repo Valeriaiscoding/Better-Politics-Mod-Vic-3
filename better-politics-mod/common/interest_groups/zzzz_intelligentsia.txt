@@ -248,6 +248,17 @@ REPLACE:ig_intelligentsia = {
 				value = 0.001 #0.1
 			}
 		}
+		else_if = {
+			limit = {
+				owner = { bpm_country_laws_has_colonial_government = yes }
+				NOT = { state = { is_homeland = prev.culture } }
+				pop_acceptance >= acceptance_status_4
+			}
+			multiply = {
+				desc = "POP_INDIA_COLONIAL_RULE"
+				value = 0.01
+			}
+		}
 		
 		if = {
 			limit = {
@@ -263,6 +274,25 @@ REPLACE:ig_intelligentsia = {
 			add = {
 				desc = "POP_INDIA_MONEYED_ELITES"
 				value = 50 #75
+			}
+		}
+		else_if = {
+			limit = {
+				owner = { bpm_country_laws_has_colonial_government = yes }
+				culture = {
+					NOR = {
+						is_primary_culture_of = root.owner
+						shares_heritage_trait_group_with_any_primary_culture = root.owner
+					}
+				}
+				OR = {
+					is_pop_type = capitalists
+					is_pop_type = shopkeepers
+				}
+			}
+			add = {
+				desc = "POP_INDIA_MONEYED_ELITES"
+				value = 75 #75
 			}
 		}
 

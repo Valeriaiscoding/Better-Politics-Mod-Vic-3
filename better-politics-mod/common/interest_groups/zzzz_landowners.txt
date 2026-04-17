@@ -437,6 +437,17 @@ REPLACE:ig_landowners = {
 				value = 0.1
 			}
 		}
+		else_if = {
+			limit = {
+				owner = { bpm_country_laws_has_colonial_government = yes }
+				NOT = { state = { is_homeland = prev.culture } }
+				pop_acceptance >= acceptance_status_4
+			}
+			multiply = {
+				desc = "POP_INDIA_COLONIAL_RULE"
+				value = 0.05
+			}
+		}
 
 		multiply = ig_attraction_to_interests_from_stability
 

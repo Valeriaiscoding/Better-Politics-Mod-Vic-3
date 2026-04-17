@@ -2,10 +2,10 @@
 REPLACE:modifier_india_company_rule = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	interest_group_ig_industrialists_pol_str_mult = 5
-	country_bureaucrats_pol_str_mult = 2
+	country_bureaucrats_pol_str_mult = 1.5
 	country_capitalists_pol_str_mult = 0.5
 	country_officers_pol_str_mult = 0.5
-	country_aristocrats_pol_str_mult = -0.60
+	country_aristocrats_pol_str_mult = -0.3
 	country_legitimacy_base_add = -50
 	country_legitimacy_headofstate_add = 65
 }
@@ -13,8 +13,8 @@ REPLACE:modifier_india_company_rule = {
 REPLACE:modifier_india_crown_rule = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	interest_group_ig_industrialists_pol_str_mult = 10
-	country_bureaucrats_pol_str_mult = 2.50
-	country_aristocrats_pol_str_mult = -0.90
+	country_bureaucrats_pol_str_mult = 2
+	country_aristocrats_pol_str_mult = -0.6
 	country_legitimacy_base_add = -35
 	country_legitimacy_headofstate_add = 50
 }

@@ -979,6 +979,7 @@ ideology_eco_debt_serf_economy = {
     lawgroup_economic_system = {
 		law_traditionalism = strongly_approve
 		law_interventionism = neutral
+		law_extraction_economy = neutral
 		law_agrarianism = approve
 		law_industry_banned = neutral
 		law_laissez_faire = disapprove

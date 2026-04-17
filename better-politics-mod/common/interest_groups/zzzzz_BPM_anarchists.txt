@@ -1,4 +1,4 @@
-﻿ig_anarchists = {
+ig_anarchists = {
 	color = hsv{ 0 0 0 }
 	texture = "gfx/interface/icons/ig_icons/anarchists.dds"
 	layer = "revolution_dynamic_trade_unions"
@@ -209,6 +209,18 @@
 			}
 		}	
 		
+		if = {
+			limit = {
+				owner = { bpm_country_laws_has_colonial_government = yes }
+				NOT = { state = { is_homeland = prev.culture } }
+				pop_acceptance >= acceptance_status_4
+				}
+			multiply = {
+				desc = "POP_INDIA_COLONIAL_RULE"
+				value = 0.01
+			}
+		}
+
 		add = ig_attraction_agrarian_socialism
 
 		if = {

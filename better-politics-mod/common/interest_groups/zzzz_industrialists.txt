@@ -237,27 +237,23 @@ REPLACE:ig_industrialists = {
 				owner = {
 					c:BIC ?= this
 				}
-				culture = {
-					has_discrimination_trait_group = heritage_group_european
-				}
-				OR = {
-					strata = upper
-					strata = middle
-				}
-				NOT = {
-					is_pop_type = officers
-				}
 			}
-			add = {
-				desc = "POP_INDIA_EUROPEAN_ADMINISTRATORS"
-				value = 1000 #250
-			}
-		}
-		
-		if = {
-			limit = {
-				owner = {
-					c:BIC ?= this
+			if = {
+				limit = {
+					culture = {
+						has_discrimination_trait_group = heritage_group_european
+					}
+					OR = {
+						strata = upper
+						strata = middle
+					}
+					NOT = {
+						is_pop_type = officers
+					}
+				}
+				add = {
+					desc = "POP_INDIA_EUROPEAN_ADMINISTRATORS"
+					value = 1000 #250
 				}
 			}
 			if = {
@@ -292,6 +288,55 @@ REPLACE:ig_industrialists = {
 				multiply = {
 					desc = "POP_INDIA_ADMINISTRATION_PRIVILEGES"
 					value = 0.5 #0.05
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = { bpm_country_laws_has_colonial_government = yes }
+			}
+			if = {
+				limit = {
+					culture = {
+						shares_heritage_trait_group_with_any_primary_culture = root.owner
+					}
+					OR = {
+						strata = upper
+						strata = middle
+					}
+					NOR = {
+						is_pop_type = bureaucrats
+						is_pop_type = officers
+					}
+				}
+				add = {
+					desc = "POP_INDIA_EUROPEAN_ADMINISTRATORS"
+					value = 250 
+				}
+			}
+			if = {
+				limit = {
+					culture = {
+						NOT = { shares_heritage_trait_group_with_any_primary_culture = root.owner }
+					}
+					OR = {
+						strata = upper
+						strata = middle
+					}
+					NOR = {
+						is_pop_type = bureaucrats
+						is_pop_type = officers
+					}
+				}
+				add = {
+					desc = "POP_INDIA_NATIVE_ADMINISTRATORS"
+					value = 50 #25
+				}
+			}
+			else = {
+				multiply = {
+					desc = "POP_INDIA_ADMINISTRATION_PRIVILEGES"
+					value = 0.05
 				}
 			}
 		}
