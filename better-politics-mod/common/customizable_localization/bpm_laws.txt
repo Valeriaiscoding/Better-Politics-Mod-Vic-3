@@ -102,3 +102,21 @@ bpm_repeatable_culture_promote_patriotic_values_name = {
 		localization_key = bpm_repeatable_culture_promote_patriotic_values_name_default
 	}
 }
+
+bpm_law_no_indedendent_foreign_policy_replacment_law = {
+	type = country
+	random_valid = no
+	text = {
+		trigger = {
+			is_country_type = unrecognized
+		}
+		localization_key = bpm_no_independent_forpol_unrecognized
+	}
+	text = {
+		trigger = {
+			always = no
+		}
+		fallback = yes
+		localization_key = bpm_no_independent_forpol_default
+	}
+}

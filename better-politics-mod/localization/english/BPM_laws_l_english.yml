@@ -145,6 +145,10 @@
  bpm_decorative_can_not_join_alliances_desc:0 "Ability to join Alliances and Defense Pacts is removed from this country."
  bpm_decorative_can_not_stay_peaceful:0 "Can Not Stay At Peace"
  bpm_decorative_can_not_stay_peaceful_desc:0 "Staying at peace for longer than 2 years will cause severe penalties for this country internally."
+ bpm_decorative_no_foreign_policy_removed_on_independence:0 "[GetPlayer.GetCustom('bpm_law_no_indedendent_foreign_policy_replacment_law')]"
+ bpm_decorative_no_foreign_policy_removed_on_independence_desc:0 "This law will be removed and replaced with"
+ bpm_no_independent_forpol_unrecognized:0 "Law Will be Removed on Independence or Autonomy Increase and replaced with [GetLawType(law_premodern_diplomacy).GetName]."
+ bpm_no_independent_forpol_default:0 "Law Will be Removed on Independence or Autonomy Increase and replaced with [GetLawType(law_flexible_foreign_policy).GetName]."
 
 # Work Time Regulations
  lawgroup_work_time_regulations:0 "Work Time Regulations"
