@@ -5,4 +5,13 @@
 		}
 		bpm_initialize_cabinet = yes
     }    
+	every_country = {
+		limit = { 
+			NOR = { 
+				has_law_or_variant = law_type:law_no_labor_unions
+				has_law = law_type:law_guild_system
+			} 
+		}
+		set_variable = union_law_introduced_var
+	}
 }

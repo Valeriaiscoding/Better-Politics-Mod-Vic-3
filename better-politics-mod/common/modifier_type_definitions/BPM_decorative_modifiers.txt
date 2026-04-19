@@ -36,10 +36,6 @@ bpm_decorative_ban_everyone = {
 }
 
 # Labor Union laws
-bpm_decorative_trade_unions_non_institutional = {
-	color = neutral
-	boolean = yes
-}
 bpm_decorative_trade_unions_force_leader_moderate = {
 	color = neutral
 	boolean = yes
@@ -113,11 +109,7 @@ bpm_decorative_modify_mapi_per_centralization_investment = {
 	boolean = no
 	decimals = 2
 }
-bpm_decorative_modify_sol_per_workplace_safety_investment = {
-	color=good
-	boolean = no
-	decimals = 2
-}
+
 bpm_decorative_modify_throughput_per_workplace_safety_investment = {
 	color=good
 	boolean = no
@@ -141,6 +133,16 @@ bpm_decorative_modify_employment_clerks_per_workplace_safety_investment = {
 	boolean = no
 	percent = yes
 	decimals = 2
+}
+
+bpm_decorative_work_time_less_effective_in_slave_states = {
+	color = neutral
+	boolean = yes
+}
+
+bpm_decorative_work_time_less_effective_with_traditional_agriculture = {
+	color = neutral
+	boolean = yes
 }
 
 # General laws

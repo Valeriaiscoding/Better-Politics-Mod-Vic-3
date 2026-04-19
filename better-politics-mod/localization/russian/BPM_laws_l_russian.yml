@@ -133,7 +133,11 @@
  law_protected_leisure_desc:0 "Работники имеют право на щедрое количество свободного от работы времени, предоставляемое личным и больничным отпуском в дополнение к различным законным праздникам. Рабочие дни ограничены 8 часами или менее с гарантированными обеденными перерывами."
 
  bpm_decorative_modify_throughput_per_workplace_safety_investment:0 "[concept_building] [concept_throughput] за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
- bpm_decorative_modify_sol_per_workplace_safety_investment:0 "[concept_sol] за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
+ building_bpm_modify_sol_per_workplace_safety_investment:0 "[concept_sol] за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
+ bpm_decorative_work_time_less_effective_in_slave_states:0 "Less Effective in Slave States"
+ bpm_decorative_work_time_less_effective_in_slave_states_desc:0 "In $SLAVE_STATE$s effect of this [Concept('concept_law', 'law')] does not apply to [Concept('concept_building', 'Buildings')] that can replace their workforce with [GetPopType('slaves').GetName]"
+ bpm_decorative_work_time_less_effective_with_traditional_agriculture:0 "Less Efficent with Traditional Agriculture"
+ bpm_decorative_work_time_less_effective_with_traditional_agriculture_desc:0 "If country has any variant of [GetLawType('law_serfdom').GetName] or [GetLawType('law_tenant_farmers').GetName] [Concept('concept_law', 'law')] enacted, effect of this law won't include buildings in [GetBuildingGroup('bg_staple_crops').GetName], [GetBuildingGroup('bg_ranching').GetName], and [GetBuildingGroup('bg_plantations').GetName] [Concept('concept_building_group', 'Building Groups')]."
 
  bpm_decorative_modify_employment_laborers_per_workplace_safety_investment:0 "@laborers! Занятость рабочих за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
  bpm_decorative_modify_employment_machinists_per_workplace_safety_investment:0 "@machinists! Занятость машинистов за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
@@ -155,9 +159,11 @@
  law_socialist_labor_unions_desc:0 "Только профсоюзы, соответствующие социалистической доктрине государства, разрешены действовать в стране."
  law_syndicalism:0 "Синдикализм"
  law_syndicalism_desc:0 "Профсоюзы используются в качестве основы социальной организации общества, становясь управляющими органами страны."
+  law_no_labor_unions:0 "Профсоюзы отсутствуют"
+  law_no_labor_unions_desc:0 "В стране не существует организованного рабочего движения"
 
- bpm_decorative_trade_unions_non_institutional:0 "[GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] не рассматриваются как [Concept('concept_bpm_institutional_ig', 'Институциональная группа интересов')]"
- bpm_decorative_trade_unions_non_institutional_desc:0 "Привлекательность [GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] не будет корректироваться [Concept('concept_bpm_political_stability', 'Политической стабильностью')] страны."
+ country_bpm_ig_trade_unions_non_institutional_bool:0 "[GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] не рассматриваются как [Concept('concept_bpm_institutional_ig', 'Институциональная группа интересов')]"
+ country_bpm_ig_trade_unions_non_institutional_bool_desc:0 "Привлекательность [GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] не будет корректироваться [Concept('concept_bpm_political_stability', 'Политической стабильностью')] страны."
  bpm_decorative_trade_unions_force_leader_moderate:0 "Назначить умеренных лидеров для [GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName]"
  bpm_decorative_trade_unions_force_leader_moderate_desc:0 "Лидеры [GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName] не смогут приобрести левые идеологии и чаще будут приобретать идеологию [GetIdeology('ideology_corporatist_leader').GetName]."
  bpm_decorative_trade_unions_force_leader_non_socialist:0 "Назначить несоциалистических лидеров для [GetInterestGroupVariant('ig_trade_unions', GetPlayer).GetName]"

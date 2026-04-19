@@ -129,11 +129,14 @@
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_cit_nationalist
-					is_interest_group_type = ig_landowners
 				}
 			}
 			bpm_remove_all_cit_ideologies = yes
 			add_ideology = ideology_cit_multiethnic_nationalist
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology =  ideology_cit_traditional_culture
 		}
 	}
 
@@ -193,12 +196,16 @@
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_cit_nationalist
-					is_interest_group_type = ig_devout
 				}
 			}
 			bpm_remove_all_cit_ideologies = yes
 			add_ideology = ideology_cit_multiethnic_nationalist
+			
 		}
+		ig:ig_devout = {
+				bpm_remove_all_cit_ideologies = yes
+				add_ideology =  ideology_cit_traditional_culture
+			}
 		every_interest_group = {
 			limit = {
 				bpm_ig_is_traditionalist = yes
@@ -257,7 +264,15 @@
 	}
 	every_country = {
 		limit = { is_subject_of = c:GBR }
-		activate_law = law_type:law_anti_strike_laws
+		if = {
+			limit = { 
+				NOR = {
+					has_law_or_variant = law_type:law_extraction_economy
+					has_law_or_variant = law_type:law_traditionalism
+				}
+			}
+			activate_law = law_type:law_anti_strike_laws	
+		}
 		if = {
 			limit = { bpm_country_is_in_new_world = yes }
 			activate_law = law_type:law_national_militia
@@ -321,6 +336,7 @@
 		bpm_setup_country = yes
 		activate_law = law_type:law_advisory_body
 		activate_law = law_type:law_no_separate_hog
+		activate_law = law_type:law_combination_acts
 	}
 
 	c:POR = {
@@ -364,7 +380,7 @@
 			}
 		}
 		bpm_set_colony_law = yes
-	} 
+	}
 	
 	c:SPA = {
 		add_technology_researched = egalitarianism
@@ -462,7 +478,7 @@
 				add_ideology = ideology_eco_debt_serf_economy
 			}
 			else_if = {
-				limit = { owner = { has_law = law_type:law_isolationism } }
+				limit = { owner = { has_law_or_variant = law_type:law_isolationism } }
 				add_ideology = ideology_eco_trad_isolationist
 			}
 			else = { add_ideology = ideology_eco_serf_economy }
@@ -853,6 +869,10 @@
 
 	every_country = {
 		if = {
+			limit = { aggressive_diplomatic_plays_permitted  = no }
+			activate_law = law_type:law_no_indedendent_foreign_policy
+		}
+		else_if = {
 			limit = {
 				OR = {
 					this = c:SWI
@@ -903,6 +923,7 @@
 				has_law = law_type:law_theocracy
 			}
 			NOR = {
+				country_is_colonial_or_company = yes
 				this = c:GBR
 				this = c:NET
 				this = c:BEL
@@ -937,7 +958,7 @@
 				this = c:BRZ
 				#bpm_country_is_latin_american = yes
 			}
-			#NOT = { has_law = law_type:law_peasant_levies }
+			#NOT = { has_law_or_variant = law_type:law_peasant_levies }
 		}
 		activate_law = law_type:law_professional_officers
 	}
@@ -945,7 +966,7 @@
 	every_country = {
 		limit = {
 			has_law = law_type:law_purchased_officers
-			NOT = { has_law = law_type:law_peasant_levies }
+			NOT = { has_law_or_variant = law_type:law_peasant_levies }
 		}
 		every_interest_group = {
 			limit = {
