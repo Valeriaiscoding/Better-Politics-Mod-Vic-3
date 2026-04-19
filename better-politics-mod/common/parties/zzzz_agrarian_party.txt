@@ -622,10 +622,7 @@ REPLACE:agrarian_party = {
 			limit = {
 				owner = {
 					any_primary_culture = {
-						OR = {
-							has_discrimination_trait = tradition_nordic # UltraCD compat bandaid
-							has_discrimination_trait = heritage_nordic
-						}
+						has_discrimination_trait = heritage_nordic
 					}
 				}
 				OR = {
