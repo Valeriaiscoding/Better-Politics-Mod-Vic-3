@@ -130,8 +130,6 @@
  bpm_decorative_ban_socialists_plus_desc:0 "Determines which parties are [Concept('concept_bpm_party_ban', 'banned')]."
  bpm_decorative_modify_throughput_per_workplace_safety_investment:0 "[concept_building] [concept_throughput] per [GetInstitutionType('institution_workplace_safety').GetName] [Concept('concept_institution', 'Institution')] Level"
  building_bpm_modify_sol_per_workplace_safety_investment:0 "[concept_sol] per [GetInstitutionType('institution_workplace_safety').GetName] [Concept('concept_institution', 'Institution')] Level"
- bpm_decorative_work_time_less_effective_in_slave_states:0 "Less Effective in Slave States"
- bpm_decorative_work_time_less_effective_in_slave_states_desc:0 "In $SLAVE_STATE$s effect of this [Concept('concept_law', 'law')] does not apply to [Concept('concept_building', 'Buildings')] that can replace their workforce with [GetPopType('slaves').GetName]"
  bpm_decorative_work_time_less_effective_with_traditional_agriculture:0 "Less Efficent with Traditional Agriculture"
  bpm_decorative_work_time_less_effective_with_traditional_agriculture_desc:0 "If country has any variant of [GetLawType('law_serfdom').GetName] or [GetLawType('law_tenant_farmers').GetName] [Concept('concept_law', 'law')] enacted, effect of this law won't include buildings in [GetBuildingGroup('bg_staple_crops').GetName], [GetBuildingGroup('bg_ranching').GetName], and [GetBuildingGroup('bg_plantations').GetName] [Concept('concept_building_group', 'Building Groups')]."
  law_syndicalism:0 "Syndicalism"
