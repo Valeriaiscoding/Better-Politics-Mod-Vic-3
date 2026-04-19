@@ -8144,6 +8144,7 @@ REPLACE:ideology_sovereignist_leader = { # For colonised peoples
 	lawgroup_policing = {
 		law_local_police = approve
 		law_no_police = neutral
+		law_elected_police = neutral
 		law_dedicated_police = disapprove
 		law_militarized_police = strongly_disapprove
 	}	
@@ -8163,9 +8164,9 @@ REPLACE:ideology_sovereignist_leader = { # For colonised peoples
 	
 	lawgroup_citizenship = {
 		law_ethnostate = strongly_disapprove
-		law_national_supremacy = disapprove
+		law_national_supremacy = neutral
 		law_racial_segregation = strognly_disapprove
-		law_cultural_exclusion = neutral
+		law_cultural_exclusion = approve
 		law_multicultural = approve	
 		law_subjecthood = strongly_disapprove
 	}
@@ -8179,6 +8180,10 @@ REPLACE:ideology_sovereignist_leader = { # For colonised peoples
 		law_extraction_economy = strongly_diapprove
 		law_industry_banned = strongly_diapprove
 		law_agrarianism = disapprove
+		law_cooperative_ownership = disapprove
+		law_laissez_faire = neutral
+		law_interventionism = approve
+		law_command_economy = approve
 	}
 
 	lawgroup_repeatable_politics = {

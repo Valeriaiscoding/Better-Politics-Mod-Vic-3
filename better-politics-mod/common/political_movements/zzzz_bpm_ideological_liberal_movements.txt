@@ -17,6 +17,7 @@ REPLACE:movement_modernizer = {
 	
 	creation_trigger = {
 		has_technology_researched = academia
+		country_has_laws_in_need_of_modernization = yes
 		trigger_if = {
 			limit = { this ?= c:JAP }
 			has_variable = meiji_var
@@ -150,6 +151,17 @@ REPLACE:movement_modernizer = {
 			is_pop_type = clergymen
 			is_pop_type = peasants
 			is_pop_type = slaves
+		}
+		NAND = {
+			owner = {
+				country_is_colonial_or_company = yes
+				any_political_movement = {
+					is_political_movement_type = movement_utilitarian
+				}
+			}
+			culture = {
+				has_discrimination_trait_group = heritage_group_european
+			}
 		}
 	}
 
@@ -2668,6 +2680,7 @@ movement_national_liberal = {
 	}	
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
+		bpm_set_nat_lib_movement_core_ideology = yes
 	}
 	disband_trigger = {
 		OR = {

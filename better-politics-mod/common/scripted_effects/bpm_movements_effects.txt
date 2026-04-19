@@ -871,3 +871,28 @@ bpm_create_necessary_movements = {
 	}
 
 }
+
+bpm_set_nat_lib_movement_core_ideology = {
+	if = {
+		limit = { 
+			owner = {
+				bpm_country_laws_has_colonial_government = yes
+			}
+		}
+		set_core_ideology = ideology_sta_sovereignist
+	}
+	else_if = {
+		limit = {
+			owner = {
+				OR = {
+					bpm_country_is_pre_modern_absolutist = yes
+					bpm_country_laws_have_traditional_economics = yes
+				}
+			}
+		}		
+		set_core_ideology = ideology_sta_revolutionary_nationalist
+	}
+	else = {
+		set_core_ideology = ideology_sta_national_liberal
+	}
+}
