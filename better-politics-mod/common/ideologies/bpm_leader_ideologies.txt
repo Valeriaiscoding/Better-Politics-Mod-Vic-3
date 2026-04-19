@@ -3506,6 +3506,7 @@ REPLACE:ideology_fascist = {
 		law_armed_neutrality = strongly_disapprove
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
+		law_no_independent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_culture = {
@@ -5702,6 +5703,10 @@ ideology_tridemism = {
 		law_isolationism = neutral
 	}
 
+	lawgroup_foreign_policy = {
+		law_no_independent_foreign_policy = strongly_disapprove
+	}
+
 	lawgroup_repeatable_economy = {
 		law_repeatable_economy_liberalization = neutral
 		law_repeatable_economy_agricultural_investment = approve
@@ -7135,6 +7140,7 @@ REPLACE:ideology_bonapartist = {
 		law_armed_neutrality = disapprove
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
+		law_no_indpendent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -7431,6 +7437,7 @@ ideology_revolutionary_hawk = {
 		law_armed_neutrality = disapprove
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
+		law_no_indpendent_foreign_policy = strongly_disapprove
 	}
 	
 	interest_group_leader_trigger = {
@@ -7797,6 +7804,14 @@ REPLACE:ideology_sovereignist_leader = { # For colonised peoples
 		law_cultural_exclusion = neutral
 		law_multicultural = approve	
 		law_subjecthood = disapprove
+	}
+
+	lawgroup_distribution_of_power = {
+		law_colonial_administration = strongly_disapprove
+	}
+
+	lawgroup_foreign_policy = {
+		law_no_indpendent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_politics = {
