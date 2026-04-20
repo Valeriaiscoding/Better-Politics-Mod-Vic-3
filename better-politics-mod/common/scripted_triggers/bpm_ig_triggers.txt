@@ -500,6 +500,9 @@ bpm_ig_is_nationalist = {
 			has_ideology = ideology:ideology_cit_ethnonationalist
 			has_ideology = ideology:ideology_cit_nationalist
 			has_ideology = ideology:ideology_cit_multiethnic_nationalist
+			leader = {
+				bpm_leader_is_ethnonationalist = yes
+			}
 		}
 	}
 }
@@ -511,6 +514,9 @@ bpm_ig_is_segregationist = {
 			has_ideology = ideology:ideology_cit_colonial_segregationist
 			has_ideology = ideology:ideology_cit_segregationist
 			has_ideology = ideology:ideology_cit_ethnonationalist
+			leader = {
+				bpm_leader_is_segregationist = yes
+			}
 		}
 	}
 }
@@ -534,6 +540,7 @@ bpm_ig_is_very_sexist = {
 			has_ideology = ideology:ideology_fem_moderate_patriarchal
 			leader ?= { 
 				has_ideology = ideology:ideology_traditionalist
+				has_ideology = ideology:ideology_traditionalist_minoritarian
 			}
 		}
 	}
