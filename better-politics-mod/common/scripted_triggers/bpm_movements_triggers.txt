@@ -90,6 +90,7 @@ bpm_movement_is_progressive_liberal = {
         is_political_movement_type = movement_radical
         is_political_movement_type = movement_royalist_constitutional
         is_political_movement_type = movement_feminist
+        has_core_ideology = ideology:ideology_sta_revolutionary_nationalist
         #bpm_movement_is_pan_nationalist = yes
         #bpm_movement_is_modernizer = yes
     }
@@ -99,7 +100,7 @@ bpm_movement_is_regressive_liberal = {
     OR = {
         is_political_movement_type = movement_orleanist
         is_political_movement_type = movement_bonapartist
-        is_political_movement_type = movement_national_liberal
+        has_core_ideology = ideology:ideology_sta_national_liberal
         is_political_movement_type = movement_market_liberal
     }
 }
@@ -123,6 +124,9 @@ bpm_movement_is_anti_monarchy = {
         bpm_movement_is_socialist = yes
         is_political_movement_type = movement_radical
     }
+    NOR = {
+        is_political_movement_type = movement_labor
+    }
 }
 
 bpm_movement_is_abolitionist = {
@@ -130,7 +134,8 @@ bpm_movement_is_abolitionist = {
         is_political_movement_type = movement_anti_slavery
         is_political_movement_type = movement_slave_revolt
         is_political_movement_type = movement_utilitarian
-        bpm_movement_is_left_wing = yes
+        is_political_movement_type = movement_land_reform
+        #bpm_movement_is_left_wing = yes
     }
     NOT = {
         is_political_movement_type = movement_labor
@@ -172,17 +177,29 @@ bpm_movement_is_pan_nationalist = {
     }
 }
 
-bpm_movement_is_nationalist = {
+bpm_movement_is_nationalist = { 
     OR = {
-        is_political_movement_type = movement_national_liberal
-        bpm_movement_is_pan_nationalist = yes
+        bpm_movement_is_liberal_nationalist = yes
         is_political_movement_type = movement_legitimist
         is_political_movement_type = movement_bonapartist
         is_political_movement_type = movement_reactionary
         is_political_movement_type = movement_cultural_majority
         is_political_movement_type = movement_hindu_nationalist
         is_political_movement_type = movement_muslim_nationalist
-        is_political_movement_type = movement_dominican_national
+    }
+}
+
+bpm_movement_is_national_supremacist = {
+    OR = {
+        bpm_movement_is_pan_nationalist = yes
+        is_political_movement_type = movement_national_liberal
+        is_political_movement_type = movement_legitimist
+        is_political_movement_type = movement_bonapartist
+        is_political_movement_type = movement_reactionary
+        is_political_movement_type = movement_cultural_majority
+    }
+    NOT = {
+        has_core_ideology = ideology:ideology_sta_sovereignist
     }
 }
 
@@ -223,6 +240,7 @@ bpm_movement_is_monarchist_progressive = {
 
 bpm_movement_is_modernizer = {
     OR = {
+        has_core_ideology = ideology:ideology_sta_sovereignist
         is_political_movement_type = movement_india_pan_national
         is_political_movement_type = movement_modernizer
         is_political_movement_type = movement_kaikoku
@@ -254,6 +272,7 @@ bpm_movement_is_minority = {
 bpm_movement_is_moralist = {
     OR = {
         is_political_movement_type = movement_religious_majority
+        has_core_ideology = ideology:ideology_cit_integralist
         is_political_movement_type = movement_miguelist
         is_political_movement_type = movement_carlist
         is_political_movement_type = movement_legitimist
