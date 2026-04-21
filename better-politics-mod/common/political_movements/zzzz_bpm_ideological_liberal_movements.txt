@@ -191,16 +191,46 @@ REPLACE:movement_modernizer = {
 
 		if = {
 			limit = {
-				is_pop_type = capitalists
+				owner = { has_variable = wargoal_enforced_by_recognized_power }
 			}
 			add = {
-				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_modernizer_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
+				desc = "wargoal_pressed_by_recognized_power_tt"
+				if = {
+					limit = { is_pop_type = capitalists }
+					value = 16
 				}
+				else_if = {
+					limit = { is_pop_type = aristocrats }
+					value = 12
+				}
+				else_if = {
+					limit = { is_pop_type = officers }
+					value = 16
+				}
+				else_if = {
+					limit = { is_pop_type = bureaucrats }
+					value = 16
+				}
+				else_if = {
+					limit = { strata = middle }
+					add = 12
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				is_pop_type = capitalists
+			}
+			
+			add = {
+				value = 24
 				desc = "POP_CAPITALISTS"    
-            }
+			}
+			multiply = {
+				value = owner.bpm_consciousness_modernizer_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
 		}
 		else_if = {
 			limit = {
@@ -208,11 +238,11 @@ REPLACE:movement_modernizer = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_modernizer_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_modernizer_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -300,11 +330,11 @@ REPLACE:movement_modernizer = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_modernizer_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_modernizer_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -314,11 +344,11 @@ REPLACE:movement_modernizer = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_modernizer_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_modernizer_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -327,11 +357,11 @@ REPLACE:movement_modernizer = {
 			}
 			add = {
 				value = 18
-				multiply = {
-					value = owner.bpm_consciousness_modernizer_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_modernizer_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -340,11 +370,11 @@ REPLACE:movement_modernizer = {
 			}
 			add = {
 				value = 18
-				multiply = {
-					value = owner.bpm_consciousness_modernizer_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_modernizer_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -431,29 +461,6 @@ REPLACE:movement_modernizer = {
 	}
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
-		if = {
-			limit = {
-				owner = {
-					has_variable = wargoal_enforced_by_recognized_power
-				}
-			}
-			add = {
-				desc = "wargoal_pressed_by_recognized_power_tt"
-				value = 0.10
-			}
-		}
-		if = {
-			limit = {
-				owner = {
-					has_technology_researched = nationalism
-					is_country_type = unrecognized
-				}
-			}
-			add = {
-				desc = "unrecognized"
-				value = 0.10
-			}
-		}
 	}		
 }
 
@@ -576,11 +583,12 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
+				
 				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -589,11 +597,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -604,11 +612,12 @@ REPLACE:movement_royalist_constitutional = {
 
 			add = {
 				value = 36
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
+				
 				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -617,11 +626,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -630,11 +639,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -643,11 +652,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -656,11 +665,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -669,11 +678,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -683,11 +692,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -696,11 +705,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 18
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -709,11 +718,11 @@ REPLACE:movement_royalist_constitutional = {
 			}
 			add = {
 				value = 18
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -722,9 +731,7 @@ REPLACE:movement_royalist_constitutional = {
 				owner ?= {
 					has_law = law_type:law_monarchy
 				}
-				owner.ruler ?= {
-					NOT = { has_trait = trait_child }
-				}
+				has_gov_regency = no
 			}
 			multiply = { # Constitutionalists are less reliant on the monarchs popularity than absolutists
 				add = owner.ruler.popularity
@@ -740,9 +747,7 @@ REPLACE:movement_royalist_constitutional = {
 				owner ?= {
 					has_law = law_type:law_monarchy
 				}
-				owner.ruler ?= {
-					has_trait = trait_child
-				}
+				has_gov_regency = yes
 			}
 			multiply = {
 				value = 0.75
@@ -1059,11 +1064,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1072,11 +1077,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1087,11 +1092,11 @@ REPLACE:movement_liberal = {
 
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1100,11 +1105,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1113,11 +1118,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1126,11 +1131,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1139,11 +1144,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1152,11 +1157,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1166,11 +1171,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1179,11 +1184,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 18
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1192,11 +1197,11 @@ REPLACE:movement_liberal = {
 			}
 			add = {
 				value = 18
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1506,11 +1511,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1519,12 +1524,12 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 12
-				multiply = {
+				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
 					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
 					desc = BPM_LIBERAL_CONSCIOUSNESS
 				}
-				desc = "POP_SHOPKEEPERS"
-			}
 		}
 
 		if = {
@@ -1534,11 +1539,11 @@ REPLACE:movement_radical = {
 
 			add = {
 				value = 1
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1547,11 +1552,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1560,11 +1565,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1573,11 +1578,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1586,11 +1591,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1599,11 +1604,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1613,11 +1618,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1626,11 +1631,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1639,11 +1644,11 @@ REPLACE:movement_radical = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_liberal_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_liberal_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1938,11 +1943,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1951,11 +1956,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1966,11 +1971,11 @@ REPLACE:movement_feminist = {
 
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1979,11 +1984,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1992,11 +1997,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2005,11 +2010,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2018,11 +2023,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2031,11 +2036,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -2045,12 +2050,12 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 6
-				multiply = {
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
 					value = owner.bpm_consciousness_marknat_movement_others
 					desc = BPM_LIBERAL_CONSCIOUSNESS
 				}
-				desc = "POP_BUREAUCRATS"
-			}
 		}
 		else_if = {
 			limit = {
@@ -2058,11 +2063,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_FARMERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2071,11 +2076,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 36
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2084,11 +2089,11 @@ REPLACE:movement_feminist = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}	
 		min = 0
@@ -2162,8 +2167,33 @@ REPLACE:movement_feminist = {
 			value = 1000
 		}		
 	}
+	
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
+		owner = {
+			add = {
+				desc = "[GetActiveLawFromGroup('lawgroup_rights_of_women').GetName]"
+				if = {
+					limit = {
+						has_law_or_variant = law_type:law_no_womens_rights
+					}
+					value = 0.4
+				}
+				else_if = {
+					limit = {
+						has_law_or_variant = law_type:law_women_own_property
+					}
+					value = 0.2
+				}
+				else_if = {
+					limit = {
+						has_law_or_variant = law_type:law_women_in_the_workplace
+					}
+					value = 0.1
+				}
+			}
+		}
+		
 		if = {
 			limit = {
 				law_stance = {
@@ -2386,11 +2416,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2399,11 +2429,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -2414,11 +2444,11 @@ movement_market_liberal = {
 
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2427,11 +2457,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2440,11 +2470,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2453,11 +2483,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2466,11 +2496,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2479,11 +2509,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -2493,11 +2523,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2506,11 +2536,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2519,11 +2549,11 @@ movement_market_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -2803,7 +2833,17 @@ movement_national_liberal = {
 	}
 
 	pop_support_trigger = {
-		pop_acceptance >= acceptance_status_3
+		trigger_if = { # TODO fix
+			limit = {
+				owner = { 
+					bpm_country_laws_has_colonial_government = yes
+				}
+			}
+			pop_has_primary_culture = no
+		}
+		trigger_else = {
+			pop_acceptance >= acceptance_status_3
+		}
 		NOR = {
 			is_pop_type = clergymen
 			is_pop_type = peasants
@@ -2842,11 +2882,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2855,14 +2895,13 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SHOPKEEPERS"
 			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
 		}
-
 		if = {
 			limit = {
 				is_pop_type = aristocrats
@@ -2870,11 +2909,11 @@ movement_national_liberal = {
 
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2883,11 +2922,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2896,11 +2935,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2909,11 +2948,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2922,11 +2961,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2935,11 +2974,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 24
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -2949,11 +2988,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2962,11 +3001,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_others
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_FARMERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2975,11 +3014,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 6
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -2988,11 +3027,11 @@ movement_national_liberal = {
 			}
 			add = {
 				value = 12
-				multiply = {
-					value = owner.bpm_consciousness_marknat_movement_academics_engineers
-					desc = BPM_LIBERAL_CONSCIOUSNESS
-				}
 				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}		
 		min = 0
@@ -3015,10 +3054,21 @@ movement_national_liberal = {
 				desc = "POP_ACTIVE_NATIONAL_AWAKENING"
 			}
 		}
-		multiply = {
-			value = 0.012
-			multiply = pop_acceptance
-			desc = "ACCEPTANCE"
+		if = { #
+			limit = { owner = { bpm_country_laws_has_colonial_government = yes } }
+			multiply = {
+				value = 160
+				subtract = pop_acceptance
+				multiply = 0.01
+				desc = "ACCEPTANCE"
+			}
+		}
+		else = {
+			multiply = {
+				value = 0.012
+				multiply = pop_acceptance
+				desc = "ACCEPTANCE"
+			}
 		}
 		if = {
 			limit = {

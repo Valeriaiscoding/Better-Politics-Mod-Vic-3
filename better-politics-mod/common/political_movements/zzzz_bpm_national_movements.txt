@@ -1,4 +1,4 @@
-REPLACE:movement_hindu_nationalist = {
+﻿REPLACE:movement_hindu_nationalist = {
 	category = movement_category_religious
 	
 	ideology = ideology_traditionalist_minoritarian
@@ -275,47 +275,6 @@ REPLACE:movement_hindu_nationalist = {
 	
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
-		if = {
-			limit = {
-				owner = {
-					is_subject = yes
-				}
-			}
-			add = {
-				desc = "INDIA_SUBJECT"
-				if = {
-					limit = {
-						owner = {
-							OR = {
-								is_subject_type = subject_type_colony
-								is_subject_type = subject_type_chartered_company
-							}
-						}
-					}
-					value = 0.15
-				}
-				if = {
-					limit = {
-						owner = {
-							is_subject_type = subject_type_dominion
-						}
-					}
-					value = 0.05
-				}
-			}
-		}	
-		if = {
-			limit = {
-				owner = {
-					is_subject = yes
-				}
-			}
-			add = {
-				desc = "LIBERTY_DESIRE"
-				value = owner.liberty_desire
-				divide = 500
-			}
-		}
 	}
 }
 
@@ -594,47 +553,6 @@ REPLACE:movement_muslim_nationalist = {
 	}
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
-		if = {
-			limit = {
-				owner = {
-					is_subject = yes
-				}
-			}
-			add = {
-				desc = "INDIA_SUBJECT"
-				if = {
-					limit = {
-						owner = {
-							OR = {
-								is_subject_type = subject_type_colony
-								is_subject_type = subject_type_chartered_company
-							}
-						}
-					}
-					value = 0.15
-				}
-				if = {
-					limit = {
-						owner = {
-							is_subject_type = subject_type_dominion
-						}
-					}
-					value = 0.05
-				}
-			}
-		}	
-		if = {
-			limit = {
-				owner = {
-					is_subject = yes
-				}
-			}
-			add = {
-				desc = "LIBERTY_DESIRE"
-				value = owner.liberty_desire
-				divide = 500
-			}
-		}
 
 		if = {
 			limit = {

@@ -4,6 +4,8 @@ bpm_additional_radicalism_factors = {
 	add = bpm_additional_radicalism_factors_institutions
 	add = bpm_additional_radicalism_factors_diplomacy
 	add = bpm_additional_radicalism_factors_law_enactment
+	add = bpm_additional_radicalism_factors_events
+	add = bpm_additional_radicalism_factors_geopolitics
 	#multiply = bpm_additional_radicalism_factor_popular_support_factors
 }
 
@@ -11,34 +13,16 @@ bpm_additional_radicalism_factors_regime = {
 	if = {
 		limit = {
 			OR = {
-				bpm_movement_is_nationalist = yes
-				bpm_movement_is_modernizer = yes
-				bpm_movement_is_socialist = yes
-			}
-			owner = { 
-				bpm_country_laws_has_colonial_government = yes
-			}
-		}
-		add = {
-			desc = "HAS_COLONIAL_LAWS"
-			add = 0.3
-		}
-
-	}
-	else_if = {
-		limit = {
-			OR = {
 				bpm_movement_is_socialist = yes
 				bpm_movement_is_liberal_bourgeois = yes
 			}
-			owner = { OR = {
+			owner = { 
 				bpm_country_is_pre_constitutional = yes
-				bpm_country_is_pre_modern_absolutist = yes
-			} }
+			}
 		}
 		add = {
 			desc = "IS_PRE_MODERN_ABSOLUTIST"
-			value = 0.3
+			value = 0.2
 		}
 	}
 	else_if = {
@@ -53,7 +37,7 @@ bpm_additional_radicalism_factors_regime = {
 		}
 		add = {
 			desc = "ANTIFASCISM"
-			value = 0.3
+			value = 0.2
 		}
 	}
 	else_if = {
@@ -65,7 +49,7 @@ bpm_additional_radicalism_factors_regime = {
 		}
 		add = {
 			desc = "VERY_UNDEMOCRATIC"
-			value = 0.25
+			value = 0.2
 		}
 	}
 	else_if = {
@@ -73,60 +57,11 @@ bpm_additional_radicalism_factors_regime = {
 			owner = { 
 				bpm_country_laws_are_moderately_undemocratic = yes
 			}
-			bpm_movement_is_liberal_bourgeois = yes
+			bpm_movement_is_progressive_liberal = yes
 		}
 		add = {
 			desc = "MODERATLY_UNDEMOCRATIC"
 			value = 0.2
-			if = {
-				limit = { bpm_movement_is_progressive_liberal = no }
-				add = -0.1
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			owner = { bpm_country_laws_unfair_voting = yes }
-			bpm_movement_is_progressive_liberal = yes
-		}
-		add = {
-			desc = "UNFAIR_VOTING"
-			value = 0.15
-		}
-	}
-	else_if = {
-		limit = {
-			owner = { 
-				bpm_country_laws_are_liberal_democratic = no
-			}
-			bpm_movement_is_progressive_liberal = yes
-		}
-		add = {
-			desc = "NOT_LIBERAL_DEMOCRATIC"
-			value = 0.1
-		}
-	}
-	
-	if = {
-		limit = {
-			is_political_movement_type = movement_communist
-			has_global_variable = first_intl_chain_complete_var
-			owner = { NOT = { has_law_or_variant = law_type:law_council_republic } }
-		}
-		add = {
-			desc = "COMMUNISTS_FIST_INTERNATIONAL"
-			value = 0.2
-		}
-	}
-	if = {
-		limit = {
-			is_political_movement_type = movement_communist
-			has_global_variable = second_intl_chain_complete_var
-			owner = { NOT = { has_law_or_variant = law_type:law_council_republic } }
-		}
-		add = {
-			desc = "COMMUNISTS_SECOND_INTERNATIONAL"
-			value = 0.2 
 		}
 	}
 
@@ -134,19 +69,31 @@ bpm_additional_radicalism_factors_regime = {
 		limit = {
 			OR = {
 				bpm_movement_is_modernizer = yes
+				bpm_movement_is_socialist = yes
 				bpm_movement_is_liberal_nationalist = yes
+			}
+			owner = { has_law_or_variant = law_type:law_extraction_economy }
+		}
+		add = {
+			desc = "law_extraction_economy"
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				bpm_movement_is_modernizer = yes
 			}
 			owner = { country_has_laws_in_need_of_modernization = yes }
 		}
 		add = {
 			desc = "WE_MUST_MODERNIZE"
-			value = 0.25
+			value = 0.2
 		}
 	}
-	else_if = {
+	if = {
 		limit = {
 			OR = {
-				bpm_movement_is_liberal_nationalist = yes
 				bpm_movement_is_laissez_faire = yes
 				bpm_movement_is_modernizer = yes
 			}
@@ -156,10 +103,10 @@ bpm_additional_radicalism_factors_regime = {
 		}
 		add = {
 			desc = "TRADITIONAL_ECONOMIC_SYSTEM"
-			add = 0.2
+			add = 0.1
 		}
 	}
-	else_if = {
+	if = { # TODO Remove maybe
 		limit = {
 			bpm_movement_is_laissez_faire = yes
 		}
@@ -167,11 +114,12 @@ bpm_additional_radicalism_factors_regime = {
 			limit = { owner = { bpm_country_laws_are_very_capitalist = no } }
 			add = {
 				desc = "NOT_FREE_MARKET" 
-				value = 0.2
+				value = 0.1
 			}
 		}
 	}
-	else_if = {
+
+	if = {
 		limit = {
 			bpm_movement_is_abolitionist = yes
 			owner = { bpm_country_has_unfree_labor = yes }
@@ -179,13 +127,9 @@ bpm_additional_radicalism_factors_regime = {
 		add = {
 			desc = "OPPOSES_SLAVERY"
 			value = 0.2 
-			if = {
-				limit = { owner = { has_law_or_variant = law_type:law_slave_trade } }
-				add = 0.1
-			}
 		}
 	}
-	else_if = {
+	if = {
 		limit = {
 			bpm_movement_is_slaver = yes
 			owner = { 
@@ -197,13 +141,10 @@ bpm_additional_radicalism_factors_regime = {
 		}
 		add = {
 			desc = "SUPPORTS_SLAVERY"
-			value = 0.2 
-			if = {
-				limit = { owner = { has_law_or_variant = law_type:law_slavery_banned } }
-				add = 0.1
-			}
+			value = 0.2
 		}
 	}
+
 	if = {
 		limit = {
 			OR = {
@@ -228,16 +169,22 @@ bpm_additional_radicalism_factors_regime = {
 				is_political_movement_type = movement_fascist
 				is_political_movement_type = movement_reactionary
 			}
-			owner = { OR = {
-				bpm_country_laws_are_liberal_democratic = yes
-				bpm_country_laws_are_moderately_liberal_democratic = yes
-			} }
+			owner = { 
+				OR = {
+					bpm_country_laws_are_liberal_democratic = yes
+					bpm_country_laws_are_moderately_liberal_democratic = yes
+				} 
+			}
 		}
 		add = {
 			desc = "ANTI_DEMOCRATIC"
 			value = 0.2
 		}
 	}
+
+
+
+	# Governance Principle
 	if = {
 		limit = {
 			bpm_movement_is_restorationist = yes
@@ -258,10 +205,17 @@ bpm_additional_radicalism_factors_regime = {
 			value = 0.2
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
 			bpm_movement_is_anti_monarchy = yes
 			owner = { bpm_country_is_republic = no }
+			NOT = {
+				is_political_movement_type = movement_anarchist
+			}
+			NAND = {
+				is_political_movement_type = movement_communist
+				owner = { has_variable = first_intl_chain_complete_var }
+			}
 		}
 		add = {
 			desc = "REPUBLICAN_MOVEMENT"
@@ -269,48 +223,24 @@ bpm_additional_radicalism_factors_regime = {
 		}
 	}
 
-	if = {
-		limit = {
-			is_political_movement_type = movement_feminist
-			bpm_country_laws_are_patriarchal = yes
-		}
-		add = {
-			desc = "Patriachal laws"
-			value = 0.2
-		}
-	}
-
-	if = {
-		limit = {
-			bpm_movement_is_nationalist = yes
-			bpm_movement_is_minority = no
-			owner = {
-				OR = {
-					bpm_country_laws_are_racist = no
-				}
-			}
-		}
-		add = {
-			desc = "NOT_RACISTS_LAWS"
-			value = 0.2
-		}
-	}
-	
+	# Misc
 	if = {
 		limit = {
 			OR = {
-				is_political_movement_type = movement_religious_minority
-				is_political_movement_type = movement_hindu_nationalist
-				is_political_movement_type = movement_muslim_nationalist
+				bpm_movement_is_liberal_nationalist = yes
+				bpm_movement_is_national_supremacist = yes
 			}
-			bpm_movement_is_minority = yes
-			owner = { bpm_country_laws_are_moralist = yes }
+			owner.ruler ?= {
+				NOT = { culture = { is_primary_culture_of = root.owner } }
+			}
 		}
+
 		add = {
-			desc = "RELIGIOUS_MINORITY"
-			value = 0.2
+			value = 0.02
+			desc = "RULER_NOT_PRIMARY_CULTURE"
 		}
 	}
+
 }
 
 bpm_additional_radicalism_factors_institutions = {
@@ -318,8 +248,12 @@ bpm_additional_radicalism_factors_institutions = {
 		limit = {
 			OR = {
 				bpm_movement_is_liberal_bourgeois = yes
-				#bpm_movement_is_moderate_socialist = yes
-				is_political_movement_type = movement_utilitarian
+				bpm_movement_is_moderate_socialist = yes
+				bpm_movement_is_modernizer = yes
+				AND = {
+					owner = { has_law_or_variant = law_type:law_council_republic }
+					bpm_movement_is_radical_socialist = yes
+				}
 			}
 		}
 		owner = {
@@ -328,6 +262,10 @@ bpm_additional_radicalism_factors_institutions = {
 					
 					add = {
 						value = 3
+						if = {
+							limit = { root = { bpm_movement_is_radical_socialist = yes } }
+							add = 1
+						}
 						subtract = "institution_investment_level(institution_schools)"
 						multiply = 0.05
 						desc = "INSTITUTION_FUNDING_LEVEL_schools"
@@ -343,9 +281,11 @@ bpm_additional_radicalism_factors_institutions = {
 	}
 	if = {
 		limit = {
-			bpm_movement_is_socialist = yes
 			OR = {
-				owner = { has_law_or_variant = law_type:law_council_republic}
+				AND = {
+					owner = { has_law_or_variant = law_type:law_council_republic }
+					bpm_movement_is_radical_socialist = yes
+				}
 				bpm_movement_is_moderate_socialist = yes
 			}
 		}
@@ -355,6 +295,10 @@ bpm_additional_radicalism_factors_institutions = {
 				
 				add = {
 					value = 3
+					if = {
+						limit = { root = { bpm_movement_is_radical_socialist = yes } }
+						add = 1
+					}
 					subtract = "institution_investment_level(institution_social_security)"
 					multiply = 0.05
 					desc = "INSTITUTION_FUNDING_LEVEL_social_security"
@@ -363,6 +307,10 @@ bpm_additional_radicalism_factors_institutions = {
 			else = {
 				add = {
 					value = 0.1
+					if = {
+						limit = { root = { bpm_movement_is_radical_socialist = yes } }
+						value = 0.2
+					}
 					desc = "NO_INSTITUTION_social_security"
 				}		
 			}				
@@ -372,6 +320,10 @@ bpm_additional_radicalism_factors_institutions = {
 				
 				add = {
 					value = 3
+					if = {
+						limit = { root = { bpm_movement_is_radical_socialist = yes } }
+						add = 1
+					}
 					subtract = "institution_investment_level(institution_workplace_safety)"
 					multiply = 0.05
 					desc = "INSTITUTION_FUNDING_LEVEL_workplace_safety"
@@ -380,6 +332,10 @@ bpm_additional_radicalism_factors_institutions = {
 			else = {
 				add = {
 					value = 0.1
+					if = {
+						limit = { root = { bpm_movement_is_radical_socialist = yes } }
+						value = 0.2
+					}
 					desc = "NO_INSTITUTION_workplace_safety"
 				}		
 			}
@@ -464,7 +420,7 @@ bpm_additional_radicalism_factors_institutions = {
 			}
 		}
 	}
-	if = {
+	if = { # Maybe cut suffrage will be removed anyway
 		limit = {
 			owner = { 
 				is_ai = no
@@ -476,7 +432,11 @@ bpm_additional_radicalism_factors_institutions = {
 				limit = {
 					ROOT = {
 						OR = {
-							bpm_movement_is_socialist = yes
+							bpm_movement_is_moderate_socialist = yes
+							AND = {
+								bpm_movement_is_radical_socialist = yes
+								owner = { has_law_or_variant = law_type:law_council_republic }
+							}
 							bpm_movement_is_progressive_liberal = yes
 						}
 					}
@@ -490,18 +450,6 @@ bpm_additional_radicalism_factors_institutions = {
 			}
 			else_if = {
 				limit = {
-					ROOT = { bpm_movement_is_regressive_liberal = yes }
-					bpm_country_laws_ok_voting = yes
-				}
-				add = {
-					value = -3
-					add = "institution_investment_level(institution_suffrage)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_suffrage"
-				}
-			}
-			else_if = {
-				limit = {
 					ROOT = { 
 						OR = {
 							bpm_movement_is_absolutist_monarchist = yes
@@ -509,23 +457,23 @@ bpm_additional_radicalism_factors_institutions = {
 							is_political_movement_type = movement_fascist
 						}
 					}
-					OR = {
-						bpm_country_laws_unfair_voting = yes
-						bpm_country_laws_ok_voting = yes
-					}
 				}
 				add = {
 					add = "institution_investment_level(institution_suffrage)"
-					multiply = 0.03
+					multiply = 0.05
 					desc = "INSTITUTION_FUNDING_LEVEL_suffrage"
 				}
 			}
 		}
 		
 	}
+
 	if = {
 		limit = {
-			bpm_movement_is_liberal_nationalist = yes
+			OR = {
+				bpm_movement_is_liberal_nationalist = yes
+				bpm_movement_is_modernizer = yes
+			}
 		}
 		owner = {
 			if = {
@@ -534,8 +482,8 @@ bpm_additional_radicalism_factors_institutions = {
 				}
 				
 				add = {
-					value = -3
-					add = "institution_investment_level(institution_centralization)"
+					value = 3
+					subtract = "institution_investment_level(institution_centralization)"
 					if = {
 						limit = { is_ai = yes }
 						min = 0
@@ -549,18 +497,23 @@ bpm_additional_radicalism_factors_institutions = {
 					value = 0.1
 					desc = "NO_INSTITUTION_centralization"
 				}		
-			}		
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			bpm_movement_is_liberal_nationalist = yes
+			owner = {
+				NOT = { has_law_or_variant = law_type:law_council_republic }
+				bpm_country_laws_has_colonial_government = no
+			}
+		}
+		owner = {		
 			if = {
 				limit = { 
-					NOT = { has_law_or_variant = law_type:law_council_republic }
-					bpm_country_laws_has_colonial_government = no
-					trigger_if = {
-						limit = {
-							bpm_movement_is_regressive = yes
-						}
-						bpm_country_is_fascist = yes
-					}
-					trigger_else = {
+					OR = {
+						root = { bpm_movement_is_regressive = yes }
 						bpm_country_laws_are_very_undemocratic = no
 					}
 				}
@@ -570,8 +523,8 @@ bpm_additional_radicalism_factors_institutions = {
 					}
 					
 					add = {
-						value = -3
-						add = "institution_investment_level(institution_police)"
+						value = 3
+						subtract = "institution_investment_level(institution_police)"
 						multiply = 0.05
 						desc = "INSTITUTION_FUNDING_LEVEL_police"
 					}
@@ -587,13 +540,13 @@ bpm_additional_radicalism_factors_institutions = {
 						has_institution = institution_culture
 						OR = {
 							NOT = { has_law_or_variant = law_type:law_outlawed_dissent }
-							bpm_movement_is_regressive = yes # Fascists effectively
+							root = { bpm_movement_is_regressive = yes }
 						}
 					}
 					
 					add = {
-						value = -3
-						add = "institution_investment_level(institution_culture)"
+						value = 3
+						subtract = "institution_investment_level(institution_culture)"
 						multiply = 0.05
 						desc = "INSTITUTION_FUNDING_LEVEL_culture"
 					}
@@ -606,7 +559,6 @@ bpm_additional_radicalism_factors_institutions = {
 				}
 				
 			}
-			
 		}
 	}	
 
@@ -617,33 +569,41 @@ bpm_additional_radicalism_factors_institutions = {
 		owner = {
 			if = {
 				limit = { 
-					has_institution = institution_centralization
+					has_institution = institution_economy
+					NOR = {
+						has_law_or_variant = law_type:law_traditionalism
+						has_law_or_variant = law_type:law_extraction_economy
+					}
+				}
+				
+				add = {
+					value = 2
+					subtract = "institution_investment_level(institution_economy)"
+					multiply = 0.05
+					desc = "INSTITUTION_FUNDING_LEVEL_economy"
+				}
+			}
+			
+		}
+	}
+	if = {
+		limit = {
+			NOT = { is_political_movement_type = movement_reformist_socialist }
+			bpm_movement_is_socialist = yes
+			owner = { has_law = law_type:law_council_republic }
+		}
+		owner = {
+			if = {
+				limit = { 
+					bpm_country_laws_has_socialist_economics = yes
+					trigger_if = {
+						limit = { ROOT = { is_political_movement_type = movement_anarchist } }
+						has_law_or_variant = law_type:law_cooperative_ownership
+					}
 				}
 				
 				add = {
 					value = -3
-					add = "institution_investment_level(institution_centralization)"
-					if = {
-						limit = { is_ai = yes }
-						min = 0
-					}
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_centralization"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_centralization"
-				}		
-			}
-			if = {
-				limit = { 
-					has_institution = institution_economy
-				}
-				
-				add = {
-					value = -1
 					add = "institution_investment_level(institution_economy)"
 					multiply = 0.05
 					desc = "INSTITUTION_FUNDING_LEVEL_economy"
@@ -652,17 +612,16 @@ bpm_additional_radicalism_factors_institutions = {
 			else = {
 				add = {
 					value = 0.1
-					desc = "NO_INSTITUTION_economy"
+					desc = "NO_SOCIALIST_ECONOMY"
 				}		
 			}
 			
 		}
 	}
-
 }
 
 bpm_additional_radicalism_factors_diplomacy = {
-	# Diplomacy
+	# Catholic Movements and Pope
 	if = {
 		limit = {
 			OR = {
@@ -671,6 +630,7 @@ bpm_additional_radicalism_factors_diplomacy = {
 				is_political_movement_type = movement_carlist
 				is_political_movement_type = movement_legitimist
 				AND = {
+					is_political_movement_type = movement_reactionary
 					owner = { 
 						OR = {
 							country_has_state_religion = rel:catholic
@@ -680,13 +640,8 @@ bpm_additional_radicalism_factors_diplomacy = {
 							}
 						}
 					}
-					OR = {
-						bpm_movement_is_absolutist_monarchist = yes
-						is_political_movement_type = movement_reactionary
-					}
 				}
 			}
-			
 			exists = c:PAP
 			c:PAP ?= {
 				country_has_state_religion = rel:catholic
@@ -699,6 +654,210 @@ bpm_additional_radicalism_factors_diplomacy = {
 			value = "owner.relations(c:PAP)"
 			divide = 100
 			multiply = -0.25
+		}
+	}
+	# Subjects
+	if = {
+		limit = {
+			owner ?= {
+				is_subject = yes
+			}
+			OR = {
+				bpm_movement_is_nationalist = yes
+				AND = {
+					is_political_movement_type = movement_cultural_minority
+					owner = { has_law_or_variant = law_type:law_colonial_administration }
+				}
+				# AND = {
+				# 	bpm_movement_is_radical_socialist = yes
+				# 	owner = { NOT = { has_law = law_type:law_council_republic } }
+				# }
+			}
+			NAND = { 
+				owner = { has_law_or_variant = law_type:law_colonial_administration }
+				is_political_movement_type = movement_cultural_majority
+			}
+			
+		} 
+		add = {
+			desc = "[concept_subject]"
+			if = {
+				limit = {
+					owner ?= {
+						OR = {
+							is_subject_type = subject_type_puppet
+							is_subject_type = subject_type_crown_land
+							is_subject_type = subject_type_vassal
+						}
+					}
+				}
+				value = 0.25
+			}
+			if = {
+				limit = {
+					owner ?= {
+						OR = {
+							is_subject_type = subject_type_tributary
+							is_subject_type = subject_type_protectorate
+							is_subject_type = subject_type_personal_union
+						}
+					}
+				}
+				value = 0.10
+			}
+		}
+		add = {
+			desc = "INDIA_SUBJECT"
+			if = {
+				limit = {
+					owner ?= {
+						OR = {
+							is_subject_type = subject_type_colony
+							is_subject_type = subject_type_chartered_company
+						}
+					}
+				}
+				value = 0.25
+			}
+			if = {
+				limit = {
+					owner ?= {
+						is_subject_type = subject_type_dominion
+					}
+				}
+				value = 0.10
+			}
+		}
+		add = {
+			desc = "LIBERTY_DESIRE"
+			value = owner.liberty_desire
+			divide = 500
+		}
+	}	
+
+	if = {
+		limit = {
+			OR = {
+				bpm_movement_is_modernizer = yes
+				bpm_movement_is_nationalist = yes
+			}
+			owner = { is_country_type = unrecognized }
+		}
+		if = {
+			limit = {
+				owner = {
+					has_variable = wargoal_enforced_by_recognized_power
+				}
+			}
+			add = {
+				desc = "wargoal_pressed_by_recognized_power_tt"
+				value = 0.10
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = nationalism
+				}
+			}
+			add = {
+				desc = "unrecognized"
+				value = 0.10
+			}
+		}
+	}
+
+}
+
+bpm_additional_radicalism_factors_geopolitics = {
+	# German states under foreing control
+	if = {
+		limit = { is_political_movement_type = movement_german_national }
+		add = {
+			desc = "German [concept_homeland]s Under Foreign Control"
+			every_state_region = {
+				limit = {
+					any_scope_state = {
+						any_scope_culture = {
+							OR = {
+								this ?= cu:north_german
+								this ?= cu:south_german
+							}
+							has_homeland = prev
+						}
+						owner = { 
+							NOR = {
+								country_has_primary_culture = cu:south_german
+								country_has_primary_culture = cu:north_german
+							}
+						}
+						
+					}
+				}
+				add = 0.05
+			}
+			max = 0.25
+		}
+	}
+	if = {
+		limit = { is_political_movement_type = movement_italian_national }
+		add = {
+			desc = "Italian [concept_homeland]s Under Foreign Control"
+			every_state_region = {
+				limit = {
+					any_scope_state = {
+						any_scope_culture = {
+							OR = {
+								this ?= cu:north_italian
+								this ?= cu:south_italian
+							}
+							has_homeland = prev
+						}
+						owner = { 
+							NOR = {
+								country_has_primary_culture = cu:north_italian
+								country_has_primary_culture = cu:south_italian
+							}
+						}
+						
+					}
+				}
+				add = 0.05
+			}
+			max = 0.25
+		}
+	}
+
+	if = {
+		limit = { is_political_movement_type = movement_yugoslav_national }
+		add = {
+			desc = "Yugoslav [concept_homeland]s Under Foreign Control"
+			every_state_region = {
+				limit = {
+					any_scope_state = {
+						any_scope_culture = {
+							OR = {
+								this ?= cu:serb
+								this ?= cu:croat
+								this ?= cu:bosniak
+								this ?= cu:slovene
+							}
+							has_homeland = prev
+						}
+						owner = { 
+							NOR = {
+								country_has_primary_culture = cu:serb
+								country_has_primary_culture = cu:croat
+								country_has_primary_culture = cu:bosniak
+								country_has_primary_culture = cu:slovene
+							}
+						}
+						
+					}
+				}
+				add = 0.03
+			}
+			max = 0.3
 		}
 	}
 }
@@ -778,37 +937,76 @@ bpm_additional_radicalism_factors_law_enactment = {
 		}
 	}
 }
-# bpm_additional_radicalism_factor_popular_support_factors = {
-# 	value = 1
-# 	if = {
-# 		limit = {
-# 			NOR = {
-# 				#is_political_movement_type = movement_cultural_majority
-# 				#is_political_movement_type = movement_religious_majority
-# 				#is_political_movement_type = movement_hindu_nationalist
-# 				is_political_movement_type = movement_cultural_minority
-# 				is_political_movement_type = movement_religious_minority
-# 				is_political_movement_type = movement_muslim_nationalist
-# 			}
-# 		}
-# 		if = {
-# 			limit = {
-# 				political_movement_support <= 0.01
-# 			}
-# 			multiply = {
-# 				value = 0.25
-# 				desc = "VERY_LOW_MOVEMENT_SUPPORT"
-# 			}
-# 		}
-# 		else_if = {
-# 			limit = {
-# 				political_movement_support < 0.05
-# 			}
-# 			multiply = {
-# 				multiply = 0.66	
-# 				desc = "LOW_MOVEMENT_SUPPORT"
-# 			}
-# 		}
-# 	}
-	
-# }
+
+bpm_additional_radicalism_factors_events = {
+	if = {
+		limit = {
+			is_political_movement_type = movement_communist
+			owner = { NOT = { has_law_or_variant = law_type:law_council_republic } }
+		}
+		if = {
+			limit = {
+				has_global_variable = second_intl_chain_complete_var
+			}
+			add = {
+				desc = "COMMUNISTS_SECOND_INTERNATIONAL"
+				value = 0.4 
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_variable = first_intl_chain_complete_var
+			}
+			add = {
+				desc = "COMMUNISTS_FIST_INTERNATIONAL"
+				value = 0.2
+			}
+		}
+	}	
+	if = {
+		limit = { 
+			is_political_movement_type = movement_cultural_minority
+			owner = { has_journal_entry = je_springtime_of_the_peoples } 
+			scope:culture = { has_discrimination_trait_group = heritage_group_european }
+		}
+		add = {
+			value = 0.25
+			desc = "SPRINGTIME_OF_THE_PEOPLES_UNDERWAY"
+		}
+	}	
+}
+
+bpm_additional_radicalism_factor_popular_support_factors = {
+	value = 1
+	if = {
+		limit = {
+			NOR = {
+				#is_political_movement_type = movement_cultural_majority
+				#is_political_movement_type = movement_religious_majority
+				#is_political_movement_type = movement_hindu_nationalist
+				is_political_movement_type = movement_cultural_minority
+				is_political_movement_type = movement_minority_rights
+				is_political_movement_type = movement_religious_minority
+				is_political_movement_type = movement_muslim_nationalist
+			}
+		}
+		if = {
+			limit = {
+				political_movement_support <= 0.01
+			}
+			multiply = {
+				value = 0.33
+				desc = "VERY_LOW_MOVEMENT_SUPPORT"
+			}
+		}
+		else_if = {
+			limit = {
+				political_movement_support <= 0.05
+			}
+			multiply = {
+				multiply = 0.75	
+				desc = "LOW_MOVEMENT_SUPPORT"
+			}
+		}
+	}
+}

@@ -1,7 +1,7 @@
-REPLACE:movement_cultural_majority = {
+﻿REPLACE:movement_cultural_majority = {
 	category = movement_category_cultural_majority
 	
-	ideology = ideology_ethno_nationalist
+	ideology = ideology_ethno_nationalist_movement
 	character_ideologies = {
 		ideology_ethno_nationalist
 	}
@@ -445,19 +445,7 @@ REPLACE:movement_cultural_majority = {
 	}
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				owner.ruler ?= {
-					NOT = { culture = { is_primary_culture_of = root.owner } }
-				}
-			}		
-
-			add = {
-				value = 0.1
-				desc = "RULER_NOT_PRIMARY_CULTURE"
-			}
-		}
+		add = bpm_additional_radicalism_factors
 
 		add = {
 			value = "owner.average_sol"
@@ -504,28 +492,28 @@ REPLACE:movement_cultural_minority = {
 	creation_trigger = {}
 
 	can_pressure_interest_group = {
-		OR = {
-			has_ideology = ideology:ideology_cit_placeholder
-			AND = {
-				scope:political_movement = { has_ideology:ideology_pluralist_movement_4 }
-				bpm_ig_is_internationalist = yes
+		trigger_if = {
+			limit = { scope:political_movement = { has_core_ideology = ideology:ideology_pluralist_movement_1 } }
+			NOT = { has_ideology = ideology:ideology_cit_ethnonationalist }
+			leader ?= { bpm_leader_is_ethnonationalist = no }
+		}
+		trigger_if = {
+			limit = { scope:political_movement = { has_core_ideology = ideology:ideology_pluralist_movement_2 } }
+			bpm_ig_is_segregationist = no
+		}
+		trigger_if = {
+			limit = { scope:political_movement = { has_core_ideology = ideology:ideology_pluralist_movement_3 } }
+			bpm_ig_is_segregationist = no
+			OR = {
+				bpm_ig_is_nationalist = no
+				has_ideology = ideology:ideology_cit_liberal_nationalist
+				has_ideology = ideology:ideology_cit_immigrant_nationalist
+				has_ideology = ideology:ideology_cit_multiethnic_nationalist
 			}
-			AND = {
-				scope:political_movement = { has_ideology:ideology_pluralist_movement_3 }
-				OR = {
-					has_ideology = ideology:ideology_cit_liberal_nationalist
-					has_ideology = ideology:ideology_cit_immigrant_nationalist
-					has_ideology = ideology:ideology_cit_multiethnic_nationalist
-				}
-			}
-			AND = {
-				scope:political_movement = { has_ideology:ideology_pluralist_movement_2 }
-				bpm_ig_is_segregationist = no
-			}
-			AND = {
-				scope:political_movement = { has_ideology:ideology_pluralist_movement_1 }
-				NOT = { has_ideology = ideology:ideology_cit_ethnonationalist }
-			}
+		}
+		trigger_if = {
+			limit = { scope:political_movement = { has_core_ideology = ideology:ideology_pluralist_movement_4 } }
+			bpm_ig_is_nationalist = no
 		}
 	}
 	creation_weight = {
@@ -1130,24 +1118,24 @@ REPLACE:movement_cultural_minority = {
 						is_being_bolstered = yes
 					}
 				}
-        }
-        if = {
-            limit = {
-                scope:political_movement = {
-                    is_being_suppressed = yes
-                }
-            }
-            multiply = {
-                value = bpm_movement_suppression_attraction_impact
-                desc = "concept_suppressed"
-            }
-        }
-        else = {
-            multiply = {
-                value = bpm_movement_bolster_attraction_impact
-                desc = "concept_bolstered"
+			}
+			if = {
+				limit = {
+					scope:political_movement = {
+						is_being_suppressed = yes
+					}
+				}
+				multiply = {
+					value = bpm_movement_suppression_attraction_impact
+					desc = "concept_suppressed"
 				}
 			}
+			else = {
+				multiply = {
+					value = bpm_movement_bolster_attraction_impact
+					desc = "concept_bolstered"
+					}
+				}
 		}
 	}
 
@@ -1202,7 +1190,13 @@ REPLACE:movement_cultural_minority = {
 				limit = {
 					c:BIC ?= owner
 				}
-				is_indian_interest_group = yes
+				NOR = {
+					is_interest_group_type = ig_industrialists
+					is_interest_group_type = ig_market_liberals
+					is_interest_group_type = ig_conservatives
+					is_interest_group_type = ig_armed_forces
+					is_interest_group_type = ig_reactionaries
+				}
 			}
 			trigger_else_if = {
 				limit = {
@@ -1210,9 +1204,8 @@ REPLACE:movement_cultural_minority = {
 						country_is_colonial_or_company = yes
 					}
 				}
-				NOT = {
-					has_ideology = ideology:ideology_colonialist
-				}
+				bpm_ig_is_metropole_loyalist = no
+				bpm_ig_is_state_institutional = no
 			}
 			trigger_else = { # For example - the Austrian Aristocracy can only secede with a Polish uprising if the leader of the IG is Polish
 				leader = { culture = scope:political_movement.culture }
@@ -1229,18 +1222,37 @@ REPLACE:movement_cultural_minority = {
 	}
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = { 
-				owner = { has_journal_entry = je_springtime_of_the_peoples } 
-				scope:culture = { has_discrimination_trait_group = heritage_group_european }
+		add = bpm_additional_radicalism_factors
+		add = {
+			desc = "[GetActiveLawFromGroup('lawgroup_citizenship').GetName]" # TODO IM Stupid 
+			if = {
+				limit = {
+					law_stance = {
+						law = owner.active_law:lawgroup_citizenship
+						value = strongly_disapprove
+					}
+				}
+				add = 0.3
 			}
-			add = {
-				value = 0.25
-				desc = "SPRINGTIME_OF_THE_PEOPLES_UNDERWAY"
+			else_if = {
+				limit = {
+					law_stance = {
+						law = owner.active_law:lawgroup_citizenship
+						value = disapprove
+					}
+				}
+				add = 0.2
 			}
-		}	
-	
+			else_if = {
+				limit = {
+					law_stance = {
+						law = owner.active_law:lawgroup_citizenship
+						value = neutral
+					}
+				}
+				add = 0.1
+			}
+		}
 		add = {
 			value = "owner.average_sol"
 			subtract = "owner.average_sol_for_culture(scope:culture)"
@@ -1295,6 +1307,7 @@ REPLACE:movement_cultural_minority = {
 					desc = "DISCRIMINATION_LEVEL_open_prejudice"
 				}
 			}
+		
 		}
 
 		if = {
@@ -1753,7 +1766,7 @@ REPLACE:movement_minority_rights = {
 	active_law_radicalism_multiplier = 2
 
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
+		add = bpm_additional_radicalism_factors
 		if = {
 			limit = {
 				owner = {

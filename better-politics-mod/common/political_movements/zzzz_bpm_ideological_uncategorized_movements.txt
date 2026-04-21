@@ -1,4 +1,4 @@
-# Completed: RSKHM (1 cookie point)
+﻿# Completed: RSKHM (1 cookie point)
 REPLACE:movement_anti_slavery = {
 	category = movement_category_ideological
 	can_have_slave_supporters = yes
@@ -1081,13 +1081,35 @@ REPLACE:movement_positivist = {
 		#bpm_country_is_latin_american = yes
 	}	
 	creation_weight = {
-		value = 10
+		value = 25
 		if = {
 			limit = {
 				has_technology_researched = philosophical_pragmatism
 			}
 			add = {
-				value = 100
+				value = 50
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					country_has_state_religion = rel:catholic
+					has_law_or_variant = law_type:law_state_atheism
+				}
+			}
+			add = {
+				value = 50
+			}
+		}
+		if = { # Catholicism without God
+			limit = {
+				NOR = {
+					country_has_state_religion = rel:catholic
+					root.country_definition.religion = rel:catholic
+				}
+			}
+			add = {
+				value = -100
 			}
 		}
 		if = {
@@ -1114,6 +1136,7 @@ REPLACE:movement_positivist = {
 
 	can_pressure_interest_group = {
 		bpm_ig_is_right_wing = no
+		bpm_ig_is_moralist = no
 	}
 	
 	character_support_trigger = {
@@ -1523,7 +1546,8 @@ REPLACE:movement_utilitarian = {
 	can_pressure_interest_group = {
 		OR = {
 			bpm_ig_is_liberal_conservative = yes
-			bpm_ig_is_upper_institutional = yes
+			is_interest_group_type = ig_industrialists
+			bpm_ig_is_state_institutional = yes
 		}
 	}
 
