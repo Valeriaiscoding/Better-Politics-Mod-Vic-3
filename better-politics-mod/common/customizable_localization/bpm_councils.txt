@@ -73,7 +73,7 @@
 	}
 	text = {
 		trigger = {
-			any_primary_culture = { has_discrimination_trait = heritage_han }
+			any_primary_culture = { has_discrimination_trait = language_mandarin }
 		}
 		localization_key = bpm_council_chinese
 	}
