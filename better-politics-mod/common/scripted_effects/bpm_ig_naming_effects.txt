@@ -1479,6 +1479,18 @@ bpm_rename_reactionary_ig = {
 			ig:ig_reactionaries ?= { set_interest_group_name = ig_unionists }
 		}
 		else_if = {
+			limit = {
+				NOR = {
+					has_variable = monarchy_stamped_out_var
+					AND = {
+						OR = {
+							has_variable = orleanist_restoration_var
+							has_variable = bonapartist_restoration_var
+						}
+						has_variable = one_true_french_dynasty
+					}
+				}
+			}
 			ig:ig_reactionaries ?= { set_interest_group_name = ig_legitimists }
 		}
 	}
@@ -1493,6 +1505,9 @@ bpm_rename_reactionary_ig = {
 			OR = {
 				this = c:SPA
 				this = c:SPC
+			}
+			NOT = {
+				has_variable = stamped_out_monarchy_var
 			}
 		}
 		ig:ig_reactionaries ?= { set_interest_group_name = ig_carlists }
