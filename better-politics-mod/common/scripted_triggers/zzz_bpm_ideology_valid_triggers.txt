@@ -657,10 +657,10 @@ REPLACE:ideology_utilitarian_leader_valid_trigger = {
 REPLACE:ideology_sovereignist_leader_valid_trigger = {
 	bpm_interest_group_is_activated = yes
 	bpm_ig_is_upper_institutional = no
-	NOT = { is_interest_group_type = ig_reactionaries }
-	NAND = {
-		owner = {country_is_colonial_or_company = yes}
-		bpm_ig_is_state_institutional = yes
+	bpm_ig_is_metropole_loyalist = no
+	bpm_ig_is_state_institutional = no
+	NOT = {
+		is_interest_group_type = ig_reactionaries
 	}
 }
 
@@ -869,6 +869,7 @@ REPLACE:ideology_ilustrado_leader_valid_trigger = { # TODO
 		c:PHI ?= owner
 		bpm_interest_group_is_activated = yes
 		bpm_ig_is_upper_institutional = no
+		bpm_ig_is_religious = no
 		NOT = { is_interest_group_type = ig_reactionaries }
 		NAND = {
 			owner = {country_is_colonial_or_company = yes}

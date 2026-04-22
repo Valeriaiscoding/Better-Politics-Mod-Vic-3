@@ -54,18 +54,8 @@ colonial_administration_events.1 = {
 		custom_tooltip = {
 			text = colonial_administration_events.1_tt_1
 			scope:newly_formed_colonial_nation_scope = {
-				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_oligarchy
-				activate_law = law_type:law_racial_segregation
-				activate_law = law_type:law_extraction_economy
-				activate_law = law_type:law_colonial_exploitation
-				activate_law = law_type:law_no_schools
-				activate_law = law_type:law_no_health_system
-				activate_law = law_type:law_censorship
-				activate_law = law_type:law_no_workers_rights
-				activate_law = law_type:law_child_labor_allowed
-				activate_law = law_type:law_no_social_security
-				activate_law = law_type:law_migration_controls
+				bpm_country_activate_colonial_laws = yes
+				bpm_set_colony_law = yes
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
@@ -74,6 +64,7 @@ colonial_administration_events.1 = {
 				name = resource_extraction_charter_modifier
 				days = very_long_modifier_time
 			}
+			bpm_setup_country = yes
 			ig:ig_industrialists = {
 				if = {
 					limit = {
@@ -82,30 +73,6 @@ colonial_administration_events.1 = {
 					remove_ideology = ideology_laissez_faire
 					add_ideology = ideology_colonialist
 				}
-				bpm_remove_all_gov_ideologies = yes
-				add_ideology = ideology_gov_liberal_republican
-				bpm_remove_all_dop_ideologies = yes
-				add_ideology = ideology_dop_meritocratic_autocrat
-				bpm_remove_all_eco_ideologies = yes
-				add_ideology = ideology_eco_colonialist
-				bpm_remove_all_wel_ideologies = yes
-				add_ideology = ideology_wel_market_welfare
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_colonial_segregationist
-				bpm_reorder_ideologies = yes
-			}
-			ig:ig_petty_bourgeoisie = {
-				bpm_remove_all_gov_ideologies = yes
-				add_ideology = ideology_gov_liberal_republican
-				bpm_remove_all_dop_ideologies = yes
-				add_ideology = ideology_dop_oligarch
-				bpm_remove_all_eco_ideologies = yes
-				add_ideology = ideology_eco_colonialist
-				bpm_remove_all_wel_ideologies = yes
-				add_ideology = ideology_wel_market_welfare
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_colonial_segregationist
-				bpm_reorder_ideologies = yes
 			}
 		}
 		every_interest_group = {
@@ -145,19 +112,10 @@ colonial_administration_events.1 = {
 		custom_tooltip = {
 			text = colonial_administration_events.1_tt_2
 			scope:newly_formed_colonial_nation_scope = {
-				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_oligarchy
-				activate_law = law_type:law_racial_segregation
-				activate_law = law_type:law_extraction_economy
-				activate_law = law_type:law_colonial_exploitation
+				bpm_country_activate_colonial_laws = yes
 				activate_law = law_type:law_state_religion
 				activate_law = law_type:law_religious_schools
-				activate_law = law_type:law_no_health_system
-				activate_law = law_type:law_censorship
-				activate_law = law_type:law_no_workers_rights
-				activate_law = law_type:law_child_labor_allowed
-				activate_law = law_type:law_no_social_security
-				activate_law = law_type:law_migration_controls
+				bpm_set_colony_law = yes
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
@@ -166,6 +124,7 @@ colonial_administration_events.1 = {
 				name = religious_missions_colonial_modifier
 				days = very_long_modifier_time
 			}
+			bpm_setup_country = yes
 			ig:ig_industrialists = {
 				if = {
 					limit = {
@@ -174,34 +133,26 @@ colonial_administration_events.1 = {
 					remove_ideology = ideology_laissez_faire
 					add_ideology = ideology_colonialist
 				}
-				bpm_remove_all_gov_ideologies = yes
-				add_ideology = ideology_gov_liberal_republican
-				bpm_remove_all_dop_ideologies = yes
-				add_ideology = ideology_dop_meritocratic_autocrat
-				bpm_remove_all_eco_ideologies = yes
-				add_ideology = ideology_eco_colonialist
 				bpm_remove_all_wel_ideologies = yes
 				add_ideology = ideology_wel_religious_welfare
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_colonial_segregationist
 				bpm_remove_all_rel_ideologies = yes
 				add_ideology = ideology_rel_radical_moralist
 				bpm_reorder_ideologies = yes
 			}
 			ig:ig_petty_bourgeoisie = {
-				bpm_remove_all_gov_ideologies = yes
-				add_ideology = ideology_gov_liberal_republican
-				bpm_remove_all_dop_ideologies = yes
-				add_ideology = ideology_dop_oligarch
-				bpm_remove_all_eco_ideologies = yes
-				add_ideology = ideology_eco_colonialist
 				bpm_remove_all_wel_ideologies = yes
 				add_ideology = ideology_wel_religious_welfare
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_colonial_segregationist
 				bpm_remove_all_rel_ideologies = yes
 				add_ideology = ideology_rel_radical_moralist
 				bpm_reorder_ideologies = yes
+			}
+			ig:ig_devout = {
+				bpm_remove_all_dop_ideologies = yes
+				add_ideology = ideology_dop_metropole_loyalist
+				bpm_remove_all_cit_ideologies = yes
+				add_ideology = ideology_cit_colonial_segregationist
+				bpm_reorder_ideologies = yes
+				add_ideology = ideology_colonialist
 			}
 		}
 		every_interest_group = {
@@ -230,22 +181,15 @@ colonial_administration_events.1 = {
 		custom_tooltip = {
 			text = colonial_administration_events.1_tt_3
 			scope:newly_formed_colonial_nation_scope = {
-				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_oligarchy
-				activate_law = law_type:law_racial_segregation
+				bpm_country_activate_colonial_laws = yes
 				activate_law = law_type:law_agrarianism
 				activate_law = law_type:law_colonial_resettlement
-				activate_law = law_type:law_no_schools
-				activate_law = law_type:law_no_health_system
-				activate_law = law_type:law_censorship
-				activate_law = law_type:law_no_workers_rights
-				activate_law = law_type:law_child_labor_allowed
-				activate_law = law_type:law_no_social_security
-				activate_law = law_type:law_migration_controls
+				bpm_set_colony_law = yes
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
 			set_strategy = ai_strategy_colonial_extraction
+			bpm_setup_country = yes
 			add_modifier = {
 				name = settlement_campaigns_modifier
 				days = very_long_modifier_time
@@ -286,19 +230,12 @@ colonial_administration_events.1 = {
 		custom_tooltip = {
 			text = colonial_administration_events.1_tt_4
 			scope:newly_formed_colonial_nation_scope = {
-				activate_law = law_type:law_presidential_republic
-				activate_law = law_type:law_autocracy
-				activate_law = law_type:law_racial_segregation
-				activate_law = law_type:law_extraction_economy
-				activate_law = law_type:law_colonial_exploitation
-				activate_law = law_type:law_no_schools
-				activate_law = law_type:law_no_health_system
+				bpm_country_activate_colonial_laws = yes
 				activate_law = law_type:law_outlawed_dissent
-				activate_law = law_type:law_no_workers_rights
-				activate_law = law_type:law_child_labor_allowed
-				activate_law = law_type:law_no_social_security
-				activate_law = law_type:law_migration_controls
 				activate_law = law_type:law_slave_trade
+				activate_law = law_type:law_party_reactionary_only
+
+				bpm_set_colony_law = yes
 			}
 		}
 		scope:newly_formed_colonial_nation_scope = {
@@ -307,6 +244,7 @@ colonial_administration_events.1 = {
 				name = resource_extraction_colony_modifier
 				days = very_long_modifier_time
 			}
+			bpm_setup_country = yes
 			ig:ig_industrialists = {
 				if = {
 					limit = {
@@ -315,29 +253,20 @@ colonial_administration_events.1 = {
 					remove_ideology = ideology_laissez_faire
 					add_ideology = ideology_colonialist
 				}
-				bpm_remove_all_gov_ideologies = yes
-				add_ideology = ideology_gov_liberal_republican
-				bpm_remove_all_dop_ideologies = yes
-				add_ideology = ideology_dop_meritocratic_autocrat
-				bpm_remove_all_eco_ideologies = yes
-				add_ideology = ideology_eco_slave_colonialist
-				bpm_remove_all_wel_ideologies = yes
-				add_ideology = ideology_wel_market_welfare
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_colonial_segregationist
+				bpm_remove_all_sta_ideologies = yes
+				add_ideology = ideology_sta_security_state
 				bpm_reorder_ideologies = yes
 			}
 			ig:ig_petty_bourgeoisie = {
-				bpm_remove_all_gov_ideologies = yes
-				add_ideology = ideology_gov_liberal_republican
-				bpm_remove_all_dop_ideologies = yes
-				add_ideology = ideology_dop_meritocratic_autocrat
+				bpm_remove_all_sta_ideologies = yes
 				bpm_remove_all_eco_ideologies = yes
 				add_ideology = ideology_eco_slave_colonialist
-				bpm_remove_all_wel_ideologies = yes
-				add_ideology = ideology_wel_market_welfare
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_colonial_segregationist
+				add_ideology = ideology_sta_security_state
+				bpm_reorder_ideologies = yes
+			}
+			ig:ig_armed_forces = {
+				bpm_remove_all_sta_ideologies = yes
+				add_ideology = ideology_sta_security_state
 				bpm_reorder_ideologies = yes
 			}
 		}

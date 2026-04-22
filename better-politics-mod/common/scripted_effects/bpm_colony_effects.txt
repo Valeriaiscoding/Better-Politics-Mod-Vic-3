@@ -1,11 +1,34 @@
-﻿bpm_set_colony_law = {
+bpm_set_colony_law = {
     activate_law = law_type:law_colonial_administration
+    activate_law = law_type:law_presidential_republic
     set_variable = bpm_on_col_adm
     if = {
         limit = {
-            NOT = { is_subject_type = subject_type_colony }
+            NOR = { 
+                is_subject_type = subject_type_chartered_company
+                is_subject_type = subject_type_colony
+            }
         }
         change_subject_type = subject_type_colony
+    }
+    if = {
+        limit = { is_subject_type = subject_type_chartered_company }
+        set_country_type = company
+    }
+    else = {
+        set_country_type = colonial
+    }
+    active_law:lawgroup_citizenship ?= {
+        if = {
+            limit = { 
+                type = law_type:law_subjecthood
+                NOT = { has_amendment = amendment_type:amendment_racialized_subjecthood }  
+            }
+            add_amendment = {
+                type = amendment_racialized_subjecthood
+                sponsor = PREV.ig:ig_armed_forces
+            }
+        }
     }
 }
 
@@ -103,4 +126,28 @@ bpm_colony_reset_primary_culture = {
     }
 
     remove_variable = bpm_colony_primary_culture_set_to_overlord
+}
+
+bpm_country_activate_colonial_laws = {
+    activate_law = law_type:law_presidential_republic
+    activate_law = law_type:law_colonial_administration
+    activate_law = law_type:law_subjecthood
+    active_law:lawgroup_citizenship ?= { # Subjecthood
+        add_amendment = {
+            type = amendment_racialized_subjecthood
+            sponsor = PREV.ig:ig_armed_forces
+        }
+    }
+    activate_law = law_type:law_extraction_economy
+    activate_law = law_type:law_colonial_exploitation
+    activate_law = law_type:law_no_schools
+    activate_law = law_type:law_no_health_system
+    activate_law = law_type:law_censorship
+    activate_law = law_type:law_no_workers_rights
+    activate_law = law_type:law_child_labor_allowed
+    activate_law = law_type:law_no_social_security
+    activate_law = law_type:law_migration_controls
+    activate_law = law_type:law_combination_acts
+    activate_law = law_type:law_unregulated_work_time
+    activate_law = law_type:law_professional_army
 }

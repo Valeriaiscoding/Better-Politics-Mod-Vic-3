@@ -1,0 +1,264 @@
+GLOBAL = {
+	# Colonies
+
+	every_country = {
+		limit = {
+			OR = {
+				this = c:CUB
+				this = c:PCO
+				this = c:QUE
+				this = c:ONT
+				AND = {
+					country_is_colonial_or_company = yes
+					bpm_country_laws_no_voting = yes
+				}
+			}
+		}
+		bpm_set_colony_law = yes
+	}
+
+	every_country = {
+		limit = {
+			country_is_colonial_or_company = yes
+			has_law = law_type:law_peasant_levies
+		}
+		activate_law = law_type:law_professional_army
+	}
+
+	every_country = {
+		limit = {
+			has_law_or_variant = law_type:law_colonial_administration
+		}
+		bpm_setup_country = yes
+		bpm_set_colony_primary_culture = yes
+		set_variable = {
+			name = bpm_current_overlord
+			value = top_overlord
+		}
+	}
+	
+	every_country = {
+		limit = {
+			has_law = law_type:law_extraction_economy
+		}
+		activate_law = law_type:law_combination_acts
+	}
+
+	c:DEI = {
+		activate_law = law_type:law_confederated
+		ig:ig_landowners = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_debt_serf_economy
+		}
+		ig:ig_conservatives = {
+			bpm_remove_all_rel_ideologies = yes
+			add_ideology = ideology_rel_secularist
+		}
+		ig:ig_reactionaries = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_slave_colonialist
+		}
+		ig:ig_petty_bourgeoisie = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_slave_colonialist
+		}
+		active_law:lawgroup_bureaucracy = {
+			add_amendment = {
+				type = amendment_preserved_bureaucratic_caste
+				sponsor = prev.ig:ig_landowners
+			}
+		}
+	}
+
+	c:BIC = {
+		activate_law = law_type:law_party_reactionary_only
+
+		ig:ig_petty_bourgeoisie = {
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_state_power
+			bpm_remove_all_wel_ideologies = yes
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology_cit_liberal_nationalist
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_debt_serf_economy # they would want to enact slave trade otherwise
+		}
+		ig:ig_reactionaries = {
+			bpm_remove_all_wel_ideologies = yes
+			add_ideology = ideology_wel_market_welfare
+			bpm_remove_all_rel_ideologies = yes
+			add_ideology = ideology_rel_secularist
+		}
+	}
+
+	c:QUE = {
+		add_technology_researched = egalitarianism
+		ig:ig_industrialists = {
+			add_ruling_interest_group = yes
+		}
+
+		ig:ig_conservatives ?= {
+            add_ruling_interest_group = yes
+        }
+
+		add_journal_entry = { type = je_bpm_bnap_the_question_of_british_rule }
+		add_journal_entry = { type = je_bpm_bnap_the_patriots }
+		add_journal_entry = { type = je_bpm_bnap_between_lion_and_eagle }
+	}
+
+	c:ONT = {
+		add_technology_researched = egalitarianism
+		ig:ig_industrialists = {
+			add_ruling_interest_group = yes
+		}
+
+		ig:ig_conservatives ?= {
+            add_ruling_interest_group = yes
+        }
+
+		add_journal_entry = { type = je_bpm_bnap_the_question_of_british_rule }
+		add_journal_entry = { type = je_bpm_bnap_the_patriots }
+		add_journal_entry = { type = je_bpm_bnap_between_lion_and_eagle }
+	}
+
+	c:SIL = {
+		activate_law = law_type:law_tenant_farmers
+		activate_law = law_type:law_traditional_ostracism
+
+		ig:ig_petty_bourgeoisie = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_colonialist
+		}
+		ig:ig_industrialists = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_colonialist
+		}
+		ig:ig_reactionaries = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_colonialist
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_traditional_agrarian
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_traditional_power
+		}
+		ig:ig_rural_folk = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_traditional_agrarian
+		}
+	}
+
+	c:SAF = {
+		activate_law = law_type:law_frontier_colonization
+		activate_law = law_type:law_federated # confederated?
+		ig:ig_petty_bourgeoisie = {
+			bpm_remove_all_mil_ideologies = yes
+			add_ideology = ideology_mil_frontier_expansionist
+		}
+		ig:ig_rural_folk = {
+			bpm_remove_all_mil_ideologies = yes
+			add_ideology = ideology_mil_frontier_expansionist
+		}
+		ig:ig_conservatives = {
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology_cit_segregationist
+		}
+		ig:ig_reactionaries = {
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology_cit_segregationist
+		}
+	}
+
+	c:ALK = {
+		activate_law = law_type:law_appointed_bureaucracts
+		ig:ig_devout = {
+			bpm_remove_all_dop_ideologies = yes
+			bpm_remove_all_eco_ideologies = yes
+		}
+		ig:ig_armed_forces = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_colonialist
+		}
+		every_interest_group = {
+			limit = { has_ideology = ideology:ideology_nonexistent }
+			bpm_remove_all_ideologies = yes
+			leader = {
+				set_ideology = ideology_moderate
+			}
+		}
+
+	}
+
+	# Spainish Colonies
+	every_country = {
+		limit = {
+			OR = {
+				this = c:CUB
+				this = c:PHI
+				this = c:PUE
+			}
+		}
+		activate_law = law_type:law_advisory_body
+		activate_law = law_type:law_no_separate_hog
+		ig:ig_armed_forces = {
+			bpm_remove_all_exe_ideologies = yes
+			add_ideology = ideology_exe_strong_dynamic
+		}
+		ig:ig_petty_bourgeoisie = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_colonialist
+			bpm_remove_all_exe_ideologies = yes
+			add_ideology = ideology_exe_strong_dynamic
+		}
+		ig:ig_industrialists = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_colonialist
+		}
+		ig:ig_reactionaries = {
+			bpm_remove_all_exe_ideologies = yes
+			add_ideology = ideology_exe_strong_dynamic
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_exe_ideologies = yes
+			add_ideology = ideology_exe_weak_rigid
+		}
+	}
+
+	c:CUB = {
+		activate_law = law_type:law_party_reactionary_only
+		activate_law = law_type:law_local_police
+		activate_law = law_type:law_national_guard
+		activate_law = law_type:law_unitary
+	}
+	
+	c:PHI = {
+		activate_law = law_type:law_devolved
+		activate_law = law_type:law_agrarianism
+		active_law:lawgroup_bureaucracy = {
+			add_amendment = {
+				type = amendment_preserved_bureaucratic_caste
+				sponsor = prev.ig:ig_landowners
+			}
+		}
+		ig:ig_intelligentsia = {
+			bpm_remove_all_wel_ideologies = yes
+			bpm_remove_all_rel_ideologies = yes
+			add_ideology = ideology_wel_secular_anti_welfare
+			add_ideology = ideology_rel_secularist
+		}
+	}
+
+	c:PCO = {
+		activate_law = law_type:law_agrarianism
+		activate_law = law_type:law_unitary
+	}
+
+	every_country = {
+		every_interest_group = {
+			limit = { bpm_ig_enabled = yes }
+			bpm_reorder_ideologies = yes
+		}
+	}
+}
