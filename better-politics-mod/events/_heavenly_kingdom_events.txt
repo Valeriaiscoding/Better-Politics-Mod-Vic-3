@@ -36,7 +36,11 @@ heavenly.1 = {
 					is_treaty_port = yes
 					owner = {
 						religion = {
+<<<<<<< HEAD
 							has_discrimination_trait_group = heritage_group_european
+=======
+							has_discrimination_trait = heritage_christian
+>>>>>>> ideology_again
 						}
 					}
 				}
@@ -47,7 +51,11 @@ heavenly.1 = {
 					is_treaty_port = yes
 					owner = {
 						religion = {
+<<<<<<< HEAD
 							has_discrimination_trait_group = heritage_group_european
+=======
+							has_discrimination_trait = heritage_christian
+>>>>>>> ideology_again
 						}
 					}
 				}
@@ -424,7 +432,7 @@ heavenly.3 = {
 # 				if = {
 # 					limit = {
 # 						NOT = {
-# 							has_law = law_type:law_peasant_levies
+# 							has_law_or_variant = law_type:law_peasant_levies
 # 						}
 # 					}
 # 					activate_law = law_type:law_peasant_levies
@@ -432,7 +440,7 @@ heavenly.3 = {
 # 				if = {
 # 					limit = {
 # 						NOT = {
-# 							has_law = law_type:law_national_supremacy
+# 							has_law_or_variant = law_type:law_national_supremacy
 # 						}
 # 					}
 # 					activate_law = law_type:law_national_supremacy
@@ -448,7 +456,7 @@ heavenly.3 = {
 # 				if = {
 # 					limit = {
 # 						NOT = {
-# 							has_law = law_type:law_homesteading
+# 							has_law_or_variant = law_type:law_homesteading
 # 						}
 # 					}
 # 					activate_law = law_type:law_homesteading
@@ -680,7 +688,11 @@ heavenly.5 = {
 			limit = {
 				country_rank >= rank_value:great_power
 				religion = {
+<<<<<<< HEAD
 					has_discrimination_trait_group = heritage_group_european
+=======
+					has_discrimination_trait = heritage_christian
+>>>>>>> ideology_again
 				}
 			}
 			order_by = country_rank
@@ -694,7 +706,11 @@ heavenly.5 = {
 			limit = {
 				country_rank >= rank_value:great_power
 				religion = {
+<<<<<<< HEAD
 					has_discrimination_trait_group = heritage_group_european
+=======
+					has_discrimination_trait = heritage_christian
+>>>>>>> ideology_again
 				}
 			}
 			change_relations = {
@@ -864,7 +880,11 @@ heavenly.6 = {
 			limit = {
 				country_rank >= rank_value:great_power
 				religion = {
+<<<<<<< HEAD
 					has_discrimination_trait_group = heritage_group_european
+=======
+					has_discrimination_trait = heritage_christian
+>>>>>>> ideology_again
 				}
 			}
 			change_relations = {

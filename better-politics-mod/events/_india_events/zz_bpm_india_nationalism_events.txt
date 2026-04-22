@@ -33,7 +33,7 @@ india_nationalism_events.1 = { # The Anarchy
 					is_heir = yes
 				}
 				NOT = {
-					has_socialist_ideology = yes
+					bpm_leader_is_socialist = yes
 				}
 			}
 			save_scope_as = british_politician_scope
@@ -330,7 +330,7 @@ india_nationalism_events.3 = { # The Salt March
 		any_scope_state = {
 			is_coastal = yes
 			is_incorporated = yes
-			state_is_in_india = yes
+			is_in_geographic_region = geographic_region_india
 		}
 		any_scope_character = {
 			culture = {
@@ -359,7 +359,7 @@ india_nationalism_events.3 = { # The Salt March
 				limit = {
 					is_coastal = yes
 					is_incorporated = yes
-					state_is_in_india = yes
+					is_in_geographic_region = geographic_region_india
 				}
 				save_scope_as = salt_march_state
 			}
@@ -709,8 +709,8 @@ india_nationalism_events.6 = { # India League
 		OR = {
 			any_scope_character = {
 				OR = {
-					has_socialist_ideology = yes
-					has_progressive_ideology = yes
+					bpm_leader_is_socialist = yes
+					bpm_leader_is_progressive_liberal = yes
 				}
 			}
 			exists = py:social_democrat_party
@@ -735,8 +735,8 @@ india_nationalism_events.6 = { # India League
 		random_scope_character = {
 			limit = {
 				OR = {
-					has_socialist_ideology = yes
-					has_progressive_ideology = yes
+					bpm_leader_is_socialist = yes
+					bpm_leader_is_progressive_liberal = yes
 				}
 			}
 			save_scope_as = india_league_character
@@ -911,8 +911,8 @@ india_nationalism_events.7 = { # The Condition of India
 					}
 					leader = {
 						OR = {
-							has_socialist_ideology = yes
-							has_progressive_ideology = yes
+							bpm_leader_is_socialist = yes
+							bpm_leader_is_progressive_liberal = yes
 						}
 					}
 				}
