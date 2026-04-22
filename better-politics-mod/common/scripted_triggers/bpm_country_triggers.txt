@@ -394,12 +394,11 @@ bpm_country_laws_have_max_welfare = {
 bpm_country_laws_are_very_capitalist = {
 	custom_description = {
 		text = bpm_country_laws_are_very_capitalist_desc
-		weighted_calc_true_if = {
-			amount >= 3
+		weighted_calc_true_if = { 
+			amount >= 2
 			1 = { has_law_or_variant = law_type:law_laissez_faire }
 			1 = { has_law_or_variant = law_type:law_free_trade }
 			1 = { has_law_or_variant = law_type:law_commercialized_agriculture }
-			1 = { bpm_country_laws_has_market_welfare = yes }
 		}
 	}
 }
