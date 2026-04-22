@@ -18,6 +18,7 @@ ideology_gov_absolutist_royalist = {
 		law_military_junta = neutral
 		law_landed_voting = approve
 		law_wealth_voting = neutral
+		law_organic_democracy = neutral
 		law_census_voting = disapprove
 		law_universal_suffrage = strongly_disapprove
 		law_anarchy = strongly_disapprove
@@ -29,6 +30,7 @@ ideology_gov_absolutist_royalist = {
 		law_supreme_legislature = strongly_disapprove
 	}
 }
+
 ideology_gov_constitutional_royalist = {
 	icon = "gfx/interface/icons/ideology_icons/gov_ideology/moderate_monarchist.dds"
 	priority = 1000
@@ -45,6 +47,7 @@ ideology_gov_constitutional_royalist = {
 		law_oligarchy = neutral
 		law_technocracy = neutral
 		law_military_junta = neutral
+		law_organic_democracy = neutral
 		law_landed_voting = strongly_approve
 		law_wealth_voting = strongly_approve
 		law_census_voting = neutral
@@ -97,9 +100,11 @@ ideology_gov_socialist = {
 		law_military_junta = strongly_disapprove
 		law_landed_voting = strongly_disapprove
 		law_wealth_voting = strongly_disapprove
+		law_organic_democracy = strongly_disapprove
 		law_census_voting = disapprove
 		law_universal_suffrage = approve
 		law_anarchy = neutral
+		law_colonial_administration = strongly_disapprove
 	}
 
 	lawgroup_labor_rights = {
@@ -148,9 +153,11 @@ ideology_gov_anarchist = {
 		law_military_junta = strongly_disapprove
 		law_landed_voting = strongly_disapprove
 		law_wealth_voting = strongly_disapprove
+		law_organic_democracy = strongly_disapprove
 		law_census_voting = disapprove
 		law_universal_suffrage = approve
 		law_anarchy = strongly_approve
+		law_colonial_administration = strongly_disapprove
 	}
 
 	lawgroup_centralization = {
@@ -194,10 +201,12 @@ ideology_gov_radical_liberal = {
 		law_technocracy = strongly_disapprove
 		law_military_junta = strongly_disapprove
 		law_landed_voting = strongly_disapprove
+		law_organic_democracy = strongly_disapprove
 		law_wealth_voting = disapprove
 		law_census_voting = approve
 		law_universal_suffrage = strongly_approve
 		law_anarchy = strongly_disapprove
+		law_colonial_administration = strongly_disapprove
 	}
 
     lawgroup_economic_system = {
@@ -254,9 +263,11 @@ ideology_gov_reformist_socialist = {
 		law_military_junta = strongly_disapprove
 		law_landed_voting = strongly_disapprove
 		law_wealth_voting = strongly_disapprove
+		law_organic_democracy = strongly_disapprove
 		law_census_voting = disapprove
 		law_universal_suffrage = approve
 		law_anarchy = disapprove
+		law_colonial_administration = strongly_disapprove
 	}
 
 	lawgroup_labor_rights = {
