@@ -33,7 +33,7 @@ REPLACE:lobby_pro_country = {
 			OR = {
 				NOT = { exists = scope:political_lobby }
 				scope:political_lobby ?= { 
-					any_lobby_member = { is_marginal = no } 
+					any_lobby_member = { bpm_ig_is_marginal = no } 
 				} 				
 			}
 		}
@@ -117,17 +117,14 @@ REPLACE:lobby_pro_country = {
 				leader ?= {
 					if = {
 						limit = {
-							OR = {
-								has_ideology = ideology:ideology_jingoist_leader
-								has_ideology = ideology:ideology_fascist
-							}
+							bpm_leader_is_hawkish = yes
 						}
 
 						add = 25
 					}
 					else_if = {
 						limit = {
-							has_ideology = ideology:ideology_pacifist
+							bpm_leader_is_doveish = yes
 						}
 
 						add = -25
@@ -136,10 +133,12 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						OR = {
-							has_ideology = ideology:ideology_patriotic
-							has_ideology = ideology:ideology_jingoist
-						}
+						bpm_ig_is_militaristic = yes
+						# OR = {
+						# 	has_ideology = ideology:ideology_patriotic
+						# 	has_ideology = ideology:ideology_jingoist
+						# 	has_ideology = ideology:ideology_military_absolutist
+						# }
 					}
 
 					add = 25
@@ -158,14 +157,15 @@ REPLACE:lobby_pro_country = {
 				leader ?= {
 					if = {
 						limit = {
-							has_ideology = ideology:ideology_jingoist_leader
+							bpm_leader_is_hawkish = yes
+							bpm_leader_is_fascist = no
 						}
 
 						add = 25
 					}
 					else_if = {
 						limit = {
-							has_ideology = ideology:ideology_pacifist
+							bpm_leader_is_doveish = yes
 						}
 
 						add = -25
@@ -174,7 +174,7 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_jingoist
+						bpm_ig_is_patriotic = yes
 					}
 
 					add = 25
@@ -182,7 +182,7 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_particularist
+						has_ideology = ideology:ideology_mil_antimilitarist
 					}
 
 					add = -25
@@ -201,17 +201,14 @@ REPLACE:lobby_pro_country = {
 				leader ?= {
 					if = {
 						limit = {
-							has_ideology = ideology:ideology_pacifist
+							bpm_leader_is_doveish = yes
 						}
 
 						add = 25
 					}
 					else_if = {
 						limit = {						
-							OR = {
-								has_ideology = ideology:ideology_jingoist_leader
-								has_ideology = ideology:ideology_fascist
-							}							
+							bpm_leader_is_hawkish = yes						
 						}
 
 						add = -25
@@ -220,7 +217,7 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_jingoist
+						bpm_ig_is_militaristic = yes
 					}
 
 					add = -25
@@ -229,8 +226,8 @@ REPLACE:lobby_pro_country = {
 				if = {
 					limit = {
 						OR = {
-							has_ideology = ideology:ideology_paternalistic
-							has_ideology = ideology:ideology_liberal
+							bpm_ig_is_liberal = yes
+							bpm_ig_is_traditionalist = yes
 						}
 					}
 
@@ -250,17 +247,17 @@ REPLACE:lobby_pro_country = {
 				leader ?= {
 					if = {
 						limit = {
-							OR = {
-								has_ideology = ideology:ideology_market_liberal
-								has_ideology = ideology:ideology_protectionist
-							}
+							bpm_leader_is_economic = yes
 						}
 
 						add = 25
 					}
 					else_if = {
 						limit = {
-							has_ideology = ideology:ideology_luddite
+							OR = {
+								has_ideology = ideology:ideology_luddite
+								has_ideology = ideology:ideology_reactionary_anti_capitalist
+							}
 						}
 
 						add = -25
@@ -269,7 +266,7 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_isolationist
+						bpm_ig_is_isolationist = yes
 					}
 
 					add = -25
@@ -277,7 +274,7 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_laissez_faire
+						bpm_ig_is_market_liberal = yes
 					}
 
 					add = 25
@@ -297,13 +294,19 @@ REPLACE:lobby_pro_country = {
 					if = {
 						limit = {
 							has_ideology = ideology:ideology_positivist
+							has_ideology = ideology:ideology_utilitarian
+							has_ideology = ideology:ideology_modernizer_leader
+							has_ideology = ideology:ideology_illusardo
 						}
 
 						add = 25
 					}
 					else_if = {
 						limit = {
-							has_ideology = ideology:ideology_luddite
+							OR = {
+								has_ideology = ideology:ideology_luddite
+								has_ideology = ideology:ideology_reactionary_anti_capitalist
+							}
 						}
 
 						add = -25
@@ -312,7 +315,7 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_particularist
+						bpm_ig_is_peasant = yes
 					}
 
 					add = -25
@@ -320,7 +323,11 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_meritocratic
+						OR = {
+							has_ideology = ideology:ideology_eco_modernizer
+							is_interest_group_type = ig_intelligentsia
+							bpm_ig_is_market_liberal = yes
+						}
 					}
 
 					add = 25
@@ -397,12 +404,9 @@ REPLACE:lobby_pro_country = {
 			if = {
 				limit = { 
 					OR = {
-						has_ideology = ideology:ideology_patriotic
+						bpm_ig_is_nationalist = yes
 						leader ?= {
-							OR = {
-								has_ideology = ideology:ideology_ethno_nationalist
-								has_ideology = ideology:ideology_fascist
-							}
+							bpm_leader_is_fascist = yes
 						}
 					}
 				}
@@ -423,8 +427,9 @@ REPLACE:lobby_pro_country = {
 							NOT = {
 								any_primary_culture = {
 									OR = {
-										shares_heritage_trait_with_any_primary_culture = ROOT.owner
-										shares_non_heritage_trait_with_any_primary_culture = ROOT.owner
+										shares_heritage_trait_group_with_any_primary_culture = ROOT.owner
+										shares_language_trait_group_with_any_primary_culture = ROOT.owner
+										shares_tradition_trait_with_any_primary_culture = ROOT.owner
 									}
 								}
 							}
@@ -455,10 +460,15 @@ REPLACE:lobby_pro_country = {
 			if = {
 				limit = {
 					OR = {
+						bpm_ig_is_moralist = yes
 						is_interest_group_type = ig_devout
 						leader ?= {
 							OR = {
 								has_ideology = ideology:ideology_theocrat
+								has_ideology = ideology:ideology_legitimist
+								has_ideology = ideology:ideology_integralist
+								character_has_carlist_ideology = yes
+								character_has_miguelist_ideology = yes
 								has_trait = pious
 							}
 						}
@@ -467,18 +477,41 @@ REPLACE:lobby_pro_country = {
 
 				if = {
 					limit = {
-						scope:target_country = {
-							religion = ROOT.owner.religion
+						trigger_if = {
+							limit = {
+								is_interest_group_type = ig:christian_democrats
+							}
+							scope:target_country = {
+								religion = rel:catholic
+							}
+						}
+						trigger_else = {
+							scope:target_country = {
+								religion = ROOT.owner.religion
+							}
 						}
 					}
 					add = 15
 				}
 				else_if = {
 					limit = {
-						scope:target_country.capital = {
-							state_religious_acceptance = {
-								target = ROOT.owner.religion
-								value < religious_acceptance_medium
+						trigger_if = {
+							limit = {
+								is_interest_group_type = ig:christian_democrats
+							}
+							scope:target_country.capital = {
+								state_religious_acceptance = {
+									target = rel:catholic
+									value < religious_acceptance_medium
+								}
+							}
+						}
+						trigger_else = {
+							scope:target_country.capital = {
+								state_religious_acceptance = {
+									target = ROOT.owner.religion
+									value < religious_acceptance_medium
+								}
 							}
 						}
 					}
@@ -493,6 +526,7 @@ REPLACE:lobby_pro_country = {
 						}
 						scope:target_country = {
 							country_has_state_religion = rel:catholic
+							has_law_or_variant = law_type:law_theocracy
 							c:PAP ?= THIS
 						}
 					}
@@ -519,8 +553,16 @@ REPLACE:lobby_pro_country = {
 					# Liberal
 					if = {
 						limit = {
-							ROOT = { interest_group_has_liberal_ideology = yes }
-							interest_group_has_liberal_ideology = yes
+							ROOT = { 
+								OR = {
+									bpm_ig_is_liberal = yes
+									leader = { bpm_leader_is_liberal = yes }
+								}
+							}
+							OR = {
+								bpm_ig_is_liberal = yes
+								leader = { bpm_leader_is_liberal = yes }
+							}
 						}
 						add = 25
 					}
@@ -528,8 +570,16 @@ REPLACE:lobby_pro_country = {
 					# Progressive
 					if = {
 						limit = {
-							ROOT = { interest_group_has_progressive_ideology = yes }
-							interest_group_has_progressive_ideology = yes
+							ROOT = { 
+								OR = {
+									bpm_ig_is_radical_liberal = yes
+									leader = { bpm_leader_is_radical_liberal = yes }
+								}
+							}
+							OR = {
+								bpm_ig_is_radical_liberal = yes
+								leader = { bpm_leader_is_radical_liberal = yes }
+							}
 						}
 						add = 25
 					}
@@ -537,8 +587,19 @@ REPLACE:lobby_pro_country = {
 					# Socialist
 					if = {
 						limit = {
-							ROOT = { interest_group_has_socialist_ideology = yes }
-							interest_group_has_socialist_ideology = yes
+							ROOT = { 
+								OR = {
+									bpm_ig_is_socialist = yes
+									bpm_ig_is_socialist_trade_unions = yes
+									leader = { bpm_leader_is_socialist = yes }
+									leader = {  }
+								}
+							}
+							OR = {
+								bpm_ig_is_socialist = yes
+								bpm_ig_is_socialist_trade_unions = yes
+								leader = { bpm_leader_is_socialist = yes }
+							}
 						}
 						add = 25
 					}
@@ -546,8 +607,16 @@ REPLACE:lobby_pro_country = {
 					# Reactionary
 					if = {
 						limit = {
-							ROOT = { interest_group_has_reactionary_ideology = yes }
-							interest_group_has_reactionary_ideology = yes
+							ROOT = { 
+								OR = {
+									bpm_ig_is_traditionalist = yes
+									leader = { bpm_leader_is_reactionary = yes }
+								}	
+							}
+							OR = {
+								bpm_ig_is_traditionalist = yes
+								leader = { bpm_leader_is_reactionary = yes }
+							}
 						}
 						add = 25
 					}
@@ -555,8 +624,35 @@ REPLACE:lobby_pro_country = {
 					# Conservative
 					if = {
 						limit = {
-							ROOT = { interest_group_has_conservative_ideology = yes }
-							interest_group_has_conservative_ideology = yes
+							ROOT = { 
+								OR = {
+									bpm_ig_is_moderate_conservative = yes
+									bpm_ig_is_liberal_conservative = yes
+									leader = { bpm_leader_is_conservative = yes }
+								}	
+							}
+							OR = {
+								bpm_ig_is_moderate_conservative = yes
+								bpm_ig_is_liberal_conservative = yes
+								leader = { bpm_leader_is_conservative = yes }
+							}
+						}
+						add = 25
+					}
+
+					# Fascists
+					if = {
+						limit = {
+							ROOT = { 
+								OR = {
+									bpm_ig_is_fascist = yes
+									leader = { bpm_leader_is_fascist = yes }
+								}	
+							}
+							OR = {
+								bpm_ig_is_fascist = yes
+								leader = { bpm_leader_is_fascist = yes }
+							}
 						}
 						add = 25
 					}
@@ -575,7 +671,7 @@ REPLACE:lobby_pro_country = {
 		if = {
 			limit = {
 				scope:target_country = {
-					has_law = law_type:law_council_republic
+					has_law_or_variant = law_type:law_council_republic
 				}
 			}
 
@@ -610,7 +706,7 @@ REPLACE:lobby_pro_country = {
 					NOT = { # Equals 'count'
 						law_stance = {
 							law = law_type:law_council_republic
-							value > strongly_approve
+							value = strongly_approve
 						}
 					}
 				}
@@ -622,11 +718,11 @@ REPLACE:lobby_pro_country = {
 			}
 		}
 
-		# Ideological Republicans
+		# Ideological Republicans 
 		if = {
 			limit = { 
 				OR = {
-					has_ideology = ideology:ideology_republican
+					bpm_ig_is_republican = yes
 					leader ?= {
 						OR = {
 							has_ideology = ideology:ideology_republican_leader
@@ -636,9 +732,13 @@ REPLACE:lobby_pro_country = {
 					}
 				}
 				scope:target_country = {
+					NOT = { 
+						country_is_colonial_or_company = yes
+						is_subject = yes
+					}
 					OR = {
-						has_law = law_type:law_parliamentary_republic
-						has_law = law_type:law_presidential_republic
+						has_law_or_variant = law_type:law_parliamentary_republic
+						has_law_or_variant = law_type:law_presidential_republic
 					}
 				}
 			}
@@ -651,8 +751,10 @@ REPLACE:lobby_pro_country = {
 		# French
 		if = {
 			limit = { 
-				leader ?= {
-					has_ideology = ideology:ideology_orleanist
+				OR = {
+					leader ?= {
+						has_ideology = ideology:ideology_orleanist
+					}
 				}
 				scope:target_country = {
 					country_has_primary_culture = cu:british
@@ -665,8 +767,10 @@ REPLACE:lobby_pro_country = {
 		}
 		else_if = {
 			limit = { 
-				leader ?= {
-					has_ideology = ideology:ideology_bonapartist
+				OR = {
+					leader ?= {
+						has_ideology = ideology:ideology_bonapartist
+					}
 				}
 				scope:target_country = {
 					OR = {
@@ -871,7 +975,7 @@ REPLACE:lobby_pro_country = {
 	}
 }
 
-REPLACE:lobby_anti_country = {
+REPLACE:lobby_anti_country = { # TODO
 	category = foreign_anti_country
 
 	texture = "gfx/interface/icons/political_lobby_icons/lobby_anti.dds"
@@ -906,7 +1010,7 @@ REPLACE:lobby_anti_country = {
 			OR = {
 				NOT = { exists = scope:political_lobby }
 				scope:political_lobby ?= { 
-					any_lobby_member = { is_marginal = no } 
+					any_lobby_member = { bpm_ig_is_marginal = no } 
 				} 				
 			}
 		}
@@ -1005,6 +1109,7 @@ REPLACE:lobby_anti_country = {
 						OR = {
 							has_ideology = ideology:ideology_patriotic
 							has_ideology = ideology:ideology_jingoist
+							has_ideology = ideology:ideology_military_absolutist
 						}
 					}
 
@@ -1097,6 +1202,9 @@ REPLACE:lobby_anti_country = {
 						OR = {
 							has_ideology = ideology:ideology_paternalistic
 							has_ideology = ideology:ideology_liberal
+							has_ideology = ideology:ideology_magnatial
+							ig_has_carlist_ideology = yes
+							has_ideology = ideology:ideology_moderantist
 						}
 					}
 
@@ -1162,14 +1270,22 @@ REPLACE:lobby_anti_country = {
 				leader ?= {
 					if = {
 						limit = {
-							has_ideology = ideology:ideology_positivist
+							OR = {
+								has_ideology = ideology:ideology_positivist
+								has_ideology = ideology:ideology_utilitarian
+								has_ideology = ideology:ideology_modernizer_leader
+								has_ideology = ideology:ideology_illusardo
+							}
 						}
 
 						add = 25
 					}
 					else_if = {
 						limit = {
-							has_ideology = ideology:ideology_luddite
+							OR = {
+								has_ideology = ideology:ideology_luddite
+								has_ideology = ideology:ideology_reactionary_anti_capitalist
+							}
 						}
 
 						add = -25
@@ -1178,7 +1294,7 @@ REPLACE:lobby_anti_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_particularist
+						bpm_ig_is_peasant = yes
 					}
 
 					add = -25
@@ -1186,7 +1302,11 @@ REPLACE:lobby_anti_country = {
 
 				if = {
 					limit = {
-						has_ideology = ideology:ideology_meritocratic
+						OR = {
+							has_ideology = ideology:ideology_eco_modernizer
+							is_interest_group_type = ig_intelligentsia
+							bpm_ig_is_market_liberal = yes
+						}
 					}
 
 					add = 25
@@ -1241,12 +1361,9 @@ REPLACE:lobby_anti_country = {
 			if = {
 				limit = {
 					OR = {
-						has_ideology = ideology:ideology_patriotic
+						bpm_ig_is_nationalist = yes
 						leader ?= {
-							OR = {
-								has_ideology = ideology:ideology_ethno_nationalist
-								has_ideology = ideology:ideology_fascist
-							}
+							bpm_leader_is_fascist = yes
 						}
 					}
 				}
@@ -1257,8 +1374,9 @@ REPLACE:lobby_anti_country = {
 							NOT = {
 								any_primary_culture = {
 									OR = {
-										shares_heritage_trait_with_any_primary_culture = ROOT.owner
-										shares_non_heritage_trait_with_any_primary_culture = ROOT.owner
+										shares_heritage_trait_group_with_any_primary_culture = ROOT.owner
+										shares_language_trait_group_with_any_primary_culture = ROOT.owner
+										shares_tradition_trait_with_any_primary_culture = ROOT.owner
 									}
 								}
 							}
@@ -1299,10 +1417,15 @@ REPLACE:lobby_anti_country = {
 			if = {
 				limit = {
 					OR = {
+						bpm_ig_is_moralist = yes
 						is_interest_group_type = ig_devout
 						leader ?= {
 							OR = {
 								has_ideology = ideology:ideology_theocrat
+								has_ideology = ideology:ideology_legitimist
+								has_ideology = ideology:ideology_integralist
+								character_has_carlist_ideology = yes
+								character_has_miguelist_ideology = yes
 								has_trait = pious
 							}
 						}
@@ -1343,7 +1466,7 @@ REPLACE:lobby_anti_country = {
 		if = {
 			limit = {
 				scope:target_country = {
-					has_law = law_type:law_council_republic
+					has_law_or_variant = law_type:law_council_republic
 				}
 			}
 
@@ -1394,7 +1517,7 @@ REPLACE:lobby_anti_country = {
 		if = {
 			limit = { 
 				OR = {
-					has_ideology = ideology:ideology_republican
+					bpm_ig_is_republican = yes
 					leader ?= {
 						OR = {
 							has_ideology = ideology:ideology_republican_leader
@@ -1438,16 +1561,12 @@ REPLACE:lobby_anti_country = {
 			if = {
 				limit = {
 					OR = {
-						has_ideology = ideology:ideology_patriotic
-						has_ideology = ideology:ideology_jingoist
-						has_ideology = ideology:ideology_reactionary
+						bpm_ig_is_very_hawkish = yes
+						has_ideology = ideology:ideology_mil_institutional_militarist
 						leader ?= {
 							OR = {
 								has_ideology = ideology:ideology_bonapartist
-								has_ideology = ideology:ideology_integralist
-								has_ideology = ideology:ideology_fascist
-								has_ideology = ideology:ideology_ethno_nationalist
-								has_ideology = ideology:ideology_jingoist_leader
+								bpm_leader_is_hawkish = yes
 							}
 						}
 					}
@@ -1680,7 +1799,7 @@ REPLACE:lobby_pro_overlord = {
 			OR = {
 				NOT = { exists = scope:political_lobby }
 				scope:political_lobby ?= { 
-					any_lobby_member = { is_marginal = no } 
+					any_lobby_member = { bpm_ig_is_marginal = no } 
 				} 				
 			}
 		}
@@ -1706,8 +1825,9 @@ REPLACE:lobby_pro_overlord = {
 		appeasement_became_subject
 		appeasement_knowledge_sharing_started
 		appeasement_support_regime_started
-	}	
-	
+		appeasement_foreign_investment_agreement_formed
+	}
+
 	appeasement_factors_anti = {
 		appeasement_relations_decreased	
 		appeasement_autonomy_increased
@@ -1715,6 +1835,7 @@ REPLACE:lobby_pro_overlord = {
 		appeasement_independence_supported
 		appeasement_knowledge_sharing_ended
 		appeasement_support_regime_ended
+		appeasement_foreign_investment_agreement_broken
 	}
 	
 	available_for_interest_group = {
@@ -1798,13 +1919,11 @@ REPLACE:lobby_pro_overlord = {
 			if = {
 				limit = { 
 					OR = {
-						has_ideology = ideology:ideology_patriotic
+						bpm_ig_is_nationalist = yes
 						leader ?= {
-							OR = {
-								has_ideology = ideology:ideology_ethno_nationalist
-								has_ideology = ideology:ideology_fascist
-							}
+							bpm_leader_is_fascist = yes
 						}
+						bpm_ig_is_metropole_loyalist = yes
 					}
 				}
 
@@ -1815,17 +1934,31 @@ REPLACE:lobby_pro_overlord = {
 								is_primary_culture_of = ROOT.owner
 							}
 						}
+						trigger_if = {
+							limit = {
+								owner = { 
+									country_is_colonial_or_company = yes
+									bpm_country_laws_has_colonial_government = yes
+								}
+							}
+							OR = {
+								bpm_ig_is_metropole_loyalist = yes
+								bpm_ig_is_state_institutional = yes
+							}
+						}
 					}
 					add = 50 # Settler Colonies
 				}
 				else_if = {
 					limit = {
+						bpm_ig_is_metropole_loyalist = no
 						scope:target_country = {
 							NOT = {
 								any_primary_culture = {
 									OR = {
-										shares_heritage_trait_with_any_primary_culture = ROOT.owner
-										shares_non_heritage_trait_with_any_primary_culture = ROOT.owner
+										shares_heritage_trait_group_with_any_primary_culture = ROOT.owner
+										shares_language_trait_group_with_any_primary_culture = ROOT.owner
+										shares_tradition_trait_with_any_primary_culture = ROOT.owner
 									}
 								}
 							}
@@ -1843,10 +1976,15 @@ REPLACE:lobby_pro_overlord = {
 			if = {
 				limit = {
 					OR = {
+						bpm_ig_is_moralist = yes
 						is_interest_group_type = ig_devout
 						leader ?= {
 							OR = {
 								has_ideology = ideology:ideology_theocrat
+								has_ideology = ideology:ideology_legitimist
+								has_ideology = ideology:ideology_integralist
+								character_has_carlist_ideology = yes
+								character_has_miguelist_ideology = yes
 								has_trait = pious
 							}
 						}
@@ -1926,7 +2064,7 @@ REPLACE:lobby_pro_overlord = {
 			}
 		}
 
-		### Colonial Government for India
+		### Colonial Government for India - TODO
 		if = {
 			limit = {
 				c:BIC ?= owner
@@ -2016,10 +2154,7 @@ REPLACE:lobby_pro_overlord = {
 		### Overlord Relations
 		if = {
 			limit = {
-				OR = {
-					is_interest_group_type = ig_industrialists
-					is_interest_group_type = ig_landowners
-				}
+				bpm_ig_is_upper_institutional = yes
 			}
 			add = {
 				desc = "economic_dependence_for_upper_classes"
@@ -2034,7 +2169,7 @@ REPLACE:lobby_pro_overlord = {
 		
 		if = {
 			limit = {
-				is_interest_group_type = ig_petty_bourgeoisie
+				bpm_ig_is_middle_institutional = yes
 			}
 			add = {
 				desc = "economic_dependence_for_middle_classes"
@@ -2106,7 +2241,7 @@ REPLACE:lobby_anti_overlord = {
 			OR = {
 				NOT = { exists = scope:political_lobby }
 				scope:political_lobby ?= { 
-					any_lobby_member = { is_marginal = no } 
+					any_lobby_member = { bpm_ig_is_marginal = no } 
 				} 				
 			}
 		}
@@ -2209,12 +2344,9 @@ REPLACE:lobby_anti_overlord = {
 			if = {
 				limit = { 
 					OR = {
-						has_ideology = ideology:ideology_patriotic
+						bpm_ig_is_nationalist = yes
 						leader ?= {
-							OR = {
-								has_ideology = ideology:ideology_ethno_nationalist
-								has_ideology = ideology:ideology_fascist
-							}
+							bpm_leader_is_fascist = yes
 						}
 					}
 				}
@@ -2235,8 +2367,9 @@ REPLACE:lobby_anti_overlord = {
 							NOT = {
 								any_primary_culture = {
 									OR = {
-										shares_heritage_trait_with_any_primary_culture = ROOT.owner
-										shares_non_heritage_trait_with_any_primary_culture = ROOT.owner
+										shares_heritage_trait_group_with_any_primary_culture = ROOT.owner
+										shares_language_trait_group_with_any_primary_culture = ROOT.owner
+										shares_tradition_trait_with_any_primary_culture = ROOT.owner
 									}
 								}
 							}
@@ -2254,10 +2387,15 @@ REPLACE:lobby_anti_overlord = {
 			if = {
 				limit = {
 					OR = {
+						bpm_ig_is_moralist = yes
 						is_interest_group_type = ig_devout
 						leader ?= {
 							OR = {
 								has_ideology = ideology:ideology_theocrat
+								has_ideology = ideology:ideology_legitimist
+								has_ideology = ideology:ideology_integralist
+								character_has_carlist_ideology = yes
+								character_has_miguelist_ideology = yes
 								has_trait = pious
 							}
 						}
@@ -2266,18 +2404,41 @@ REPLACE:lobby_anti_overlord = {
 
 				if = {
 					limit = {
-						scope:target_country = {
-							religion = ROOT.owner.religion
+						trigger_if = {
+							limit = {
+								is_interest_group_type = ig:christian_democrats
+							}
+							scope:target_country = {
+								religion = rel:catholic
+							}
+						}
+						trigger_else = {
+							scope:target_country = {
+								religion = ROOT.owner.religion
+							}
 						}
 					}
 					add = -15
 				}
 				else_if = {
 					limit = {
-						scope:target_country.capital = {
-							state_religious_acceptance = {  
-								target = ROOT.owner.religion
-								value < religious_acceptance_medium
+						trigger_if = {
+							limit = {
+								is_interest_group_type = ig:christian_democrats
+							}
+							scope:target_country.capital = {
+								state_religious_acceptance = {
+									target = rel:catholic
+									value < religious_acceptance_medium
+								}
+							}
+						}
+						trigger_else = {
+							scope:target_country.capital = {
+								state_religious_acceptance = {
+									target = ROOT.owner.religion
+									value < religious_acceptance_medium
+								}
 							}
 						}
 					}
@@ -2292,6 +2453,7 @@ REPLACE:lobby_anti_overlord = {
 						}
 						scope:target_country = {
 							country_has_state_religion = rel:catholic
+							has_law_or_variant = law_type:law_theocracy
 							c:PAP ?= THIS
 						}
 					}
@@ -2307,7 +2469,7 @@ REPLACE:lobby_anti_overlord = {
 		if = {
 			limit = {
 				scope:target_country = {
-					has_law = law_type:law_council_republic
+					has_law_or_variant = law_type:law_council_republic
 				}
 			}
 
@@ -2358,7 +2520,7 @@ REPLACE:lobby_anti_overlord = {
 		if = {
 			limit = { 
 				OR = {
-					has_ideology = ideology:ideology_republican
+					bpm_ig_is_republican = yes
 					leader ?= {
 						OR = {
 							has_ideology = ideology:ideology_republican_leader
@@ -2418,8 +2580,7 @@ REPLACE:lobby_anti_overlord = {
 		if = {
 			limit = {
 				OR = {
-					is_interest_group_type = ig_rural_folk
-					is_interest_group_type = ig_trade_unions
+					bpm_ig_is_lower_institutional = yes
 				}
 			}
 			add = {
@@ -2459,10 +2620,10 @@ REPLACE:lobby_anti_overlord = {
 		### British India
 		if = {
 			limit = {
-				c:BIC ?= owner
+				country_is_colonial_or_company = yes
 				OR = {
-					is_interest_group_type = ig_industrialists
-					is_interest_group_type = ig_armed_forces
+					bpm_ig_is_state_institutional = yes
+					bpm_ig_is_metropole_loyalist = yes
 				}
 			}
 			multiply = {
