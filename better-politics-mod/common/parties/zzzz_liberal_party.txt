@@ -783,7 +783,11 @@ REPLACE:liberal_party = {
 					law = law_type:law_state_religion
 					value > neutral
 				}
+<<<<<<< HEAD
 				owner = { bpm_country_is_in_europe = yes }
+=======
+				owner = { is_in_geographic_region = geographic_region_europe }
+>>>>>>> ideology_again
 				NOT = { #not in Great Britain
 					owner = { 
 						c:GBR ?= THIS

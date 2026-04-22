@@ -33,6 +33,7 @@
 		ideology_corporatist_leader
 		ideology_authoritarian
 		ideology_reformer
+		ideology_serfdom_reformer
 	}
 
 	enable = {
@@ -244,7 +245,7 @@
 				if = {
 					limit = {
 						owner = {
-							has_law = law_type:law_oligarchy
+							has_law_or_variant = law_type:law_oligarchy
 							has_law = law_type:law_monarchy
 						}
 					}
