@@ -10,6 +10,18 @@
 	}
 	text = {
 		trigger = {
+			bpm_ig_is_radical_opposition_nationalists_in_colonies = yes
+		}
+		localization_key = bpm_extremist_reason_colonialism
+	}
+	text = {
+		trigger = {
+			bpm_ig_is_radical_oppostion_moralists_in_state_atheism = yes
+		}
+		localization_key = bpm_extremist_reason_state_atheism
+	}
+	text = {
+		trigger = {
 			bpm_ig_is_radical_opposition_unionist_in_illegal_unions = yes
 		}
 		localization_key = bpm_extremist_reason_unionist_in_illegal_unions
@@ -67,6 +79,18 @@ bpm_super_extremist_reason = {
 			bpm_ig_is_very_radical_opposition_fascist = yes
 		}
 		localization_key = bpm_super_extremist_reason_fascist
+	}
+	text = {
+		trigger = {
+			bpm_ig_is_very_radical_opposition_nationalist_in_colonies = yes
+		}
+		localization_key = bpm_very_extremist_reason_colonialism
+	}
+	text = {
+		trigger = {
+			bpm_ig_is_very_radical_opposition_religious_in_state_atheism = yes
+		}
+		localization_key = bpm_super_extremist_reason_state_atheism
 	}
     text = {
         trigger = {
