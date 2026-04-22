@@ -11,6 +11,15 @@ ideology_sta_national_liberal = {
 		law_ad_hoc_centralization = strongly_disapprove
 	}
 
+	lawgroup_citizenship = {
+		law_subjecthood = disapprove
+		law_multicultural = disapprove
+		law_racial_segregation = neutral 
+		law_ethnostate = neutral
+		law_cultural_exclusion = approve
+		law_national_supremacy = strongly_approve
+	}
+
     lawgroup_internal_security = {
 		law_no_home_affairs = strongly_disapprove
 		law_national_guard = approve
