@@ -40,6 +40,9 @@
 		else_if = {
 			limit = {
 				bpm_country_is_in_europe = no
+=======
+				is_not_in_geographic_region = geographic_region_europe
+>>>>>>> ideology_again
 			}
 			activate_law = law_type:law_right_to_associate
 		}
