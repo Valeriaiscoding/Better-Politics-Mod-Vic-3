@@ -1,4 +1,4 @@
-﻿gov_colonial_governor = {
+gov_colonial_governor = {
 	transfer_of_power = dictatorial
 	new_leader_on_reform_government = no
 	
@@ -8,11 +8,91 @@
 	possible = {
 		has_law = law_type:law_colonial_administration
 		has_law = law_type:law_presidential_republic
-		NOT = { 
-			OR = {
-				c:QUE ?= ROOT
-				c:ONT ?= ROOT
-				c:CAN ?= ROOT
+		NOR = { 
+			c:QUE ?= ROOT
+			c:ONT ?= ROOT
+			c:CAN ?= ROOT
+		}
+		OR = {
+			NOT = { 
+				overlord ?= {
+					c:SPA ?= this
+				}
+				is_subject_type = subject_type_colony
+				is_country_type = colonial
+				top_overlord = { NOT = { is_country_type = colonial } }
+				any_primary_culture = {
+					has_discrimination_trait_group = heritage_group_european
+				}
+				is_not_in_geographic_region = geographic_region_europe
+				is_not_in_geographic_region = geographic_region_africa
+			}
+			NOT = { 
+				is_subject_type = subject_type_colony
+				is_country_type = colonial
+				top_overlord = { NOT = { is_country_type = colonial } }
+				top_overlord = {
+					was_formed_from = SPA
+				}
+				any_primary_culture = {
+					has_discrimination_trait_group = heritage_group_european
+				}
+				is_not_in_geographic_region = geographic_region_europe
+				is_not_in_geographic_region = geographic_region_africa
+			}
+		}
+		NOT = {
+			c:SIL ?= this
+			c:SIL ?= {
+				any_scope_state = {
+					NOT = {
+						state_region = s:STATE_SIERRA_LEONE
+					}
+				}
+			}
+		}
+		
+	}
+
+	on_government_type_change = {
+		change_to_dictatorial = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_dictatorial = yes
+	}
+}
+
+gov_colonial_governor_spa = {
+	transfer_of_power = dictatorial
+	new_leader_on_reform_government = no
+	
+	male_ruler = "RULER_TITLE_CAPTAIN_GENERAL"
+	female_ruler = "RULER_TITLE_CAPTAIN_GENERAL"
+	
+	possible = {
+		has_law = law_type:law_colonial_administration
+		has_law = law_type:law_presidential_republic
+		OR = {
+			AND = {
+				exists = c:SPA
+				is_subject_of = c:SPA
+				top_overlord = { NOT = { is_country_type = colonial } }
+				any_primary_culture = {
+					has_discrimination_trait_group = heritage_group_european
+				}
+				is_not_in_geographic_region = geographic_region_europe
+				is_not_in_geographic_region = geographic_region_africa
+			}
+			AND = {
+				top_overlord = { NOT = { is_country_type = colonial } }
+				top_overlord = {
+					was_formed_from = SPA
+				}
+				any_primary_culture = {
+					has_discrimination_trait_group = heritage_group_european
+				}
+				is_not_in_geographic_region = geographic_region_europe
+				is_not_in_geographic_region = geographic_region_africa
 			}
 		}
 	}
@@ -59,7 +139,15 @@ gov_united_crown_col = {
 	possible = {
 		has_law = law_type:law_colonial_administration
 		has_law = law_type:law_presidential_republic
-		this = c:CAN
+		this ?= c:CAN
+		exists = c:GBR
+		is_subject_of = c:GBR
+		c:GBR ?= {
+			has_law = law_type:law_monarchy
+		}
+		is_subject_type = subject_type_colony
+		is_country_type = colonial
+		top_overlord = { NOT = { is_country_type = colonial } }
 	}
 
 	on_government_type_change = {
@@ -80,6 +168,25 @@ gov_colonial_board = {
 	possible = {
 		has_law = law_type:law_colonial_administration
 		has_law = law_type:law_presidential_republic
+		NOR = { 
+			AND = {
+				exists = c:SPA
+				is_subject_of = c:SPA
+			}
+			top_overlord = {
+				was_formed_from = SPA
+			}
+		}
+		NOT = {
+			c:SIL ?= this
+			c:SIL ?= {
+				any_scope_state = {
+					NOT = {
+						state_region = s:STATE_SIERRA_LEONE
+					}
+				}
+			}
+		}
 	}
 
 	on_government_type_change = {

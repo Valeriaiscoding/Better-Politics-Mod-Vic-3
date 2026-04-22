@@ -174,7 +174,7 @@ ideology_eco_traditional_agrarian = {
 		law_laissez_faire = strongly_disapprove
 		law_cooperative_ownership = strongly_disapprove
 		law_command_economy = strongly_disapprove
-		law_extraction_economy = disapprove
+		law_extraction_economy = strongly_disapprove
 	}
 
     lawgroup_trade_policy = {
@@ -746,7 +746,7 @@ ideology_eco_slave_economy = {
 		law_debt_slavery = neutral
 		law_slave_trade = strongly_approve
 		law_legacy_slavery = neutral
-		law_colonial_slavery = approve
+		law_colonial_slavery = neutral
 	}
 
 	lawgroup_repeatable_economy = {

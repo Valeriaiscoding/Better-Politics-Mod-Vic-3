@@ -117,6 +117,14 @@ bpm_make_igs_not_pro_slavery_serfdom = {
 		add_ideology = ideology_eco_traditional_agrarian
 		bpm_reorder_ideologies = yes
 	}
+	every_interest_group = {
+		limit = {
+			has_ideology = ideology:ideology_eco_slave_colonialist
+		}
+		bpm_remove_all_eco_ideologies = yes
+		add_ideology = ideology_eco_colonialist
+		bpm_reorder_ideologies = yes
+	}
 	bpm_make_igs_modern_agrarian = yes
 }
 
@@ -189,6 +197,58 @@ bpm_make_igs_republican = {
 		add_ideology = ideology_gov_radical_republican
 		bpm_reorder_ideologies = yes
 	}
+}
+
+bpm_make_igs_colonialist = {
+	ig:ig_industrialists = {
+		bpm_remove_all_eco_ideologies = yes
+		add_ideology = ideology_eco_colonialist
+		bpm_remove_all_wel_ideologies = yes
+		add_ideology = ideology_wel_market_welfare
+		bpm_reorder_ideologies = yes
+		remove_ideology = ideology_laissez_faire
+		add_ideology = ideology_colonialist
+		bpm_reorder_ideologies = yes
+	}
+	ig:ig_petty_bourgeoisie = {
+		bpm_remove_all_eco_ideologies = yes
+		add_ideology = ideology_eco_colonialist
+		bpm_remove_all_wel_ideologies = yes
+		add_ideology = ideology_wel_market_welfare
+		bpm_reorder_ideologies = yes
+		add_ideology = ideology_colonialist
+		bpm_reorder_ideologies = yes
+	}
+	ig:ig_reactionaries = {
+		bpm_remove_all_eco_ideologies = yes
+		if = {
+			limit = { owner = { NOT = { has_law = law_type:law_slavery_banned } } }
+			add_ideology = ideology_eco_slave_colonialist
+		}
+		else = {
+			add_ideology = ideology_eco_colonialist
+		}
+		bpm_remove_all_wel_ideologies = yes
+		add_ideology = ideology_wel_no_welfare
+		add_ideology = ideology_colonialist
+		bpm_reorder_ideologies = yes
+	}
+
+	ig:ig_intelligentsia = {
+		bpm_remove_all_eco_ideologies = yes
+		add_ideology = ideology_eco_modernizer
+		bpm_reorder_ideologies = yes
+	}
+
+	ig:ig_radicals ?= {
+		if = {
+			limit = { bpm_interest_group_is_activated = yes }
+			bpm_remove_all_gov_ideologies = yes
+			add_ideology = ideology_gov_liberal_republican
+			bpm_reorder_ideologies = yes
+		}
+	}
+
 }
 
 bpm_ig_make_buddhist_moralist = {
