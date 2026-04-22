@@ -117,6 +117,8 @@ REPLACE:amendment_200_franc_suffrage = {
 		OR = {
 			is_interest_group_type = ig_landowners
 			is_interest_group_type = ig_industrialists
+			is_interest_group_type = ig_conservatives
+			is_interest_group_type = ig_market_liberals
 		}
 	}
 
@@ -127,6 +129,8 @@ REPLACE:amendment_200_franc_suffrage = {
 				OR = {
 					is_interest_group_type = ig_landowners
 					is_interest_group_type = ig_industrialists
+					is_interest_group_type = ig_conservatives
+					is_interest_group_type = ig_market_liberals
 				}
 			}
 		}
