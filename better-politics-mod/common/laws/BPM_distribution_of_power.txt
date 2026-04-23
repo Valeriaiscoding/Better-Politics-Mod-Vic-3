@@ -780,7 +780,7 @@ REPLACE:law_technocracy = {
 		else = {
 			random_law = {
 				limit = {
-					type = law_type:law_autocracy
+					type = law_type:law_technocracy
 				}
 				save_scope_as = relevant_voting_law
 			}
@@ -1522,6 +1522,29 @@ REPLACE:law_anarchy = {
 		if = {
 			limit = { has_modifier = bpm_republic_gov_size }
 			remove_modifier = bpm_republic_gov_size
+		}
+	}
+
+	on_deactivate = {
+		if = {
+			limit = { 
+				has_law_or_variant = law_type:law_elected_police 
+				NOR = {
+					has_law_or_variant = law_type:law_factory_councils
+					has_law_or_variant = law_type:law_elected_bureaucrats
+				}
+			}
+			activate_law = law_type:law_dedicated_police
+		}
+		if = {
+			limit = { 
+				has_law = law_type:law_elected_officers 
+				NOR = {
+					has_law_or_variant = law_type:law_factory_councils
+					has_law_or_variant = law_type:law_elected_bureaucrats
+				}
+			}
+			activate_law = law_type:law_political_officers
 		}
 	}
 	

@@ -42,6 +42,29 @@ INJECT:law_elected_bureaucrats = {
 		}
 	}
 
+	on_deactivate = {
+		if = {
+			limit = { 
+				has_law_or_variant = law_type:law_elected_police 
+				NOR = {
+					has_law_or_variant = law_type:law_factory_councils
+					has_law_or_variant = law_type:law_anarchy
+				}
+			}
+			activate_law = law_type:law_dedicated_police
+		}
+		if = {
+			limit = { 
+				has_law = law_type:law_elected_officers 
+				NOR = {
+					has_law_or_variant = law_type:law_factory_councils
+					has_law_or_variant = law_type:law_anarchy
+				}
+			}
+			activate_law = law_type:law_political_officers
+		}
+	}
+
 	modifier = {
 		interest_group_ig_intelligentsia_pol_str_mult = 0.25
 		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.25
