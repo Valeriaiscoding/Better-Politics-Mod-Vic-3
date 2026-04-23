@@ -188,7 +188,7 @@ bpm_monthly_pulse_effect = {
 			game_date > 1844.1.1
 			game_date < 1845.1.1
 			NOT = { has_variable = bpm_1848_famine_activated }
-			bpm_country_is_in_western_europe = yes
+			is_in_geographic_region = bpm_geographic_region_western_europe
 		}
 		set_variable = bpm_1848_famine_activated
 	}

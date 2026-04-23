@@ -946,7 +946,7 @@ bpm_frankfurt_parliament_events.10 = {
 		activate_law = law_type:law_elected_bureaucrats
 
 		every_country = {
-			limit = { bpm_country_is_in_germany = yes }
+			limit = { is_in_geographic_region = geographic_region_german_confederation }
 			post_notification = bpm_1848_baden
 		}
 
