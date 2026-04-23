@@ -1,0 +1,159 @@
+﻿bpm_country_carlist_movement_valid_trigger = {
+    OR = {
+        country_has_primary_culture = cu:spanish
+        country_has_primary_culture = cu:catalan
+        country_has_primary_culture = cu:basque
+    }
+    country_is_colonial_or_company = no
+    NOT = {
+        has_variable = monarchy_stamped_out_var
+    }
+    capital = {
+        is_in_geographic_region = geographic_region_iberia
+    }
+}
+
+bpm_country_miguelist_movement_valid_trigger = {
+	country_has_primary_culture = cu:portuguese
+	country_is_colonial_or_company = no
+	NOT = {
+		has_variable = monarchy_stamped_out_var
+	}
+	capital = {
+		is_in_geographic_region = geographic_region_iberia
+	}
+}
+
+bpm_country_legitimist_movement_valid_trigger = {
+	OR = {
+		c:FRA ?= this
+		civil_war_origin_country ?= c:FRA
+	}  
+	NOT = { has_variable = monarchy_stamped_out_var }
+	trigger_if = {
+		limit = { has_variable = one_true_french_dynasty }
+		NOR = {
+			has_variable = bonapartist_restoration_var
+			has_variable = orleanist_restoration_var
+		}
+	}
+}
+
+
+bpm_country_orleanist_movement_valid_trigger = {
+	OR = {
+		c:FRA ?= this
+		civil_war_origin_country ?= c:FRA
+	}  
+	NOT = { has_variable = monarchy_stamped_out_var }
+	trigger_if = {
+		limit = { has_variable = one_true_french_dynasty }
+		NOR = {
+			has_variable = bonapartist_restoration_var
+			has_variable = legitimist_restoration_var
+		}
+	}
+}
+
+bpm_country_bonapartist_movement_valid_trigger = {
+	OR = {
+		c:FRA ?= this
+		civil_war_origin_country ?= c:FRA
+	}  
+	NOT = { has_variable = monarchy_stamped_out_var }
+	trigger_if = {
+		limit = { has_variable = one_true_french_dynasty }
+		NOR = {
+			has_variable = legitimist_restoration_var
+			has_variable = orleanist_restoration_var
+		}
+	}
+
+}
+
+bpm_country_royalist_absolutist_valid_trigger = {
+	bpm_country_carlist_movement_valid_trigger = no
+	bpm_country_miguelist_movement_valid_trigger = no
+	bpm_country_legitimist_movement_valid_trigger = no
+	NOT = {
+		has_variable = monarchy_stamped_out_var
+	}
+	OR = {
+		country_has_voting_franchise = no
+		AND = {
+			NOT = {
+				has_variable = king_in_parliament_possible
+			}
+			country_has_voting_franchise = yes
+		}
+	}
+	NOT = {
+		any_political_movement = {
+			is_political_movement_type = movement_royalist_constitutional
+		}
+	}
+}
+
+bpm_country_constitutional_royalist_valid_trigger = {
+	NOT = {
+		has_variable = monarchy_stamped_out_var
+	}
+	NOT = {
+		has_variable = king_in_parliament_possible
+	}
+	country_has_voting_franchise = yes
+	NOT = {
+		any_political_movement = {
+			is_political_movement_type = movement_royalist_absolutist
+		}
+	}
+	NOR = {
+		c:FRA ?= this
+		civil_war_origin_country ?= c:FRA
+	}
+}
+
+bpm_country_reactionry_movement_valid_trigger = {
+	bpm_country_carlist_movement_valid_trigger = no
+	bpm_country_miguelist_movement_valid_trigger = no
+	bpm_country_legitimist_movement_valid_trigger = no
+	country_should_exclusively_focus_on_modernization = no
+	country_has_voting_franchise = yes
+}
+
+bpm_country_liberal_movement_valid_trigger = {
+	NOT = { is_country_type = decentralized }
+	has_technology_researched = democracy
+	country_should_exclusively_focus_on_modernization = no
+}
+
+bpm_country_movement_radical_valid_trigger = {
+	has_technology_researched = egalitarianism
+	country_should_exclusively_focus_on_modernization = no
+}
+
+bpm_country_market_liberal_movement_valid_trigger = {
+	bpm_country_orleanist_movement_valid_trigger = no
+	NOT = { is_country_type = decentralized }
+	country_should_exclusively_focus_on_modernization = no
+	NAND = {
+		THIS ?= c:JAP
+		NOT = { has_variable = meiji_var }
+	}
+	ig:ig_liberals ?= {
+		bpm_ig_is_marginal = no
+	}
+}
+
+bpm_country_national_liberal_movement_valid_trigger = {
+	bpm_country_bonapartist_movement_valid_trigger = no
+	country_should_exclusively_focus_on_modernization = no
+	ig:ig_liberals ?= {
+		bpm_ig_is_marginal = no
+	}
+	any_political_movement = {
+		NOR = {
+			bpm_movement_is_pan_nationalist = yes
+		}
+	}
+}

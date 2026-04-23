@@ -130,7 +130,7 @@ bpm_add_abolitionist_trait = {
 
 bpm_add_nationalist_trait = {
 	bpm_add_trait = {
-		condition = bpm_movement_is_nationalist
+		condition = bpm_movement_is_national_supremacist
 		ideology = ideology_bpm_movement_nationalist
 	}
 }

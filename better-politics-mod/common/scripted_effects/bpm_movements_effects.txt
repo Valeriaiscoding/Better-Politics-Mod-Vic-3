@@ -181,13 +181,13 @@ bpm_do_ai_splits = {
 	}
 	random_political_movement = {
 		limit = {
-			is_political_movement_type = movement_market_liberal
+			bpm_movement_is_laissez_faire = yes
 		}
 		save_scope_as = movement_market_liberal
 	}
 	random_political_movement = {
 		limit = {
-			is_political_movement_type = movement_national_liberal
+			bpm_movement_is_liberal_nationalist = yes
 		}
 		save_scope_as = movement_national_liberal
 	}
@@ -641,6 +641,47 @@ bpm_do_ai_splits = {
 }
 
 bpm_create_necessary_movements = {
+	# Country specific variants
+	if = {
+		limit = { 
+			bpm_country_legitimist_movement_valid_trigger = yes
+		}
+		create_political_movement = {
+			type = movement_legitimist
+		}
+	}
+	if = {
+		limit = { 
+			bpm_country_orleanist_movement_valid_trigger = yes
+		}
+		create_political_movement = {
+			type = movement_orleanist
+		}
+	}
+	if = {
+		limit = { 
+			bpm_country_bonapartist_movement_valid_trigger = yes
+		}
+		create_political_movement = {
+			type = movement_bonapartist
+		}
+	}
+	if = {
+		limit = { 
+			bpm_country_miguelist_movement_valid_trigger = yes
+		}
+		create_political_movement = {
+			type = movement_miguelist
+		}
+	}
+	if = {
+		limit = { 
+			bpm_country_carlist_movement_valid_trigger = yes
+		}
+		create_political_movement = {
+			type = movement_carlist
+		}
+	}
 	if = {
 		limit = { 
 			bpm_country_laws_are_moderately_liberal_democratic = yes
@@ -649,25 +690,15 @@ bpm_create_necessary_movements = {
 				has_law = law_type:law_ad_hoc_centralization
 			}
 		}
-		create_political_movement = {
-			type = movement_liberal
+		if = {
+			limit = { bpm_country_liberal_movement_valid_trigger = yes } 
+			create_political_movement = {
+				type = movement_liberal
+			}
 		}
 		if = {
 			limit = {
-				OR = {
-					c:FRA = this
-					civil_war_origin_country ?= c:FRA
-				}
-				NOR = {
-					has_variable = monarchy_stamped_out_var
-					AND = {
-						OR = {
-							has_variable = legitimist_restoration_var
-							has_variable = orleanist_restoration_var
-						}
-						has_variable = one_true_french_dynasty
-					}
-				}
+				bpm_country_national_liberal_movement_valid_trigger = yes
 			}
 			create_political_movement = {
 				type = movement_national_liberal
@@ -676,20 +707,7 @@ bpm_create_necessary_movements = {
 		}
 		if = {
 			limit = {
-				OR = {
-					c:FRA = this
-					civil_war_origin_country ?= c:FRA
-				}
-				NOR = {
-					has_variable = monarchy_stamped_out_var
-					AND = {
-						OR = {
-							has_variable = legitimist_restoration_var
-							has_variable = bonapartist_restoration_var
-						}
-						has_variable = one_true_french_dynasty
-					}
-				}
+				bpm_country_market_liberal_movement_valid_trigger = yes
 			}
 			create_political_movement = {
 				type = movement_market_liberal
@@ -697,35 +715,7 @@ bpm_create_necessary_movements = {
 		}
 		if = {
 			limit = { 
-				trigger_if = {
-					limit = {
-						this ?= c:SPA
-						this ?= c:SPC
-						this ?= c:POR
-						civil_war_origin_country ?= c:SPA 
-						civil_war_origin_country ?= c:SPC 
-						civil_war_origin_country ?= c:POR 
-					}
-					has_variable = monarchy_stamped_out_var
-				}
-				trigger_else_if = {
-					limit = { 
-						OR = {
-							this ?= c:FRA
-							civil_war_origin_country ?= c:FRA 
-						}
-					}
-					OR = {
-						has_variable = monarchy_stamped_out_var
-						AND = {
-							OR = {
-								has_variable = bonapartist_restoration_var
-								has_variable = orleanist_restoration_var
-							}
-							has_variable = one_true_french_dynasty
-						}
-					}
-				}
+				bpm_country_reactionry_movement_valid_trigger = yes
 			}
 			create_political_movement = {
 				type = movement_reactionary
@@ -745,23 +735,30 @@ bpm_create_necessary_movements = {
 			bpm_country_is_republic = no
 		}
 		if = {
+			limit = { bpm_country_royalist_absolutist_valid_trigger = yes }
+			create_political_movement = {
+				type = movement_royalist_absolutist
+			}
+		}
+		else_if = {
 			limit = { 
-				NOR = {
-					this ?= c:FRA
-					this ?= c:SPC
-					this ?= c:SPA
-					this ?= c:POR
-				}
+				bpm_country_constitutional_royalist_valid_trigger = yes
 			}
 			create_political_movement = {
 				type = movement_royalist_constitutional
 			}
 		}
-		create_political_movement = {
-			type = movement_liberal
+		if = {
+			limit = { bpm_country_liberal_movement_valid_trigger = yes }
+			create_political_movement = {
+				type = movement_liberal
+			}
 		}
-		create_political_movement = {
-			type = movement_radical
+		if = {
+			limit = { bpm_country_movement_radical_valid_trigger = yes }
+			create_political_movement = {
+				type = movement_radical
+			}
 		}
 	}
 
@@ -770,11 +767,18 @@ bpm_create_necessary_movements = {
 			bpm_country_is_pre_modern = yes
 			bpm_country_is_in_europe = no
 		}
-		create_political_movement = {
-			type = movement_liberal
+		if = {
+			limit = { bpm_country_liberal_movement_valid_trigger = yes }
+			create_political_movement = {
+				type = movement_liberal
+			}
 		}
 		if = {
-			limit = { NOT = { c:JAP = this } }
+			limit = {
+					NOT = { c:JAP = this } 
+					has_technology_researched = academia
+					country_has_laws_in_need_of_modernization = yes
+				}
 				create_political_movement = {
 				type = movement_modernizer
 			}
