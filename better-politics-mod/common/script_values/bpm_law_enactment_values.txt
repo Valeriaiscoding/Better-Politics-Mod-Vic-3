@@ -19,7 +19,7 @@ bpm_adjusted_movement_radicalism = {
 	value = political_movement_radicalism
 	if = {
 		limit = {
-			law_stance = {
+			law_enactment_stance = {
 				law = owner.currently_enacting_law.type
 				value = approve
 			}
@@ -28,7 +28,7 @@ bpm_adjusted_movement_radicalism = {
 	}
 	else_if = {
 		limit = {
-			law_stance = {
+			law_enactment_stance = {
 				law = owner.currently_enacting_law.type
 				value = strongly_approve
 			}
@@ -104,7 +104,7 @@ bpm_ig_law_support_total_value = {
 					owner = {
 						any_political_movement = {
 							is_revolutionary = yes
-							law_stance = {
+							law_enactment_stance = {
 								law = prev.currently_enacting_law.type
 								value > approve
 							}
@@ -244,7 +244,7 @@ bpm_ig_law_support_total_value = {
 					has_variable = bpm_blackmail_leader_sway_used
 					has_variable = bpm_redeem_favors_sway_used
 				}
-				law_stance = {
+				law_enactment_stance = {
 					law = owner.currently_enacting_law.type
 					value < strongly_approve
 				}
@@ -261,7 +261,7 @@ bpm_ig_law_support_total_value = {
 					has_variable = bpm_blackmail_leader_sway_used
 					has_variable = bpm_redeem_favors_sway_used
 				}
-				law_stance = {
+				law_enactment_stance = {
 					law = owner.currently_enacting_law.type
 					value < approve
 				}

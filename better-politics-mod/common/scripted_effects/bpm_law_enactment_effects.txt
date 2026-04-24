@@ -1,11 +1,11 @@
-﻿bpm_set_ig_enacting_law_stance_to_number = {
+bpm_set_ig_enacting_law_stance_to_number = {
 	set_variable = { name = bpm_ig_enacting_law_stance value = 0 }
 	
 	if = {
 		limit = { owner = { enacting_any_law = yes }}
 		if = {
 			limit = {
-				law_stance = {
+				law_enactment_stance = {
 					law = root.currently_enacting_law.type
 					value = strongly_approve
 				}
@@ -14,7 +14,7 @@
 		}
 		else_if = {
 			limit = {
-				law_stance = {
+				law_enactment_stance = {
 					law = root.currently_enacting_law.type
 					value = approve
 				}
@@ -23,7 +23,7 @@
 		}
 		else_if = {
 			limit = {
-				law_stance = {
+				law_enactment_stance = {
 					law = root.currently_enacting_law.type
 					value = disapprove
 				}
@@ -32,7 +32,7 @@
 		}
 		else_if = {
 			limit = {
-				law_stance = {
+				law_enactment_stance = {
 					law = root.currently_enacting_law.type
 					value = strongly_disapprove
 				}
@@ -87,7 +87,7 @@ bpm_set_ig_preferred_law_stance_to_number = {
             var:preferred_law.type = { save_scope_as = preferred_law_type }
             if = {
                 limit = {
-                    law_stance = {
+                    law_enactment_stance = {
                         law = scope:preferred_law_type
                         value = strongly_approve
                     }
@@ -96,7 +96,7 @@ bpm_set_ig_preferred_law_stance_to_number = {
             }
             else_if = {
                 limit = {
-                    law_stance = {
+                    law_enactment_stance = {
                         law = scope:preferred_law_type
                         value = approve
                     }
@@ -105,7 +105,7 @@ bpm_set_ig_preferred_law_stance_to_number = {
             }
             else_if = {
                 limit = {
-                    law_stance = {
+                    law_enactment_stance = {
                         law = scope:preferred_law_type
                         value = disapprove
                     }
@@ -114,7 +114,7 @@ bpm_set_ig_preferred_law_stance_to_number = {
             }
             else_if = {
                 limit = {
-                    law_stance = {
+                    law_enactment_stance = {
                         law = scope:preferred_law_type
                         value = strongly_disapprove
                     }
@@ -307,9 +307,9 @@ bpm_set_country_law_support_fixed_vars = {
 	if = {
 		limit = {
 			any_political_movement = {
-				law_stance = {
+				law_enactment_stance = {
 					law = prev.currently_enacting_law.type
-					value > approve
+					value >= approve
 				}
 				is_revolutionary = yes
 			}
