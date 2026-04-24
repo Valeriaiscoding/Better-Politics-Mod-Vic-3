@@ -114,7 +114,7 @@ REPLACE:ig_intelligentsia = {
 			limit = { is_historical = no }
 			if = {
 				limit = { 
-					modifier:interest_group_bpm_intelligentsia_force_leader_non_moderate = yes
+					scope:interest_group.modifier:interest_group_bpm_intelligentsia_force_leader_non_moderate = yes
 					has_ideology = ideology:ideology_moderate
 				}
 				set_ideology = ideology:ideology_market_liberal
