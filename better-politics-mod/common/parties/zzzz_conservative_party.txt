@@ -1023,13 +1023,6 @@ REPLACE:conservative_party = {
 					country_is_colonial_or_company = yes
 					bpm_country_laws_has_colonial_government = yes
 				}
-<<<<<<< HEAD
-=======
-				OR = {
-					bpm_ig_is_metropole_loyalist = yes
-					bpm_ig_is_state_institutional = yes
-				}
->>>>>>> ideology_again
 			}
 			if = {
 				limit = { 

@@ -2080,7 +2080,9 @@ REPLACE:lobby_pro_overlord = {
 			}
 			if = {
 				limit = {
+					is_interest_group_type = ig_market_liberals
 					is_interest_group_type = ig_armed_forces
+					is_interest_group_type = ig_reactionaries
 				}
 				add = {
 					value = 50
@@ -2093,6 +2095,7 @@ REPLACE:lobby_pro_overlord = {
 						is_interest_group_type = ig_intelligentsia
 						is_interest_group_type = ig_rural_folk
 						is_interest_group_type = ig_trade_unions
+						bpm_ig_is_radical_left = yes
 					}
 				}
 				add = {
@@ -2105,6 +2108,55 @@ REPLACE:lobby_pro_overlord = {
 					OR = {
 						is_interest_group_type = ig_landowners
 						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_national_liberals
+					}
+				}
+				add = {
+					value = -50
+					desc = "colonial_subjects"
+				}
+			}
+		}
+		else_if = { # other colonies
+			limit = { 
+				country_is_colonial_or_company = yes
+			}
+			if = {
+				limit = {
+					bpm_ig_is_state_institutional = yes
+				}
+				add = {
+					value = 200
+					desc = "colonial_rule"
+				}
+			}
+			else_if = {
+				limit = {
+					bpm_ig_is_metropole_loyalist = yes
+				}
+				add = {
+					value = 50
+					desc = "colonial_rule"
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						is_interest_group_type = ig_intelligentsia
+						is_interest_group_type = ig_rural_folk
+						is_interest_group_type = ig_trade_unions
+						bpm_ig_is_radical_left = yes
+					}
+				}
+				add = {
+					value = -100
+					desc = "colonial_subjects"
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						bpm_ig_is_nationalist = yes
 					}
 				}
 				add = {
@@ -2620,11 +2672,22 @@ REPLACE:lobby_anti_overlord = {
 		### British India
 		if = {
 			limit = {
-				country_is_colonial_or_company = yes
-				OR = {
-					bpm_ig_is_state_institutional = yes
-					bpm_ig_is_metropole_loyalist = yes
+				trigger_if = {
+					limit = { c:BIC ?= owner }
+					OR = {
+						is_interest_group_type = ig_industrialists
+						is_interest_group_type = ig_reactionaries
+						is_interest_group_type = ig_market_liberals
+						is_interest_group_type = ig_armed_forces
+					}
 				}
+				trigger_else = {
+					owner = { country_is_colonial_or_company = yes }
+					OR = {
+						bpm_ig_is_state_institutional = yes
+						bpm_ig_is_metropole_loyalist = yes
+					}
+				}	
 			}
 			multiply = {
 				value = 0
