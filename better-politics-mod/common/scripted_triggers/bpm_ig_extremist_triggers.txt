@@ -46,170 +46,204 @@ bpm_ig_is_radical_opposition_authoritarian_in_democracy = {
 	}
 }
 
-bpm_ig_is_radical_opposition_status_quo = {
-	is_interest_group_type = ig_christian_democrats
-	NOT = {
-		has_ideology = ideology:ideology_rel_pragmatic_moralist
-	}
+bpm_ig_is_radical_opposition_status_quo_dop = {
 	owner = {
-		ig:ig_christian_democrats ?= {
-			save_temporary_scope_as = christ_dem_ig
-		}
-		trigger_if = {
-			limit = {
-				has_variable = bpm_christian_democrats_dop_ideology
-			}
-			NOT = { has_law_or_variant = law_type:law_separated_powers }
-			NOR = { 
+		NAND = {
+			has_law_or_variant = law_type:law_separated_powers
+			OR = { 
 				has_law_or_variant = law_type:law_anti_strike_laws
 				has_law_or_variant = law_type:law_right_to_associate
 			}
 			trigger_if = {
 				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_dop_divine_democrat }
+					ig:ig_christian_democrats = { has_ideology = ideology:ideology_dop_divine_democrat }
 				}
-				NOR = {
+				OR = {
 					has_law_or_variant = law_type:law_census_voting
 					has_law_or_variant = law_type:law_wealth_voting
 				}
 			}
 			trigger_else_if = {
 				limit = { 
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_dop_conservative_democrat }
+					ig:ig_christian_democrats = { has_ideology = ideology:ideology_dop_conservative_democrat }
 				}
-				NOR = {
+				OR = {
 					has_law_or_variant = law_type:law_census_voting
 					has_law_or_variant = law_type:law_universal_suffrage
 				}
 			}
 			trigger_else = {
-				NOT = { has_law_or_variant = law_type:law_universal_suffrage }
+				has_law_or_variant = law_type:law_universal_suffrage
 			}
 		}
-		trigger_if = {
-			limit = {
-				has_variable = bpm_christian_democrats_eco_ideology
-			}
+	}
+}
+
+bpm_ig_is_radical_opposition_status_quo_eco = {
+	owner = {
+		NAND = {
 			trigger_if = {
-				limit = { scope:christ_dem_ig = { has_ideology = ideology:ideology_eco_distributist_economy } }
-				NOR = { 
+				limit = { ig:ig_christian_democrats = { has_ideology = ideology:ideology_eco_distributist_economy } }
+				OR = { 
 					has_law_or_variant = law_type:law_cooperative_ownership
 					has_law_or_variant = law_type:law_interventionism
 				}
 			}
 			trigger_else_if = {
-				limit = { scope:christ_dem_ig = { has_ideology = ideology:ideology_eco_centralized_economy } }
-				NOR = { 
+				limit = { ig:ig_christian_democrats = { has_ideology = ideology:ideology_eco_centralized_economy } }
+				OR = { 
 					has_law_or_variant = law_type:law_command_economy
 					#has_law_or_variant = law_type:law_interventionism
 				}
 			}
 			trigger_else_if = {
-				limit = { scope:christ_dem_ig = { has_ideology = ideology:ideology_eco_modern_agrarian } }
-				NOR = { 
+				limit = { ig:ig_christian_democrats = { has_ideology = ideology:ideology_eco_modern_agrarian } }
+				OR = { 
 					has_law_or_variant = law_type:law_agrarianism
 					has_law_or_variant = law_type:law_interventionism
 				}
-				NOT = { has_law_or_variant = law_type:law_homesteading }
+				has_law_or_variant = law_type:law_homesteading
 			}
 			trigger_else = {
-				NOT = { has_law_or_variant = law_type:law_interventionism }
+				has_law_or_variant = law_type:law_interventionism
 			}
-			NOR = { 
+			OR = { 
 				has_law_or_variant = law_type:law_proportional_taxation 
 				has_law_or_variant = law_type:law_graduated_taxation
 			}
 		}
-		trigger_if = {
-			limit = {
-				has_variable = bpm_christian_democrats_wel_ideology
-			}
-			NOR = { 
+	}
+}
+
+bpm_ig_is_radical_opposition_status_quo_wel = {
+	owner = {
+		NAND = {
+			OR = { 
 				has_law_or_variant = law_type:law_restricted_child_labor
 				has_law_or_variant = law_type:law_compulsory_primary_school
 			}
-			NOR = { 
+			OR = { 
 				has_law_or_variant = law_type:law_wage_subsidies
 				has_law_or_variant = law_type:law_old_age_pension
 			}
 			trigger_if = {
 				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_wel_expanded_public_welfare }
+					ig:ig_christian_democrats = { has_ideology = ideology:ideology_wel_expanded_public_welfare }
 				}
-				NOT = { has_law_or_variant = law_type:law_worker_protections }
-				
-				NOT = {
-					has_law_or_variant = law_type:law_public_shools
-				}
-				NOT = {
-					has_law_or_variant = law_type:law_public_health_insurance
-				}
-				NOR = {
+				has_law_or_variant = law_type:law_worker_protections
+				has_law_or_variant = law_type:law_public_shools
+				has_law_or_variant = law_type:law_public_health_insurance
+				OR = {
 					has_law_or_variant = law_type:law_protected_leisure
 					has_law_or_variant = law_type:law_limited_work_hours
 				}
 			}
 			trigger_else_if = {
 				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_wel_distributist_welfare }
+					ig:ig_christian_democrats = { has_ideology = ideology:ideology_wel_distributist_welfare }
 				}
-				NOR = {
+				OR = {
 					has_law_or_variant = law_type:law_religious_schools
 					has_law_or_variant = law_type:law_public_shools
 				}
 				has_law_or_variant = law_type:law_no_health_system
-				has_law_or_variant = law_type:law_unregulated_work_time
-				
-				
+				has_law_or_variant = law_type:law_unregulated_work_time		
 			}
 			trigger_else_if = {
 				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_wel_social_market_welfare }
+					ig:ig_christian_democrats = { has_ideology = ideology:ideology_wel_social_market_welfare }
 				}
-				NOR = {
+				OR = {
 					has_law_or_variant = law_type:law_private_schools
 					has_law_or_variant = law_type:law_public_shools
 				}
-				NOR = {
+				OR = {
 					has_law_or_variant = law_type:law_private_health_insurance
 					has_law_or_variant = law_type:law_public_health_insurance
 				}
-				NOR = {
+				OR = {
 					has_law_or_variant = law_type:law_protected_leisure
 					has_law_or_variant = law_type:law_limited_work_hours
 				}
 			}
 		}
+	}
+}
+
+bpm_ig_is_radical_oppostion_status_quo_cit = {
+	owner = {
 		trigger_if = {
-			limit = { has_variable = bpm_christian_democrats_cit_ideology }
-			trigger_if = {
-				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_cit_christian_internationalist }
-				}
-				NOR = {
-					has_law_or_variant = law_type:law_multicultural
-					has_law_or_variant = law_type:law_cultural_exclusion
-				}
+			limit = {
+				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_christian_internationalist }
 			}
-			trigger_else_if = {
-				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_cit_ethnonationalist }
-				}
-				NOR = {
-					has_law_or_variant = law_type:law_ethnostate
-					has_law_or_variant = law_type:law_national_supremacy
-				}
-			}
-			trigger_else_if = {
-				limit = {
-					scope:christ_dem_ig = { has_ideology = ideology:ideology_cit_multiethnic_nationalist }
-				}
-				NOR = {
-					has_law_or_variant = law_type:law_cultural_exclusion
-					has_law_or_variant = law_type:law_national_supremacy
-				}
+			NOR = {
+				has_law_or_variant = law_type:law_multicultural
+				has_law_or_variant = law_type:law_cultural_exclusion
 			}
 		}
+		trigger_else_if = {
+			limit = {
+				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_ethnonationalist }
+			}
+			NOR = {
+				has_law_or_variant = law_type:law_ethnostate
+				has_law_or_variant = law_type:law_national_supremacy
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_multiethnic_nationalist }
+			}
+			NOR = {
+				has_law_or_variant = law_type:law_cultural_exclusion
+				has_law_or_variant = law_type:law_national_supremacy
+			}
+		}
+	}
+}
+
+bpm_ig_is_radical_oppostion_status_quo_mil = {
+	owner = {
+		trigger_if = {
+			limit = {
+				ig:ig_christian_democrats = { has_ideology = ideology:ideology_mil_antimilitarist }
+			}
+			OR = {
+				has_law_or_variant = law_type:law_mass_conscription
+				has_law_or_variant = law_type:law_jingoism
+				has_law_or_variant = law_type:law_ultramilitarism
+			}
+		}
+	}
+}
+
+bpm_ig_is_radical_opposition_status_quo = {
+	is_interest_group_type = ig_christian_democrats
+	NOT = {
+		has_ideology = ideology:ideology_rel_pragmatic_moralist
+	}
+	OR = {
+		AND = {
+			owner = { has_variable = bpm_christian_democrats_dop_ideology }
+			bpm_ig_is_radical_opposition_status_quo_dop = yes
+		}
+		AND = {
+			owner = { has_variable = bpm_christian_democrats_eco_ideology }
+			bpm_ig_is_radical_opposition_status_quo_eco = yes
+		}
+		AND = {
+			owner = { has_variable = bpm_christian_democrats_wel_ideology }
+			bpm_ig_is_radical_opposition_status_quo_wel = yes
+		}
+		AND = {
+			owner = { has_variable = bpm_christian_democrats_cit_ideology }
+			bpm_ig_is_radical_oppostion_status_quo_cit = yes
+		}
+		AND = {
+			owner = { has_variable = bpm_christian_democrats_mil_ideology }
+			bpm_ig_is_radical_oppostion_status_quo_mil = yes
+		}
+
 	}
 }
 
