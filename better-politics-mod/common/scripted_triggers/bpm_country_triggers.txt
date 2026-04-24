@@ -157,14 +157,23 @@ bpm_country_laws_are_liberal_democratic = {
 		has_law_or_variant = law_type:law_protected_speech
 		has_law_or_variant = law_type:law_right_of_assembly
 	}
-	has_law_or_variant = law_type:law_elected_bureaucrats
+	bpm_country_laws_have_unelected_bureaucrats = no
 	OR = {
 		has_law_or_variant = law_type:law_guaranteed_liberties
 		has_law_or_variant = law_type:law_no_home_affairs
 	}
+	NOT = {
+		active_law:lawgroup_distribution_of_power = {
+			has_amendment = amendment_type:amendment_electoral_clientelism
+		}
+	}
+	NOT = {
+		has_law_or_variant = law_type:law_party_single
+	}
 }
 
 bpm_country_laws_are_moderately_liberal_democratic = {
+	bpm_country_laws_are_very_repressive = no
 	OR = {
 		has_law_or_variant = law_type:law_wealth_voting
 		has_law_or_variant = law_type:law_census_voting
@@ -200,40 +209,48 @@ bpm_country_laws_no_voting = {
 }
 
 bpm_country_laws_unfair_voting = {
+	bpm_country_laws_no_voting = no
+	OR = {
 	OR = {
 		has_law_or_variant = law_type:law_landed_voting
 		has_law_or_variant = law_type:law_wealth_voting
+		}
+		OR = {
 		has_law_or_variant = law_type:law_party_single
 		has_law_or_variant = law_type:law_party_liberal_only
 		has_law_or_variant = law_type:law_party_reactionary_only
 		has_law_or_variant = law_type:law_party_socialist_only
+		}
 		active_law:lawgroup_distribution_of_power ?= {
 			OR = {
 				has_amendment = amendment_type:amendment_electoral_clientelism
 				has_amendment = amendment_type:amendment_chamber_of_gentleman_deputies
 				has_amendment = amendment_type:amendment_chamber_of_procurators
+				has_amendment = amendment_type:amendment_voter_suppression_policies
+				has_amendment = amendment_type:amendment_200_franc_suffrage
 			}
 		}
 	}
 }
 
 bpm_country_laws_ok_voting = {
-	AND = {
+	bpm_country_laws_no_voting = no
 		OR = {
 			has_law_or_variant = law_type:law_census_voting
 			has_law_or_variant = law_type:law_universal_suffrage
 		}
-		NOT = {
 			active_law:lawgroup_distribution_of_power = {
+		NOR = {
 				has_amendment = amendment_type:amendment_electoral_clientelism
+			has_amendment = amendment_type:amendment_200_franc_suffrage
 			}
 		}
+	
 		NOR = {
 			has_law_or_variant = law_type:law_party_single
 			has_law_or_variant = law_type:law_party_liberal_only
 			has_law_or_variant = law_type:law_party_reactionary_only
 			has_law_or_variant = law_type:law_party_socialist_only
-		}
 	}
 }
 
@@ -241,6 +258,9 @@ bpm_country_laws_have_unelected_bureaucrats = {
 	OR = {
 		has_law_or_variant = law_type:law_appointed_bureaucrats
 		has_law_or_variant = law_type:law_hereditary_bureaucrats
+		active_law:lawgroup_bureaucracy = {
+			has_amendment = amendment_type:amendment_preserved_bureaucratic_caste
+		}
 	}
 }
 
@@ -378,15 +398,14 @@ bpm_country_is_pre_constitutional = {
 		has_law_or_variant = law_type:law_autocracy
 		has_law_or_variant = law_type:law_oligarchy
 	}
+	bpm_country_laws_no_voting = yes 
 }
 
 bpm_country_is_constitutional_monarchy = {
 	has_law_or_variant = law_type:law_monarchy
-	OR = {
-		has_law_or_variant = law_type:law_wealth_voting
-		has_law_or_variant = law_type:law_census_voting
-		has_law_or_variant = law_type:law_universal_suffrage
-		has_law_or_variant = law_type:law_landed_voting
+	bpm_country_laws_no_voting = no
+	NOT = {
+		has_law_or_variant = law_type:law_organic_democracy
 	}
 }
 
@@ -399,7 +418,8 @@ bpm_country_is_pre_modern_absolutist = {
 	NOT = {
 		has_law = law_type:law_neo_absolutism
 	}
-	has_law_or_variant = law_type:law_advisory_body
+	bpm_country_is_pre_modern = yes
+	bpm_country_is_pre_constitutional = yes
 }
 
 bpm_country_is_major_unification_candidate = {
