@@ -761,10 +761,9 @@ REPLACE:ideology_legitimist_valid_trigger = {
 REPLACE:ideology_utopian_valid_trigger = { # TODO?
 	OR = {
 		bpm_ig_is_peasant = yes
-		is_interest_group_type = ig_intelligentsia
-		is_interest_group_type = ig_trade_unions
-		is_interest_group_type = ig_socialists
+		bpm_ig_is_labor = yes
 		bpm_ig_is_radical_liberal = yes
+		is_interest_group_type = ig_intelligentsia
 	}
 	bpm_ig_is_pro_slavery = no
 	bpm_ig_is_monarchist = no
