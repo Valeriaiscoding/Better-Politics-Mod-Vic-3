@@ -12,11 +12,9 @@ ideology_moderate_valid_trigger = {
 		}
 	}
 
-	NOT = {
-		AND = {
-			is_interest_group_type = ig_intelligentsia
-			modifier:interest_group_bpm_intelligentsia_force_leader_non_moderate = yes # Forced to have opinions
-		}
+	NAND = {
+		is_interest_group_type = ig_intelligentsia
+		modifier:interest_group_bpm_intelligentsia_force_leader_non_moderate = yes # Forced to have opinions
 	}
 	#is_interest_group_type = ig_christian_democrats
 }

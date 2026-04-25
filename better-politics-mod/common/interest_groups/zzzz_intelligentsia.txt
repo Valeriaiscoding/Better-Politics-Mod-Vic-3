@@ -117,7 +117,23 @@ REPLACE:ig_intelligentsia = {
 					scope:interest_group.modifier:interest_group_bpm_intelligentsia_force_leader_non_moderate = yes
 					has_ideology = ideology:ideology_moderate
 				}
-				set_ideology = ideology:ideology_market_liberal
+				random_list = {
+					1 = {
+						trigger = {
+							ideology_market_liberal_valid_trigger = yes
+						}
+						set_ideology = ideology:ideology_market_liberal
+					}
+					1 = {
+						trigger = {
+							ideology_protectionist_valid_trigger = yes
+						}
+						set_ideology = ideology:ideology_protenctionist
+					}
+					2 = {
+						set_ideology = ideology:ideology_modernizer_leader
+					}
+				}
 			}
 		}
 	}
