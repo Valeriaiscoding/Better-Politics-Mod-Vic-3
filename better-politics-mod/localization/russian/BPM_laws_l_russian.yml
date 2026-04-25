@@ -134,12 +134,12 @@
 
  bpm_decorative_modify_throughput_per_workplace_safety_investment:0 "[concept_building] [concept_throughput] за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
  building_bpm_modify_sol_per_workplace_safety_investment:0 "[concept_sol] за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
- bpm_decorative_work_time_less_effective_with_traditional_agriculture:0 "Less Efficent with Traditional Agriculture"
- bpm_decorative_work_time_less_effective_with_traditional_agriculture_desc:0 "If country has any variant of [GetLawType('law_serfdom').GetName] or [GetLawType('law_tenant_farmers').GetName] [Concept('concept_law', 'law')] enacted, effect of this law won't include buildings in [GetBuildingGroup('bg_staple_crops').GetName], [GetBuildingGroup('bg_ranching').GetName], and [GetBuildingGroup('bg_plantations').GetName] [Concept('concept_building_group', 'Building Groups')]."
 
  bpm_decorative_modify_employment_laborers_per_workplace_safety_investment:0 "@laborers! Занятость рабочих за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
  bpm_decorative_modify_employment_machinists_per_workplace_safety_investment:0 "@machinists! Занятость машинистов за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
  bpm_decorative_modify_employment_clerks_per_workplace_safety_investment:0 "@clerks! Занятость клерков за уровень [Concept('concept_institution', 'института')] [GetInstitutionType('institution_workplace_safety').GetName]"
+  country_bpm_incorporated_employment_mult:0 "Занятость Во Включенных Областях"
+ country_bpm_incorporated_employment_mult_desc:0 "Бонус или штраф к количеству работников построек во включенных областях"
 
 # Trade Unions
  lawgroup_labour_associations:0 "Профсоюзы"

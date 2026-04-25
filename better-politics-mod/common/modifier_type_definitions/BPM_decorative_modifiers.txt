@@ -135,16 +135,6 @@ bpm_decorative_modify_employment_clerks_per_workplace_safety_investment = {
 	decimals = 2
 }
 
-bpm_decorative_work_time_less_effective_in_slave_states = {
-	color = neutral
-	boolean = yes
-}
-
-bpm_decorative_work_time_less_effective_with_traditional_agriculture = {
-	color = neutral
-	boolean = yes
-}
-
 # General laws
 bpm_decorative_upgradable_law = {
 	color = neutral

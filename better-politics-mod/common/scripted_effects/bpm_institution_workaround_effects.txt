@@ -246,49 +246,12 @@ bpm_all_work_time_law_workaround = {
 		remove_modifier = bpm_worktime_institution_workaround_state
 		remove_modifier = bpm_worktime_institution_rural_workaround
 		if = {
-			limit = {
-				owner = { NOR = { has_law_or_variant = law_type:law_serfdom has_law_or_variant = law_type:law_tenant_farmers } } 
-			}
-			add_modifier = {
-				name = bpm_worktime_institution_rural_workaround
-				multiplier = {
-					value = owner.modifier:country_bpm_incorporated_employment_mult
-					multiply = incorporation_progress
-				}
-			}
-		}
-		else = {
+			limit = { owner = { NOT = { has_law = law_type:law_unregulated_work_time } } }
 			add_modifier = {
 				name = bpm_worktime_institution_workaround_state
 				multiplier = {
 					value = owner.modifier:country_bpm_incorporated_employment_mult
 					multiply = incorporation_progress
-				}
-			}
-		}
-		every_scope_building ?= {
-			bpm_remove_work_time_workaround_modifiers = yes
-			if = {
-				limit = { 
-					OR = {
-						is_building_group = bg_manufacturing
-						is_building_group = bg_service
-						is_building_group = bg_government
-						is_building_group = bg_infrastructure
-						is_building_group = bg_extraction
-						AND = {
-							owner = { NOR = { has_law_or_variant = law_type:law_serfdom has_law_or_variant = law_type:law_tenant_farmers } }
-							OR = {
-								is_building_group = bg_staple_crops
-								is_building_group = bg_ranching
-								is_building_group = bg_plantations
-							}
-						}
-					}
-				}
-				add_modifier = {
-					name = bpm_worktime_sol_workaround
-					multiplier = modifier:building_bpm_modify_sol_per_workplace_safety_investment
 				}
 			}
 		}

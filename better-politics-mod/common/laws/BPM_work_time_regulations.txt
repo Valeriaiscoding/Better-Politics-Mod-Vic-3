@@ -9,9 +9,6 @@ law_unregulated_work_time = {
 	}
 
 	on_activate = {
-		hidden_effect = {
-			bpm_all_work_time_law_workaround = yes
-		}
 	}
 
 	can_impose = { 
@@ -40,9 +37,6 @@ law_token_time_regulations = {
 	}
 
 	on_activate = {
-		hidden_effect = {
-			bpm_all_work_time_law_workaround = yes
-		}
 	}
 	
 	disallowing_laws = {
@@ -50,17 +44,20 @@ law_token_time_regulations = {
 	}
 
 	modifier = {
-		#building_employment_laborers_mult = 0.05 # does not work
 		country_bpm_incorporated_employment_mult = 0.05
-		# TODO Add modifiers and loc
-		bpm_decorative_work_time_less_effective_in_slave_states = yes
-		bpm_decorative_work_time_less_effective_with_traditional_agriculture = yes
+		building_bpm_modify_sol_per_workplace_safety_investment = 0.2
 
 	}
 	
 	institution = institution_workplace_safety
 	institution_modifier = {
-		building_bpm_modify_sol_per_workplace_safety_investment = 0.2
+		
+		building_laborers_standard_of_living_add = 0.2
+		building_machinists_standard_of_living_add = 0.2
+		building_engineers_standard_of_living_add = 0.2
+		building_clerks_standard_of_living_add = 0.2
+		building_bureaucrats_standard_of_living_add = 0.2
+		building_academics_standard_of_living_add = 0.2
 	}
 
 	can_impose = { 
@@ -94,24 +91,21 @@ law_limited_work_hours = {
 	}
 
 	on_activate = {
-		hidden_effect = {
-			bpm_all_work_time_law_workaround = yes
-		}
 	}
 
 	modifier = {
-		# does not work
-		#building_employment_laborers_mult = 0.1
-		#building_employment_machinists_mult = 0.05
-		#building_employment_clerks_mult = 0.05
 		country_bpm_incorporated_employment_mult = 0.1
-		bpm_decorative_work_time_less_effective_in_slave_states = yes
-		bpm_decorative_work_time_less_effective_with_traditional_agriculture = yes
+		building_bpm_modify_sol_per_workplace_safety_investment = 0.3
 	}
 	
 	institution = institution_workplace_safety
 	institution_modifier = {
-		building_bpm_modify_sol_per_workplace_safety_investment = 0.3
+		building_laborers_standard_of_living_add = 0.3
+		building_machinists_standard_of_living_add = 0.3
+		building_engineers_standard_of_living_add = 0.3
+		building_clerks_standard_of_living_add = 0.3
+		building_bureaucrats_standard_of_living_add = 0.3
+		building_academics_standard_of_living_add = 0.3
 	}
 
 	can_impose = { 
@@ -153,24 +147,21 @@ law_protected_leisure = {
 	}
 
 	on_activate = {
-		hidden_effect = {
-			bpm_all_work_time_law_workaround = yes
-		}
 	}
 
 	modifier = {
-		# does not work
-		#building_employment_laborers_mult = 0.2
-		#building_employment_machinists_mult = 0.1
-		#building_employment_clerks_mult = 0.1
 		country_bpm_incorporated_employment_mult = 0.2
-		bpm_decorative_work_time_less_effective_in_slave_states = yes
-		bpm_decorative_work_time_less_effective_with_traditional_agriculture = yes
+		building_bpm_modify_sol_per_workplace_safety_investment = 0.5
 	}
 	
 	institution = institution_workplace_safety
 	institution_modifier = {
-		building_bpm_modify_sol_per_workplace_safety_investment = 0.5
+		building_laborers_standard_of_living_add = 0.5
+		building_machinists_standard_of_living_add = 0.5
+		building_engineers_standard_of_living_add = 0.5
+		building_clerks_standard_of_living_add = 0.5
+		building_bureaucrats_standard_of_living_add = 0.5
+		building_academics_standard_of_living_add = 0.5
 	}
 
 	can_impose = { 
