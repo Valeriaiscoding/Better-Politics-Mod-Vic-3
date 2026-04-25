@@ -443,6 +443,9 @@ REPLACE:ig_is_reactionary = {
 }
 
 REPLACE:ig_is_dreyfusard = {
+    bpm_ig_is_religious = no
+    NOT = { has_ideology = ideology:ideology_cit_ethnonationalist }
+    NOT = { is_interest_group_type = ig_armed_forces }
 	OR = {
 		bpm_ig_is_internationalist = yes
         bpm_ig_is_non_religious = yes
