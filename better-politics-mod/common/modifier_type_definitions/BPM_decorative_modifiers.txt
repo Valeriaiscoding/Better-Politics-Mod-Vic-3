@@ -193,6 +193,6 @@ country_bpm_change_primary_culture_to_overlord = {
 }
 
 bpm_decorative_no_foreign_policy_removed_on_independence = {
-	color = bad
+	color = good
 	boolean = yes
 }
