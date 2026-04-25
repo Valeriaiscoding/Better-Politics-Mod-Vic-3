@@ -85,7 +85,7 @@
  law_disarmed_nation:0 "Disarmed Nation"
  law_disarmed_nation_desc:0 "Fully pacifist set of policies that both limits the extent of foreign intervention that this country can partake in, and reallocates the military expenses towards other areas."
  law_no_indedendent_foreign_policy:0 "No Independent Foreign Policiy"
- law_no_indedendent_foreign_policy_desc:0 "Country does not conduct its own foreign policy due to being subject of another country, and lacking significant autonomy."
+ law_no_indedendent_foreign_policy_desc:0 "Country can't conduct its own foreign policy due to being subject and lacking significant autonomy."
 
  country_bpm_aggressive_diplomacy_disabled:0 "Can Not Use Aggressive [Concept('concept_diplomatic_play', 'Diplomatic Plays')]"
  country_bpm_aggressive_diplomacy_disabled_desc:0 "Can not initiate a [Concept('concept_diplomatic_play', 'Diplomatic Play')] using most wargoals."
