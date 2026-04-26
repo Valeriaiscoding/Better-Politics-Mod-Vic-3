@@ -225,3 +225,81 @@ bpm_socialist_movements_support = {
         add = political_movement_support
     }
 }
+
+# bpm_state_region_german_pop_percentage = {
+#     if = {
+#         limit = { 
+#             any_scope_state = {
+#                 state_is_homeland_of_german_cultures = yes
+#             }
+#         }
+#         every_scope_state = {
+#             every_scope_pop = {
+#                 add = total_size
+#             }
+#         }
+#         save_temporary_value_as = total_pops
+#         value = 0
+#         every_scope_state = {
+#             every_scope_pop = {
+#                 limit = { 
+#                     culture = { has_discrimination_trait = language_germanophone }
+#                 }
+#                 add = total_size
+#             }
+#         }
+#         divide = scope:total_pops
+#     }
+# }
+
+# bpm_state_region_italian_pop_percentage = {
+#     if = {
+#         limit = { 
+#             any_scope_state = {
+#                 state_is_homeland_of_italian_cultures = yes
+#             }
+#         }
+#         every_scope_state = {
+#             every_scope_pop = {
+#                 add = total_size
+#             }
+#         }
+#         save_temporary_value_as = total_pops
+#         value = 0
+#         every_scope_state = {
+#             every_scope_pop = {
+#                 limit = { 
+#                     culture = { has_discrimination_trait = language_germanophone }
+#                 }
+#                 add = total_size
+#             }
+#         }
+#         divide = scope:total_pops
+#     }
+# }
+
+# bpm_state_region_yugoslav_pop_percentage = {
+#     if = {
+#         limit = { 
+#             any_scope_state = {
+#                 state_is_homeland_of_yugoslav_cultures = yes
+#             }
+#         }
+#         every_scope_state = {
+#             every_scope_pop = {
+#                 add = total_size
+#             }
+#         }
+#         save_temporary_value_as = total_pops
+#         value = 0
+#         every_scope_state = {
+#             every_scope_pop = {
+#                 limit = { 
+#                     culture = { has_discrimination_trait = language_germanophone }
+#                 }
+#                 add = total_size
+#             }
+#         }
+#         divide = scope:total_pops
+#     }
+# }

@@ -401,15 +401,64 @@
 		value = bpm_additional_radicalism_factors
 		if = {
 			limit = {
-				owner.ruler ?= {
-					NOT = { religion = root.religion }
+				owner = {
+					has_law_or_variant = law_type:law_state_atheism
 				}
-			}		
-			
+			}
+			add = {
+				value = 0.2
+				desc = "law_state_atheism"
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_total_separation
+				}
+			}
+			add = {
+				value = 0.15
+				desc = "law_total_separation"
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_freedom_of_conscience
+				}
+			}
 			add = {
 				value = 0.1
-				desc = "RULER_WRONG_RELIGION"
-			}			
+				desc = "law_freedom_of_conscience"
+			}
+		}
+		if = {
+			limit = {
+				religion = rel:hindu
+				owner = { has_social_hierarchy = british_indian_caste_system }
+			}
+			if = {
+				limit = {
+					owner = {
+						has_law_or_variant = law_type:law_affirmative_action
+					}
+				}
+				add = {
+					value = 0.1
+					desc = "law_affirmative_action"
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						has_law_or_variant = law_type:law_hindu_caste_not_enforced
+					}
+				}
+				add = {
+					value = 0.05
+					desc = "law_hindu_caste_not_enforced"
+				}
+			}
 		}
 		
 		add = {
@@ -420,28 +469,7 @@
 			min = 0
 			desc = "STANDARD_OF_LIVING_FOR_RELIGION"
 		}		
-
-		
-
-		if = {
-			limit = {
-				owner = {
-					any_neighbouring_state = {
-						owner = {
-							NOT = { THIS = ROOT.owner }
-							any_political_movement = {
-								religion ?= ROOT.religion
-								is_insurrectionary = yes
-							}
-						}
-					}
-				}
-			}
-			add = {
-				desc = "NEIGHBOURING_COUNTRY_WITH_RELIGIOUS_REVOLUTION"
-				value = 0.15
-			}
-		}
+			
 	}
 }
 
@@ -892,6 +920,34 @@ REPLACE:movement_religious_minority = {
 	
 	additional_radicalism_factors = {
 		value = bpm_additional_radicalism_factors
+		if = {
+			limit = {
+				religion = rel:hindu
+				owner = { has_social_hierarchy = british_indian_caste_system }
+			}
+			if = {
+				limit = {
+					owner = {
+						has_law_or_variant = law_type:law_affirmative_action
+					}
+				}
+				add = {
+					value = 0.1
+					desc = "law_affirmative_action"
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						has_law_or_variant = law_type:law_hindu_caste_not_enforced
+					}
+				}
+				add = {
+					value = 0.05
+					desc = "law_hindu_caste_not_enforced"
+				}
+			}
+		}
 		add = {
 			value = "owner.average_sol"
 			subtract = "owner.average_sol_for_religion(scope:religion)"

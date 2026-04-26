@@ -115,9 +115,9 @@ bpm_country_is_bourgeois_republic = {
 }
 
 bpm_country_is_republic = {
-	OR = {
-		bpm_country_is_bourgeois_republic = yes
-		has_law_or_variant = law_type:law_council_republic
+		OR = {
+			bpm_country_is_bourgeois_republic = yes
+			has_law_or_variant = law_type:law_council_republic
 	}
 }
 
@@ -193,17 +193,20 @@ bpm_country_laws_are_moderately_liberal_democratic = {
 }
 
 bpm_country_laws_no_voting = {
-	OR = {
-		has_law_or_variant = law_type:law_autocracy
-		has_law_or_variant = law_type:law_oligarchy
-		has_law_or_variant = law_type:law_technocracy
-		has_law_or_variant = law_type:law_military_junta
-		has_law_or_variant = law_type:law_colonial_administration
-	}
-	active_law:lawgroup_distribution_of_power ?= {
-		NOR = {
-			has_amendment = amendment_type:amendment_chamber_of_gentleman_deputies
-			has_amendment = amendment_type:amendment_chamber_of_procurators
+	custom_description = {
+		text = bpm_country_laws_no_voting_desc
+		OR = {
+			has_law_or_variant = law_type:law_autocracy
+			has_law_or_variant = law_type:law_oligarchy
+			has_law_or_variant = law_type:law_technocracy
+			has_law_or_variant = law_type:law_military_junta
+			has_law_or_variant = law_type:law_colonial_administration
+		}
+		active_law:lawgroup_distribution_of_power ?= {
+			NOR = {
+				has_amendment = amendment_type:amendment_chamber_of_gentleman_deputies
+				has_amendment = amendment_type:amendment_chamber_of_procurators
+			}
 		}
 	}
 }
@@ -211,15 +214,15 @@ bpm_country_laws_no_voting = {
 bpm_country_laws_unfair_voting = {
 	bpm_country_laws_no_voting = no
 	OR = {
-	OR = {
-		has_law_or_variant = law_type:law_landed_voting
-		has_law_or_variant = law_type:law_wealth_voting
+		OR = {
+			has_law_or_variant = law_type:law_landed_voting
+			has_law_or_variant = law_type:law_wealth_voting
 		}
 		OR = {
-		has_law_or_variant = law_type:law_party_single
-		has_law_or_variant = law_type:law_party_liberal_only
-		has_law_or_variant = law_type:law_party_reactionary_only
-		has_law_or_variant = law_type:law_party_socialist_only
+			has_law_or_variant = law_type:law_party_single
+			has_law_or_variant = law_type:law_party_liberal_only
+			has_law_or_variant = law_type:law_party_reactionary_only
+			has_law_or_variant = law_type:law_party_socialist_only
 		}
 		active_law:lawgroup_distribution_of_power ?= {
 			OR = {
@@ -235,22 +238,22 @@ bpm_country_laws_unfair_voting = {
 
 bpm_country_laws_ok_voting = {
 	bpm_country_laws_no_voting = no
-		OR = {
-			has_law_or_variant = law_type:law_census_voting
-			has_law_or_variant = law_type:law_universal_suffrage
-		}
-			active_law:lawgroup_distribution_of_power = {
+	OR = {
+		has_law_or_variant = law_type:law_census_voting
+		has_law_or_variant = law_type:law_universal_suffrage
+	}
+	active_law:lawgroup_distribution_of_power = {
 		NOR = {
-				has_amendment = amendment_type:amendment_electoral_clientelism
+			has_amendment = amendment_type:amendment_electoral_clientelism
 			has_amendment = amendment_type:amendment_200_franc_suffrage
-			}
-		}
+		}	
+	}
 	
-		NOR = {
-			has_law_or_variant = law_type:law_party_single
-			has_law_or_variant = law_type:law_party_liberal_only
-			has_law_or_variant = law_type:law_party_reactionary_only
-			has_law_or_variant = law_type:law_party_socialist_only
+	NOR = {
+		has_law_or_variant = law_type:law_party_single
+		has_law_or_variant = law_type:law_party_liberal_only
+		has_law_or_variant = law_type:law_party_reactionary_only
+		has_law_or_variant = law_type:law_party_socialist_only
 	}
 }
 
@@ -265,8 +268,17 @@ bpm_country_laws_have_unelected_bureaucrats = {
 }
 
 bpm_country_laws_are_very_repressive = {
-	OR = {
-		has_law_or_variant = law_type:law_outlawed_dissent
+	custom_description = {
+		text = bpm_country_laws_are_very_repressive_desc
+		weighted_calc_true_if = {
+			amount >= 3
+			3 = { has_law_or_variant = law_type:law_outlawed_dissent }
+			3 = { has_law_or_variant = law_type:law_advisory_body }
+			1 = { has_law_or_variant = law_type:law_censorship }
+			1 = { has_law_or_variant = law_type:law_secret_police }
+			1 = { has_law_or_variant = law_type:law_party_single }
+			1 = { has_law_or_variant = law_type:law_militarized_police }
+		}
 	}
 }
 
@@ -278,11 +290,18 @@ bpm_country_laws_are_very_undemocratic = {
 }
 
 bpm_country_laws_are_moderately_undemocratic = {
-	OR = {
-		has_law_or_variant = law_type:law_censorship
-		has_law_or_variant = law_type:law_secret_police
-		bpm_country_laws_unfair_voting = yes
-		bpm_country_laws_have_unelected_bureaucrats = yes
+	custom_description = {
+		text = bpm_country_laws_are_moderately_undemocratic_desc
+		weighted_calc_true_if = {
+			amount >= 2
+			#2 = { has_law_or_variant = law_type:law_advisory_body } # "Moderately"
+			1 = { bpm_country_laws_unfair_voting = yes }
+			1 = { bpm_country_laws_have_unelected_bureaucrats = yes }
+			1 = { has_law_or_variant = law_type:law_censorship }
+			1 = { has_law_or_variant = law_type:law_secret_police }
+			1 = { has_law_or_variant = law_type:law_party_single }
+			1 = { has_law_or_variant = law_type:law_militarized_police }
+		}
 	}
 	bpm_country_laws_are_very_undemocratic = no
 }
@@ -344,9 +363,15 @@ bpm_country_laws_have_max_welfare = {
 }
 
 bpm_country_laws_are_very_capitalist = {
-	has_law_or_variant = law_type:law_laissez_faire
-	has_law_or_variant = law_type:law_free_trade
-	has_law_or_variant = law_type:law_commercialized_agriculture
+	custom_description = {
+		text = bpm_country_laws_are_very_capitalist_desc
+		weighted_calc_true_if = {
+			amount >= 2
+			1 = { has_law_or_variant = law_type:law_laissez_faire }
+			1 = { has_law_or_variant = law_type:law_free_trade }
+			1 = { has_law_or_variant = law_type:law_commercialized_agriculture }
+		}
+	}
 }
 
 bpm_country_laws_are_protectionist = {
@@ -354,20 +379,30 @@ bpm_country_laws_are_protectionist = {
 	has_law_or_variant = law_type:law_interventionism
 }
 
-bpm_country_laws_have_traditional_economics = {
-	OR = {
-		has_law_or_variant = law_type:law_agrarianism
-		has_law_or_variant = law_type:law_traditionalism
-		has_law_or_variant = law_type:law_isolationism
-		has_law_or_variant = law_type:law_mercantilism
+bpm_country_laws_have_traditional_economics = { 
+	custom_description = {
+		text = bpm_country_laws_have_traditional_economics_desc
+		weighted_calc_true_if = {
+			amount >= 2
+			2 = { has_law_or_variant = law_type:law_traditionalism }
+			1 = { has_law_or_variant = law_type:law_agrarianism }
+			1 = { has_law_or_variant = law_type:law_extraction_economy }
+			1 = { has_law_or_variant = law_type:law_serfdom }
+			1 = { has_law_or_variant = law_type:law_debt_slavery }
+			1 = { has_law_or_variant = law_type:law_isolationism }
+			1 = { has_law_or_variant = law_type:law_mercantilism }
+			1 = { has_law_or_variant = law_type:law_land_based_taxation }
+		}
 	}
 }
 
 bpm_country_is_pre_modern = {
-	OR = {
-		has_law_or_variant = law_type:law_ad_hoc_centralization
-		has_law_or_variant = law_type:law_traditionalism
-		has_law_or_variant = law_type:law_advisory_body
+	weighted_calc_true_if = {
+		amount >= 2
+		1 = { is_country_type = unrecognized }
+		1 = { has_law_or_variant = law_type:law_traditionalism }
+		1 = { has_law_or_variant = law_type:law_ad_hoc_centralization }
+		1 = { has_law_or_variant = law_type:law_advisory_body }
 	}
 }
 
@@ -394,10 +429,6 @@ bpm_country_is_pre_constitutional = {
 		has_law_or_variant = law_type:law_monarchy
 		has_law_or_variant = law_type:law_theocracy
 	}
-	OR = {
-		has_law_or_variant = law_type:law_autocracy
-		has_law_or_variant = law_type:law_oligarchy
-	}
 	bpm_country_laws_no_voting = yes 
 }
 
@@ -411,10 +442,6 @@ bpm_country_is_constitutional_monarchy = {
 
 bpm_country_is_pre_modern_absolutist = {
 	has_law_or_variant = law_type:law_monarchy
-	OR = {
-		has_law_or_variant = law_type:law_autocracy
-		has_law_or_variant = law_type:law_oligarchy
-	}
 	NOT = {
 		has_law = law_type:law_neo_absolutism
 	}

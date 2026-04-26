@@ -7,6 +7,7 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 		ideology_reformer
 		ideology_radical
 		ideology_social_democrat
+		ideology_utopian
 	}
 	
 	creation_trigger = {
@@ -17,6 +18,23 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 	}	
 	creation_weight = {
 		value = 100
+		if = {
+			limit = {
+				owner ?= { # If a movement of this type exists in a neighbouring country, make it more likely to spawn here as well
+					any_neighbouring_state = {
+						owner = {
+							prestige > ROOT.owner.prestige
+							any_political_movement = {
+								is_political_movement_type = movement_labor
+							}
+						}
+					}
+				}
+			}
+			multiply = {
+				value = 2
+			}
+		}
 	}	
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
@@ -93,10 +111,31 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 		if = { # Labour movement is the natural habitat of non-socialist trade unions characters
 			limit = {
 				interest_group ?= { is_interest_group_type = ig_trade_unions }
-				has_socialist_ideology = no
+				bpm_ig_is_socialist_trade_unions = no
+
 			}
 			multiply = {
 				value = 2
+			}
+		}
+		if = { # Communists will support the labour movement if they really, really have to
+			limit = {
+				owner ?= {
+					any_political_movement = {
+						OR = {
+							is_political_movement_type = movement_anarchist
+							is_political_movement_type = movement_socialist
+							is_political_movement_type = movement_communist
+						}
+					}
+				}
+				OR = {
+					bpm_leader_is_communist = yes
+					bpm_leader_is_anarchist = yes
+				}
+			}
+			multiply = {
+				value = 0.01
 			}
 		}
 	}
@@ -225,6 +264,24 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 			}
 		}
 
+		if = { # If a more radical movement exists, it'll poach radicals from this one.
+			limit = {
+				owner ?= {
+					any_political_movement = {
+						OR = {
+							is_political_movement_type = movement_socialist
+							is_political_movement_type = movement_communist
+							is_political_movement_type = movement_anarchist
+						}
+					}
+				}
+			}
+			multiply = {
+				desc = "POP_RADICAL_MOVEMENT_LOSSES"
+				value = 1
+				subtract = pop_radical_fraction
+			}
+		}
 
 		if = {
 			limit = {
@@ -249,26 +306,24 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 		}
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_labor
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				multiply = {
 					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
+					add = owner.modifier:country_suppression_attraction_factor
+            		min = 0.1
 					desc = "concept_suppressed"
 				}
 			}
@@ -276,6 +331,7 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 				multiply = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
+            		min = 1
 					desc = "concept_bolstered"
 				}
 			}
@@ -312,65 +368,15 @@ REPLACE:movement_labor = { # Explicitly non-socialist labour movement
 	}	
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
+		value = bpm_additional_radicalism_factors
 		if = {
 			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = approve
-				}
+				owner = { has_law_or_variant = law_type:law_combination_acts }
 			}
 			add = {
+				desc = "law_combination_acts"
 				value = 0.1
-				desc = "BPM_EMBOLDENED_BY_LAW"
 			}
-		}
-		else_if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = strongly_approve
-				}
-			}
-			add = {
-				value = 0.2
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
-		owner = {
-			if = {
-				limit = { has_institution = institution_social_security }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_social_security)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_social_security"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_social_security"
-				}		
-			}
-			
-			if = {
-				limit = { has_institution = institution_workplace_safety }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_workplace_safety)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_workplace_safety"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_workplace_safety"
-				}		
-			}			
 		}
 	}	
 }
@@ -390,6 +396,7 @@ REPLACE:movement_socialist = {
 	}
 	
 	creation_trigger = {
+		country_should_exclusively_focus_on_modernization = no
 		year > 1836
 		OR = {
 			bpm_consciousness_labor_percent > 0.25
@@ -404,6 +411,23 @@ REPLACE:movement_socialist = {
 	creation_weight = {
 		# significant movement that definitely should spawn
 		value = 100
+		if = {
+			limit = {
+				owner ?= { # If a movement of this type exists in a neighbouring country, make it more likely to spawn here as well
+					any_neighbouring_state = {
+						owner = {
+							prestige > ROOT.owner.prestige
+							any_political_movement = {
+								is_political_movement_type = movement_socialist
+							}
+						}
+					}
+				}
+			}
+			multiply = {
+				value = 2
+			}
+		}
 	}	
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
@@ -432,7 +456,7 @@ REPLACE:movement_socialist = {
 	character_support_trigger = {
 		OR = {
 			has_ideology = ideology:ideology_communist
-			has_ideology = ideology:ideology_anarchist
+			bpm_leader_is_anarchist = yes
 			has_ideology = ideology:ideology_social_democrat
 			has_ideology = ideology:ideology_vanguardist
 			trigger_if = {
@@ -522,7 +546,7 @@ REPLACE:movement_socialist = {
 		}
 		else_if = {
 			limit = {
-				has_ideology = ideology:ideology_anarchist
+				bpm_leader_is_anarchist = yes
 				NOT = {
 					owner ?= {
 						any_political_movement = {
@@ -736,26 +760,24 @@ REPLACE:movement_socialist = {
 		}
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_socialist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				multiply = {
 					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
+					add = owner.modifier:country_suppression_attraction_factor
+            		min = 0.1
 					desc = "concept_suppressed"
 				}
 			}
@@ -763,6 +785,7 @@ REPLACE:movement_socialist = {
 				multiply = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
+            		min = 1
 					desc = "concept_bolstered"
 				}
 			}
@@ -826,65 +849,8 @@ REPLACE:movement_socialist = {
 	}	
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = approve
-				}
-			}
-			add = {
-				value = 0.1
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
-		else_if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = strongly_approve
-				}
-			}
-			add = {
-				value = 0.2
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
+		value = bpm_additional_radicalism_factors
 		owner = {
-			if = {
-				limit = { has_institution = institution_social_security }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_social_security)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_social_security"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_social_security"
-				}		
-			}				
-			
-			if = {
-				limit = { has_institution = institution_workplace_safety }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_workplace_safety)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_workplace_safety"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_workplace_safety"
-				}		
-			}
 
 			add = { 
 				desc = "IS_BELOW_15_SOL"
@@ -892,14 +858,6 @@ REPLACE:movement_socialist = {
 				subtract = average_sol
 				multiply = 0.03
 				min = 0
-			}
-
-			if = {
-				limit = { has_technology_researched = political_agitation }
-				add = { 
-					desc = "HAS_POLITICAL_AGITATION"
-					value = 0.15
-				}
 			}
 
 			if = {
@@ -920,12 +878,14 @@ REPLACE:movement_anarchist = {
 	ideology = ideology_gov_anarchist
 	character_ideologies = {
 		ideology_anarchist
+		ideology_anarchist_syndicalist
 		ideology_humanitarian
 	}
 	
 	creation_trigger = {
 		game_date > 1836.1.2
 		has_technology_researched = anarchism
+		country_should_exclusively_focus_on_modernization = no
 		OR = {
 			bpm_consciousness_labor_percent > 0.3
 			has_global_variable = first_intl_chain_complete_var
@@ -933,6 +893,23 @@ REPLACE:movement_anarchist = {
 	}	
 	creation_weight = {
 		value = 100
+		if = {
+			limit = {
+				owner ?= { # If a movement of this type exists in a neighbouring country, make it more likely to spawn here as well
+					any_neighbouring_state = {
+						owner = {
+							prestige > ROOT.owner.prestige
+							any_political_movement = {
+								is_political_movement_type = movement_anarchist
+							}
+						}
+					}
+				}
+			}
+			multiply = {
+				value = 2
+			}
+		}
 	}	
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
@@ -943,7 +920,7 @@ REPLACE:movement_anarchist = {
 	
 	character_support_trigger = {
 		OR = {
-			has_ideology = ideology:ideology_anarchist
+			bpm_leader_is_anarchist = yes
 			trigger_if = {
 				limit = {
 					is_in_exile_pool = yes
@@ -976,6 +953,7 @@ REPLACE:movement_anarchist = {
 						is_in_exile_pool = yes
 					}
 					OR = {
+						bpm_leader_is_anarchist = yes
 						is_interest_group_type = ig_anarchists
 					}				
 				}
@@ -1016,8 +994,7 @@ REPLACE:movement_anarchist = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology:ideology_anarchist
-					has_ideology = ideology:ideology_anarchist_syndicalist
+					bpm_leader_is_anarchist = yes
 					has_ideology = ideology:ideology_syndicalist
 				}
 			}
@@ -1231,26 +1208,24 @@ REPLACE:movement_anarchist = {
 		}
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_anarchist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				multiply = {
 					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
+					add = owner.modifier:country_suppression_attraction_factor
+            		min = 0.1
 					desc = "concept_suppressed"
 				}
 			}
@@ -1258,6 +1233,7 @@ REPLACE:movement_anarchist = {
 				multiply = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
+            		min = 1
 					desc = "concept_bolstered"
 				}
 			}
@@ -1296,41 +1272,17 @@ REPLACE:movement_anarchist = {
 	}	
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = approve
-				}
-			}
-			add = {
-				value = 0.4
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
-		else_if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = strongly_approve
-				}
-			}
-			add = {
-				value = 0.8
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
-		if = {
-			limit = {
-				political_movement_support >= 0.25
-			}
-			add = {
-				# Anarchists are always mad
-				value = 0.2
-				desc = "BPM_PERPETUAL_RADICALS"
-			}
-		}
+		value = bpm_additional_radicalism_factors
+		# if = {
+		# 	limit = {
+		# 		political_movement_support >= 0.25
+		# 	}
+		# 	add = {
+		# 		# Anarchists are always mad
+		# 		value = 0.1
+		# 		desc = "BPM_PERPETUAL_RADICALS"
+		# 	}
+		# }
 		owner = {
 			add = { 
 				desc = "IS_BELOW_15_SOL"
@@ -1340,7 +1292,28 @@ REPLACE:movement_anarchist = {
 				min = 0
 			}
 		}
+
+		if = { # Support translates 2:1 to Activism
+			limit = {
+				owner = {
+					NAND = {
+						has_law = law_type:law_council_republic
+						has_law = law_type:law_factory_councils
+					}
+					any_political_movement = {
+						is_political_movement_type = movement_anarchist
+					}
+				}
+			}
+			add = {
+				desc = "ANARCHIST_MOVEMENT_REVOLUTIONARISM"
+				value = this.political_movement_support
+				divide = 2
+				max = 0.25
+			}
+		}
 	}	
+	
 }
 
 # Completed: RSKHM (1 cookie point)
@@ -1354,6 +1327,7 @@ REPLACE:movement_communist = {
 	}
 	
 	creation_trigger = {
+		country_should_exclusively_focus_on_modernization = no
 		game_date > 1836.1.2
 		OR = {
 			AND = {
@@ -1462,8 +1436,7 @@ REPLACE:movement_communist = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_humanitarian
-					has_ideology = ideology:ideology_anarchist
-					has_ideology = ideology:ideology_anarchist_syndicalist
+					bpm_leader_is_anarchist = yes
 					has_ideology = ideology:ideology_social_democrat
 					has_ideology = ideology:ideology_agrarian_socialist_leader
 					has_ideology = ideology:ideology_syndicalist
@@ -1662,26 +1635,24 @@ REPLACE:movement_communist = {
 		}
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_communist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				multiply = {
 					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
+					add = owner.modifier:country_suppression_attraction_factor
+            		min = 0.1
 					desc = "concept_suppressed"
 				}
 			}
@@ -1689,6 +1660,7 @@ REPLACE:movement_communist = {
 				multiply = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
+            		min = 1
 					desc = "concept_bolstered"
 				}
 			}
@@ -1722,55 +1694,36 @@ REPLACE:movement_communist = {
 	}	
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = approve
-				}
-			}
-			add = {
-				value = 0.2
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
-		else_if = {
-			limit = {
-				law_stance = {
-					law = owner.currently_enacting_law.type
-					value = strongly_approve
-				}
-			}
-			add = {
-				value = 0.4
-				desc = "BPM_EMBOLDENED_BY_LAW"
-			}
-		}
+		value = bpm_additional_radicalism_factors
 		owner = {
-			if = {
-				limit = { has_institution = institution_workplace_safety }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_workplace_safety)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_workplace_safety"
+
+		if = { # Support translates 2:1 to Activism
+			limit = {
+				owner = {
+					has_technology_researched = political_agitation
+					NAND = {
+						has_law = law_type:law_council_republic
+						has_law = law_type:law_factory_councils
+					}
+					any_political_movement = {
+						is_political_movement_type = movement_communist
+					}
 				}
 			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_workplace_safety"
-				}		
-			}		
-			if = {
-				limit = { has_technology_researched = political_agitation }
-				add = { 
-					desc = "HAS_POLITICAL_AGITATION"
-					value = 0.3
-				}
+			add = {
+				desc = "COMMUNIST_MOVEMENT_REVOLUTIONARISM"
+				value = this.political_movement_support
+				divide = 2
+				max = 0.2
 			}
+		}		
+		if = {
+			limit = { has_technology_researched = political_agitation }
+			add = { 
+				desc = "HAS_POLITICAL_AGITATION"
+				value = 0.2
+			}
+		}
 		}
 	}
 }
@@ -1786,6 +1739,7 @@ movement_reformist_socialist = {
 	}
 	
 	creation_trigger = {
+		country_should_exclusively_focus_on_modernization = no
 		game_date > 1836.1.2
 		OR = { 
 			AND = { 
@@ -1857,8 +1811,8 @@ movement_reformist_socialist = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_vanguardist
-					has_ideology = ideology:ideology_anarchist
-					has_ideology = ideology:ideology_anarchist_syndicalist
+					bpm_leader_is_anarchist = yes
+					bpm_leader_is_anarchist = yes_syndicalist
 					has_ideology = ideology:ideology_communist
 					has_ideology = ideology:ideology_agrarian_socialist_leader
 					has_ideology = ideology:ideology_syndicalist
@@ -2080,26 +2034,24 @@ movement_reformist_socialist = {
 		}
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_reformist_socialist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				multiply = {
 					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
+					add = owner.modifier:country_suppression_attraction_factor
+            		min = 0.1
 					desc = "concept_suppressed"
 				}
 			}
@@ -2107,6 +2059,7 @@ movement_reformist_socialist = {
 				multiply = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
+            		min = 1
 					desc = "concept_bolstered"
 				}
 			}
@@ -2166,40 +2119,8 @@ movement_reformist_socialist = {
 	}	
 	
 	additional_radicalism_factors = {
+		value = bpm_additional_radicalism_factors
 		owner = {
-			if = {
-				limit = { has_institution = institution_social_security }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_social_security)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_social_security"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_social_security"
-				}		
-			}				
-			
-			if = {
-				limit = { has_institution = institution_workplace_safety }
-				
-				add = {
-					value = 3
-					subtract = "institution_investment_level(institution_workplace_safety)"
-					multiply = 0.05
-					desc = "INSTITUTION_FUNDING_LEVEL_workplace_safety"
-				}
-			}
-			else = {
-				add = {
-					value = 0.1
-					desc = "NO_INSTITUTION_workplace_safety"
-				}		
-			}
 
 			add = { 
 				desc = "IS_BELOW_15_SOL"

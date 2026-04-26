@@ -1,15 +1,17 @@
-REPLACE:movement_india_pan_national = {
+﻿REPLACE:movement_india_pan_national = {
 	category = movement_category_pan_national
 
 	can_cause_obstinance = yes
 
-	ideology = ideology_sovereignist
+	ideology = ideology_sovereignist_leader
 	character_ideologies = {
 		ideology_sovereignist_leader
 		ideology_social_democrat
 		ideology_humanitarian
 	}
-	
+
+	can_cause_obstinance = yes
+
 	creation_trigger = {
 		c:BIC ?= this
 		is_subject = yes
@@ -67,6 +69,21 @@ REPLACE:movement_india_pan_national = {
 		}
 	}
 	
+	can_pressure_interest_group = {
+		trigger_if = {
+			limit = { bpm_ig_is_traditionalist = yes }
+			bpm_ig_is_nationalist = yes
+		}
+		bpm_ig_is_metropole_loyalist = no
+		NAND = {
+			bpm_ig_is_state_institutional = yes
+			owner = { 
+				country_is_colonial_or_company = yes 
+				is_subjet = yes
+			} 
+		}
+	}
+
 	pop_support_trigger = {
 		culture = {
 			has_discrimination_trait_group = heritage_group_south_asian
@@ -91,133 +108,205 @@ REPLACE:movement_india_pan_national = {
 	}
 
 	pop_support_weight = {
-		if = {
-			limit = {
-				culture = {
-					has_discrimination_trait_group = heritage_group_south_asian
-				}
-			}
-			add = {
-				value = 10
-				desc = "heritage_group_south_asian"
-			}
-			if = {
-				limit = {
-					is_pop_type = academics
-				}
-				add = {
-					value = 30
-					desc = "POP_ACADEMICS"
-				}
-			}	
-			else_if = {
-				limit = {
-					is_pop_type = bureaucrats
-				}
-				add = {
-					value = 12
-					desc = "POP_BUREAUCRATS"
-				}
-			}		
-			else_if = {
-				limit = {
-					is_pop_type = clerks
-				}
-				add = {
-					value = 15
-					desc = "POP_CLERKS"
-				}
-			}
-			else_if = {
-				limit = {
-					is_pop_type = capitalists
-				}
-				add = {
-					value = 6
-					desc = "POP_CAPITALISTS"
-				}
-			}
-
+		add = {
+			desc = "URBAN_STATE"
+			value = 20
 			multiply = {
-				desc = "URBAN_STATE"
-				value = 1
-				add = state.state_urbanization_rate
-			}
-
-			if = {
-				limit = {
-					standard_of_living < state.average_expected_sol
-				}
-				add = { # Increases likelihood of support if impoverished
-					desc = "IS_BELOW_EXPECTED_SOL"
-					value = state.average_expected_sol
-					subtract = standard_of_living
-					multiply = 3
-				}
-			}
-
-			if = {
-				limit = {
-					state = {
-						state_cultural_acceptance = {  
-							target = PREV.culture
-							value < acceptance_status_5
-						}	
-					}
-				}
-				
-				multiply = {
-					desc = "POP_DISCRIMINATED"	
-					value = 100
-					subtract = pop_acceptance			
-					divide = 25	
-				}			
-			}
-			else = { # Non-discriminated pops are less likely to form separatist movements
-				multiply = {
-					desc = "POP_ACCEPTANCE"	
-					value = 0.10
-				}			
-			}
-
-			multiply = { # Illiterate pops participate at 1/10 the rate of fully literate pops
-				desc = "POP_LITERACY"
-
-				value = literacy_rate
-
-				multiply = literacy_rate
-				add = 0.10
-			}
-			
-			multiply = { # Multiplied by 2x max
-				desc = "POP_RADICALS"
-				value = pop_radical_fraction
-				add = 1
-			}
-			
-			if = {
-				limit = {
-					owner ?= {
-						has_technology_researched = nationalism
-					}
-				}
-				multiply = {
-					value = 1.25
-					desc = "NATIONALISM_TECH"
-				}
-			}
-			if = {
-				limit = {
-					owner ?= {
-						has_technology_researched = pan-nationalism
-					}
-				}
-				multiply = {
-					value = 1.5
-					desc = "PAN_NATIONALISM_TECH"
-				}
+				value = state.state_urbanization_rate
+				min = 0
+				max = 100
 			}
 		}
+
+		if = {
+			limit = {
+				is_pop_type = capitalists
+			}
+			add = {
+				value = 12
+				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = shopkeepers
+			}
+			add = {
+				value = 20
+				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+
+		if = {
+			limit = {
+				is_pop_type = aristocrats
+			}
+
+			add = {
+				value = 6
+				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = clerks
+			}
+			add = {
+				value = 12
+				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = soldiers
+			}
+			add = {
+				value = 24
+				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = laborers
+			}
+			add = {
+				value = 12
+				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = machinists
+			}
+			add = {
+				value = 12
+				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = officers
+			}
+			add = {
+				value = 24
+				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+
+		else_if = {
+			limit = {
+				is_pop_type = bureaucrats
+			}
+			add = {
+				value = 6
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = farmers
+			}
+			add = {
+				value = 6
+				desc = "POP_FARMERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = academics
+			}
+			add = {
+				value = 30
+				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = engineers
+			}
+			add = {
+				value = 12
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}		
+		min = 0
+		if = {
+			limit = {
+				owner = { is_ai = yes }
+			}
+			min = 5
+		}
+		if = {
+			limit = {
+				owner ?= {
+					has_technology_researched = pan-nationalism
+				}
+			}
+			multiply = {
+				value = 1.5
+				desc = "PAN_NATIONALISM_TECH"
+			}
+		}
+		else_if = {
+			limit = {
+				owner ?= {
+					has_technology_researched = nationalism
+				}
+			}
+			multiply = {
+				value = 1.25
+				desc = "NATIONALISM_TECH"
+			}
+		}
+
 		multiply = { # Range from x0.775 to 2.275
 			desc = "POP_CULTURE_FERVOR"
 			value = culture.culture_current_fervor
@@ -225,7 +314,6 @@ REPLACE:movement_india_pan_national = {
 			multiply = 0.015
 			add = 1
 		}
-
 		if = {
 			limit = {
 				culture ?= {
@@ -239,20 +327,38 @@ REPLACE:movement_india_pan_national = {
 		}
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_india_pan_national
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				OR = {
+					exists = c:GER
+					exists = c:ITA
+					exists = c:YUG
+				}
+			}
+			multiply = {
+				value = 1.25
+				desc = "MAJOR_UNIFICATION_HAPPENED"
+			}
+		}
+
+		
+		multiply = {
+			value = owner.bpm_consciousness_liberal_percent
+			desc = BPM_LIBERAL_CONSCIOUSNESS
+		}
+		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
+
+		if = {
+			limit = {
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
@@ -260,6 +366,7 @@ REPLACE:movement_india_pan_national = {
 					value = 1
 					subtract = owner.modifier:country_suppression_attraction_factor
 					desc = "concept_suppressed"
+					min = 0.1
 				}
 			}
 			else = {
@@ -267,16 +374,24 @@ REPLACE:movement_india_pan_national = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
 					desc = "concept_bolstered"
+					min = 1
 				}
 			}
 		}
-
 	}
 	
 	revolution = {
+		
 		possible = {
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 		}	
+
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 	
 		weight = {
 			value = 100
@@ -298,11 +413,17 @@ REPLACE:movement_india_pan_national = {
 			}
 		}
 	}
-
 	secession = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
+
 		possible = {
 			always = no 
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 			scope:clout <= 0
 		}
 		
@@ -321,48 +442,7 @@ REPLACE:movement_india_pan_national = {
 	}
 	
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				owner ?= {
-					is_subject = yes
-				}
-			}
-			add = {
-				desc = "INDIA_SUBJECT"
-				if = {
-					limit = {
-						owner ?= {
-							OR = {
-								is_subject_type = subject_type_colony
-								is_subject_type = subject_type_chartered_company
-							}
-						}
-					}
-					value = 0.25
-				}
-				if = {
-					limit = {
-						owner ?= {
-							is_subject_type = subject_type_dominion
-						}
-					}
-					value = 0.10
-				}
-			}
-		}	
-		if = {
-			limit = {
-				owner ?= {
-					is_subject = yes
-				}
-			}
-			add = {
-				desc = "LIBERTY_DESIRE"
-				value = owner.liberty_desire
-				divide = 500
-			}
-		}	
+		value = bpm_additional_radicalism_factors
 	}
 }
 
@@ -417,6 +497,13 @@ REPLACE:movement_german_national = {
 		add_movement_enthusiasm_modifier = yes
 	}
 
+	can_pressure_interest_group = {
+		trigger_if = {
+			limit = { bpm_ig_is_traditionalist = yes }
+			bpm_ig_is_nationalist = yes
+		}
+	}
+
 	disband_trigger = {
 		c:GER ?= this
 	}
@@ -428,13 +515,14 @@ REPLACE:movement_german_national = {
 			}
 			owner ?= {
 				create_political_movement = { type = movement_cultural_majority }
+				create_political_movement = { type = movement_national_liberal }
 			}
 		}
 	}
 
 	character_support_trigger = {
 		culture = {
-			has_discrimination_trait = heritage_germanic
+			has_discrimination_trait = language_germanophone
 		}
 	}
 	character_support_weight = {
@@ -442,9 +530,9 @@ REPLACE:movement_german_national = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology:ideology_ethno_nationalist
-					has_liberal_ideology = yes
-					has_progressive_ideology = yes
+					bpm_leader_is_nationalist = yes
+					bpm_leader_is_liberal = yes
+					bpm_leader_is_progressive_liberal = yes
 				}
 			}
 			multiply = {
@@ -453,7 +541,7 @@ REPLACE:movement_german_national = {
 		}
 		else_if = {
 			limit = {
-				has_conservative_ideology = yes
+				bpm_leader_is_traditional_right = yes
 			}
 			multiply = {
 				value = 0.5
@@ -461,10 +549,8 @@ REPLACE:movement_german_national = {
 		}
 		else_if = {
 			limit = {
-				has_reactionary_ideology = yes
-				NOT = {
-					has_ideology = ideology:ideology_ethno_nationalist
-				}
+				bpm_leader_is_reactionary = yes
+				bpm_leader_is_nationalist = no
 			}
 			multiply = {
 				value = 0
@@ -474,7 +560,7 @@ REPLACE:movement_german_national = {
 
 	pop_support_trigger = {
 		culture = {
-			has_discrimination_trait = heritage_germanic
+			has_discrimination_trait = language_germanophone
 		}
 	}
 
@@ -493,98 +579,181 @@ REPLACE:movement_german_national = {
 	}
 
 	pop_support_weight = {
-		if = {
-			limit = {
-				strata = upper
-			}
-			if = {
-				limit = {
-					is_pop_type = capitalists
-				}
-				add = {
-					value = 10
-					desc = "POP_CAPITALISTS"
-				}
-			}
-			else = {
-				add = {
-					value = 4
-					desc = "UPPER_NO_ICON"
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				strata = middle
-			}
-			if = {
-				limit = {
-					is_pop_type = academics
-				}
-				add = {
-					value = 35
-					desc = "POP_ACADEMICS"
-				}
-			}
-			if = {
-				limit = {
-					is_pop_type = shopkeepers
-				}
-				add = {
-					value = 25
-					desc = "POP_SHOPKEEPERS"
-				}
-			}
-			else_if = {
-				limit = {
-					is_pop_type = officers
-				}
-				add = {
-					value = 15
-					desc = "POP_OFFICERS"
-				}
-			}
-			else = {
-				add = {
-					value = 12
-					desc = "MIDDLE_NO_ICON"
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				strata = lower
-			}
-			if = {
-				limit = {
-					is_pop_type = clerks
-				}
-				add = {
-					value = 20
-					desc = "POP_CLERKS"
-				}
-			}
-			else_if = {
-				limit = {
-					is_pop_type = soldiers
-				}
-				add = {
-					value = 10
-					desc = "POP_SOLDIERS"
-				}
-			}
-			else = {
-				add = {
-					value = 5
-					desc = "LOWER_NO_ICON"
-				}
+		add = {
+			desc = "URBAN_STATE"
+			value = 20
+			multiply = {
+				value = state.state_urbanization_rate
+				min = 0
+				max = 100
 			}
 		}
 
-		add = {
-			desc = "URBAN_STATE"
-			value = 10
-			multiply = state.state_urbanization_rate
+		if = {
+			limit = {
+				is_pop_type = capitalists
+			}
+			add = {
+				value = 12
+				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = shopkeepers
+			}
+			add = {
+				value = 20
+				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+
+		if = {
+			limit = {
+				is_pop_type = aristocrats
+			}
+
+			add = {
+				value = 6
+				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = clerks
+			}
+			add = {
+				value = 12
+				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = soldiers
+			}
+			add = {
+				value = 24
+				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = laborers
+			}
+			add = {
+				value = 12
+				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = machinists
+			}
+			add = {
+				value = 12
+				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = officers
+			}
+			add = {
+				value = 24
+				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+
+		else_if = {
+			limit = {
+				is_pop_type = bureaucrats
+			}
+			add = {
+				value = 4
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = farmers
+			}
+			add = {
+				value = 4
+				desc = "POP_FARMERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = academics
+			}
+			add = {
+				value = 32
+				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = engineers
+			}
+			add = {
+				value = 12
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}		
+		min = 0
+		if = {
+			limit = {
+				owner = { is_ai = yes }
+			}
+			min = 5
 		}
 
 		if = {
@@ -617,7 +786,6 @@ REPLACE:movement_german_national = {
 			multiply = 0.015
 			add = 1
 		}
-
 		if = {
 			limit = {
 				culture ?= {
@@ -629,71 +797,85 @@ REPLACE:movement_german_national = {
 				desc = "POP_ACTIVE_NATIONAL_AWAKENING"
 			}
 		}
-
-		if = { # If a more radical movement exists, it'll poach radicals from this one.
+		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						OR = {
-							is_political_movement_type = movement_radical
-							is_political_movement_type = movement_fascist
-						}
-					}
+				OR = {
+					exists = c:GER
+					exists = c:ITA
+					exists = c:YUG
 				}
 			}
 			multiply = {
-				desc = "POP_RADICAL_MOVEMENT_LOSSES"
-				value = 1
-				subtract = pop_radical_fraction
+				value = 1.25
+				desc = "MAJOR_UNIFICATION_HAPPENED"
 			}
 		}
 
-		multiply = { # Illiterate pops participate at 1/10 the rate of fully literate pops
-			desc = "POP_LITERACY"
-
-			value = literacy_rate
-
-			multiply = literacy_rate
-			add = 0.10
+		
+		multiply = {
+			value = owner.bpm_consciousness_liberal_percent
+			desc = BPM_LIBERAL_CONSCIOUSNESS
 		}
+		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
+
+		multiply = { # "What are you doing?" factor
+			desc = "BACKWARDSNESS"
+			value = 1
+			add = {
+				value = years_since_game_start
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					divide = 100
+				}
+				else = { divide = 200 }
+			}
+		}
+
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_german_national
+				limit = {
+					exists = scope:political_movement
+					scope:political_movement ?= {
 						OR = {
 							is_being_suppressed = yes
 							is_being_bolstered = yes
 						}
-						save_temporary_scope_as = affected_movement
+					}
+				}
+				if = {
+					limit = {
+						scope:political_movement = {
+							is_being_suppressed = yes
+						}
+					}
+					multiply = {
+						value = 1
+						subtract = owner.modifier:country_suppression_attraction_factor
+						min = 0.1
+						desc = "concept_suppressed"
+					}
+				}
+				else = {
+					multiply = {
+						value = 1
+						add = owner.modifier:country_bolster_attraction_factor
+						min = 1
+						desc = "concept_bolstered"
 					}
 				}
 			}
-			if = {
-				limit = {
-					scope:affected_movement = {
-						is_being_suppressed = yes
-					}
-				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
-				}
-			}
-		}
 	}
 
 	revolution = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 		possible = {
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 		}
 
 		weight = {
@@ -714,11 +896,17 @@ REPLACE:movement_german_national = {
 	}
 
 	secession = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 		possible = {
 			owner ?= {
 				has_law_or_variant = law_type:law_subjecthood
 			}
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 			scope:clout <= 0
 		}
 
@@ -759,19 +947,7 @@ REPLACE:movement_german_national = {
 	}
 
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				owner.ruler ?= {
-					NOT = { culture = { is_primary_culture_of = root.owner } }
-				}
-			}
-
-			add = {
-				value = 0.1
-				desc = "RULER_NOT_PRIMARY_CULTURE"
-			}
-		}
+		value = bpm_additional_radicalism_factors
 		if = {
 			limit = {
 				owner = {
@@ -853,26 +1029,6 @@ REPLACE:movement_german_national = {
 			}
 		}
 
-		# if = {
-		# 	limit = {
-		# 		owner = {
-		# 			any_neighbouring_state = {
-		# 				owner = {
-		# 					NOT = { THIS = ROOT.owner }
-		# 					any_political_movement = {
-		# 						is_political_movement_type = movement_german_national
-		# 						is_insurrectionary = yes
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	add = {
-		# 		desc = "NEIGHBOURING_COUNTRY_WITH_REVOLUTION"
-		# 		value = 0.15
-		# 	}
-		# }
-
 		add = {
 			desc = "FERVOR_OF_GERMAN_CULTURE_ACTIVISM"
 			value = owner.average_german_fervor
@@ -935,6 +1091,13 @@ REPLACE:movement_italian_national = {
 		add_movement_enthusiasm_modifier = yes
 	}
 
+	can_pressure_interest_group = {
+		trigger_if = {
+			limit = { bpm_ig_is_traditionalist = yes }
+			bpm_ig_is_nationalist = yes
+		}
+	}
+
 	disband_trigger = {
 		c:ITA ?= this
 	}
@@ -946,13 +1109,14 @@ REPLACE:movement_italian_national = {
 			}
 			owner ?= {
 				create_political_movement = { type = movement_cultural_majority }
+				create_political_movement = { type = movement_national_liberal }
 			}
 		}
 	}
 
 	character_support_trigger = {
 		culture = {
-			has_discrimination_trait = heritage_italic
+			has_discrimination_trait = language_italian
 		}
 	}
 	character_support_weight = {
@@ -960,9 +1124,9 @@ REPLACE:movement_italian_national = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology:ideology_ethno_nationalist
-					has_liberal_ideology = yes
-					has_progressive_ideology = yes
+					bpm_leader_is_nationalist = yes
+					bpm_leader_is_liberal = yes
+					bpm_leader_is_progressive_liberal = yes
 				}
 			}
 			multiply = {
@@ -971,7 +1135,7 @@ REPLACE:movement_italian_national = {
 		}
 		else_if = {
 			limit = {
-				has_conservative_ideology = yes
+				bpm_leader_is_traditional_right = yes
 			}
 			multiply = {
 				value = 0.5
@@ -979,10 +1143,8 @@ REPLACE:movement_italian_national = {
 		}
 		else_if = {
 			limit = {
-				has_reactionary_ideology = yes
-				NOT = {
-					has_ideology = ideology:ideology_ethno_nationalist
-				}
+				bpm_leader_is_reactionary = yes
+				bpm_leader_is_nationalist = no
 			}
 			multiply = {
 				value = 0
@@ -992,7 +1154,7 @@ REPLACE:movement_italian_national = {
 
 	pop_support_trigger = {
 		culture = {
-			has_discrimination_trait = heritage_italic
+			has_discrimination_trait = language_italian
 		}
 	}
 
@@ -1011,99 +1173,181 @@ REPLACE:movement_italian_national = {
 	}
 
 	pop_support_weight = {
-		
-		if = {
-			limit = {
-				strata = upper
-			}
-			if = {
-				limit = {
-					is_pop_type = capitalists
-				}
-				add = {
-					value = 10
-					desc = "POP_CAPITALISTS"
-				}
-			}
-			else = {
-				add = {
-					value = 4
-					desc = "UPPER_NO_ICON"
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				strata = middle
-			}
-			if = {
-				limit = {
-					is_pop_type = academics
-				}
-				add = {
-					value = 35
-					desc = "POP_ACADEMICS"
-				}
-			}
-			if = {
-				limit = {
-					is_pop_type = shopkeepers
-				}
-				add = {
-					value = 25
-					desc = "POP_SHOPKEEPERS"
-				}
-			}
-			else_if = {
-				limit = {
-					is_pop_type = officers
-				}
-				add = {
-					value = 15
-					desc = "POP_OFFICERS"
-				}
-			}
-			else = {
-				add = {
-					value = 12
-					desc = "MIDDLE_NO_ICON"
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				strata = lower
-			}
-			if = {
-				limit = {
-					is_pop_type = clerks
-				}
-				add = {
-					value = 20
-					desc = "POP_CLERKS"
-				}
-			}
-			else_if = {
-				limit = {
-					is_pop_type = soldiers
-				}
-				add = {
-					value = 10
-					desc = "POP_SOLDIERS"
-				}
-			}
-			else = {
-				add = {
-					value = 5
-					desc = "LOWER_NO_ICON"
-				}
+		add = {
+			desc = "URBAN_STATE"
+			value = 20
+			multiply = {
+				value = state.state_urbanization_rate
+				min = 0
+				max = 100
 			}
 		}
 
-		add = {
-			desc = "URBAN_STATE"
-			value = 10
-			multiply = state.state_urbanization_rate
+		if = {
+			limit = {
+				is_pop_type = capitalists
+			}
+			add = {
+				value = 12
+				desc = "POP_CAPITALISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = shopkeepers
+			}
+			add = {
+				value = 20
+				desc = "POP_SHOPKEEPERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+
+		if = {
+			limit = {
+				is_pop_type = aristocrats
+			}
+
+			add = {
+				value = 6
+				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = clerks
+			}
+			add = {
+				value = 12
+				desc = "POP_CLERKS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = soldiers
+			}
+			add = {
+				value = 24
+				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = laborers
+			}
+			add = {
+				value = 12
+				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = machinists
+			}
+			add = {
+				value = 12
+				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = officers
+			}
+			add = {
+				value = 24
+				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+
+		else_if = {
+			limit = {
+				is_pop_type = bureaucrats
+			}
+			add = {
+				value = 4
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = farmers
+			}
+			add = {
+				value = 4
+				desc = "POP_FARMERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = academics
+			}
+			add = {
+				value = 32
+				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = engineers
+			}
+			add = {
+				value = 12
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}		
+		min = 0
+		if = {
+			limit = {
+				owner = { is_ai = yes }
+			}
+			min = 5
 		}
 
 		if = {
@@ -1136,7 +1380,6 @@ REPLACE:movement_italian_national = {
 			multiply = 0.015
 			add = 1
 		}
-
 		if = {
 			limit = {
 				culture ?= {
@@ -1148,71 +1391,83 @@ REPLACE:movement_italian_national = {
 				desc = "POP_ACTIVE_NATIONAL_AWAKENING"
 			}
 		}
-
-		if = { # If a more radical movement exists, it'll poach radicals from this one.
+		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						OR = {
-							is_political_movement_type = movement_radical
-							is_political_movement_type = movement_fascist
-						}
-					}
+				OR = {
+					exists = c:GER
+					exists = c:ITA
+					exists = c:YUG
 				}
 			}
 			multiply = {
-				desc = "POP_RADICAL_MOVEMENT_LOSSES"
-				value = 1
-				subtract = pop_radical_fraction
+				value = 1.25
+				desc = "MAJOR_UNIFICATION_HAPPENED"
 			}
 		}
 
-		multiply = { # Illiterate pops participate at 1/10 the rate of fully literate pops
-			desc = "POP_LITERACY"
-
-			value = literacy_rate
-
-			multiply = literacy_rate
-			add = 0.10
+		
+		multiply = {
+			value = owner.bpm_consciousness_liberal_percent
+			desc = BPM_LIBERAL_CONSCIOUSNESS
+		}
+		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
+		multiply = { # "What are you doing?" factor
+			desc = "BACKWARDSNESS"
+			value = 1
+			add = {
+				value = years_since_game_start
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					divide = 100
+				}
+				else = { divide = 200 }
+			}
 		}
 
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_italian_national
+				limit = {
+					exists = scope:political_movement
+					scope:political_movement ?= {
 						OR = {
 							is_being_suppressed = yes
 							is_being_bolstered = yes
 						}
-						save_temporary_scope_as = affected_movement
+					}
+				}
+				if = {
+					limit = {
+						scope:political_movement = {
+							is_being_suppressed = yes
+						}
+					}
+					multiply = {
+						value = 1
+						subtract = owner.modifier:country_suppression_attraction_factor
+						desc = "concept_suppressed"
+						min = 0.1
+					}
+				}
+				else = {
+					multiply = {
+						value = 1
+						add = owner.modifier:country_bolster_attraction_factor
+						desc = "concept_bolstered"
+						min = 1
 					}
 				}
 			}
-			if = {
-				limit = {
-					scope:affected_movement = {
-						is_being_suppressed = yes
-					}
-				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
-				}
-			}
-		}
 	}
 	revolution = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 		possible = {
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 		}
 
 		weight = {
@@ -1233,11 +1488,17 @@ REPLACE:movement_italian_national = {
 	}
 
 	secession = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 		possible = {
 			owner ?= {
 				has_law_or_variant = law_type:law_subjecthood
 			}
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 			scope:clout <= 0
 		}
 
@@ -1268,19 +1529,7 @@ REPLACE:movement_italian_national = {
 	}
 
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				owner.ruler ?= {
-					NOT = { culture = { is_primary_culture_of = root.owner } }
-				}
-			}
-
-			add = {
-				value = 0.1
-				desc = "RULER_NOT_PRIMARY_CULTURE"
-			}
-		}
+		value = bpm_additional_radicalism_factors
 		if = {
 			limit = {
 				owner ?= {
@@ -1350,26 +1599,6 @@ REPLACE:movement_italian_national = {
 			}
 		}
 
-		# if = {
-		# 	limit = {
-		# 		owner = {
-		# 			any_neighbouring_state = {
-		# 				owner = {
-		# 					NOT = { THIS = ROOT.owner }
-		# 					any_political_movement = {
-		# 						is_political_movement_type = movement_italian_national
-		# 						is_insurrectionary = yes
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	add = {
-		# 		desc = "NEIGHBOURING_COUNTRY_WITH_REVOLUTION"
-		# 		value = 0.15
-		# 	}
-		# }
-
 		add = {
 			desc = "FERVOR_OF_ITALIAN_CULTURE_ACTIVISM"
 			value = owner.average_italian_fervor
@@ -1437,6 +1666,13 @@ REPLACE:movement_yugoslav_national = {
 		add_movement_enthusiasm_modifier = yes
 	}
 
+	can_pressure_interest_group = {
+		trigger_if = {
+			limit = { bpm_ig_is_traditionalist = yes }
+			bpm_ig_is_nationalist = yes
+		}
+	}
+
 	disband_trigger = {
 		c:YUG ?= this
 	}
@@ -1448,6 +1684,7 @@ REPLACE:movement_yugoslav_national = {
 			}
 			owner ?= {
 				create_political_movement = { type = movement_cultural_majority }
+				create_political_movement = { type = movement_national_liberal }
 			}
 		}
 	}
@@ -1462,9 +1699,9 @@ REPLACE:movement_yugoslav_national = {
 		if = {
 			limit = {
 				OR = {
-					has_ideology = ideology:ideology_ethno_nationalist
-					has_liberal_ideology = yes
-					has_progressive_ideology = yes
+					bpm_leader_is_nationalist = yes
+					bpm_leader_is_liberal = yes
+					bpm_leader_is_progressive_liberal = yes
 				}
 			}
 			multiply = {
@@ -1473,7 +1710,7 @@ REPLACE:movement_yugoslav_national = {
 		}
 		else_if = {
 			limit = {
-				has_conservative_ideology = yes
+				bpm_leader_is_traditional_right = yes
 			}
 			multiply = {
 				value = 0.5
@@ -1481,10 +1718,8 @@ REPLACE:movement_yugoslav_national = {
 		}
 		else_if = {
 			limit = {
-				has_reactionary_ideology = yes
-				NOT = {
-					has_ideology = ideology:ideology_ethno_nationalist
-				}
+				bpm_leader_is_reactionary = yes
+				bpm_leader_is_nationalist = no
 			}
 			multiply = {
 				value = 0
@@ -1513,101 +1748,182 @@ REPLACE:movement_yugoslav_national = {
 	}
 
 	pop_support_weight = {
+		add = {
+			desc = "URBAN_STATE"
+			value = 20
+			multiply = {
+				value = state.state_urbanization_rate
+				min = 0
+				max = 100
+			}
+		}
 
 		if = {
 			limit = {
-				strata = upper
+				is_pop_type = capitalists
 			}
-			if = {
-				limit = {
-					is_pop_type = capitalists
-				}
-				add = {
-					value = 10
-					desc = "POP_CAPITALISTS"
-				}
+			add = {
+				value = 12
+				desc = "POP_CAPITALISTS"
 			}
-			else = {
-				add = {
-					value = 4
-					desc = "UPPER_NO_ICON"
-				}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
 			limit = {
-				strata = middle
+				is_pop_type = shopkeepers
 			}
-			if = {
-				limit = {
-					is_pop_type = academics
-				}
-				add = {
-					value = 35
-					desc = "POP_ACADEMICS"
-				}
+			add = {
+				value = 20
+				desc = "POP_SHOPKEEPERS"
 			}
-			if = {
-				limit = {
-					is_pop_type = shopkeepers
-				}
-				add = {
-					value = 25
-					desc = "POP_SHOPKEEPERS"
-				}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
-			else_if = {
-				limit = {
-					is_pop_type = officers
-				}
-				add = {
-					value = 15
-					desc = "POP_OFFICERS"
-				}
+		}
+
+		if = {
+			limit = {
+				is_pop_type = aristocrats
 			}
-			else = {
-				add = {
-					value = 12
-					desc = "MIDDLE_NO_ICON"
-				}
+
+			add = {
+				value = 6
+				desc = "POP_ARISTOCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
 			limit = {
-				strata = lower
+				is_pop_type = clerks
 			}
-			if = {
-				limit = {
-					is_pop_type = clerks
-				}
-				add = {
-					value = 20
-					desc = "POP_CLERKS"
-				}
+			add = {
+				value = 12
+				desc = "POP_CLERKS"
 			}
-			else_if = {
-				limit = {
-					is_pop_type = soldiers
-				}
-				add = {
-					value = 10
-					desc = "POP_SOLDIERS"
-				}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
-			else = {
-				add = {
-					value = 5
-					desc = "LOWER_NO_ICON"
-				}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = soldiers
+			}
+			add = {
+				value = 24
+				desc = "POP_SOLDIERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = laborers
+			}
+			add = {
+				value = 12
+				desc = "POP_LABORERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = machinists
+			}
+			add = {
+				value = 12
+				desc = "POP_MACHINISTS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = officers
+			}
+			add = {
+				value = 24
+				desc = "POP_OFFICERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
-		add = {
-			desc = "URBAN_STATE"
-			value = 10
-			multiply = state.state_urbanization_rate
+		else_if = {
+			limit = {
+				is_pop_type = bureaucrats
+			}
+			add = {
+				value = 4
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
 		}
-
+		else_if = {
+			limit = {
+				is_pop_type = farmers
+			}
+			add = {
+				value = 4
+				desc = "POP_FARMERS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_others
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = academics
+			}
+			add = {
+				value = 32
+				desc = "POP_ACADEMICS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}
+		else_if = {
+			limit = {
+				is_pop_type = engineers
+			}
+			add = {
+				value = 12
+				desc = "POP_BUREAUCRATS"
+			}
+			multiply = {
+				value = owner.bpm_consciousness_marknat_movement_academics_engineers
+				desc = BPM_LIBERAL_CONSCIOUSNESS
+			}
+		}		
+		min = 0
+		if = {
+			limit = {
+				owner = { is_ai = yes }
+			}
+			min = 5
+		}
 		if = {
 			limit = {
 				owner ?= {
@@ -1638,7 +1954,6 @@ REPLACE:movement_yugoslav_national = {
 			multiply = 0.015
 			add = 1
 		}
-
 		if = {
 			limit = {
 				culture ?= {
@@ -1650,70 +1965,69 @@ REPLACE:movement_yugoslav_national = {
 				desc = "POP_ACTIVE_NATIONAL_AWAKENING"
 			}
 		}
-
-		if = { # If a more radical movement exists, it'll poach radicals from this one.
+		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						OR = {
-							is_political_movement_type = movement_radical
-							is_political_movement_type = movement_fascist
-						}
-					}
+				OR = {
+					exists = c:GER
+					exists = c:ITA
+					exists = c:YUG
 				}
 			}
 			multiply = {
-				desc = "POP_RADICAL_MOVEMENT_LOSSES"
-				value = 1
-				subtract = pop_radical_fraction
+				value = 1.25
+				desc = "MAJOR_UNIFICATION_HAPPENED"
 			}
 		}
 
-		multiply = { # Illiterate pops participate at 1/10 the rate of fully literate pops
-			desc = "POP_LITERACY"
-
-			value = literacy_rate
-
-			multiply = literacy_rate
-			add = 0.10
+		
+		multiply = {
+			value = owner.bpm_consciousness_liberal_percent
+			desc = BPM_LIBERAL_CONSCIOUSNESS
 		}
+		multiply = { value = BPM_LIBERAL_STRENGTH desc = BPM_LIBERAL_AND_CONS } 
+
 		if = {
-			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_yugoslav_national
+				limit = {
+					exists = scope:political_movement
+					scope:political_movement ?= {
 						OR = {
 							is_being_suppressed = yes
 							is_being_bolstered = yes
 						}
-						save_temporary_scope_as = affected_movement
+					}
+				}
+				if = {
+					limit = {
+						scope:political_movement = {
+							is_being_suppressed = yes
+						}
+					}
+					multiply = {
+						value = 1
+						subtract = owner.modifier:country_suppression_attraction_factor
+						desc = "concept_suppressed"
+						min = 0.1
+					}
+				}
+				else = {
+					multiply = {
+						value = 1
+						add = owner.modifier:country_bolster_attraction_factor
+						desc = "concept_bolstered"
+						min = 1
 					}
 				}
 			}
-			if = {
-				limit = {
-					scope:affected_movement = {
-						is_being_suppressed = yes
-					}
-				}
-				multiply = {
-					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
-					desc = "concept_suppressed"
-				}
-			}
-			else = {
-				multiply = {
-					value = 1
-					add = owner.modifier:country_bolster_attraction_factor
-					desc = "concept_bolstered"
-				}
-			}
-		}
 	}
 	revolution = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 		possible = {
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 		}
 
 		weight = {
@@ -1743,11 +2057,17 @@ REPLACE:movement_yugoslav_national = {
 	}
 
 	secession = {
+		interest_group_can_join = {
+			OR = {
+				bpm_ig_is_nationalist = yes
+				bpm_ig_is_radical_left = yes
+			}
+		}
 		possible = {
 			owner ?= {
 				has_law_or_variant = law_type:law_subjecthood
 			}
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 			scope:clout <= 0
 		}
 
@@ -1778,19 +2098,7 @@ REPLACE:movement_yugoslav_national = {
 	}
 
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
-		if = {
-			limit = {
-				owner.ruler ?= {
-					NOT = { culture = { is_primary_culture_of = root.owner } }
-				}
-			}
-
-			add = {
-				value = 0.1
-				desc = "RULER_NOT_PRIMARY_CULTURE"
-			}
-		}
+		value = bpm_additional_radicalism_factors
 
 		if = {
 			limit = {
@@ -1863,26 +2171,6 @@ REPLACE:movement_yugoslav_national = {
 			}
 		}
 
-		# if = {
-		# 	limit = {
-		# 		owner = {
-		# 			any_neighbouring_state = {
-		# 				owner = {
-		# 					NOT = { THIS = ROOT.owner }
-		# 					any_political_movement = {
-		# 						is_political_movement_type = movement_yugoslav_national
-		# 						is_insurrectionary = yes
-		# 					}
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	add = {
-		# 		desc = "NEIGHBOURING_COUNTRY_WITH_REVOLUTION"
-		# 		value = 0.15
-		# 	}
-		# }
-
 		add = {
 			desc = "FERVOR_OF_SOUTH_SLAVIC_CULTURE_ACTIVISM"
 			value = owner.average_south_slavic_fervor
@@ -1919,6 +2207,13 @@ REPLACE:movement_dominican_national = {
 	}
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
+	}
+
+	can_pressure_interest_group = {
+		trigger_if = {
+			limit = { bpm_ig_is_traditionalist = yes }
+			bpm_ig_is_nationalist = yes
+		}
 	}
 
 	disband_trigger = {
@@ -2220,26 +2515,24 @@ REPLACE:movement_dominican_national = {
 
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_dominican_national
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				multiply = {
 					value = 1
-					subtract = owner.modifier:country_suppression_attraction_factor
+					add = owner.modifier:country_suppression_attraction_factor
+            		min = 0.1
 					desc = "concept_suppressed"
 				}
 			}
@@ -2247,6 +2540,7 @@ REPLACE:movement_dominican_national = {
 				multiply = {
 					value = 1
 					add = owner.modifier:country_bolster_attraction_factor
+            		min = 1
 					desc = "concept_bolstered"
 				}
 			}
@@ -2255,7 +2549,7 @@ REPLACE:movement_dominican_national = {
 
 	secession = {
 		possible = {
-			political_movement_support >= 0.05
+			political_movement_support >= 0.1
 		}
 
 		weight = {
@@ -2285,7 +2579,7 @@ REPLACE:movement_dominican_national = {
 	}
 
 	additional_radicalism_factors = {
-		add = { value = bpm_additional_radicalism_factors desc = "bpm_additional_radicalism_factors" }
+		value = bpm_additional_radicalism_factors
 	}
 }
 
