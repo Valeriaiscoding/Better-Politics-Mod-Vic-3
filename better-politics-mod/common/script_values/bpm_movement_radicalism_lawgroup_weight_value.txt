@@ -1,0 +1,114 @@
+movement_law_approval_to_number = {
+	if = {
+		limit = {
+			law_stance = {
+				law = scope:lawtype
+				value = strongly_disapprove
+			}
+		}
+		value = 2
+	}
+	else_if = {
+		limit = {
+			law_stance = {
+				law = scope:lawtype
+				value = disapprove
+			}
+		}
+		value = 1
+	}
+	else_if = {
+		limit = {
+			law_stance = {
+				law = scope:lawtype
+				value = approve
+			}
+		}
+		value = -1
+	}
+	else_if = {
+		limit = {
+			law_stance = {
+				law = scope:lawtype
+				value = strongly_approve
+			}
+		}
+		value = -2
+	}
+}
+
+law_weight_for_radicalism = {
+	if = {
+		limit = { scope:polmov.movement_law_approval_to_number != 0 }
+		value = scope:polmov.movement_law_approval_to_number
+		multiply = 0.01
+		if = {
+			limit = {
+				OR = {
+					is_same_law_group_as = law_type:law_monarchy
+				}
+			}
+			multiply = 10
+		}
+		else_if = {
+			limit = {
+				else_if = {
+					scope:polmov = { bpm_lawgroup_is_crucial_for_movement = yes }
+				}
+			}
+			multiply = 5
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_same_law_group_as = law_type:law_traditionalism
+					is_same_law_group_as = law_type:law_slave_trade
+				}
+			}
+			multiply = 4
+		}
+		else_if = {
+			limit = {
+				OR = {
+					trigger_if = {
+						limit = { scope:polmov.religion = rel:hindu }
+						is_same_law_group_as = law_type:law_caste_hegemony
+						
+					}
+					trigger_else = {
+						is_same_law_group_as = law_type:law_state_religion
+					}
+					is_same_law_group_as = law_type:law_subjecthood
+				}
+			}
+			multiply = 3
+		}
+		else_if = {
+			limit = {
+				OR = {
+					AND = {
+						scope:polmov.religion = rel:hindu
+						is_same_law_group_as = law_type:law_state_religion
+					}
+					is_same_law_group_as = law_type:law_advisory_body
+					is_same_law_group_as = law_type:law_autocracy
+				}
+			}
+			multiply = 3
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_same_law_group_as = law_type:law_censorship
+					is_same_law_group_as = law_type:law_secret_police	
+				}
+			}
+			multiply = 2
+		}
+		add = {
+			value = define:NPolitics|MOVEMENT_RADICALISM_FROM_ACTIVE_LAW_STANCE
+			multiply = scope:polmov.movement_law_approval_to_number
+		}
+	}
+}
+
