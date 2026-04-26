@@ -146,15 +146,21 @@ bpm_movement_is_slaver = {
     }
 }
 
-bpm_movement_is_restorationist = {
+bpm_movement_is_absolutist_monarchist = {
     OR = {
-        is_political_movement_type = movement_royalist_constitutional
-        is_political_movement_type = movement_royalist_absolutist
-        is_political_movement_type = movement_bonapartist
-        is_political_movement_type = movement_orleanist
-        is_political_movement_type = movement_legitimist
         is_political_movement_type = movement_carlist
         is_political_movement_type = movement_miguelist
+        is_political_movement_type = movement_legitimist 
+        is_political_movement_type = movement_royalist_absolutist
+    }
+}
+
+bpm_movement_is_restorationist = {
+    OR = {
+        bpm_movement_is_absolutist_monarchist = yes
+        is_political_movement_type = movement_royalist_constitutional
+        is_political_movement_type = movement_bonapartist
+        is_political_movement_type = movement_orleanist
     }
 }
 
@@ -198,15 +204,6 @@ bpm_movement_is_national_supremacist = {
     }
     NOT = {
         is_political_movement_type = movement_india_pan_national
-    }
-}
-
-bpm_movement_is_absolutist_monarchist = {
-    OR = {
-        is_political_movement_type = movement_carlist
-        is_political_movement_type = movement_miguelist
-        is_political_movement_type = movement_legitimist 
-        is_political_movement_type = movement_royalist_absolutist
     }
 }
 
@@ -262,5 +259,59 @@ bpm_movement_is_moralist = {
         is_political_movement_type = movement_miguelist
         is_political_movement_type = movement_carlist
         is_political_movement_type = movement_legitimist
+    }
+}
+
+bpm_movement_is_single_issue = {
+    OR = {
+        is_political_movement_type = movement_feminist 
+        is_political_movement_type = movement_cultural_majority
+        is_political_movement_type = movement_cultural_minority
+        is_political_movement_type = movement_minority_rights
+        is_political_movement_type = movement_anti_slavery
+        is_political_movement_type = movement_pro_slavery
+        is_political_movement_type = movement_slave_revolt
+    }
+}
+
+bpm_movement_is_country_specific = {
+    OR = {
+        is_political_movement_type = movement_miguelist
+        is_political_movement_type = movement_carlist
+        is_political_movement_type = movement_legitimist
+        is_political_movement_type = movement_bonapartist
+        is_political_movement_type = movement_orleanist
+        is_political_movement_type = movement_kaikoku
+    }
+}
+
+bpm_movement_has_religious_identity = {
+    OR = {
+        is_political_movement_type = movement_religious_majority
+        is_political_movement_type = movement_religious_minority
+        is_political_movement_type = movement_hindu_nationalist
+        is_political_movement_type = movement_muslim_nationalist
+    }
+}
+
+bpm_movement_has_cultural_identity = {
+    OR = {
+        is_political_movement_type = movement_cultural_majority
+        is_political_movement_type = movement_cultural_minority
+    }
+}
+
+bpm_movement_neighbour_with_revolution = {
+    $CONDITION$
+    owner = {
+        any_neighbouring_state = {
+            owner = {
+                NOT = { THIS = ROOT.owner }
+                any_political_movement = {
+                    $CONDITION$
+                    is_insurrectionary = yes
+                }
+            }
+        }
     }
 }

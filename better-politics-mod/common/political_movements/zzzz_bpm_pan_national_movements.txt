@@ -123,7 +123,7 @@
 				is_pop_type = capitalists
 			}
 			add = {
-				value = 12
+				value = pan_nat_capitalists_attraction
 				desc = "POP_CAPITALISTS"
 			}
 			multiply = {
@@ -136,7 +136,7 @@
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = 20
+				value = pan_nat_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
 			}
 			multiply = {
@@ -145,13 +145,13 @@
 			}
 		}
 
-		if = {
+		else_if = {
 			limit = {
 				is_pop_type = aristocrats
 			}
 
 			add = {
-				value = 6
+				value = pan_nat_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
 			}
 			multiply = {
@@ -164,7 +164,7 @@
 				is_pop_type = clerks
 			}
 			add = {
-				value = 12
+				value = pan_nat_clerks_attraction
 				desc = "POP_CLERKS"
 			}
 			multiply = {
@@ -177,7 +177,7 @@
 				is_pop_type = soldiers
 			}
 			add = {
-				value = 24
+				value = pan_nat_soldiers_attraction
 				desc = "POP_SOLDIERS"
 			}
 			multiply = {
@@ -190,7 +190,7 @@
 				is_pop_type = laborers
 			}
 			add = {
-				value = 12
+				value = pan_nat_laborers_attraction
 				desc = "POP_LABORERS"
 			}
 			multiply = {
@@ -203,7 +203,7 @@
 				is_pop_type = machinists
 			}
 			add = {
-				value = 12
+				value = pan_nat_machinists_attraction
 				desc = "POP_MACHINISTS"
 			}
 			multiply = {
@@ -216,7 +216,7 @@
 				is_pop_type = officers
 			}
 			add = {
-				value = 24
+				value = pan_nat_officers_attraction
 				desc = "POP_OFFICERS"
 			}
 			multiply = {
@@ -230,7 +230,7 @@
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = 6
+				value = pan_nat_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
@@ -243,7 +243,7 @@
 				is_pop_type = farmers
 			}
 			add = {
-				value = 6
+				value = pan_nat_farmers_attraction
 				desc = "POP_FARMERS"
 			}
 			multiply = {
@@ -256,7 +256,7 @@
 				is_pop_type = academics
 			}
 			add = {
-				value = 30
+				value = pan_nat_academics_attraction
 				desc = "POP_ACADEMICS"
 			}
 			multiply = {
@@ -269,14 +269,14 @@
 				is_pop_type = engineers
 			}
 			add = {
-				value = 12
+				value = pan_nat_engineers_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
 				value = owner.bpm_consciousness_marknat_movement_academics_engineers
 				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
-		}		
+		}	
 		min = 0
 		if = {
 			limit = {
@@ -594,7 +594,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = capitalists
 			}
 			add = {
-				value = 12
+				value = pan_nat_capitalists_attraction
 				desc = "POP_CAPITALISTS"
 			}
 			multiply = {
@@ -607,7 +607,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = 20
+				value = pan_nat_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
 			}
 			multiply = {
@@ -616,13 +616,13 @@ REPLACE:movement_german_national = {
 			}
 		}
 
-		if = {
+		else_if = {
 			limit = {
 				is_pop_type = aristocrats
 			}
 
 			add = {
-				value = 6
+				value = pan_nat_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
 			}
 			multiply = {
@@ -635,7 +635,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = clerks
 			}
 			add = {
-				value = 12
+				value = pan_nat_clerks_attraction
 				desc = "POP_CLERKS"
 			}
 			multiply = {
@@ -648,7 +648,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = soldiers
 			}
 			add = {
-				value = 24
+				value = pan_nat_soldiers_attraction
 				desc = "POP_SOLDIERS"
 			}
 			multiply = {
@@ -661,7 +661,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = laborers
 			}
 			add = {
-				value = 12
+				value = pan_nat_laborers_attraction
 				desc = "POP_LABORERS"
 			}
 			multiply = {
@@ -674,7 +674,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = machinists
 			}
 			add = {
-				value = 12
+				value = pan_nat_machinists_attraction
 				desc = "POP_MACHINISTS"
 			}
 			multiply = {
@@ -687,7 +687,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = officers
 			}
 			add = {
-				value = 24
+				value = pan_nat_officers_attraction
 				desc = "POP_OFFICERS"
 			}
 			multiply = {
@@ -701,7 +701,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = 4
+				value = pan_nat_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
@@ -714,7 +714,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = farmers
 			}
 			add = {
-				value = 4
+				value = pan_nat_farmers_attraction
 				desc = "POP_FARMERS"
 			}
 			multiply = {
@@ -727,7 +727,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = academics
 			}
 			add = {
-				value = 32
+				value = pan_nat_academics_attraction
 				desc = "POP_ACADEMICS"
 			}
 			multiply = {
@@ -740,7 +740,7 @@ REPLACE:movement_german_national = {
 				is_pop_type = engineers
 			}
 			add = {
-				value = 12
+				value = pan_nat_engineers_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
@@ -1188,7 +1188,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = capitalists
 			}
 			add = {
-				value = 12
+				value = pan_nat_capitalists_attraction
 				desc = "POP_CAPITALISTS"
 			}
 			multiply = {
@@ -1201,7 +1201,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = 20
+				value = pan_nat_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
 			}
 			multiply = {
@@ -1210,13 +1210,13 @@ REPLACE:movement_italian_national = {
 			}
 		}
 
-		if = {
+		else_if = {
 			limit = {
 				is_pop_type = aristocrats
 			}
 
 			add = {
-				value = 6
+				value = pan_nat_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
 			}
 			multiply = {
@@ -1229,7 +1229,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = clerks
 			}
 			add = {
-				value = 12
+				value = pan_nat_clerks_attraction
 				desc = "POP_CLERKS"
 			}
 			multiply = {
@@ -1242,7 +1242,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = soldiers
 			}
 			add = {
-				value = 24
+				value = pan_nat_soldiers_attraction
 				desc = "POP_SOLDIERS"
 			}
 			multiply = {
@@ -1255,7 +1255,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = laborers
 			}
 			add = {
-				value = 12
+				value = pan_nat_laborers_attraction
 				desc = "POP_LABORERS"
 			}
 			multiply = {
@@ -1268,7 +1268,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = machinists
 			}
 			add = {
-				value = 12
+				value = pan_nat_machinists_attraction
 				desc = "POP_MACHINISTS"
 			}
 			multiply = {
@@ -1281,7 +1281,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = officers
 			}
 			add = {
-				value = 24
+				value = pan_nat_officers_attraction
 				desc = "POP_OFFICERS"
 			}
 			multiply = {
@@ -1295,7 +1295,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = 4
+				value = pan_nat_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
@@ -1308,7 +1308,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = farmers
 			}
 			add = {
-				value = 4
+				value = pan_nat_farmers_attraction
 				desc = "POP_FARMERS"
 			}
 			multiply = {
@@ -1321,7 +1321,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = academics
 			}
 			add = {
-				value = 32
+				value = pan_nat_academics_attraction
 				desc = "POP_ACADEMICS"
 			}
 			multiply = {
@@ -1334,7 +1334,7 @@ REPLACE:movement_italian_national = {
 				is_pop_type = engineers
 			}
 			add = {
-				value = 12
+				value = pan_nat_engineers_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
@@ -1763,7 +1763,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = capitalists
 			}
 			add = {
-				value = 12
+				value = pan_nat_capitalists_attraction
 				desc = "POP_CAPITALISTS"
 			}
 			multiply = {
@@ -1776,7 +1776,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = 20
+				value = pan_nat_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
 			}
 			multiply = {
@@ -1785,13 +1785,13 @@ REPLACE:movement_yugoslav_national = {
 			}
 		}
 
-		if = {
+		else_if = {
 			limit = {
 				is_pop_type = aristocrats
 			}
 
 			add = {
-				value = 6
+				value = pan_nat_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
 			}
 			multiply = {
@@ -1804,7 +1804,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = clerks
 			}
 			add = {
-				value = 12
+				value = pan_nat_clerks_attraction
 				desc = "POP_CLERKS"
 			}
 			multiply = {
@@ -1817,7 +1817,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = soldiers
 			}
 			add = {
-				value = 24
+				value = pan_nat_soldiers_attraction
 				desc = "POP_SOLDIERS"
 			}
 			multiply = {
@@ -1830,7 +1830,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = laborers
 			}
 			add = {
-				value = 12
+				value = pan_nat_laborers_attraction
 				desc = "POP_LABORERS"
 			}
 			multiply = {
@@ -1843,7 +1843,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = machinists
 			}
 			add = {
-				value = 12
+				value = pan_nat_machinists_attraction
 				desc = "POP_MACHINISTS"
 			}
 			multiply = {
@@ -1856,7 +1856,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = officers
 			}
 			add = {
-				value = 24
+				value = pan_nat_officers_attraction
 				desc = "POP_OFFICERS"
 			}
 			multiply = {
@@ -1870,7 +1870,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = 4
+				value = pan_nat_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {
@@ -1883,7 +1883,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = farmers
 			}
 			add = {
-				value = 4
+				value = pan_nat_farmers_attraction
 				desc = "POP_FARMERS"
 			}
 			multiply = {
@@ -1896,7 +1896,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = academics
 			}
 			add = {
-				value = 32
+				value = pan_nat_academics_attraction
 				desc = "POP_ACADEMICS"
 			}
 			multiply = {
@@ -1909,7 +1909,7 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = engineers
 			}
 			add = {
-				value = 12
+				value = pan_nat_engineers_attraction
 				desc = "POP_BUREAUCRATS"
 			}
 			multiply = {

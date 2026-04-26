@@ -1,0 +1,13 @@
+# Pan Nationalist Movements
+pan_nat_academics_attraction = 32
+pan_nat_soldiers_attraction = 24
+pan_nat_officers_attraction = 24
+pan_nat_shopkeepers_attraction = 20
+pan_nat_capitalists_attraction = 12
+pan_nat_clerks_attraction  = 12
+pan_nat_bureaucrats_attraction = 12
+pan_nat_laborers_attraction = 12
+pan_nat_machinists_attraction = 12
+pan_nat_engineers_attraction = 12
+pan_nat_aristocrats_attraction = 6
+pan_nat_farmers_attraction = 4
