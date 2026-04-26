@@ -226,7 +226,7 @@ bpm_socialist_movements_support = {
     }
 }
 
-# bpm_state_region_german_pop_percentage = {
+# bpm_homeland_state_region_german_pop_percentage = {
 #     if = {
 #         limit = { 
 #             any_scope_state = {
@@ -252,7 +252,7 @@ bpm_socialist_movements_support = {
 #     }
 # }
 
-# bpm_state_region_italian_pop_percentage = {
+# bpm_homeland_state_region_italian_pop_percentage = {
 #     if = {
 #         limit = { 
 #             any_scope_state = {
@@ -278,7 +278,7 @@ bpm_socialist_movements_support = {
 #     }
 # }
 
-# bpm_state_region_yugoslav_pop_percentage = {
+# bpm_homeland_state_region_yugoslav_pop_percentage = {
 #     if = {
 #         limit = { 
 #             any_scope_state = {
