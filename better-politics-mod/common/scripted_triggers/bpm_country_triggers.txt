@@ -292,15 +292,12 @@ bpm_country_laws_are_very_undemocratic = {
 bpm_country_laws_are_moderately_undemocratic = {
 	custom_description = {
 		text = bpm_country_laws_are_moderately_undemocratic_desc
-		weighted_calc_true_if = {
-			amount >= 2
-			#2 = { has_law_or_variant = law_type:law_advisory_body } # "Moderately"
-			1 = { bpm_country_laws_unfair_voting = yes }
-			1 = { bpm_country_laws_have_unelected_bureaucrats = yes }
-			1 = { has_law_or_variant = law_type:law_censorship }
-			1 = { has_law_or_variant = law_type:law_secret_police }
-			1 = { has_law_or_variant = law_type:law_party_single }
-			1 = { has_law_or_variant = law_type:law_militarized_police }
+		OR = {
+			bpm_country_laws_unfair_voting = yes
+			bpm_country_laws_have_unelected_bureaucrats = yes
+			has_law_or_variant = law_type:law_censorship
+			has_law_or_variant = law_type:law_secret_police
+			has_law_or_variant = law_type:law_militarized_police
 		}
 	}
 	bpm_country_laws_are_very_undemocratic = no
