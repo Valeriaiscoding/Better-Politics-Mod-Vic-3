@@ -1465,4 +1465,14 @@ REPLACE:conservative_party = {
 			}
 		}
 	}
+	if = {
+		limit = { 
+			owner = { has_law = law_type:law_party_single } 
+			bpm_ig_is_state_institutional = yes
+		}
+		add = {
+			value = 100
+			desc = "State Institutions with Single Party"
+		}
+	}
 }

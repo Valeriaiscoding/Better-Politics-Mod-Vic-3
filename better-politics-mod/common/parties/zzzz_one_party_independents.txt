@@ -56,7 +56,8 @@ one_party_independents = {
 					has_law = law_type:law_no_parties_allowed
 					has_law = law_type:law_outlawed_dissent
 				}
-				bpm_ig_is_institutional = no
+				bpm_ig_is_ideological = yes
+				bpm_ig_is_organic_democrat = no
 				NOR = {
 					is_interest_group_type = ig_reactionaries
 					is_interest_group_type = ig_fascists
@@ -80,6 +81,8 @@ one_party_independents = {
 						has_law = law_type:law_outlawed_dissent
 					}
 				}
+				bpm_ig_is_ideological = yes
+				bpm_ig_is_organic_democrat = no
 				NOT = {
 					is_interest_group_type = ig_anarchists
 				}
@@ -100,6 +103,8 @@ one_party_independents = {
 						has_law = law_type:law_outlawed_dissent
 					}
 				}
+				bpm_ig_is_ideological = yes
+				bpm_ig_is_organic_democrat = no
 				NOT = {
 					is_interest_group_type = ig_anarchists
 				}

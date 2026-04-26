@@ -501,6 +501,15 @@ REPLACE:agrarian_party = {
 				OR = {
 					is_interest_group_type = ig_rural_folk
 					is_interest_group_type = ig_landowners
+					AND = {
+						is_interest_group_type = ig_devout
+						owner = {
+							OR = {
+								has_law_or_variant = law_type:law_total_separation
+								country_has_state_religion = rel:atheist
+							}
+						}
+					}
 				}
 			}
 
@@ -836,6 +845,16 @@ REPLACE:agrarian_party = {
 				value = -30
 				desc = "bpm_strongly_anti_electoralist"
 			}
+		}
+	}
+	if = {
+		limit = { 
+			owner = { has_law = law_type:law_party_single } 
+			bpm_ig_is_state_institutional = yes
+		}
+		add = {
+			value = 100
+			desc = "State Institutions with Single Party"
 		}
 	}
 }

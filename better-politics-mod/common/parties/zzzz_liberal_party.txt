@@ -429,6 +429,10 @@ REPLACE:liberal_party = {
 					is_interest_group_type = ig_intelligentsia
 					is_interest_group_type = ig_armed_forces
 					is_interest_group_type = ig_industrialists
+					AND = {
+						is_interest_group_type = ig_trade_unions
+						owner = { has_law_or_variant = law_type:law_combination_acts }
+					}
 				}
 			}
 
@@ -1586,6 +1590,17 @@ REPLACE:liberal_party = {
 						desc = "bpm_from_monarchist"
 					}
 				}
+			}
+			
+		}
+		if = {
+			limit = { 
+				owner = { has_law = law_type:law_party_single } 
+				bpm_ig_is_state_institutional = yes
+			}
+			add = {
+				value = 100
+				desc = "State Institutions with Single Party"
 			}
 		}
 	}

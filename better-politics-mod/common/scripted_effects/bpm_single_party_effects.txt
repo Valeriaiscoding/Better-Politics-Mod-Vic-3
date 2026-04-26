@@ -58,13 +58,32 @@ bpm_update_single_party_ideology_support = {
 			if = {
 				limit = {
 					OR = {
-						bpm_ig_is_institutional = yes
-						is_interest_group_type = ig_reactionaries
-						is_interest_group_type = ig_fascists
+						bpm_ig_is_state_institutional = yes
+						AND = {
+							owner = { has_law = law_type:law_no_parties_allowed }
+							OR = {
+								bpm_ig_is_organic_democrat = yes
+								bpm_ig_is_institutional = yes
+							}
+						}
+						AND = {
+							owner = { has_law = law_type:law_party_single }
+							is_member_of_party = owner.var:only_valid_party
+							OR = {
+								#bpm_ig_is_institutional = yes
+								has_ideology = ideology:ideology_dop_party_state
+								has_ideology = ideology:ideology_dop_party_socialist
+								is_interest_group_type = ig_reactionaries
+								is_interest_group_type = ig_fascists
+							}
+						}
+						
 					}
 				}
 				add_ideology = ideology_pro_single_party
-			} else = {
+			}
+			else_if = {
+				limit = { bpm_ig_is_institutional = no }
 				add_ideology = ideology_against_single_party
 			}
 		}

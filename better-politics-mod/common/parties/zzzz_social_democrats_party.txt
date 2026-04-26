@@ -367,6 +367,15 @@ REPLACE:social_democrat_party = {
 			bpm_ig_is_upper_institutional = no
 			NOT = { leader = { has_ideology = ideology:ideology_moderate } }
 		}
+		trigger_if = {
+			limit = {
+				owner = { has_law = law_type:law_no_parties_allowed }
+				NOT = {
+					has_law_or_variant = law_type:law_combination_acts
+				}
+				#has_law_or_variant = law_type:law_corporatized_unions
+			}
+		}
 	}
 	join_weight = {
 		value = {
@@ -910,6 +919,16 @@ REPLACE:social_democrat_party = {
 					value = 50
 					desc = "bpm_from_french_early_socialists"
 				}
+			}
+		}
+		if = {
+			limit = { 
+				owner = { has_law = law_type:law_party_single } 
+				bpm_ig_is_state_institutional = yes
+			}
+			add = {
+				value = 100
+				desc = "State Institutions with Single Party"
 			}
 		}
 	}

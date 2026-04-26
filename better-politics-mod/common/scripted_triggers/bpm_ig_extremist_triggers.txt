@@ -167,6 +167,20 @@ bpm_ig_is_radical_opposition_unionist_in_illegal_unions = {
     }
 }
 
+bpm_ig_is_radical_oppostion_party_bans = {
+	trigger_if = {
+		limit = { 
+			owner = { has_law = law_type:law_no_parties_allowed }
+		}
+		bpm_ig_is_organic_democrat = no
+	}
+	trigger_else = {
+		owner = { has_law = law_type:law_party_single }
+		has_ideology = ideology:ideology_against_single_party
+		NOT = { is_member_of_party = owner.var:only_valid_party }
+	}
+}
+
 bpm_ig_is_radical_opposition = {
 	custom_description = {
 		text = bpm_ig_is_radical_opposition_tooltip
@@ -201,6 +215,8 @@ bpm_ig_is_radical_opposition = {
 			# Christian Democrats: Christians Democrats do not like the status quo
 
 			bpm_ig_is_radical_opposition_status_quo = yes
+
+			bpm_ig_is_radical_oppostion_party_bans = yes
 		}
 	}
 
@@ -233,7 +249,12 @@ bpm_ig_is_very_radical_opposition_marlib_in_cr = {
 
 bpm_ig_is_very_radical_opposition_raddem_in_undemocratic = {
 	AND = {
-		owner = { bpm_country_laws_no_voting = yes }
+		owner = { 
+			OR = {
+				bpm_country_laws_no_voting = yes
+				has_law_or_variant = law_type:law_advisory_body
+			}
+		}
 		OR = {
 			bpm_ig_is_radical_liberal = yes
 			bpm_ig_is_anarchist = yes
@@ -242,6 +263,39 @@ bpm_ig_is_very_radical_opposition_raddem_in_undemocratic = {
 		leader = { NOT = { has_ideology = ideology:ideology_despotic_utopian } }
 	}
 }
+
+bpm_ig_is_very_radical_oppostion_party_bans = {
+	trigger_if = {
+		limit = { 
+			owner = { has_law = law_type:law_no_parties_allowed }
+		}
+		bpm_ig_is_organic_democrat = no
+	}
+	trigger_else_if = {
+		limit = { 
+			owner = { has_law = law_type:law_party_single }
+		}
+		has_ideology = ideology:ideology_against_single_party
+		NOT = { is_member_of_party = owner.var:only_valid_party }
+	}
+	trigger_else = {
+		owner = { 
+			NOT = { has_law_or_variant = law_type:law_no_party_bans } 
+			#bpm_country_laws_no_voting = no
+		}
+		save_temporary_scope_as = ig
+		NOT = {
+			owner = {
+				any_active_party = {
+					any_member = {
+						this = scope:ig
+					}
+				}
+			}
+		}
+	}
+}
+
 
 bpm_ig_is_very_radical_opposition = {
 	custom_description = {
@@ -263,6 +317,8 @@ bpm_ig_is_very_radical_opposition = {
 			# National Conservatives: NatCons want an organic system.
 
 			bpm_ig_is_radical_opposition_organic_democrat = yes
+
+			bpm_ig_is_very_radical_oppostion_party_bans = yes
 		}
 	}
 }
