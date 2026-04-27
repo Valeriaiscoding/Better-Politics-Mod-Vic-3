@@ -4,7 +4,8 @@ REPLACE:movement_anti_slavery = {
 	can_have_slave_supporters = yes
 	
 	#law_enactment_radicalism_multiplier = 2.0 # Feel especially strongly about having their core laws enacted
-	
+	#active_law_radicalism_multiplier = 2
+
 	ideology = ideology_eco_anti_slavery	
 	character_ideologies = {
 		ideology_abolitionist
@@ -543,7 +544,8 @@ REPLACE:movement_pro_slavery = {
 	category = movement_category_ideological
 	
 	#law_enactment_radicalism_multiplier = 2.0 # Feel especially strongly about having their core laws enacted
-	
+	#active_law_radicalism_multiplier = 2
+
 	ideology = ideology_eco_pro_slavery
 	character_ideologies = {
 		ideology_slaver
@@ -2177,7 +2179,7 @@ REPLACE:movement_slave_revolt = {
 	can_have_slave_supporters = yes
 
 	#law_enactment_radicalism_multiplier = 2
-	active_law_radicalism_multiplier = 2
+	#active_law_radicalism_multiplier = 2
 
 	ideology = ideology_slave_revolt_movement
 	character_ideologies = {

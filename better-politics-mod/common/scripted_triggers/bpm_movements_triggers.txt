@@ -109,7 +109,6 @@ bpm_movement_is_liberal_bourgeois = {
         bpm_movement_is_progressive_liberal = yes
         bpm_movement_is_regressive_liberal = yes
         bpm_movement_is_modernizer = yes
-        bpm_movement_is_pan_nationalist = yes
     }
     NOR = {
         is_political_movement_type = movement_positivist
@@ -298,6 +297,28 @@ bpm_movement_has_cultural_identity = {
     OR = {
         is_political_movement_type = movement_cultural_majority
         is_political_movement_type = movement_cultural_minority
+    }
+}
+bpm_lawgroup_is_crucial_for_movement = {
+    trigger_if = {
+        limit = { scope:lawtype = { is_same_law_group_as = law_type:law_slave_trade } }
+        OR = {
+            is_political_movement_type = movement_anti_slavery
+            is_political_movement_type = movement_pro_slavery
+            is_political_movement_type = movement_slave_revolt
+        }
+    }
+    trigger_else_if = {
+        limit = { scope:lawtype = { is_same_law_group_as = law_type:law_no_womens_rights } }
+        is_political_movement_type = movement_feminist
+    }
+    trigger_else_if = {
+        limit = { scope:lawtype = { is_same_law_group_as = law_type:law_ethnostate } }
+        OR = {
+            is_political_movement_type = movement_cultural_majority
+            is_political_movement_type = movement_cultural_minority
+            is_political_movement_type = movement_minority_rights
+        }
     }
 }
 

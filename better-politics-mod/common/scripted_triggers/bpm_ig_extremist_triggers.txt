@@ -279,6 +279,43 @@ bpm_ig_is_radical_opposition_nationalists_in_colonies = {
 	}
 }
 
+bpm_ig_is_radical_opposition_french_monarchists = {
+	owner = {
+		OR = {
+			this ?= c:FRA
+			civil_war_origin_country = c:FRA
+		}
+		NOR = {
+			has_variable = monarchy_stamped_out_var
+			has_variable = one_true_french_dynasty
+		}
+	}
+	bpm_ig_is_monarchist = yes
+	OR = {
+		AND = {
+			owner.ruler = { NOT = { has_variable = house_bourbon } }
+			OR = {
+				is_interest_group_type = ig_reactionaries
+				leader = { has_ideology = ideology:ideology_legitimist }
+			}
+		}
+		AND = {
+			owner.ruler = { NOT = { has_variable = house_bonaparte } }
+			OR = {
+				is_interest_group_type = ig_national_liberals
+				leader = { has_ideology = ideology:ideology_bonapartists }
+			}
+		}
+		AND = {
+			owner.ruler = { NOT = { has_variable = house_bonaparte } }
+			OR = {
+				is_interest_group_type = ig_national_liberals
+				leader = { has_ideology = ideology:ideology_bonapartists }
+			}
+		}
+	}
+}
+
 bpm_ig_is_radical_opposition = {
 	custom_description = {
 		text = bpm_ig_is_radical_opposition_tooltip
@@ -316,6 +353,9 @@ bpm_ig_is_radical_opposition = {
 
 			# State Atheism: Moralist igs do not like state atheis
 			bpm_ig_is_radical_oppostion_moralists_in_state_atheism = yes
+
+			# French Monarchists oppose rival dynaties
+			bpm_ig_is_radical_opposition_french_monarchists = yes
 		}
 	}
 
@@ -352,14 +392,13 @@ bpm_ig_is_very_radical_opposition_raddem_in_undemocratic = {
 	leader = { NOT = { has_ideology = ideology:ideology_despotic_utopian } }
 }
 
-bpm_ig_is_very_radical_opposition_religious_in_state_atheism = {
-	OR = {
-		bpm_ig_is_religious = yes
-		is_interest_group_type = ig_devout
-		is_interest_group_type = ig_christian_democrats
-	}
-	owner = { has_law_or_variant = law_type:law_state_atheism }
-}
+# bpm_ig_is_very_radical_opposition_religious_in_state_atheism = {
+# 	OR = {
+# 		bpm_ig_is_religious = yes
+# 		is_interest_group_type = ig_devout
+# 	}
+# 	owner = { has_law_or_variant = law_type:law_state_atheism }
+# }
 
 bpm_ig_is_very_radical_opposition = {
 	custom_description = {
@@ -383,7 +422,7 @@ bpm_ig_is_very_radical_opposition = {
 			bpm_ig_is_radical_opposition_organic_democrat = yes
 
 			#State atheism: Very religous igs, clergy and christdems hate state atheism
-			bpm_ig_is_very_radical_opposition_religious_in_state_atheism = yes
+			#bpm_ig_is_very_radical_opposition_religious_in_state_atheism = yes
 		}
 	}
 }

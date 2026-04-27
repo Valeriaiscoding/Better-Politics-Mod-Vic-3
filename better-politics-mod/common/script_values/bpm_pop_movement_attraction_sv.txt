@@ -1,0 +1,53 @@
+# Pan Nationalist Movements
+bpm_pan_nat_movement_shopkeepers_attraction = {
+	value = 20
+	multiply = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+}
+bpm_pan_nat_movement_capitalists_attraction = {
+	value = 12
+	multiply = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
+}
+bpm_pan_nat_movement_aristocrats_attraction = {
+	value = 6
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_clerks_attraction = {
+	value = 12
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_capitalists_attraction = {
+	value = 12
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_soldiers_attraction = {
+	value = 24
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_officers_attraction = {
+	value = 24
+	multiply = owner.bpm_consciousness_marknat_movement_academics_engineers
+}
+bpm_pan_nat_movement_laborers_attraction = {
+	value = 12
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_machinists_attraction = {
+	value = 12
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_farmers_attraction = {
+	value = 10
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_farmers_attraction = {
+	value = 4
+	multiply = owner.bpm_consciousness_marknat_movement_others
+}
+bpm_pan_nat_movement_academics_attraction = {
+	value = 4
+	multiply = owner.bpm_consciousness_marknat_movement_academics_engineers
+}
+bpm_pan_nat_movement_engineers_attraction = {
+	value = 32
+	multiply = owner.bpm_consciousness_marknat_movement_academics_engineers
+}

@@ -7,7 +7,7 @@
 	}
 
 	#law_enactment_radicalism_multiplier = 2
-	active_law_radicalism_multiplier = 4
+	#active_law_radicalism_multiplier = 4
 
 	can_cause_obstinance = yes
 	
@@ -504,7 +504,7 @@ REPLACE:movement_cultural_minority = {
 	ideology = ideology_pluralist_movement_1
 
 	#law_enactment_radicalism_multiplier = 2
-	active_law_radicalism_multiplier = 4
+	#active_law_radicalism_multiplier = 4
 
 	character_ideologies = {
 		ideology_reformer

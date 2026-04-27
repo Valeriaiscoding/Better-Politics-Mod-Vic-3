@@ -403,6 +403,14 @@ bpm_country_is_pre_modern = {
 	}
 }
 
+bpm_country_has_somewhat_socialist_economy = {
+	OR = {
+		has_law_or_variant = law_type:law_command_economy
+		has_law_or_variant = law_type:law_cooperative_ownership
+		has_law_or_variant = law_type:law_collectivized_agriculture
+	}
+}
+
 bpm_country_laws_has_socialist_economics = {
 	OR = {
 		has_law_or_variant = law_type:law_command_economy

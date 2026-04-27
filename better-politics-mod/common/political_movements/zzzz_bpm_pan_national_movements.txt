@@ -123,12 +123,8 @@
 				is_pop_type = capitalists
 			}
 			add = {
-				value = pan_nat_capitalists_attraction
+				value = bpm_pan_nat_movement_capitalists_attraction
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -136,12 +132,8 @@
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = pan_nat_shopkeepers_attraction
+				value = bpm_pan_nat_movement_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -151,12 +143,8 @@
 			}
 
 			add = {
-				value = pan_nat_aristocrats_attraction
+				value = bpm_pan_nat_movement_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -164,12 +152,8 @@
 				is_pop_type = clerks
 			}
 			add = {
-				value = pan_nat_clerks_attraction
+				value = bpm_pan_nat_movement_clerks_attraction
 				desc = "POP_CLERKS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -177,12 +161,8 @@
 				is_pop_type = soldiers
 			}
 			add = {
-				value = pan_nat_soldiers_attraction
+				value = bpm_pan_nat_movement_soldiers_attraction
 				desc = "POP_SOLDIERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -190,12 +170,8 @@
 				is_pop_type = laborers
 			}
 			add = {
-				value = pan_nat_laborers_attraction
+				value = bpm_pan_nat_movement_laborers_attraction
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -203,12 +179,8 @@
 				is_pop_type = machinists
 			}
 			add = {
-				value = pan_nat_machinists_attraction
+				value = bpm_pan_nat_movement_machinists_attraction
 				desc = "POP_MACHINISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -216,12 +188,8 @@
 				is_pop_type = officers
 			}
 			add = {
-				value = pan_nat_officers_attraction
+				value = bpm_pan_nat_movement_officers_attraction
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -230,12 +198,8 @@
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = pan_nat_bureaucrats_attraction
+				value = bpm_pan_nat_movement_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -243,12 +207,8 @@
 				is_pop_type = farmers
 			}
 			add = {
-				value = pan_nat_farmers_attraction
+				value = bpm_pan_nat_movement_farmers_attraction
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -256,12 +216,8 @@
 				is_pop_type = academics
 			}
 			add = {
-				value = pan_nat_academics_attraction
+				value = bpm_pan_nat_movement_academics_attraction
 				desc = "POP_ACADEMICS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -269,12 +225,8 @@
 				is_pop_type = engineers
 			}
 			add = {
-				value = pan_nat_engineers_attraction
+				value = bpm_pan_nat_movement_engineers_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}	
 		min = 0
@@ -594,12 +546,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = capitalists
 			}
 			add = {
-				value = pan_nat_capitalists_attraction
+				value = bpm_pan_nat_movement_capitalists_attraction
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -607,12 +555,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = pan_nat_shopkeepers_attraction
+				value = bpm_pan_nat_movement_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -622,12 +566,8 @@ REPLACE:movement_german_national = {
 			}
 
 			add = {
-				value = pan_nat_aristocrats_attraction
+				value = bpm_pan_nat_movement_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -635,12 +575,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = clerks
 			}
 			add = {
-				value = pan_nat_clerks_attraction
+				value = bpm_pan_nat_movement_clerks_attraction
 				desc = "POP_CLERKS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -648,12 +584,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = soldiers
 			}
 			add = {
-				value = pan_nat_soldiers_attraction
+				value = bpm_pan_nat_movement_soldiers_attraction
 				desc = "POP_SOLDIERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -661,12 +593,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = laborers
 			}
 			add = {
-				value = pan_nat_laborers_attraction
+				value = bpm_pan_nat_movement_laborers_attraction
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -674,12 +602,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = machinists
 			}
 			add = {
-				value = pan_nat_machinists_attraction
+				value = bpm_pan_nat_movement_machinists_attraction
 				desc = "POP_MACHINISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -687,12 +611,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = officers
 			}
 			add = {
-				value = pan_nat_officers_attraction
+				value = bpm_pan_nat_movement_officers_attraction
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -701,12 +621,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = pan_nat_bureaucrats_attraction
+				value = bpm_pan_nat_movement_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -714,12 +630,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = farmers
 			}
 			add = {
-				value = pan_nat_farmers_attraction
+				value = bpm_pan_nat_movement_farmers_attraction
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -727,12 +639,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = academics
 			}
 			add = {
-				value = pan_nat_academics_attraction
+				value = bpm_pan_nat_movement_academics_attraction
 				desc = "POP_ACADEMICS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -740,12 +648,8 @@ REPLACE:movement_german_national = {
 				is_pop_type = engineers
 			}
 			add = {
-				value = pan_nat_engineers_attraction
+				value = bpm_pan_nat_movement_engineers_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}		
 		min = 0
@@ -1188,12 +1092,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = capitalists
 			}
 			add = {
-				value = pan_nat_capitalists_attraction
+				value = bpm_pan_nat_movement_capitalists_attraction
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1201,12 +1101,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = pan_nat_shopkeepers_attraction
+				value = bpm_pan_nat_movement_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1216,12 +1112,8 @@ REPLACE:movement_italian_national = {
 			}
 
 			add = {
-				value = pan_nat_aristocrats_attraction
+				value = bpm_pan_nat_movement_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1229,12 +1121,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = clerks
 			}
 			add = {
-				value = pan_nat_clerks_attraction
+				value = bpm_pan_nat_movement_clerks_attraction
 				desc = "POP_CLERKS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1242,12 +1130,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = soldiers
 			}
 			add = {
-				value = pan_nat_soldiers_attraction
+				value = bpm_pan_nat_movement_soldiers_attraction
 				desc = "POP_SOLDIERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1255,12 +1139,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = laborers
 			}
 			add = {
-				value = pan_nat_laborers_attraction
+				value = bpm_pan_nat_movement_laborers_attraction
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1268,12 +1148,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = machinists
 			}
 			add = {
-				value = pan_nat_machinists_attraction
+				value = bpm_pan_nat_movement_machinists_attraction
 				desc = "POP_MACHINISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1281,12 +1157,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = officers
 			}
 			add = {
-				value = pan_nat_officers_attraction
+				value = bpm_pan_nat_movement_officers_attraction
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1295,12 +1167,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = pan_nat_bureaucrats_attraction
+				value = bpm_pan_nat_movement_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1308,12 +1176,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = farmers
 			}
 			add = {
-				value = pan_nat_farmers_attraction
+				value = bpm_pan_nat_movement_farmers_attraction
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1321,12 +1185,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = academics
 			}
 			add = {
-				value = pan_nat_academics_attraction
+				value = bpm_pan_nat_movement_academics_attraction
 				desc = "POP_ACADEMICS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1334,12 +1194,8 @@ REPLACE:movement_italian_national = {
 				is_pop_type = engineers
 			}
 			add = {
-				value = pan_nat_engineers_attraction
+				value = bpm_pan_nat_movement_engineers_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}		
 		min = 0
@@ -1763,12 +1619,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = capitalists
 			}
 			add = {
-				value = pan_nat_capitalists_attraction
+				value = bpm_pan_nat_movement_capitalists_attraction
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1776,12 +1628,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = shopkeepers
 			}
 			add = {
-				value = pan_nat_shopkeepers_attraction
+				value = bpm_pan_nat_movement_shopkeepers_attraction
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_capitalists_shopkeepers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1791,12 +1639,8 @@ REPLACE:movement_yugoslav_national = {
 			}
 
 			add = {
-				value = pan_nat_aristocrats_attraction
+				value = bpm_pan_nat_movement_aristocrats_attraction
 				desc = "POP_ARISTOCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1804,12 +1648,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = clerks
 			}
 			add = {
-				value = pan_nat_clerks_attraction
+				value = bpm_pan_nat_movement_clerks_attraction
 				desc = "POP_CLERKS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1817,12 +1657,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = soldiers
 			}
 			add = {
-				value = pan_nat_soldiers_attraction
+				value = bpm_pan_nat_movement_soldiers_attraction
 				desc = "POP_SOLDIERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1830,12 +1666,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = laborers
 			}
 			add = {
-				value = pan_nat_laborers_attraction
+				value = bpm_pan_nat_movement_laborers_attraction
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1843,12 +1675,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = machinists
 			}
 			add = {
-				value = pan_nat_machinists_attraction
+				value = bpm_pan_nat_movement_machinists_attraction
 				desc = "POP_MACHINISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1856,12 +1684,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = officers
 			}
 			add = {
-				value = pan_nat_officers_attraction
+				value = bpm_pan_nat_movement_officers_attraction
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 
@@ -1870,12 +1694,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = bureaucrats
 			}
 			add = {
-				value = pan_nat_bureaucrats_attraction
+				value = bpm_pan_nat_movement_bureaucrats_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1883,12 +1703,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = farmers
 			}
 			add = {
-				value = pan_nat_farmers_attraction
+				value = bpm_pan_nat_movement_farmers_attraction
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_others
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1896,12 +1712,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = academics
 			}
 			add = {
-				value = pan_nat_academics_attraction
+				value = bpm_pan_nat_movement_academics_attraction
 				desc = "POP_ACADEMICS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}
 		else_if = {
@@ -1909,12 +1721,8 @@ REPLACE:movement_yugoslav_national = {
 				is_pop_type = engineers
 			}
 			add = {
-				value = pan_nat_engineers_attraction
+				value = bpm_pan_nat_movement_engineers_attraction
 				desc = "POP_BUREAUCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_marknat_movement_academics_engineers
-				desc = BPM_LIBERAL_CONSCIOUSNESS
 			}
 		}		
 		min = 0

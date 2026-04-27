@@ -160,11 +160,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -173,11 +173,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -186,11 +186,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -199,11 +199,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_PEASANTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 
 		}	
@@ -214,11 +214,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_laborers_machinists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_laborers_machinists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}		
 		else_if = {
@@ -227,11 +227,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_CLERGYMEN"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -240,11 +240,11 @@ REPLACE:movement_royalist_absolutist = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 
@@ -618,11 +618,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_laborers_machinists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_laborers_machinists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -631,11 +631,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_laborers_machinists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_MACHINISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_laborers_machinists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -644,11 +644,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -657,11 +657,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -670,11 +670,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -683,11 +683,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_PEASANTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 
 		}			
@@ -697,11 +697,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_CLERGYMEN"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -710,11 +710,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -723,11 +723,11 @@ REPLACE:movement_reactionary = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_reactionary_movement_academics
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_ACADEMICS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_reactionary_movement_academics
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 
@@ -971,11 +971,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_ARISTOCRATS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}	
 		else_if = {
@@ -984,11 +984,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 8
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_laborers_machinists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_LABORERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_laborers_machinists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -997,11 +997,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_laborers_machinists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_MACHINISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_laborers_machinists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -1010,11 +1010,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_FARMERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -1023,11 +1023,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_CAPITALISTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -1036,11 +1036,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_shopkeepers_farmers_capitalists
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_SHOPKEEPERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_shopkeepers_farmers_capitalists
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -1049,11 +1049,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 1
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_PEASANTS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}			
 		else_if = {
@@ -1062,11 +1062,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_CLERGYMEN"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -1075,11 +1075,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 12
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_others
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_OFFICERS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_others
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 		else_if = {
@@ -1088,11 +1088,11 @@ REPLACE:movement_fascist = {
 			}
 			add = {
 				value = 6
+				multiply = {
+					value = owner.bpm_consciousness_fascist_movement_academics
+					desc = "BPM_LABOR_CONSCIOUSNESS"
+				}
 				desc = "POP_ACADEMICS"
-			}
-			multiply = {
-				value = owner.bpm_consciousness_fascist_movement_academics
-				desc = "BPM_LABOR_CONSCIOUSNESS"
 			}
 		}
 
