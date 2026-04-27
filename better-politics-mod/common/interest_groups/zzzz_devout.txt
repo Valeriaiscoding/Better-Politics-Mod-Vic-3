@@ -524,7 +524,7 @@ REPLACE:ig_devout = {
 			}
 			multiply = {
 				desc = "STATE_ATHEISM_LAW"
-				value = 0.1
+				value = 0.66
 			}
 		}
 

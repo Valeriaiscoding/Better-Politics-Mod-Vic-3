@@ -7,6 +7,7 @@ REPLACE:amendment_corporate_state_nominating_body_tu = {
 
 	modifier = {
 		interest_group_ig_trade_unions_pol_str_mult = 0.15
+		interest_group_ig_trade_unions_bpm_is_state_institutional_bool = yes
 	}
 
 	possible = {
@@ -37,6 +38,7 @@ REPLACE:amendment_corporate_state_nominating_body_id = {
 
 	modifier = {
 		interest_group_ig_industrialists_pol_str_mult = 0.15
+		interest_group_ig_industrialists_bpm_is_state_institutional_bool = yes
 	}
 
 	possible = {
@@ -67,6 +69,7 @@ REPLACE:amendment_corporate_state_nominating_body_it = {
 
 	modifier = {
 		interest_group_ig_intelligentsia_pol_str_mult = 0.15
+		interest_group_ig_intelligentsia_bpm_is_state_institutional_bool = yes
 	}
 
 	possible = {
@@ -153,6 +156,7 @@ REPLACE:amendment_shop_councils = {
 		building_group_bg_arts_allowed_collectivization_add = 0.10
 		building_nationalization_cost_mult = -0.15
 		country_loan_interest_rate_add = 0.01 # The lender cares not for the opinion of the petit-bourgeoisie
+		interest_group_ig_intelligentsia_bpm_is_state_institutional_bool = yes
 	}
 
 	possible = {
@@ -228,4 +232,10 @@ REPLACE:amendment_foreign_investment_seizures = {
 	}
 
 	amendment_activism_multiplier = 0.75
+}
+
+INJECT:amendment_preserved_bureaucratic_caste = {
+	sponsor_modifier = {
+		interest_group_bpm_is_state_institutional_bool = yes # Landowners as it can only be sponsored by them
+	}
 }

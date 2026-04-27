@@ -30,6 +30,7 @@ INJECT:law_interventionism = {
 	}
 
 	modifier = {
+		interest_group_ig_industrialists_bpm_is_state_institutional_bool = yes
 		country_private_construction_allocation_mult = 0.15
 		country_government_dividends_reinvestment_add = 0.25
 		country_government_dividends_efficiency_add = -0.25
@@ -140,6 +141,7 @@ INJECT:law_laissez_faire = {
 		law_manorialism
 	}
 	modifier = {
+		interest_group_ig_industrialists_bpm_is_state_institutional_bool = yes
 		country_loan_interest_rate_mult = 0.25
 		state_shopkeepers_investment_pool_efficiency_mult = -0.25
 		state_capitalists_investment_pool_efficiency_mult = -0.25
@@ -350,6 +352,7 @@ REPLACE:law_command_economy = {
 		state_pop_pol_str_add = -4
 
 		country_disable_non_company_privatization_bool = yes
+		interest_group_ig_petty_bourgeoisie_bpm_is_state_institutional_bool = yes # if was not already
 	}
 
 	institution = institution_economy
@@ -428,12 +431,14 @@ INJECT:law_extraction_economy = {
 		country_capitalists_pol_str_mult = 1
 		country_bureaucrats_pol_str_mult = 1
 
-		state_farmers_investment_pool_efficiency_mult = 0.5
-		state_clergymen_investment_pool_efficiency_mult = 0.5
-		state_aristocrats_investment_pool_efficiency_mult = 0.5
+		# state_farmers_investment_pool_efficiency_mult = 0.5
+		# state_clergymen_investment_pool_efficiency_mult = 0.5
+		# state_aristocrats_investment_pool_efficiency_mult = 0.5
 		state_capitalists_investment_pool_efficiency_mult = -0.25
 		state_shopkeepers_investment_pool_efficiency_mult = -0.25
 
+		interest_group_ig_industrialists_bpm_is_state_institutional_bool = yes
+		interest_group_ig_petty_bourgeoisie_bpm_is_state_institutional_bool = yes # if was not already
 	}
 	institution = institution_economy
 	institution_modifier = {
@@ -445,9 +450,18 @@ INJECT:law_extraction_economy = {
 		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.5
 		state_capitalists_investment_pool_efficiency_mult = 0.1
 		state_shopkeepers_investment_pool_efficiency_mult = 0.1
-		state_farmers_investment_pool_efficiency_mult = -0.15
-		state_clergymen_investment_pool_efficiency_mult = -0.15
-		state_aristocrats_investment_pool_efficiency_mult = -0.15
+		state_bureaucrats_investment_pool_efficiency_mult = 0.1
+	}
+}
+
+INJECT:law_industry_banned = {
+
+	modifier = {
+		country_institution_economy_max_investment_add = -5
+		interest_group_ig_industrialists_bpm_is_not_institutional_bool = yes
+	}
+	institution = institution_economy
+	institution_modifier = {	
 	}
 }
 

@@ -147,6 +147,7 @@ INJECT:law_state_atheism = {
 	modifier = {
 		interest_group_ig_devout_pol_str_mult = 0.5
 		country_allow_conversion_violent_hostility_bool = no
+		interest_group_ig_devout_bpm_is_not_institutional_bool = yes
 	}
 
 	institution = institution_home_affairs

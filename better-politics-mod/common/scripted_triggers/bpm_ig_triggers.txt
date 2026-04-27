@@ -640,20 +640,39 @@ bpm_ig_is_ideological = {
 	}
 }
 
+bpm_specific_ig_is_instituional = {
+	modifier:interest_group_$IG$_bpm_is_not_institutional_bool = no
+	modifier:interest_group_bpm_is_not_institutional_bool = no
+}
+
 bpm_ig_is_institutional = {
 	custom_tooltip = {
 		text = "tooltip_bpm_ig_is_institutional"
 		OR = {
-			is_interest_group_type = ig_armed_forces
-			is_interest_group_type = ig_devout
-			is_interest_group_type = ig_industrialists
-			is_interest_group_type = ig_intelligentsia
-			is_interest_group_type = ig_landowners
-			is_interest_group_type = ig_petty_bourgeoisie
-			is_interest_group_type = ig_rural_folk
-			AND = {
-				is_interest_group_type = ig_trade_unions
-				NOT = { owner = { has_law = law_type:law_combination_acts } }
+			bpm_ig_is_state_institutional = yes
+			bpm_specific_ig_is_instituional = {
+				IG = ig_armed_forces
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_devout
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_industrialists
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_intelligentsia
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_landowners
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_petty_bourgeoisie
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_rural_folk
+			}
+			bpm_specific_ig_is_instituional = {
+				IG = ig_trade_unions
 			}
 		}
 	}
@@ -682,20 +701,19 @@ bpm_ig_is_rural_institutional = {
 	}
 }
 
+bpm_specific_ig_is_state_istitutional = {
+	OR = {
+		modifier:interest_group_$IG$_bpm_is_state_institutional_bool = yes
+		modifier:interest_group_bpm_is_state_institutional_bool = yes
+	}
+}
+
 bpm_ig_is_state_institutional = {
 	custom_tooltip = {
 		text = "tooltip_bpm_ig_is_state_institutional"
-		OR = {
-			is_interest_group_type = ig_armed_forces
-			is_interest_group_type = ig_petty_bourgeoisie
-			AND = {
-				is_interest_group_type = ig_devout
-				owner = { has_law = law_type:law_theocracy }
-			}
-			AND = {
-				is_interest_group_type = ig_trade_unions
-				owner = { has_law = law_type:law_corporatized_unions }
-			}
+		save_temporary_scope_as = ig
+		bpm_specific_ig_is_state_istitutional = {
+			IG = scope:ig
 		}
 	}
 }

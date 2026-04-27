@@ -272,6 +272,8 @@ REPLACE:law_colonial_administration = {
 		country_bpm_change_primary_culture_to_overlord = yes
 		country_electoral_confidence_impact_mult = -1
 		# country_bpm_base_mandate_add = 60
+
+		interest_group_ig_petty_bourgeoisie_bpm_is_state_institutional_bool = yes # if was not already
 	}
 
 	# there are insignificant elections in the colonies
@@ -819,6 +821,8 @@ REPLACE:law_technocracy = {
 		# country_bpm_base_mandate_add = 50
 		country_authority_add = 100
 		country_electoral_confidence_impact_mult = -1
+
+		interest_group_ig_intelligentsia_bpm_is_state_institutional_bool = yes
 	}
 
 	unlocking_technologies = {

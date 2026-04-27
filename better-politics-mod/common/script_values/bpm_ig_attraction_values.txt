@@ -139,29 +139,37 @@ ig_attraction_from_radicals_and_loyalists = {
 
 ig_attraction_to_interests_from_stability = {
 	desc = "BPM_POP_INTERESTS_FROM_STABILITY"
-	add = {
-		if = {
-			limit = { owner = { has_variable = bpm_political_stability } }
-			add = owner.var:bpm_political_stability
-			divide = 100
-			if = { # Adding curve to attraction past 0.66
-				limit = {  owner.var:bpm_political_stability > 66 }
-				add = { # Formula after 66%: x + ((x-0.66)*3+1), essentially doubling the attraction by the end
-					add =  owner.var:bpm_political_stability
-					divide = 100
-					subtract = 0.66
-					multiply = 4
+	if = {
+		limit = {
+			bpm_ig_is_institutional = yes
+		}
+		add = {
+			if = {
+				limit = { owner = { has_variable = bpm_political_stability } }
+				add = owner.var:bpm_political_stability
+				divide = 100
+				if = { # Adding curve to attraction past 0.66
+					limit = {  owner.var:bpm_political_stability > 66 }
+					add = { # Formula after 66%: x + ((x-0.66)*3+1), essentially doubling the attraction by the end
+						add =  owner.var:bpm_political_stability
+						divide = 100
+						subtract = 0.66
+						multiply = 4
+					}
 				}
+			} else = {
+				add = 0.5
 			}
-		} else = {
-			add = 0.5
+			multiply = 2
+			min = {
+				value = 0.5
+				subtract = literacy_rate
+				min = 0.0
+			}
 		}
-		multiply = 2
-		min = {
-			value = 0.5
-			subtract = literacy_rate
-			min = 0.0
-		}
+	}
+	else = {
+		value = 1
 	}
 }
 

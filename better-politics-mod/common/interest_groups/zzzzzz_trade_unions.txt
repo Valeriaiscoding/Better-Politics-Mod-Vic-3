@@ -203,12 +203,7 @@ REPLACE:ig_trade_unions = {
 			}
 		}	
 
-		if = {
-			limit = {
-				owner.modifier:country_bpm_ig_trade_unions_non_institutional_bool = no
-			}
-			multiply = ig_attraction_to_interests_from_stability	
-		}	
+		multiply = ig_attraction_to_interests_from_stability	
 
 		
 		if = {
