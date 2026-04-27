@@ -290,15 +290,12 @@ bpm_country_laws_are_very_undemocratic = {
 }
 
 bpm_country_laws_are_moderately_undemocratic = {
-	custom_description = {
-		text = bpm_country_laws_are_moderately_undemocratic_desc
-		OR = {
-			bpm_country_laws_unfair_voting = yes
-			bpm_country_laws_have_unelected_bureaucrats = yes
-			has_law_or_variant = law_type:law_censorship
-			has_law_or_variant = law_type:law_secret_police
-			has_law_or_variant = law_type:law_militarized_police
-		}
+	OR = {
+		bpm_country_laws_unfair_voting = yes
+		bpm_country_laws_have_unelected_bureaucrats = yes
+		has_law_or_variant = law_type:law_censorship
+		has_law_or_variant = law_type:law_secret_police
+		has_law_or_variant = law_type:law_militarized_police
 	}
 	bpm_country_laws_are_very_undemocratic = no
 }
@@ -360,14 +357,10 @@ bpm_country_laws_have_max_welfare = {
 }
 
 bpm_country_laws_are_very_capitalist = {
-	custom_description = {
-		text = bpm_country_laws_are_very_capitalist_desc
-		weighted_calc_true_if = {
-			amount >= 2
-			1 = { has_law_or_variant = law_type:law_laissez_faire }
-			1 = { has_law_or_variant = law_type:law_free_trade }
-			1 = { has_law_or_variant = law_type:law_commercialized_agriculture }
-		}
+	AND = {
+		has_law_or_variant = law_type:law_laissez_faire
+		has_law_or_variant = law_type:law_free_trade
+		has_law_or_variant = law_type:law_commercialized_agriculture
 	}
 }
 
@@ -394,12 +387,10 @@ bpm_country_laws_have_traditional_economics = {
 }
 
 bpm_country_is_pre_modern = {
-	weighted_calc_true_if = {
-		amount >= 2
-		1 = { is_country_type = unrecognized }
-		1 = { has_law_or_variant = law_type:law_traditionalism }
-		1 = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		1 = { has_law_or_variant = law_type:law_advisory_body }
+	OR = {
+		has_law_or_variant = law_type:law_traditionalism
+		has_law_or_variant = law_type:law_ad_hoc_centralization
+		has_law_or_variant = law_type:law_advisory_body
 	}
 }
 
