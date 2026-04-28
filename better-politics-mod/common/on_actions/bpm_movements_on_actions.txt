@@ -9,7 +9,6 @@
 on_yearly_pulse_country = {
     on_actions = {
         bpm_do_ai_splits_oa
-        #bpm_update_natlib_ideology
     }
 }
 
@@ -716,17 +715,6 @@ bpm_update_factions_oa = {
                 name = bpm_movement_factions_reload
                 days = 1
             }
-        }
-    }
-}
-
-bpm_update_natlib_ideology = {
-    effect = {
-        random_political_movement = {
-            limit = {
-                is_political_movement_type = movement_national_liberal
-            }
-            bpm_set_nat_lib_movement_core_ideology = yes
         }
     }
 }
