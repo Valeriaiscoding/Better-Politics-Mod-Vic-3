@@ -5,15 +5,15 @@ REPLACE:grant_command_to_ruler = {
 	potential = {
 		is_ruler = yes
 		NOR = {
-			has_role = general
-			has_role = admiral
+			has_role_of_type = general
+			has_role_of_type = admiral
 		}
 		owner ?= scope:actor
 		NOT = { has_variable = bpm_untouchable_char }
 	}
 
 	possible = {
-		age >= define:NCharacters|ADULT_AGE
+		is_adult = yes
 		OR = {
 			is_female = no
 			owner ?= {
@@ -59,7 +59,7 @@ REPLACE:grant_leadership_to_agitator = {
 
 	potential = {
 		has_dlc_feature = agitators
-		has_role = agitator
+		has_role_of_type = agitator
 		exists = owner
 		owner ?= scope:actor
 		NOT = { has_variable = bpm_untouchable_char }
@@ -122,8 +122,9 @@ REPLACE:grant_leadership_to_agitator = {
 	}
 
 	effect = {
-		remove_character_role = agitator
-		add_character_role = politician
+		show_as_tooltip = {
+			remove_character_role = agitator
+		}
 		custom_tooltip = {
 			text = make_agitator_ig_leader_tt
 			set_as_interest_group_leader = yes
@@ -175,15 +176,15 @@ REPLACE:grant_command_to_agitator = {
 
 	potential = {
 		has_dlc_feature = agitators
-		has_role = agitator
-		NOT = { has_role = general }
-		NOT = { has_role = admiral }
+		has_role_of_type = agitator
+		NOT = { has_role_of_type = general }
+		NOT = { has_role_of_type = admiral }
 		owner ?= scope:actor
 		NOT = { has_variable = bpm_untouchable_char }
 	}
 
 	possible = {
-		age >= define:NCharacters|ADULT_AGE
+		is_adult = yes
 		is_female = no
 		exists = owner.capital.land_hq
 	}
@@ -245,17 +246,35 @@ REPLACE:exile_character = {
 	potential = {
 		is_in_exile_pool = no
 		is_in_void = no
-		is_ruler = no
-		is_heir = no
+		is_ruler_of_own_country = no
+		is_heir_of_own_country = no
 		# Cannot exile pure commanders, we have the retire interaction for that
 		OR = {
-			has_role = politician
-			has_role = agitator
+			has_role_of_type = executive
+			has_role_of_type = magnate
+			has_role_of_type = politician
+			has_role_of_type = agitator
+		}
+		trigger_if = {
+			limit = {
+				owner ?= {
+					c:JAP ?= this
+					NOT = {
+						has_variable = japan_restoration_complete
+					}
+				}
+			}
+			custom_tooltip = {
+				text = daimyo_not_tt
+				NOT = {
+					has_variable = daimyo_var
+				}
+			}
 		}
 		hidden_trigger = { # BPM addition: Making AI incapable of exiling non-institutional politicians unless they are a great power
 			OR = {
 				NOT = { has_variable = bpm_character_in_institutional_ig_var }
-				has_role = agitator
+				has_role_of_type = agitator
 				owner ?= {
 					OR = {
 						country_rank >= rank_value:great_power	
@@ -264,8 +283,6 @@ REPLACE:exile_character = {
 				}
 			}
 		}
-		is_ruler = no
-		is_heir = no
 		NOT = { has_variable = bpm_untouchable_char }
 	}
 
@@ -282,7 +299,7 @@ REPLACE:exile_character = {
 		is_busy = no
 		trigger_if = {
 			limit = {
-				has_role = agitator
+				has_role_of_type = agitator
 			}
 
 			political_movement ?= { is_insurrectionary = no }
@@ -296,6 +313,99 @@ REPLACE:exile_character = {
 		}
 		interest_group = {
 			bpm_ig_is_marginal = no
+		}
+		custom_tooltip = {
+			text = ideology_not_too_close_tt
+			NOT = {
+				OR = {
+					AND = {
+						owner.ruler = {
+							has_socialist_ideology = yes
+						}
+						has_socialist_ideology = yes
+					}
+					AND = {
+						owner.ruler = {
+							has_progressive_ideology = yes
+						}
+						has_progressive_ideology = yes
+					}
+					AND = {
+						owner.ruler = {
+							has_liberal_ideology = yes
+						}
+						has_liberal_ideology = yes
+					}
+					AND = {
+						owner.ruler = {
+							has_reactionary_ideology = yes
+						}
+						has_reactionary_ideology = yes
+					}
+					AND = {
+						owner.ruler = {
+							has_conservative_ideology = yes
+						}
+						has_conservative_ideology = yes
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			text = pending_coup_event_tt
+			NOT = {
+				owner = {
+					has_variable = coup_event_active
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					has_dlc_feature = voice_of_the_people_content
+					has_dlc_feature = ip4_content
+				}
+			}
+			custom_tooltip = {
+				text = doing_coup_for_player_tt
+				NOT = {
+					has_variable = commander_doing_coup_on_player_behalf
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				c:JAP ?= owner
+			}
+			trigger_if = {
+				limit = {
+					owner ?= {
+						has_law = law_type:law_bakufu
+					}
+				}
+				custom_tooltip = {
+					text = house_tokugawa_not_tt
+					NOT = {
+						has_variable = house_tokugawa
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					owner ?= {
+						NOR = {
+							has_law_or_variant = law_type:law_council_republic
+							has_law_or_variant = law_type:law_corporate_state
+						}
+					}
+				}
+				custom_tooltip = {
+					text = house_yamato_not_tt
+					NOT = {
+						has_variable = house_yamato
+					}
+				}
+			}
 		}
 	}
 
@@ -359,25 +469,25 @@ REPLACE:exile_character = {
 		hidden_effect = {
 			if = {
 				limit = {
-					NOT = { has_role = agitator }
+					NOT = { has_role_of_type = agitator }
 				}
 				add_character_role = agitator
 			}
 			if = {
 				limit = {
-					has_role = general
+					has_role_of_type = general
 				}
 				remove_character_role = general
 			}
 			if = {
 				limit = {
-					has_role = admiral
+					has_role_of_type = admiral
 				}
 				remove_character_role = admiral
 			}
 			if = {
 				limit = {
-					has_role = politician
+					has_role_of_type = politician
 				}
 				set_as_interest_group_leader = no
 				remove_character_role = politician
@@ -482,99 +592,148 @@ REPLACE:exile_character = {
 	show_confirmation_box = yes
 
 	ai_chance = {
-		value = -50
+		value = 0
+
 		if = {
 			limit = {
-				interest_group = {
-					ig_approval <= -12
-				}		
+				OR = {
+					interest_group ?= {
+						ig_approval < 0
+				}
+					political_movement ?= {
+						is_being_suppressed = yes
+					}
+				}
 			}
-			add = 55
+
+			add = {
+				value = popularity
+				multiply = 0.2
 		}
-		else_if = {
-			limit = {
-				interest_group = {
-					ig_approval <= -8
-				}		
-			}
-			add = 25
-		}
-		# only exile if IG approval < 0
+
 		if = {
 			limit = {
-				interest_group = {
-					ig_approval < 0
-				}		
+				scope:actor ?= {
+					has_law_or_variant = law_type:law_outlawed_dissent
+				}
 			}
+				multiply = 1.5
+		}
+			else_if = {
+			limit = {
+				scope:actor ?= {
+					has_law_or_variant = law_type:law_censorship
+				}
+			}
+				multiply = 1.25
+		}
+			else_if = {
+			limit = {
+				scope:actor ?= {
+					has_law_or_variant = law_type:law_right_of_assembly
+				}
+			}
+				multiply = 0.75
+		}
+
+		if = {
+			limit = {
+				scope:actor ?= {
+						has_law_or_variant = law_type:law_secret_police
+				}
+			}
+				multiply = 1.5
+			}
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_national_guard
+					}
+				}
+				multiply = 1.25
+			}
+			else_if = {
+				limit = {
+					scope:actor ?= {
+						has_law_or_variant = law_type:law_no_home_affairs
+					}
+				}
+				multiply = 0.5
+			}
+
 			if = {
 				limit = {
-					scope:actor ?= {
-						OR = {
-							bpm_country_laws_no_voting = yes
-							has_law = law_type:law_party_single
-						}
-					}			
+					interest_group ?= {
+						ig_approval <= -5
+					}
 				}
-				add = -25
+				multiply = 1.25
 			}
-			if = {
+			else_if = {
+				limit = {
+					interest_group ?= {
+						ig_approval <= -10
+					}
+				}
+				multiply = 1.5
+			}
+
+			if = { # If we are Conservative dont immediately hang any Liberal politician and so on
 				limit = {
 					scope:actor ?= {
-						has_law = law_type:law_national_guard
-					}			
+						has_strategy = ai_strategy_conservative_agenda
+					}
+					has_liberal_ideology = yes
 				}
-				add = 15
+				multiply = 0.5
 			}
 			else_if = {
 				limit = {
 					scope:actor ?= {
-						has_law = law_type:law_guaranteed_liberties
-					}			
+						has_strategy = ai_strategy_progressive_agenda
+					}
+					OR = {
+						has_liberal_ideology = yes
+						has_progressive_ideology = yes
+					}
 				}
-				add = -100
+				multiply = 0.5
 			}
 			else_if = {
 				limit = {
 					scope:actor ?= {
-						has_law = law_type:law_secret_police
-					}			
+						has_strategy = ai_strategy_egalitarian_agenda
+						NOT = { has_law_or_variant = law_type:law_council_republic }
+					}
+					OR = {
+						has_liberal_ideology = yes
+						has_progressive_ideology = yes
+						has_socialist_ideology = yes
+					}
 				}
-				add = 30
-			}
-			if = {
-				limit = {
-					scope:actor ?= {
-						has_law = law_type:law_censorship
-					}			
-				}
-				add = 10
+				multiply = 0.5
 			}
 			else_if = {
 				limit = {
 					scope:actor ?= {
-						has_law = law_type:law_right_of_assembly
-					}			
+						has_strategy = ai_strategy_egalitarian_agenda
+					}
+					OR = {
+						has_progressive_ideology = yes
+						has_socialist_ideology = yes
+					}
 				}
-				add = -10
+				multiply = 0.5
 			}
-			else_if = {
+
+
+			if = { # Be less inclined to toss out politicians
 				limit = {
-					scope:actor ?= {
-						has_law = law_type:law_outlawed_dissent
-					}			
+					NOT = { has_role_of_type = agitator }
 				}
-				add = 30
-			}
-			else_if = {
-				limit = {
-					scope:actor ?= {
-						has_law = law_type:law_protected_speech
-					}			
-				}
-				add = -20
+				multiply = 0.25
 			}
 		}
-		multiply = 0.3
 	}
 }
 
@@ -714,9 +873,10 @@ REPLACE:invite_exile = {
 	effect = {
 		transfer_character = scope:actor
 		set_variable = exile_to_ruler_var
-		set_variable = {
-			name = memento_mori_immunity
+		add_career_length = {
+			role = agitator
 			months = 60
+			random_range = { 1.0 1.5 } # 60-90 months
 		}
 		custom_tooltip = invite_exile_start_join_movement_effect
 		hidden_effect = {
@@ -857,15 +1017,8 @@ REPLACE:arrange_accident = {
 	potential = {
 		is_in_exile_pool = no
 		is_in_void = no
-		is_ruler = no
-		is_heir = no
-		OR = {
-			has_role = general
-			has_role = admiral
-			has_role = politician
-			has_role = agitator
-			has_role = executive
-		}
+		is_ruler_of_own_country = no
+		
 		is_immortal = no
 		NOT = { has_variable = bpm_untouchable_char }
 	}
@@ -907,6 +1060,40 @@ REPLACE:arrange_accident = {
 				text = doing_coup_for_player_tt
 				NOT = {
 					has_variable = commander_doing_coup_on_player_behalf
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				c:JAP ?= owner
+			}
+			trigger_if = {
+				limit = {
+					owner ?= {
+						has_law = law_type:law_bakufu
+					}
+				}
+				custom_tooltip = {
+					text = house_tokugawa_not_tt
+					NOT = {
+						has_variable = house_tokugawa
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					owner ?= {
+						NOR = {
+							has_law_or_variant = law_type:law_council_republic
+							has_law_or_variant = law_type:law_corporate_state
+						}
+					}
+				}
+				custom_tooltip = {
+					text = house_yamato_not_tt
+					NOT = {
+						has_variable = house_yamato
+					}
 				}
 			}
 		}
@@ -1022,7 +1209,7 @@ REPLACE:arrange_accident = {
 					}
 					else_if = {
 						limit = {
-							has_role = politician
+							has_role_of_type = politician
 							THIS.interest_group ?= {
 								interest_group_supports_political_movement = yes
 							}
@@ -1089,7 +1276,7 @@ REPLACE:arrange_accident = {
 					}
 					else_if = {
 						limit = {
-							has_role = politician
+							has_role_of_type = politician
 							THIS.interest_group ?= {
 								interest_group_supports_political_movement = yes
 							}
@@ -1116,6 +1303,14 @@ REPLACE:arrange_accident = {
 	cooldown = { days = normal_modifier_time }
 	show_confirmation_box = yes
 
+	should_ai_evaluate = {
+		country_rank >= rank_value:minor_power # Don't burn performance on tiny AI countries messing around with character interactions
+	}
+	
+	ai_will_do = {
+		is_heir_of_own_country = no # The AI won't kill its own heirs
+	}
+
 	ai_chance = {
 		value = -50
 		if = {
@@ -1138,8 +1333,8 @@ REPLACE:arrange_accident = {
 			limit = {
 				scope:actor ?= {
 					NOR = {
-						bpm_laws_no_voting = yes
-						has_law_or_variant = law_type:law_single_party_state
+						bpm_country_laws_are_very_repressive = yes
+						has_law_or_variant = law_type:law_party_single
 					}
 				}			
 			}
@@ -1220,11 +1415,12 @@ REPLACE:resign_from_office = {
 	potential = {
 		has_dlc_feature = voice_of_the_people_content
 		owner ?= scope:actor
-		is_ruler = yes
+		is_ruler_of_own_country = yes
+		is_immortal = no
 		owner ?= {
 			NOR = {
-				has_law = law_type:law_monarchy
-				has_law = law_type:law_theocracy
+				country_has_monarchy_law = yes
+				has_law_or_variant = law_type:law_theocracy
 			}
 		}
 		NOT = { has_variable = bpm_untouchable_char }
@@ -1245,6 +1441,51 @@ REPLACE:resign_from_office = {
 				has_trait = senile
 				has_trait = wounded
 			}
+			owner ?= {  # Our thanks to UHM for reporting this
+				trigger_if = {
+					limit = {
+						any_political_movement = {
+							is_revolutionary = yes
+							exists = most_desired_law
+						}
+					}
+					AND = {
+						any_political_movement = {
+							is_revolutionary = yes
+							exists = most_desired_law
+							most_desired_law ?= { save_temporary_scope_as = revolutionary_law }
+						}
+						custom_tooltip = {
+							text = ruler_disapproves_of_revolutionary_law
+							root = {
+								OR = {
+									law_enactment_stance = {
+										law = scope:revolutionary_law
+										value < neutral
+									}
+									interest_group ?= {
+										law_enactment_stance = {
+											law = scope:revolutionary_law
+											value < neutral
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				trigger_else = {
+					AND = {
+						any_political_movement = {
+							is_revolutionary = yes
+						}
+						custom_tooltip = {
+							text = ruler_disapproves_of_revolutionary_law_contextless
+							always = no
+						}
+					}
+				}
+			}
 			owner ?= {
 				any_interest_group = {
 					is_insurrectionary = yes
@@ -1257,8 +1498,9 @@ REPLACE:resign_from_office = {
 		if = {
 			limit = {
 				owner ?= {
-					any_interest_group = {
-						is_insurrectionary = yes
+					any_political_movement = {
+						exists = most_desired_law
+						is_revolutionary = yes
 					}
 				}
 			}
@@ -1273,8 +1515,12 @@ REPLACE:resign_from_office = {
 		}
 	}
 
-	cooldown = { months = 180 }
+	cooldown = { years = 15 }
 	show_confirmation_box = yes
+
+	should_ai_evaluate = {
+		country_rank >= rank_value:minor_power # Don't burn performance on tiny AI countries messing around with character interactions
+	}
 
 	ai_chance = {
 		value = -50
