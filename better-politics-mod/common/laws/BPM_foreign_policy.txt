@@ -6,7 +6,10 @@
 	progressiveness = -200
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}	
 	}
 
 	modifier = {
@@ -67,7 +70,10 @@ law_ultramilitarism = {
 	progressiveness = -100
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
@@ -111,7 +117,10 @@ law_jingoism = {
 	progressiveness = -50
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
@@ -155,7 +164,10 @@ law_flexible_foreign_policy = {
 	progressiveness = 0
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
@@ -191,7 +203,10 @@ law_justum_bellum = {
 	progressiveness = 25
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
@@ -236,7 +251,10 @@ law_dove_politics = {
 	progressiveness = 25
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
@@ -286,7 +304,10 @@ law_armed_neutrality = {
 	progressiveness = 25
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
@@ -344,7 +365,10 @@ law_disarmed_nation = {
 	progressiveness = 0
 
 	can_enact = {
-		aggressive_diplomatic_plays_permitted  = yes
+		trigger_if = {
+			limit = { is_subject = yes }
+			aggressive_diplomatic_plays_permitted  = yes
+		}
 	}
 
 	modifier = {
