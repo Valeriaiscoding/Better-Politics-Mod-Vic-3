@@ -46,8 +46,10 @@ bpm_ig_is_radical_opposition_authoritarian_in_democracy = {
 	}
 }
 
+# Christdems Status Quo 
 bpm_ig_is_radical_opposition_status_quo_dop = {
 	owner = {
+		has_variable = bpm_christian_democrats_dop_ideology
 		NAND = {
 			has_law_or_variant = law_type:law_separated_powers
 			OR = { 
@@ -81,6 +83,7 @@ bpm_ig_is_radical_opposition_status_quo_dop = {
 
 bpm_ig_is_radical_opposition_status_quo_eco = {
 	owner = {
+		has_variable = bpm_christian_democrats_eco_ideology
 		NAND = {
 			trigger_if = {
 				limit = { ig:ig_christian_democrats = { has_ideology = ideology:ideology_eco_distributist_economy } }
@@ -117,6 +120,7 @@ bpm_ig_is_radical_opposition_status_quo_eco = {
 
 bpm_ig_is_radical_opposition_status_quo_wel = {
 	owner = {
+		has_variable = bpm_christian_democrats_wel_ideology
 		NAND = {
 			OR = { 
 				has_law_or_variant = law_type:law_restricted_child_labor
@@ -172,31 +176,64 @@ bpm_ig_is_radical_opposition_status_quo_wel = {
 
 bpm_ig_is_radical_oppostion_status_quo_cit = {
 	owner = {
-		trigger_if = {
-			limit = {
+		has_variable = bpm_christian_democrats_cit_ideology
+		OR = {
+			AND = {
 				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_christian_internationalist }
+				NOR = {
+					has_law_or_variant = law_type:law_multicultural
+					has_law_or_variant = law_type:law_cultural_exclusion
+				}
 			}
-			NOR = {
-				has_law_or_variant = law_type:law_multicultural
-				has_law_or_variant = law_type:law_cultural_exclusion
-			}
-		}
-		trigger_else_if = {
-			limit = {
+			AND = {
 				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_ethnonationalist }
+				NOR = {
+					has_law_or_variant = law_type:law_ethnostate
+					has_law_or_variant = law_type:law_national_supremacy
+				}
 			}
-			NOR = {
-				has_law_or_variant = law_type:law_ethnostate
-				has_law_or_variant = law_type:law_national_supremacy
+			AND = {
+				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_multiethnic_nationalist }
+				NOR = {
+					has_law_or_variant = law_type:law_cultural_exclusion
+					has_law_or_variant = law_type:law_national_supremacy
+				}
 			}
 		}
-		trigger_else_if = {
-			limit = {
-				ig:ig_christian_democrats = { has_ideology = ideology:ideology_cit_multiethnic_nationalist }
+	}
+}
+
+bpm_ig_is_radical_oppostion_status_quo_sta = {
+	owner = {
+		has_variable = bpm_christian_democrats_sta_ideology
+		NAND = {
+			trigger_if = {
+				limit = { has_ideology = ideology:ideology_sta_powerful_state }
+				OR = {
+					has_law_or_variant = law_type:law_federated
+					has_law_or_variant = law_type:law_confederated
+				}
+				OR = {
+					has_law_or_variant = law_type:law_no_home_affairs
+					has_law_or_variant = law_type:law_guaranteed_liberties
+				}
+				has_law_or_variant = law_type:law_protected_speech
+				OR = {
+					has_law_or_variant = law_type:law_no_police
+					has_law_or_variant = law_type:law_local_police
+				}
 			}
-			NOR = {
-				has_law_or_variant = law_type:law_cultural_exclusion
-				has_law_or_variant = law_type:law_national_supremacy
+			trigger_else = {
+				has_law_or_variant = law_type:law_unitary
+				has_law_or_variant = law_type:law_secret_police
+				OR = {
+					has_law_or_variant = law_type:law_outlawed_dissent
+					has_law_or_variant = law_type:law_censorship
+				}
+			}
+			trigger_if = {
+				limit = { ig:ig_christian_democrats = { has_ideology = ideology:ideology_sta_regionalized_state } }
+				has_law_or_variant = law_type:law_militarized_police
 			}
 		}
 	}
@@ -204,10 +241,9 @@ bpm_ig_is_radical_oppostion_status_quo_cit = {
 
 bpm_ig_is_radical_oppostion_status_quo_mil = {
 	owner = {
-		trigger_if = {
-			limit = {
-				ig:ig_christian_democrats = { has_ideology = ideology:ideology_mil_antimilitarist }
-			}
+		has_variable = bpm_christian_democrats_mil_ideology
+		AND = {
+			ig:ig_christian_democrats = { has_ideology = ideology:ideology_mil_antimilitarist }
 			OR = {
 				has_law_or_variant = law_type:law_mass_conscription
 				has_law_or_variant = law_type:law_jingoism
@@ -217,33 +253,20 @@ bpm_ig_is_radical_oppostion_status_quo_mil = {
 	}
 }
 
+
+
 bpm_ig_is_radical_opposition_status_quo = {
 	is_interest_group_type = ig_christian_democrats
 	NOT = {
 		has_ideology = ideology:ideology_rel_pragmatic_moralist
 	}
 	OR = {
-		AND = {
-			owner = { has_variable = bpm_christian_democrats_dop_ideology }
-			bpm_ig_is_radical_opposition_status_quo_dop = yes
-		}
-		AND = {
-			owner = { has_variable = bpm_christian_democrats_eco_ideology }
-			bpm_ig_is_radical_opposition_status_quo_eco = yes
-		}
-		AND = {
-			owner = { has_variable = bpm_christian_democrats_wel_ideology }
-			bpm_ig_is_radical_opposition_status_quo_wel = yes
-		}
-		AND = {
-			owner = { has_variable = bpm_christian_democrats_cit_ideology }
-			bpm_ig_is_radical_oppostion_status_quo_cit = yes
-		}
-		AND = {
-			owner = { has_variable = bpm_christian_democrats_mil_ideology }
-			bpm_ig_is_radical_oppostion_status_quo_mil = yes
-		}
-
+		bpm_ig_is_radical_opposition_status_quo_dop = yes
+		bpm_ig_is_radical_opposition_status_quo_eco = yes
+		bpm_ig_is_radical_opposition_status_quo_wel = yes
+		bpm_ig_is_radical_oppostion_status_quo_cit = yes
+		bpm_ig_is_radical_oppostion_status_quo_sta = yes
+		bpm_ig_is_radical_oppostion_status_quo_mil = yes
 	}
 }
 
@@ -267,7 +290,11 @@ bpm_ig_is_radical_opposition_unionist_in_illegal_unions = {
 
 bpm_ig_is_radical_oppostion_moralists_in_state_atheism = {
 	owner = { has_law_or_variant = law_type:law_state_atheism }
-	bpm_ig_is_moralist = yes
+	OR = {
+		bpm_ig_is_religious = yes
+		is_interest_group_type = ig_devout
+		is_interest_group_type = ig_christian_democrats
+	}
 }
 
 bpm_ig_is_radical_opposition_nationalists_in_colonies = {
@@ -392,13 +419,13 @@ bpm_ig_is_very_radical_opposition_raddem_in_undemocratic = {
 	leader = { NOT = { has_ideology = ideology:ideology_despotic_utopian } }
 }
 
-# bpm_ig_is_very_radical_opposition_religious_in_state_atheism = {
-# 	OR = {
-# 		bpm_ig_is_religious = yes
-# 		is_interest_group_type = ig_devout
-# 	}
-# 	owner = { has_law_or_variant = law_type:law_state_atheism }
-# }
+bpm_ig_is_very_radical_opposition_religious_in_state_atheism = {
+	owner = { has_law_or_variant = law_type:law_state_atheism }
+	OR = {
+		has_ideology = ideology:ideology_rel_radical_moralist
+		is_interest_group_type = ig_devout
+	}
+}
 
 bpm_ig_is_very_radical_opposition = {
 	custom_description = {
@@ -421,8 +448,6 @@ bpm_ig_is_very_radical_opposition = {
 
 			bpm_ig_is_radical_opposition_organic_democrat = yes
 
-			#State atheism: Very religous igs, clergy and christdems hate state atheism
-			#bpm_ig_is_very_radical_opposition_religious_in_state_atheism = yes
 		}
 	}
 }
