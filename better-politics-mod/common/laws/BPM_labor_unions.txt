@@ -10,7 +10,8 @@ REPLACE:law_right_to_associate = {
 	can_enact = {
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
-			ig:ig_trade_unions = { 
+			hidden_trigger = { always = no } # Resolved by event
+			ig:ig_trade_unions = {
 				OR = {
 					bpm_ig_is_marginal = no
 					interest_group_population_percentage >= 0.05
@@ -141,6 +142,7 @@ REPLACE:law_combination_acts = {
 	can_enact = {
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
+			hidden_trigger = { always = no } # Resolved by event
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
@@ -207,6 +209,7 @@ REPLACE:law_corporatized_unions = {
 	can_enact = {
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
+			hidden_trigger = { always = no } # Resolved by event
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
@@ -262,6 +265,7 @@ REPLACE:law_anti_strike_laws = {
 	can_enact = {
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
+			hidden_trigger = { always = no } # Resolved by event
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
@@ -334,6 +338,7 @@ REPLACE:law_factory_councils = {
 
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
+			hidden_trigger = { always = no } # Resolved by event
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
@@ -431,6 +436,7 @@ law_syndicalism = {
 	can_enact = {
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
+			hidden_trigger = { always = no } # Resolved by event
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
@@ -504,6 +510,7 @@ law_socialist_labor_unions = {
 	can_enact = {
 		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
+			hidden_trigger = { always = no } # Resolved by event
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
