@@ -10,9 +10,9 @@ INJECT:law_traditionalism = {
 		country_institution_economy_max_investment_add = -5
 
 		building_self_investment_chance_add = -0.25
-		building_group_bg_manufacturing_self_investment_chance_add = 0.33
-		building_group_bg_extraction_self_investment_chance_add = 0.33
-		building_group_bg_infrastructure_self_investment_chance_add = 0.33
+		building_group_bg_manufacturing_self_investment_chance_add = 0.5
+		building_group_bg_extraction_self_investment_chance_add = 0.5
+		building_group_bg_infrastructure_self_investment_chance_add = 0.5
 	}
 
 	institution = institution_economy
@@ -96,6 +96,9 @@ INJECT:law_agrarianism = {
 		state_political_strength_from_wealth_mult = 0.5
 		country_capitalists_pol_str_mult = 0.5
 		country_aristocrats_pol_str_mult = 0.25
+		building_group_bg_manufacturing_self_investment_chance_add = 0.25
+		building_group_bg_extraction_self_investment_chance_add = 0.25
+		building_group_bg_infrastructure_self_investment_chance_add = 0.25
 	}
 
 	institution = institution_economy
