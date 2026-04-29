@@ -14,7 +14,10 @@ REPLACE:law_right_to_associate = {
 			ig:ig_trade_unions = {
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
@@ -146,7 +149,10 @@ REPLACE:law_combination_acts = {
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
@@ -213,7 +219,10 @@ REPLACE:law_corporatized_unions = {
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
@@ -269,7 +278,10 @@ REPLACE:law_anti_strike_laws = {
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
@@ -342,7 +354,10 @@ REPLACE:law_factory_councils = {
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
@@ -440,7 +455,10 @@ law_syndicalism = {
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
@@ -514,7 +532,10 @@ law_socialist_labor_unions = {
 			ig:ig_trade_unions = { 
 				OR = {
 					bpm_ig_is_marginal = no
-					interest_group_population_percentage >= 0.05
+					custom_description = {
+						text = bpm_tt_trade_unions_population_percentage
+						interest_group_population_percentage >= 0.05
+					}
 				}
 			}
 		}
