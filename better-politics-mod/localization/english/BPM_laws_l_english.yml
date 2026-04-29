@@ -109,8 +109,8 @@
  law_armed_neutrality_desc:0 "A foreign policy focused on isolationist non-intervention in foreign affairs, in particular in wars abroad, with national security from foreign invasion being secured through decently powerful military."
  law_disarmed_nation:0 "Disarmed Nation"
  law_disarmed_nation_desc:0 "Fully pacifist set of policies that both limits the extent of foreign intervention that this country can partake in, and reallocates the military expenses towards other areas."
- law_no_indedendent_foreign_policy:0 "No Independent Foreign Policiy"
- law_no_indedendent_foreign_policy_desc:0 "Country can't conduct its own foreign policy due to being subject and lacking significant autonomy."
+ law_no_independent_foreign_policy:0 "No Independent Foreign Policiy"
+ law_no_independent_foreign_policy_desc:0 "Country can't conduct its own foreign policy due to being subject and lacking significant autonomy."
 
  country_bpm_aggressive_diplomacy_disabled:0 "Can Not Use Aggressive [Concept('concept_diplomatic_play', 'Diplomatic Plays')]"
  country_bpm_aggressive_diplomacy_disabled_desc:0 "Can not initiate a [Concept('concept_diplomatic_play', 'Diplomatic Play')] using most wargoals."
@@ -146,7 +146,7 @@
  bpm_decorative_can_not_stay_peaceful:0 "Can Not Stay At Peace"
  bpm_decorative_can_not_stay_peaceful_desc:0 "Staying at peace for longer than 2 years will cause severe penalties for this country internally."
  bpm_decorative_no_foreign_policy_removed_on_independence:0 "This Law Will be Removed on Independence or Autonomy Increase"
- bpm_decorative_no_foreign_policy_removed_on_independence_desc:0 "[GetPlayer.GetCustom('bpm_law_no_indedendent_foreign_policy_replacment_law')]"
+ bpm_decorative_no_foreign_policy_removed_on_independence_desc:0 "[GetPlayer.GetCustom('bpm_law_no_independent_foreign_policy_replacment_law')]"
  bpm_no_independent_forpol_unrecognized:0 "This Law Will be Removed on Independence or Autonomy Increase and replaced with [GetLawType('law_premodern_diplomacy').GetName] ."
  bpm_no_independent_forpol_default:0 "This Law Will be Removed on Independence or Autonomy Increase and replaced with [GetLawType('law_flexible_foreign_policy').GetName] law."
 

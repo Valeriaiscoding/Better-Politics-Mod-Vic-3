@@ -870,7 +870,7 @@
 	every_country = {
 		if = {
 			limit = { aggressive_diplomatic_plays_permitted  = no }
-			activate_law = law_type:law_no_indedendent_foreign_policy
+			activate_law = law_type:law_no_independent_foreign_policy
 		}
 		else_if = {
 			limit = {

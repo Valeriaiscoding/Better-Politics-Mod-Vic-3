@@ -34,7 +34,7 @@ ideology_mil_ultramilitarist = {
 		law_armed_neutrality = disapprove
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = disapprove
-		law_no_indedendent_foreign_policy = strongly_disapprove
+		law_no_independent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -80,7 +80,7 @@ REPLACE:ideology_jingoist = {
 		law_armed_neutrality = approve
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = disapprove
-		law_no_indedendent_foreign_policy = strongly_disapprove
+		law_no_independent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -126,7 +126,7 @@ ideology_mil_emergency = {
 		law_armed_neutrality = approve
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
-		law_no_indedendent_foreign_policy = strongly_disapprove
+		law_no_independent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -173,7 +173,7 @@ ideology_mil_patriotic = {
 		law_armed_neutrality = neutral
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = disapprove
-		law_no_indedendent_foreign_policy = strongly_disapprove
+		law_no_independent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -219,7 +219,7 @@ ideology_mil_patriotic_liberal = {
 		law_armed_neutrality = neutral
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = disapprove
-		law_no_indedendent_foreign_policy = disapprove
+		law_no_independent_foreign_policy = disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -265,7 +265,7 @@ ideology_mil_defensive_patriot = {
 		law_armed_neutrality = strongly_approve
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
-		law_no_indedendent_foreign_policy = disapprove
+		law_no_independent_foreign_policy = disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -330,7 +330,7 @@ ideology_mil_antimilitarist = {
 		law_armed_neutrality = approve
 		law_disarmed_nation = approve
 		law_premodern_diplomacy = disapprove
-		law_no_indedendent_foreign_policy = disapprove
+		law_no_independent_foreign_policy = disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -376,7 +376,7 @@ ideology_mil_popular_army = {
 		law_armed_neutrality = strongly_approve
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
-		law_no_indedendent_foreign_policy = disapprove
+		law_no_independent_foreign_policy = disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -456,7 +456,7 @@ ideology_mil_plutocratic_militarist = {
 		law_armed_neutrality = strongly_approve
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = disapprove
-		law_no_indedendent_foreign_policy = neutral
+		law_no_independent_foreign_policy = neutral
 	}
 
 	lawgroup_repeatable_military = {
@@ -502,7 +502,7 @@ ideology_mil_mass_army = {
 		law_armed_neutrality = neutral
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
-		law_no_indedendent_foreign_policy = strongly_disapprove
+		law_no_independent_foreign_policy = strongly_disapprove
 	}
 
 	lawgroup_repeatable_military = {
@@ -548,7 +548,7 @@ ideology_mil_institutional_militarist = {
 		law_armed_neutrality = neutral
 		law_disarmed_nation = strongly_disapprove
 		law_premodern_diplomacy = strongly_disapprove
-		law_no_indedendent_foreign_policy = neutral
+		law_no_independent_foreign_policy = neutral
 	}
 
 	lawgroup_repeatable_military = {

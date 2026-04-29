@@ -103,7 +103,7 @@ bpm_repeatable_culture_promote_patriotic_values_name = {
 	}
 }
 
-bpm_law_no_indedendent_foreign_policy_replacment_law = {
+bpm_law_no_independent_foreign_policy_replacment_law = {
 	type = country
 	random_valid = no
 	text = {

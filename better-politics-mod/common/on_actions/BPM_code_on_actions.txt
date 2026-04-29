@@ -567,13 +567,13 @@ bpm_on_actions_colonial_check = {
 			limit = { 
 				aggressive_diplomatic_plays_permitted  = no
 				is_subject = yes
-				NOT = { has_law = law_type:law_no_indedendent_foreign_policy }
+				NOT = { has_law = law_type:law_no_independent_foreign_policy }
 			}
-			activate_law = law_type:law_no_indedendent_foreign_policy
+			activate_law = law_type:law_no_independent_foreign_policy
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_no_indedendent_foreign_policy
+				has_law = law_type:law_no_independent_foreign_policy
 				aggressive_diplomatic_plays_permitted  = yes
 			}
 			if = {
