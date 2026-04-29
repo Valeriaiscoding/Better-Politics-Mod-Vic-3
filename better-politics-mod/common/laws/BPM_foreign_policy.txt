@@ -45,6 +45,7 @@ law_no_independent_foreign_policy = { # Placeholder law for subjects
 	is_visible = {
 		OR = {
 			has_law = law_type:law_no_independent_foreign_policy
+			is_subject = yes
 		}
 	}
 
