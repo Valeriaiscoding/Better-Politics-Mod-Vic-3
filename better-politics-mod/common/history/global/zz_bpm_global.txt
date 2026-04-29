@@ -33,22 +33,7 @@
 	}
 
 	every_country = {
-		if = {
-			limit = { 
-				OR = {
-					is_in_geographic_region = geographic_region_europe
-					# Guilds outside Europe
-					this ?= c:TUR
-					this ?= c:EGY
-					this ?= c:JAP
-					this ?= c:CHI
-				}
-			 }
-			activate_law = law_type:law_guild_system
-		}
-		else = {
-			activate_law = law_type:law_no_labor_unions
-		}
+		activate_law = law_type:law_no_labor_unions
 	}
 
 	bpm_setup_global_laws_varlists = yes
