@@ -62,7 +62,9 @@ REPLACE:law_right_to_associate = {
 	}
 }
 
-law_no_labor_unions = { # Placeholder law for countries outside of Europe, does not disable exploitative pms
+law_no_labor_unions = { 
+	# Placeholder law for without unions
+	# does not disable exploitative pms
 	group = lawgroup_labour_associations
 
 
@@ -79,7 +81,7 @@ law_no_labor_unions = { # Placeholder law for countries outside of Europe, does 
 		always = no
 	}
 
-	progressiveness = 0
+	progressiveness = -50
 
 	modifier = {
 	}
