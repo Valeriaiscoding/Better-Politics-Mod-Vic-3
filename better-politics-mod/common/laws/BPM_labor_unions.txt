@@ -8,19 +8,7 @@ REPLACE:law_right_to_associate = {
 	icon = "gfx/interface/icons/law_icons/right_to_associate.dds"
 
 	can_enact = {
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = {
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
@@ -108,13 +96,8 @@ REPLACE:law_guild_system = {
 
 	progressiveness = -50
 
-	parent = law_no_labor_unions
-
 	is_visible = {
-		OR = {
-			has_law = law_type:law_guild_system
-			has_game_started = no
-		}
+		always = no
 	}
 
 	can_enact = {
@@ -122,74 +105,28 @@ REPLACE:law_guild_system = {
 	}
 
 	on_activate = {
-		ig:ig_intelligentsia = {
-			if = {
-				limit = { NOT = { has_ideology = ideology:ideology_eco_artisan } }
-				bpm_remove_all_eco_ideologies = yes
-				add_ideology = ideology_eco_artisan
-				bpm_reoder_ideologies = yes
-			}
+		deactivate_law = law_type:law_guild_system
+		if = {
+			limit = { has_variable = union_law_introduced_var }
+			activate_law = law_type:law_right_to_associate
+		}
+		else = {
+			activate_law = law_type:law_no_labor_unions
 		}
 	}
 	on_deactivate = {
-		hidden_effect = {
-			bpm_rename_igs = yes
-		}
-		ig:ig_intelligentsia = {
-			if = {
-				limit = { has_ideology = ideology:ideology_eco_artisan }
-				bpm_remove_all_eco_ideologies = yes
-				bpm_reoder_ideologies = yes	
-			}
-		}
 	}
 
 	on_enact = {
-		if = {
-			limit = {
-				OR = {
-					has_law_or_variant = law_type:law_right_to_associate
-					has_law_or_variant = law_type:law_corporatized_unions
-				}
-			}
-			custom_tooltip = trade_unions_more_radical_effect_tt
-		}
-		if = {
-			limit = {
-					has_law_or_variant = law_type:law_corporatized_unions
-			}
-			custom_tooltip = trade_unions_less_corporatist_effect_tt
-		}
 	}
 
-	disallowing_laws = {
-		law_laissez_faire
-	}
-
-	modifier = {
-		# Limits building to self-investing
-		#bpm_france_artisanal_lowest_level_pm = yes
-		country_production_tech_spread_mult = -0.25
-
-		building_group_bg_manufacturing_self_investment_chance_add = 0.33
-		building_group_bg_extraction_self_investment_chance_add = 0.33
-		building_group_bg_infrastructure_self_investment_chance_add = 0.33
-
-		country_shopkeepers_pol_str_mult = 0.25
-		state_pop_qualifications_mult = -0.30
-	}
-
+	modifier = {}
 	ai_will_do = {
 		always = no
 	}
 
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
-
-		if = {
-			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
-			add = 750
-		}
 	}
 }
 
@@ -202,19 +139,7 @@ REPLACE:law_combination_acts = {
 	progressiveness = -50
 
 	can_enact = {
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = { 
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
@@ -280,19 +205,7 @@ REPLACE:law_corporatized_unions = {
 	progressiveness = -25
 
 	can_enact = {
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = {
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
@@ -347,19 +260,7 @@ REPLACE:law_anti_strike_laws = {
 	icon = "gfx/interface/icons/law_icons/limited_unions.dds"
 
 	can_enact = {
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = {
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
@@ -431,19 +332,7 @@ REPLACE:law_factory_councils = {
 	can_enact = {
 		is_revolutionary = yes
 
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = {
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
@@ -540,19 +429,7 @@ law_syndicalism = {
 	progressiveness = 50
 
 	can_enact = {
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = {
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
@@ -625,19 +502,7 @@ law_socialist_labor_unions = {
 	progressiveness = 50
 
 	can_enact = {
-		trigger_if = {
-			limit = { has_law = law_type:law_guild_system }
-			NOR = {
-				has_law_or_variant = law_type:law_traditionalism
-				has_law_or_variant = law_type:law_agrarianism
-				has_law_or_variant = law_type:law_industry_banned
-				
-			}
-			NOT = { has_law_or_variant = law_type:law_serfdom }
-			NOT = { has_law_or_variant = law_type:law_isolationism }
-			NOT = { has_law_or_variant = law_type:law_ad_hoc_centralization }
-		}
-		trigger_else_if = {
+		trigger_if = { 
 			limit = { NOT = { has_variable = union_law_introduced_var } }
 			ig:ig_trade_unions = { 
 				OR = {
