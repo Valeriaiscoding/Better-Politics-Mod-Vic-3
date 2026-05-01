@@ -77,7 +77,7 @@ italian_springtime.2 = {
 		}
 		random_scope_character = {
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 			}
 			save_scope_as = the_pope
 			set_variable = {
@@ -111,7 +111,7 @@ italian_springtime.2 = {
 
 		hidden_effect = {
 			every_country = {
-				limit = { bpm_country_is_in_europe = yes }
+				limit = { is_in_geographic_region = geographic_region_europe }
 				post_notification = bpm_1848_roman_revolution
 			}
 			c:AUS ?= {
@@ -171,7 +171,7 @@ italian_springtime.3 = {
             }
 			random_scope_character = {
 				limit = {
-					is_heir = yes
+					is_heir_of_own_country = yes
 				}
 				set_variable = {
 					name = prince_parma
@@ -192,7 +192,7 @@ italian_springtime.3 = {
 			}
 			random_scope_character = {
 				limit = {
-					is_heir = yes
+					is_heir_of_own_country = yes
 				}
 				kill_character = yes
 			}
@@ -472,7 +472,7 @@ italian_springtime.8 = {
 			limit = {
 				NOT = { has_law = law_type:law_theocracy }
 			}
-			scope:the_pope = {
+			scope:the_pope ?= {
 				set_character_as_ruler = yes
 			}
 		}

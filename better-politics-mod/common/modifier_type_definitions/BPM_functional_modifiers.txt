@@ -292,21 +292,25 @@ country_urban_collectivization_add = {
 }
 
 country_bpm_ruler_complete_veto_enabled = {
+	script_only = yes
 	color=neutral
 	boolean=yes
 }
 
 country_bpm_ruler_partial_veto_enabled = {
+	script_only = yes
 	color=neutral
 	boolean=yes
 }
 
 country_bpm_hog_partial_veto_enabled = {
+	script_only = yes
 	color=neutral
 	boolean=yes
 }
 
 country_bpm_hog_complete_veto_enabled = {
+	script_only = yes
 	color=neutral
 	boolean=yes
 }
