@@ -16,7 +16,6 @@ bpm_union_laws.1 = {
 
 	trigger = {
 		has_technology_researched = law_enforcement	
-		has_law_or_variant = law_type:law_no_labor_unions
 		NOT = { has_variable = union_law_introduced_var }
 		NOT = { has_law = law_type:law_council_republic }
 		ig:ig_trade_unions = { 
