@@ -95,6 +95,8 @@ gov_colonial_governor_spa = {
 				is_not_in_geographic_region = geographic_region_africa
 			}
 		}
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 	}
 
 	on_government_type_change = {
@@ -119,6 +121,8 @@ gov_crown_col = {
 			c:QUE ?= ROOT
 			c:ONT ?= ROOT
 		}
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 	}
 
 	on_government_type_change = {
@@ -206,6 +210,8 @@ REPLACE_OR_CREATE:gov_chartered_company = {
 
 	possible = {
 		is_subject_type = subject_type_chartered_company
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 	}
 
 	on_government_type_change = {

@@ -11,25 +11,14 @@ bpm_set_colony_law = {
         }
         change_subject_type = subject_type_colony
     }
-    if = {
+     if = {
         limit = { is_subject_type = subject_type_chartered_company }
         set_country_type = company
     }
     else = {
         set_country_type = colonial
     }
-    active_law:lawgroup_citizenship ?= {
-        if = {
-            limit = { 
-                type = law_type:law_subjecthood
-                NOT = { has_amendment = amendment_type:amendment_racialized_subjecthood }  
-            }
-            add_amendment = {
-                type = amendment_racialized_subjecthood
-                sponsor = PREV.ig:ig_armed_forces
-            }
-        }
-    }
+    bpm_setup_country = yes
 }
 
 bpm_set_colony_primary_culture = {

@@ -8,13 +8,17 @@
 	female_heir = "RULER_TITLE_HEIR_APPARENT"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		exists = c:JAP
 		c:JAP = ROOT
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
 		has_gov_regency = no
 		NOT = { has_variable = meiji_var }
-		#has_law = law_type:law_answers_to_legislature 
+		OR = {
+			has_law = law_type:law_bakufu
+			NOT = {has_dlc_feature = ep2_content}
+		}
 	}
 
 	on_government_type_change = {
@@ -35,6 +39,7 @@ REPLACE:gov_khanate = {
 	female_heir = "RULER_TITLE_PRINCESS"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
 		has_gov_regency = no
@@ -70,6 +75,8 @@ REPLACE:gov_francocracia = {
 	female_heir = "RULER_TITLE_SECRETARY"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_presidential_republic
 			has_law = law_type:law_parliamentary_republic
@@ -101,6 +108,8 @@ REPLACE:gov_francocracia_presidential = {
 	female_ruler = "RULER_TITLE_PERPETUAL_DICTATOR"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_presidential_republic
 			has_law = law_type:law_parliamentary_republic
@@ -132,6 +141,8 @@ REPLACE:gov_peru_bolivia_confederal_state_bolivia = {
 	female_ruler = "RULER_TITLE_SUPREME_PROTECTOR"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		NOR = {
 			has_law = law_type:law_autocracy
 			has_law = law_type:law_oligarchy
@@ -157,6 +168,8 @@ REPLACE:gov_peru_bolivia_confederal_state_bolivia_dictatorship = {
 	female_ruler = "RULER_TITLE_SUPREME_PROTECTOR"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_autocracy 
 			has_law = law_type:law_oligarchy
@@ -185,6 +198,8 @@ REPLACE:gov_peru_bolivia_confederal_state = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		NOR = {
 			has_law = law_type:law_autocracy
 			has_law = law_type:law_oligarchy
@@ -210,6 +225,8 @@ REPLACE:gov_peru_bolivia_confederal_state_dictatorship = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_autocracy 
 			has_law = law_type:law_oligarchy
@@ -238,6 +255,8 @@ REPLACE:gov_peru_bolivia_confederal_autonomy = {
 	female_ruler = "RULER_TITLE_SUPREME_CHIEF"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		NOR = {
 			has_law = law_type:law_autocracy
 			has_law = law_type:law_oligarchy
@@ -263,6 +282,8 @@ REPLACE:gov_peru_bolivia_confederal_autonomy_dictatorship = {
 	female_ruler = "RULER_TITLE_SUPREME_CHIEF"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_autocracy 
 			has_law = law_type:law_oligarchy
@@ -291,6 +312,8 @@ REPLACE:gov_brazil_oligarchic_republic_presidential = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		country_has_primary_culture = cu:brazilian
 		OR = {
 			has_law = law_type:law_presidential_republic
@@ -320,6 +343,8 @@ REPLACE:gov_french_2nd_republic_presidential = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		country_has_primary_culture = cu:french
@@ -348,6 +373,8 @@ REPLACE:gov_french_2nd_republic_presidential_dictator = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		country_has_primary_culture = cu:french
@@ -377,6 +404,8 @@ REPLACE:gov_french_3rd_republic_presidential = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		country_has_primary_culture = cu:french
@@ -405,6 +434,8 @@ REPLACE:gov_french_3rd_republic_presidential_dictator = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		country_has_primary_culture = cu:french
@@ -434,6 +465,8 @@ REPLACE:gov_french_4th_republic_presidential = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		country_has_primary_culture = cu:french
@@ -462,6 +495,8 @@ REPLACE:gov_french_4th_republic_presidential_dictator = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		country_has_primary_culture = cu:french
@@ -491,6 +526,8 @@ REPLACE:gov_french_2nd_republic_parliamentary = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -521,6 +558,8 @@ REPLACE:gov_french_2nd_republic_parliamentary_dictator = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -552,6 +591,8 @@ REPLACE:gov_french_3rd_republic_parliamentary = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -582,6 +623,8 @@ REPLACE:gov_french_3rd_republic_parliamentary_dictator = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -613,6 +656,8 @@ REPLACE:gov_french_4th_republic_parliamentary = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -643,6 +688,8 @@ REPLACE:gov_french_4th_republic_parliamentary_dictator = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -676,6 +723,8 @@ REPLACE:gov_circassian_federation = {
 	female_heir = "RULER_TITLE_HEIR_APPARENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		#is_country_type = unrecognized
 		exists = c:CIR
 		c:CIR = ROOT
@@ -713,6 +762,8 @@ REPLACE_OR_CREATE:gov_dominion_india_presidential = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		NOR = {
@@ -751,6 +802,8 @@ REPLACE:gov_dominion_india_parliamentary = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -791,6 +844,8 @@ REPLACE:gov_colonial_administration = {
 	female_ruler = "RULER_TITLE_GOVERNOR_GENERAL"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_colonial_administration }
 		OR = {
@@ -919,6 +974,8 @@ REPLACE:gov_crown_colony_india = {
 	female_ruler = "RULER_TITLE_VICEROY"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_colonial_administration }
 		exists = c:GBR
@@ -947,6 +1004,8 @@ REPLACE:gov_crown_colony = {
 	female_ruler = "RULER_TITLE_GOVERNOR"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_colonial_administration }
 		exists = c:GBR
@@ -1036,6 +1095,8 @@ REPLACE:gov_banana_republic = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_presidential_republic
 			has_law = law_type:law_parliamentary_republic
@@ -1077,6 +1138,8 @@ REPLACE:gov_bhutanese_dual_system_temporal = {
 	female_ruler = "RULER_TITLE_DRAGON_REGENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		exists = c:BHU 
 		c:BHU = ROOT
 		has_law = law_type:law_presidential_republic
@@ -1104,6 +1167,8 @@ REPLACE:gov_indian_territory_life_term = {
 	female_ruler = "RULER_TITLE_PRINCIPAL_CHIEF"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		exists = c:SEQ
 		c:SEQ = ROOT
 
@@ -1134,6 +1199,8 @@ REPLACE:gov_indian_territory_elected_term = {
 	female_ruler = "RULER_TITLE_PRINCIPAL_CHIEF"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		exists = c:SEQ
 		c:SEQ = ROOT
 
@@ -1164,6 +1231,8 @@ REPLACE:gov_free_city = {
 	female_ruler = "RULER_TITLE_BURGOMASTER"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			AND = { exists = c:BRE c:BRE = ROOT }
 			AND = { exists = c:HAM c:HAM = ROOT }
@@ -1198,6 +1267,8 @@ REPLACE:gov_fascist_state = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_presidential_republic
 			has_law = law_type:law_parliamentary_republic
@@ -1227,6 +1298,8 @@ REPLACE:gov_volksgemeinschaft = {
 	female_ruler = "RULER_TITLE_FUHRERIN"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		bpm_country_is_bourgeois_republic = yes
 		has_law_or_variant = law_type:law_ethnostate
 		OR = {
@@ -1258,6 +1331,8 @@ REPLACE:gov_danubian_federation_corporate_state = {
 	female_ruler = "RULER_TITLE_MINISTER_PRESIDENT"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		c:KUK ?= this
 		has_law_or_variant = law_type:law_parliamentary_republic
 		has_law_or_variant = law_type:law_organic_democracy
@@ -1284,6 +1359,8 @@ REPLACE:gov_danubian_federation_technocratic_corporate_state = {
 	female_ruler = "RULER_TITLE_CHIEF_EXECUTIVE"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		always = no
 		c:KUK ?= this
 		has_law_or_variant = law_type:law_organic_democracy
@@ -1305,6 +1382,8 @@ REPLACE:gov_folkhemmet = {
 	female_ruler = "RULER_TITLE_STATSMINISTER"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law_or_variant = law_type:law_organic_democracy
 		bpm_country_is_bourgeois_republic = yes
 		NOT = {
@@ -1328,6 +1407,8 @@ REPLACE:gov_falangist_state = {
 	female_ruler = "RULER_TITLE_JEFA"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		bpm_country_is_bourgeois_republic = yes
 		has_law_or_variant = law_type:law_organic_democracy
 		bpm_country_laws_are_very_undemocratic = yes
@@ -1362,6 +1443,8 @@ REPLACE:gov_fascist_corporate_state = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		bpm_country_is_bourgeois_republic = yes
 		has_law_or_variant = law_type:law_organic_democracy
 		bpm_country_laws_are_very_undemocratic = yes
@@ -1406,6 +1489,8 @@ REPLACE:gov_corporate_state = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		bpm_country_is_bourgeois_republic = yes
 		bpm_country_laws_are_very_undemocratic = no
 		has_law_or_variant = law_type:law_organic_democracy
@@ -1430,6 +1515,8 @@ REPLACE:gov_corporate_state_austrofascist = {
 	female_ruler = "RULER_TITLE_CHANCELLOR"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		bpm_country_is_bourgeois_republic = yes
 		has_law_or_variant = law_type:law_organic_democracy
 		#has_law_or_variant = law_type:law_single_party_state
@@ -1456,6 +1543,8 @@ REPLACE:gov_technate_corporate = {
 	female_ruler = "RULER_TITLE_CHIEF_EXECUTIVE"
 
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		always = no
 		has_law_or_variant = law_type:law_organic_democracy
 		has_law_or_variant = law_type:law_technocracy
@@ -1477,6 +1566,8 @@ REPLACE:gov_presidential_single_party_state = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		has_law = law_type:law_party_single
@@ -1501,6 +1592,12 @@ REPLACE:gov_military_dictatorship = {
 	female_ruler = "RULER_TITLE_GENERAL"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
+		OR = {
+			has_game_started = yes
+			has_global_variable = bpm_2_3_save_var
+		}
 		has_law = law_type:law_presidential_republic
 		OR = {
 			has_law = law_type:law_autocracy
@@ -1508,13 +1605,25 @@ REPLACE:gov_military_dictatorship = {
 		} 
 		OR = {
 			ruler = {
-				has_role = general
+				has_role_of_type = general
 			}
 			ig:ig_armed_forces = {
 				leader = {
-					is_ruler = yes
+					is_ruler_of_own_country = yes
 				}
 			}
+		}
+		NOT = { # Hispanic/Portuguese countries get juntas instead
+			any_primary_culture = {
+				OR = {
+					has_discrimination_trait = language_hispanophone
+					has_discrimination_trait = language_lusophone
+				}
+			}
+		}
+		NAND = {
+			is_involved_in_journal_entry = je_peru_bolivia
+			has_variable = pbc_member
 		}
 		NOT = { # Hispanic/Portuguese countries get juntas instead
 			any_primary_culture = {
@@ -1545,6 +1654,8 @@ REPLACE:gov_presidential_dictatorship = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		has_law = law_type:law_autocracy 
 		NAND = {
@@ -1568,6 +1679,8 @@ REPLACE:gov_junta = {
 	female_ruler = "RULER_TITLE_GENERAL"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_presidential_republic
 			has_law = law_type:law_parliamentary_republic
@@ -1600,6 +1713,8 @@ REPLACE:gov_presidential_oligarchy = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		has_law = law_type:law_oligarchy
 		NOT = {
@@ -1627,6 +1742,8 @@ REPLACE:gov_presidential_democracy = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_presidential_republic
 		NOR = { 
 			has_law = law_type:law_autocracy
@@ -1670,6 +1787,8 @@ REPLACE:gov_parliamentary_single_party_state = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_supreme_legislature
@@ -1693,6 +1812,8 @@ REPLACE:gov_parliamentary_democracy = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_parliamentary_republic
 		NOT = { has_law = law_type:law_supreme_legislature }
 		NOR = {
@@ -1721,6 +1842,8 @@ REPLACE:gov_soviet_single_party_state = {
 	female_ruler = "RULER_GENERAL_SECRETARY"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		has_law = law_type:law_party_single
 		NOT = { has_law = law_type:law_syndicalism }
@@ -1745,6 +1868,8 @@ REPLACE:gov_council_single_party_state = {
 	female_ruler = "RULER_GENERAL_SECRETARY"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		has_law = law_type:law_party_single
 		NOT = { has_law = law_type:law_syndicalism }
@@ -1765,6 +1890,8 @@ REPLACE:gov_papal_commune = {
 	female_ruler = "RULER_PONTIFEX_POPULI"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		has_law_or_variant = law_type:law_state_religion
 		NOT = { has_law = law_type:law_syndicalism }
@@ -1787,6 +1914,8 @@ REPLACE:gov_soviet_dictatorship = {
 	female_ruler = "RULER_CHAIRWOMAN"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		OR = {
 			has_law = law_type:law_autocracy
@@ -1816,6 +1945,8 @@ REPLACE:gov_soviet_republic = {
 	female_ruler = "RULER_TITLE_PRESIDENT"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		NOT = { has_law = law_type:law_syndicalism }
 		#country_has_voting_franchise = yes
@@ -1852,6 +1983,8 @@ REPLACE:gov_council_dictatorship = {
 	female_ruler = "RULER_CHAIRWOMAN"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		NOT = { has_law = law_type:law_syndicalism }
 		OR = {
@@ -1876,6 +2009,8 @@ REPLACE:gov_phalanstere = {
 	female_ruler = "RULER_CHAIRWOMAN"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		country_has_primary_culture = cu:french
 		has_law = law_type:law_council_republic
 		has_law = law_type:law_technocracy
@@ -1897,6 +2032,8 @@ REPLACE:gov_cybernetic_state = {
 	female_ruler = "RULER_FOREWOMAN"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		has_law = law_type:law_technocracy
 		NOT = { has_law = law_type:law_syndicalism }
@@ -1918,6 +2055,8 @@ REPLACE:gov_council_republic = {
 	female_ruler = "RULER_CHAIRWOMAN"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		#country_has_voting_franchise = yes
 		NOR = {
@@ -1952,6 +2091,8 @@ REPLACE:gov_anarchist_commune = {
 	female_ruler = "RULER_REPRESENTATIVE"
 	
 	possible = {
+		has_gov_regency = no
+		is_domain_alliance_gov = no
 		has_law = law_type:law_council_republic
 		has_law = law_type:law_anarchy
 		NOT = { has_law = law_type:law_syndicalism }
@@ -1978,6 +2119,7 @@ REPLACE:gov_kingdom = {
 	female_heir = "RULER_TITLE_PRINCESS"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
 		has_gov_regency = no
@@ -2022,6 +2164,7 @@ REPLACE:gov_constitutional_empire = {
 	female_heir = "RULER_TITLE_PRINCESS"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
 		has_gov_regency = no
@@ -2033,7 +2176,7 @@ REPLACE:gov_constitutional_empire = {
 		NOR = {
 			has_variable = orleanist_restoration_var
 			has_variable = legitimist_restoration_var
-			has_law = law_type:law_answers_to_legislature
+			has_law_or_variant = law_type:law_answers_to_legislature
 		}
 	}
 
@@ -2056,6 +2199,7 @@ REPLACE:gov_constitutional_kingdom = {
 	female_heir = "RULER_TITLE_PRINCESS"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
 		has_gov_regency = no
@@ -2064,7 +2208,7 @@ REPLACE:gov_constitutional_kingdom = {
 			has_law = law_type:law_oligarchy
 			has_law = law_type:law_technocracy
 			has_law = law_type:law_military_junta
-			has_law = law_type:law_answers_to_legislature
+			has_law_or_variant = law_type:law_answers_to_legislature
 			AND = {
 				OR = {
 					has_law = law_type:law_appointed_by_hos
@@ -2108,10 +2252,11 @@ REPLACE:gov_absolute_empire = {
 	female_heir = "RULER_TITLE_PRINCESS"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
+		NOT = { has_law_or_variant = law_type:law_answers_to_legislature}
 		has_gov_regency = no
-		has_law = law_type:law_autocracy 
 		OR = {
 			country_tier = hegemony
 			country_tier = empire
@@ -2125,11 +2270,78 @@ REPLACE:gov_absolute_empire = {
 		}
 		country_is_not_united_kingdom_overlord = yes
 		country_is_not_united_kingdom_subject = yes
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_prime_ministerial_dictatorship_kingdom = {
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_KING"
+	female_ruler = "RULER_TITLE_QUEEN"
+	
+	male_heir = "RULER_TITLE_PRINCE"
+	female_heir = "RULER_TITLE_PRINCESS"
+	
+	possible = {
+		is_domain_alliance_gov = no
+		has_gov_regency = no
+		NOT = { is_subject_type = subject_type_crown_land }
+		has_law = law_type:law_monarchy
+		haw_law = law_type:law_answers_to_legislature
+		has_law = law_type:law_advisory_body
 		OR = {
-			NOT = {
-				c:JAP ?= this
+			country_tier = kingdom
+			c:HAI ?= this
+			c:ITA ?= this
+			c:IBE ?= this
+			AND = {
+				c:MON ?= this
+				has_variable = king_sounds_better
 			}
-			has_variable = meiji_var
+		}
+	}
+
+	on_government_type_change = {
+		change_to_hereditary = yes
+	}
+	on_post_government_type_change = {
+		post_change_to_hereditary = yes
+	}
+}
+
+gov_prime_ministerial_dictatorship_empire = {
+	transfer_of_power = hereditary
+
+	male_ruler = "RULER_TITLE_EMPEROR"
+	female_ruler = "RULER_TITLE_EMPRESS"
+	
+	male_heir = "RULER_TITLE_PRINCE"
+	female_heir = "RULER_TITLE_PRINCESS"
+	
+	possible = {
+		is_domain_alliance_gov = no
+		has_gov_regency = no
+		NOT = { is_subject_type = subject_type_crown_land }
+		has_law = law_type:law_monarchy
+		haw_law = law_type:law_answers_to_legislature
+		has_law = law_type:law_advisory_body
+		OR = {
+			country_tier = hegemony
+			country_tier = empire
+			c:HAI ?= this
+		}
+		NOR = {
+			has_variable = orleanist_restoration_var
+			has_variable = legitimist_restoration_var
+			c:ITA ?= this
+			c:IBE ?= this
 		}
 	}
 
@@ -2151,6 +2363,7 @@ REPLACE:gov_feudal_empire = {
 	female_heir = "RULER_TITLE_PRINCESS"
 	
 	possible = {
+		is_domain_alliance_gov = no
 		has_law = law_type:law_monarchy
 		NOT = { is_subject_type = subject_type_crown_land }
 		has_gov_regency = no
@@ -2182,4 +2395,3 @@ REPLACE:gov_feudal_empire = {
 		post_change_to_hereditary = yes
 	}
 }
-
