@@ -109,6 +109,8 @@ bpm_stash_dop_ideology = {
 		bpm_stash_ideology = { TYPE = dop NAME = syndicalist }
 		bpm_stash_ideology = { TYPE = dop NAME = metropole_loyalist }
 		bpm_stash_ideology = { TYPE = dop NAME = organic_power }
+		bpm_stash_ideology = { TYPE = dop NAME = colonial_autonomist }
+		bpm_stash_ideology = { TYPE = dop NAME = colonial_collaborator }
 		bpm_remove_all_dop_ideologies = yes
 	}
 }
@@ -139,6 +141,8 @@ bpm_unstash_dop_ideology = {
 		bpm_unstash_ideology = { TYPE = dop NAME = syndicalist }
 		bpm_unstash_ideology = { TYPE = dop NAME = metropole_loyalist }
 		bpm_unstash_ideology = { TYPE = dop NAME = organic_power }
+		bpm_unstash_ideology = { TYPE = dop NAME = colonial_autonomist }
+		bpm_unstash_ideology = { TYPE = dop NAME = colonial_collaborator }
 	}
 }
 
@@ -216,6 +220,8 @@ bpm_remove_all_dop_ideologies = {
 		remove_ideology = ideology_dop_metropole_loyalist
 		remove_ideology = ideology_dop_organic_power
 		remove_ideology = ideology_dop_organic_democrat
+		remove_ideology = ideology_dop_colonial_autonomist
+		remove_ideology = ideology_dop_colonial_collaborator
 	}
 }
 
@@ -276,6 +282,8 @@ bpm_remove_all_cit_ideologies = {
 		remove_ideology = ideology_cit_ethnonationalist
 		remove_ideology = ideology_cit_traditional_culture
 		remove_ideology = ideology_cit_samurai
+		remove_ideology = ideology_cit_lower_caste
+		remove_ideology = ideology_cit_caste_supremacist
 		remove_ideology = ideology_cit_christian_internationalist
 	}
 }
@@ -460,6 +468,8 @@ bpm_re_add_dop_ideology = {
 		bpm_re_add_ideology = { TYPE = dop IDEOLOGY = ideology_dop_metropole_loyalist }
 		bpm_re_add_ideology = { TYPE = dop IDEOLOGY = ideology_dop_organic_power }
 		bpm_re_add_ideology = { TYPE = dop IDEOLOGY = ideology_dop_organic_democrat }
+		bpm_re_add_ideology = { TYPE = dop IDEOLOGY = ideology_dop_colonial_autonomist }
+		bpm_re_add_ideology = { TYPE = dop IDEOLOGY = ideology_dop_colonial_collaborator }
 	}
 }
 
@@ -520,9 +530,10 @@ bpm_re_add_cit_ideology = {
 		bpm_re_add_ideology = { TYPE = cit IDEOLOGY = ideology_cit_ethnonationalist }
 		bpm_re_add_ideology = { TYPE = cit IDEOLOGY = ideology_cit_traditional_culture }
 		bpm_re_add_ideology = { TYPE = cit IDEOLOGY = ideology_cit_samurai}
+		bpm_re_add_ideology = { TYPE = cit IDEOLOGY = ideology_cit_caste_supremacist}
+		bpm_re_add_ideology = { TYPE = cit IDEOLOGY = ideology_cit_lower_caste}
 	}
 }
-
 bpm_re_add_wel_ideology = {
 	hidden_effect = {
 		add_ideology = ideology_wel_placeholder

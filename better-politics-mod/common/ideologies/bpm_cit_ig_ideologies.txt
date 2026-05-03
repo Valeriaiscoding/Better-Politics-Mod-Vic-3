@@ -478,3 +478,55 @@ ideology_cit_christian_internationalist = {
 		law_lax_edo_system = neutral
 	}
 }
+
+ideology_cit_lower_caste = {
+	icon = "gfx/interface/icons/ideology_icons/cit_ideology/liberal_nationalist.dds"
+	lawgroup_caste_hegemony = {
+		law_hindu_caste_enforced = strongly_disapprove 
+		law_hindu_caste_codified = disapprove
+		law_hindu_caste_not_enforced = neutral
+		law_affirmative_action = strongly_approve
+	}
+
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_disapprove
+		law_intermediate_edo_system = disapprove
+		law_lax_edo_system = neutral
+	}
+}
+
+ideology_cit_caste_supremacist = {
+	icon = "gfx/interface/icons/ideology_icons/cit_ideology/traditional_culture.dds"
+	priority = 1000
+	lawgroup_citizenship = {
+		law_subjecthood = approve
+		law_ethnostate = neutral
+		law_national_supremacy = neutral
+		law_racial_segregation = neutral
+		law_cultural_exclusion = neutral
+		law_multicultural = strongly_disapprove
+	}
+
+	lawgroup_repeatable_culture = {
+		law_repeatable_culture_invite_foreign_experts = disapprove
+		law_repeatable_culture_promote_democratic_values = strongly_disapprove
+		law_repeatable_culture_affirmative_action = strongly_disapprove
+		law_repeatable_culture_promote_socialist_values = strongly_disapprove
+		law_repeatable_culture_promote_patriotic_values = neutral
+		law_repeatable_culture_promote_absolutist_values = approve
+		law_repeatable_culture_promote_ultranationalist_values = neutral
+	}
+
+	lawgroup_caste_hegemony = {
+		law_hindu_caste_enforced = neutral # approve?
+		law_hindu_caste_codified = approve
+		law_hindu_caste_not_enforced = disapprove
+		law_affirmative_action = strongly_disapprove
+	}
+
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_approve
+		law_intermediate_edo_system = neutral
+		law_lax_edo_system = strongly_disapprove
+	}
+}

@@ -693,6 +693,8 @@ bpm_ig_is_metropole_loyalist = {
 		bpm_ig_is_colonialist = yes
 		has_ideology = ideology:ideology_cit_colonial_segregationist
 		has_ideology = ideology:ideology_dop_metropole_loyalist
+		has_ideology = ideology:ideology_dop_colonial_collaborator
+		has_ideology = ideology:ideology_dop_colonial_autonomist
 	}
 }
 

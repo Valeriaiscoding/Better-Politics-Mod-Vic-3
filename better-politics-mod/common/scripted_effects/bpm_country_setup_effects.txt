@@ -309,15 +309,21 @@ bpm_setup_country_dop_ideologies = {
 		every_interest_group = {
 			limit = {
 				OR = {
-					bpm_ig_is_upper_institutional = yes
+					is_interest_group_type = ig_industrialists
 					is_interest_group_type = ig_petty_bourgeoisie
 					is_interest_group_type = ig_armed_forces
-					is_interest_group_type = ig_reactionaries
-					is_interest_group_type = ig_conservatives
 				}
 			}
 			bpm_remove_all_dop_ideologies = yes
 			add_ideology = ideology_dop_metropole_loyalist
+		}
+		ig:ig_conservatives = {
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_colonial_autonomist
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_colonial_collaborator
 		}
 	}
 	if = { 
@@ -491,13 +497,27 @@ bpm_setup_country_mil_cit_ideologies = {
 		}
 	}
 	if = {
+		limit = { has_social_hierarchy = british_indian_caste_system }
+		every_interest_group = {
+			limit = {
+				bpm_ig_enabled = yes
+				bpm_ig_is_lower_institutional = yes
+			}
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology_cit_lower_caste
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology:ideology_cit_caste_supremacist
+		}
+	}
+	if = {
 		limit = { active_law:lawgroup_citizenship = { has_amendment = amendment_type:amendment_racialized_subjecthood } }
 		every_interest_group = {
 			limit = {
 				OR = {
 					is_interest_group_type = ig_armed_forces
 					is_interest_group_type = ig_petty_bourgeoisie
-					has_ideology = ideology:ideology_cit_traditional_culture
 					has_ideology = ideology:ideology_cit_nationalist
 					has_ideology = ideology:ideology_cit_ethnonationalist
 				}
@@ -593,8 +613,6 @@ bpm_setup_country_mil_cit_ideologies = {
 			}
 		}
 	}
-
-	
 }
 
 bpm_setup_country_wel_ideologies = {

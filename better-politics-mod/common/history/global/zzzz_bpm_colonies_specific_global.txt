@@ -1,5 +1,20 @@
 GLOBAL = {
 	# Colonies
+	every_country = {
+		limit = {
+			country_is_colonial_or_company = yes
+		}
+		if = {
+			limit = { 
+				bpm_country_is_in_new_world = yes
+				is_subject_of = c:GBR
+			}
+			activate_law = law_type:law_national_militia
+		}
+		else = {
+			activate_law = law_type:law_professional_army
+		}
+	}
 
 	every_country = {
 		limit = {
@@ -19,17 +34,8 @@ GLOBAL = {
 
 	every_country = {
 		limit = {
-			country_is_colonial_or_company = yes
-			has_law = law_type:law_peasant_levies
-		}
-		activate_law = law_type:law_professional_army
-	}
-
-	every_country = {
-		limit = {
 			has_law_or_variant = law_type:law_colonial_administration
 		}
-		bpm_setup_country = yes
 		bpm_set_colony_primary_culture = yes
 		set_variable = {
 			name = bpm_current_overlord
@@ -72,6 +78,7 @@ GLOBAL = {
 
 	c:BIC = {
 		activate_law = law_type:law_party_reactionary_only
+		#activate_law = law_type:law_caste_system_codified 
 
 		ig:ig_petty_bourgeoisie = {
 			bpm_remove_all_dop_ideologies = yes
@@ -79,6 +86,11 @@ GLOBAL = {
 			bpm_remove_all_wel_ideologies = yes
 			bpm_remove_all_cit_ideologies = yes
 			add_ideology = ideology_cit_liberal_nationalist
+		}
+
+		ig:ig_industrialists = {
+			bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology:ideology_cit_colonial_segregationist
 		}
 		ig:ig_landowners = {
 			bpm_remove_all_eco_ideologies = yes
@@ -89,6 +101,23 @@ GLOBAL = {
 			add_ideology = ideology_wel_market_welfare
 			bpm_remove_all_rel_ideologies = yes
 			add_ideology = ideology_rel_secularist
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_metropole_loyalist
+		}
+	}
+
+	every_country = {
+		limit = {
+			OR = {
+				country_definition_has_culture = cu:anglo_canadian
+				country_definition_has_culture = cu:franco_canadian
+				country_definition_has_culture = cu:caribeno
+			}
+			country_is_colonial_or_company = yes
+		}
+		ig:ig_landowners = {
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology:ideology_dop_metropole_loyalist
 		}
 	}
 
@@ -141,8 +170,6 @@ GLOBAL = {
 		ig:ig_landowners = {
 			bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_eco_traditional_agrarian
-			bpm_remove_all_dop_ideologies = yes
-			add_ideology = ideology_dop_traditional_power
 		}
 		ig:ig_rural_folk = {
 			bpm_remove_all_eco_ideologies = yes
@@ -152,7 +179,6 @@ GLOBAL = {
 
 	c:SAF = {
 		activate_law = law_type:law_frontier_colonization
-		activate_law = law_type:law_federated # confederated?
 		ig:ig_petty_bourgeoisie = {
 			bpm_remove_all_mil_ideologies = yes
 			add_ideology = ideology_mil_frontier_expansionist
@@ -231,6 +257,11 @@ GLOBAL = {
 		activate_law = law_type:law_local_police
 		activate_law = law_type:law_national_guard
 		activate_law = law_type:law_unitary
+
+		ig:ig_reactionaries = {
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_metropole_loyalist
+		}
 	}
 	
 	c:PHI = {
@@ -243,16 +274,20 @@ GLOBAL = {
 			}
 		}
 		ig:ig_intelligentsia = {
-			bpm_remove_all_wel_ideologies = yes
 			bpm_remove_all_rel_ideologies = yes
-			add_ideology = ideology_wel_secular_anti_welfare
+			bpm_remove_all_dop_ideologies = yes
 			add_ideology = ideology_rel_secularist
+			add_ideology = ideology_dop_colonial_autonomist
 		}
 	}
 
 	c:PCO = {
 		activate_law = law_type:law_agrarianism
 		activate_law = law_type:law_unitary
+		ig:ig_reactionaries = {
+			bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_dop_metropole_loyalist
+		}
 	}
 
 	every_country = {

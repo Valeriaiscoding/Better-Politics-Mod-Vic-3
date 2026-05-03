@@ -219,20 +219,20 @@ bpm_make_igs_colonialist = {
 		add_ideology = ideology_colonialist
 		bpm_reorder_ideologies = yes
 	}
-	ig:ig_reactionaries = {
-		bpm_remove_all_eco_ideologies = yes
-		if = {
-			limit = { owner = { NOT = { has_law = law_type:law_slavery_banned } } }
-			add_ideology = ideology_eco_slave_colonialist
-		}
-		else = {
-			add_ideology = ideology_eco_colonialist
-		}
-		bpm_remove_all_wel_ideologies = yes
-		add_ideology = ideology_wel_no_welfare
-		add_ideology = ideology_colonialist
-		bpm_reorder_ideologies = yes
-	}
+	# ig:ig_reactionaries = {
+	# 	bpm_remove_all_eco_ideologies = yes
+	# 	if = {
+	# 		limit = { owner = { NOT = { has_law = law_type:law_slavery_banned } } }
+	# 		add_ideology = ideology_eco_slave_colonialist
+	# 	}
+	# 	else = {
+	# 		add_ideology = ideology_eco_colonialist
+	# 	}
+	# 	bpm_remove_all_wel_ideologies = yes
+	# 	add_ideology = ideology_wel_no_welfare
+	# 	add_ideology = ideology_colonialist
+	# 	bpm_reorder_ideologies = yes
+	# }
 
 	ig:ig_intelligentsia = {
 		bpm_remove_all_eco_ideologies = yes
