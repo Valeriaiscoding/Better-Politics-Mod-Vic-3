@@ -220,19 +220,9 @@ REPLACE:law_colonial_administration = {
 		country_liberty_desire_add = -0.1
 		country_authority_add = 200
 		state_pop_pol_str_add = -5
-		country_bpm_change_primary_culture_to_overlord = yes
+		#country_bpm_change_primary_culture_to_overlord = yes
 		country_electoral_confidence_impact_mult = -1
 		# country_bpm_base_mandate_add = 60
-	}
-
-	# there are insignificant elections in the colonies
-	institution = institution_suffrage
-	institution_modifier = {
-		country_legitimacy_govt_total_votes_add = 5
-		country_legitimacy_govt_total_clout_add = -5
-		country_voting_power_wealth_threshold_add = -3
-		country_authority_add = -10
-		state_radicals_from_political_movements_mult = -0.025
 	}
 
 	can_impose = {

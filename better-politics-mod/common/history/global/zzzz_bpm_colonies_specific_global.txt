@@ -214,7 +214,6 @@ GLOBAL = {
 				set_ideology = ideology_moderate
 			}
 		}
-
 	}
 
 	# Spainish Colonies
