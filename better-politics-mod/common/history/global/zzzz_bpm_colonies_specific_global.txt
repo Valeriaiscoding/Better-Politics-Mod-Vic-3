@@ -34,7 +34,17 @@ GLOBAL = {
 
 	every_country = {
 		limit = {
-			has_law_or_variant = law_type:law_colonial_administration
+			country_is_colonial_or_company = yes
+			has_law = law_type:law_subjecthood
+		}
+		active_law:lawgroup_citizenship = {
+			if = {
+				limit = { NOT = { has_amendmnent = amendment_type:amendment_racialized_subjecthood } }
+				add_amendment = {
+					type = amendment_type:amendment_racialized_subjecthood
+					sponsor = PREV.ig:ig_armed_forces
+				}
+			}
 		}
 		bpm_set_colony_primary_culture = yes
 		set_variable = {
@@ -256,7 +266,6 @@ GLOBAL = {
 		activate_law = law_type:law_local_police
 		activate_law = law_type:law_national_guard
 		activate_law = law_type:law_unitary
-
 		ig:ig_reactionaries = {
 			bpm_remove_all_dop_ideologies = yes
 			add_ideology = ideology_dop_metropole_loyalist
