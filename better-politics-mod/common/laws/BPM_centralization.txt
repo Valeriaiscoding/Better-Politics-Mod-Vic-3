@@ -10,6 +10,7 @@ law_ad_hoc_centralization = {
 	progressiveness = -100
 
 	modifier = {
+		country_acceptance_homeland_add = 15
 		state_radicalism_increases_open_prejudice_mult = -0.1
 		state_radicalism_increases_violent_hostility_mult = -0.1
 		state_radicalism_increases_cultural_erasure_mult = -0.1
@@ -62,6 +63,7 @@ law_confederated = {
 	}
 	
 	modifier = {
+		country_acceptance_homeland_add = 15
 		country_institution_centralization_max_investment_add = 2
 		country_law_enactment_time_mult = 0.2
 		country_authority_mult = -0.2
@@ -148,6 +150,7 @@ law_federated = {
 	}
 	
 	modifier = {
+		country_acceptance_homeland_add = 10
 		country_institution_centralization_max_investment_add = 2
 		#country_bureaucracy_investment_cost_factor_mult = -0.2 # Temporarily moving here until paradox fixes the institution modifiers not working sometimes
 	}
@@ -232,6 +235,7 @@ law_devolved = {
 	}
 	
 	modifier = {
+		country_acceptance_homeland_add = 5
 		country_institution_centralization_max_investment_add = 2
 	}
 

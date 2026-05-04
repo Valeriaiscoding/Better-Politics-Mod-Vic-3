@@ -144,3 +144,20 @@ bpm_colony_events.3 = {
         
     }
 }
+
+bpm_colony_events.4 = {
+	type = country_event
+	placement = root
+	hidden = yes
+	trigger = {
+	}
+	immediate = {
+		owner = {
+			bpm_add_overlord_primary_culture = yes
+            set_variable = {
+                name = bpm_current_overlord
+                value = top_overlord
+            }
+		}
+	}
+}

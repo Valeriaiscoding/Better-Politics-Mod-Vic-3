@@ -277,10 +277,11 @@ REPLACE:amendment_racialized_subjecthood = {
 	}
 
 	modifier = {
+		country_bpm_change_primary_culture_to_overlord = yes
 		country_acceptance_shared_heritage_trait_add = 40
 		country_acceptance_shared_heritage_trait_group_add = 30
 		country_acceptance_no_shared_heritage_trait_add = -5
-		country_bpm_change_primary_culture_to_overlord = yes
+		country_acceptance_homeland_add = -10
 	}
 
 	possible = {

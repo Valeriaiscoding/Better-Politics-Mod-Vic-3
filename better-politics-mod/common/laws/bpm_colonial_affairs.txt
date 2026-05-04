@@ -1,0 +1,5 @@
+INJECT:law_no_colonial_affairs = {
+	modifier = {
+		country_acceptance_homeland_add = -10
+	}
+}
