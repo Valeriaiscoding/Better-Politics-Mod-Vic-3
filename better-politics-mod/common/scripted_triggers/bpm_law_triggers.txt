@@ -53,5 +53,7 @@ bpm_amendment_banned_from_enactment = {
 		this = amendment_type:amendment_tradition_of_free_elections
 		this = amendment_type:amendment_electoral_clientelism
 		this = amendment_type:bpm_amendment_artisanal_economy
+		this = amendment_type:bpm_amendment_colonial_government
+		#this = amendment_type:bpm_amendment_widespread_clerical_land_ownership
     }
 }
