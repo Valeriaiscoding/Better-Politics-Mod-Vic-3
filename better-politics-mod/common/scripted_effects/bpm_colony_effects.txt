@@ -25,26 +25,6 @@ bpm_set_colony_primary_culture = {
 
     save_scope_as = temp_country
 
-    if = {
-        limit = {
-            NOT = { has_variable_list = bpm_colony_primary_culture }
-            NOT = { has_variable = bpm_colony_religion }
-        }
-        every_primary_culture = {
-            scope:temp_country = { 
-                add_to_variable_list = {
-                    name = bpm_colony_primary_culture
-                    target = PREV
-                }    
-            }
-        }
-    
-        set_variable = {
-            name = bpm_colony_religion
-            value = religion
-        }
-    }
-
     top_overlord = {
         every_primary_culture = {
             scope:temp_country = { 
@@ -61,6 +41,30 @@ bpm_set_colony_primary_culture = {
         scope:temp_country = {  set_variable = { name = bpm_overlord_religion value = scope:temp_religion } }
     }
 
+    if = {
+        limit = {
+            NOT = { has_variable_list = bpm_colony_primary_culture }
+            NOT = { has_variable = bpm_colony_religion }
+        }
+        every_primary_culture = {
+            limit = {
+                NOT = {
+                    is_in_list = bpm_overlord_primary_culture
+                }
+            }
+            scope:temp_country = { 
+                add_to_variable_list = {
+                    name = bpm_colony_primary_culture
+                    target = PREV
+                }    
+            }
+        }
+    
+        set_variable = {
+            name = bpm_colony_religion
+            value = religion
+        }
+    }
     every_in_list = {
         variable = bpm_colony_primary_culture
         scope:temp_country = {
@@ -88,6 +92,10 @@ bpm_colony_reset_primary_culture = {
         limit = {
             has_variable_list = bpm_colony_primary_culture
             has_variable_list = bpm_overlord_primary_culture
+            list_size = {
+                name = bpm_colony_primary_culture
+                value > 0
+            }
         }
         every_in_list = {
             variable = bpm_overlord_primary_culture
@@ -115,6 +123,37 @@ bpm_colony_reset_primary_culture = {
     }
 
     remove_variable = bpm_colony_primary_culture_set_to_overlord
+}
+
+bpm_add_overlord_primary_culture = { 
+    save_scope_as = temp_country
+    top_overlord = {
+        every_primary_culture = {
+            scope:temp_country = { 
+                add_to_variable_list = {
+                    name = bpm_overlord_extra_cultures
+                    target = PREV
+                }    
+            }
+        }
+    }
+    every_in_list = {
+        variable = bpm_overlord_extra_cultures
+        scope:temp_country = {
+            add_primary_culture = PREV
+        }
+    }
+    set_variable = added_overlord_primary_culture
+}
+
+bpm_remove_overlord_primary_culture = {
+    save_scope_as = temp_country
+    every_in_list = {
+        variable = bpm_overlord_extra_cultures
+        scope:temp_country = {
+            remove_primary_culture = PREV
+        }
+    }
 }
 
 bpm_country_activate_colonial_laws = {

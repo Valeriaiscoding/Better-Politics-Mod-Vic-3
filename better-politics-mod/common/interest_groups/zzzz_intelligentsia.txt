@@ -216,6 +216,24 @@
 		
 		if = {
 			limit = {
+				c:PHI ?= owner 
+				OR = {
+					has_pop_culture = filipino_mestizo
+					has_pop_culture = filipino
+				}
+				OR = {
+					is_pop_type = aristocrats
+					is_pop_type = capitalists
+				}
+			}
+			add = {
+				value = 75
+				desc = "POP_PHI_ILLUSTRADOS"
+			}
+		}
+
+		if = {
+			limit = {
 				c:BIC ?= owner
 				culture = {
 					has_discrimination_trait_group = heritage_group_south_asian

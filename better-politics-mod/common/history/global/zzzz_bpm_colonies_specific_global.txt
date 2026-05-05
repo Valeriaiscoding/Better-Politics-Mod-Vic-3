@@ -283,10 +283,26 @@ GLOBAL = {
 		}
 		ig:ig_intelligentsia = {
 			bpm_remove_all_rel_ideologies = yes
-			bpm_remove_all_dop_ideologies = yes
 			add_ideology = ideology_rel_secularist
-			add_ideology = ideology_dop_colonial_autonomist
 		}
+		ig:ig_devout = {
+			bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_eco_conservative_agrarian
+		}
+
+		add_to_variable_list = {
+			name = bpm_colony_primary_culture
+			target = cu:spainish
+		}
+		add_to_variable_list = {
+			name = bpm_colony_primary_culture
+			target = cu:filipino_mestizo
+		}
+		add_to_variable_list = {
+			name = bpm_colony_primary_culture
+			target = cu:filipino
+		}
+
 	}
 
 	c:PCO = {

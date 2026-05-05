@@ -1,5 +1,110 @@
 ﻿namespace = philippines
 
+# je_philippines_main complete
+# Bayang Magiliw, Beloved Country
+philippines.2 = {
+	type = country_event
+	placement = root
+
+	duration = 3
+
+	dlc = dlc016
+
+	title = philippines.2.t
+	desc = philippines.2.d
+	flavor = philippines.2.f
+
+    event_image = {
+		video = "ip4_colonial_exploitation_going_well"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		# Triggered by Journal Entry
+	}
+
+	cancellation_trigger = {
+
+	}
+
+	immediate = {
+		root = { save_scope_as = filipino_nation_scope }
+	}
+	option = {
+		name = philippines.2.a
+		default_option = yes
+		bpm_colony_reset_primary_culture = yes
+		remove_primary_culture = cu:spanish
+        add_primary_culture = cu:filipino_mestizo
+        add_modifier = {
+            name = modifier_phi_indepenent_vision
+            days = long_modifier_time
+        }
+        add_modifier = {
+        	name = modifier_national_consolidation
+        	days = long_modifier_time
+        }
+	}
+}
+
+# je_philippines_main reliance outcome
+philippines.3 = {
+	type = country_event
+	placement = root
+
+	duration = 3
+
+	dlc = dlc016
+
+	title = philippines.3.t
+	desc = philippines.3.d
+	flavor = philippines.3.f
+
+    event_image = {
+		video = "ip4_colonial_exploitation_going_well"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		# Triggered by Journal Entry
+	}
+
+	cancellation_trigger = {
+
+	}
+
+	immediate = {
+		root = { save_scope_as = filipino_nation_scope }
+		ig:ig_intelligentsia ?= {
+			save_scope_as = ilustrado_ig_scope
+		}
+	}
+	option = {
+		name = philippines.3.a
+		default_option = yes
+		hidden_effect = {
+			bpm_colony_reset_primary_culture = yes
+			bpm_add_overlord_primary_culture = yes
+		}
+		activate_law = law_type:law_racial_segregation
+		add_primary_culture = cu:filipino_mestizo
+        add_modifier = {
+            name = modifier_phi_spanish_vision
+            days = long_modifier_time
+        }
+        add_modifier = {
+        	name = modifier_metropole_business_networks
+        	days = long_modifier_time
+        }
+	}
+}
+
 # je_philippines_main_ilustrado_button
 philippines.5 = {
 	type = country_event

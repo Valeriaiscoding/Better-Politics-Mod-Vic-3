@@ -871,9 +871,9 @@ ideology_dop_colonial_autonomist = {
 		law_autocracy = disapprove
 		law_technocracy = neutral
 		law_oligarchy = disapprove
-		law_landed_voting = approve
+		law_landed_voting = neutral
 		law_wealth_voting = approve
-		law_census_voting = neutral
+		law_census_voting = approve
 		law_universal_suffrage = disapprove
 		law_anarchy = strongly_disapprove
 		law_military_junta = neutral
@@ -882,13 +882,13 @@ ideology_dop_colonial_autonomist = {
 	}
 
     lawgroup_bureaucracy = {
-		law_hereditary_bureaucrats = neutral
+		law_hereditary_bureaucrats = disapprove
 		law_appointed_bureaucrats = approve
 		law_elected_bureaucrats = neutral
 	}
 
 	lawgroup_legislative_principles = {
-		law_advisory_body = approve
+		law_advisory_body = neutral
 		law_separated_powers = approve
 		law_supreme_legislature = disapprove
 	}
@@ -908,17 +908,17 @@ ideology_dop_colonial_collaborator = {
 	icon = "gfx/interface/icons/ideology_icons/dop_ideology/traditional_power.dds"
 	priority = 1000
     lawgroup_distribution_of_power = {
-		law_autocracy = disapprove
-		law_oligarchy = disapprove
+		law_autocracy = neutral
+		law_oligarchy = neutral
 		law_technocracy = disapprove
 		law_military_junta = disapprove
 		law_landed_voting = approve
 		law_wealth_voting = neutral
-		law_census_voting = neutral
+		law_census_voting = disapprove
 		law_universal_suffrage = strongly_disapprove
 		law_anarchy = strongly_disapprove
 		law_colonial_administration = approve
-		law_organic_democracy = disapprove
+		law_organic_democracy = neutral
 	}
 
 	lawgroup_legislative_principles = {

@@ -395,3 +395,47 @@ REPLACE:law_command_economy = {
 		}
 	}
 }
+
+INJECT:law_extraction_economy = {
+	modifier = {
+		
+		building_group_bg_agriculture_throughput_add = -0.1
+		building_group_bg_plantations_throughput_add = -0.1
+		building_group_bg_extraction_throughput_add = -0.1
+
+		state_pop_pol_str_add = -7
+		country_aristocrats_pol_str_mult = -0.5
+		country_bureaucrats_pol_str_mult = 1
+		country_capitalists_pol_str_mult = 0.5
+
+		state_shopkeepers_investment_pool_efficiency_mult = -0.25
+		state_bureaucrats_investment_pool_efficiency_mult = -0.25
+		state_capitalists_investment_pool_efficiency_mult = -0.25
+
+		country_institution_economy_max_investment_add = 2
+	}
+	institution = institution_economy
+	institution_modifier = {	
+		building_group_bg_agriculture_throughput_add = 0.05
+		building_group_bg_plantations_throughput_add = 0.05
+		building_group_bg_extraction_throughput_add = 0.05
+
+		interest_group_ig_industrialists_pol_str_mult = 0.2
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.2
+
+		state_shopkeepers_investment_pool_efficiency_mult = 0.1
+		state_bureaucrats_investment_pool_efficiency_mult = 0.1
+		state_capitalists_investment_pool_efficiency_mult = 0.1
+	}
+}
+
+INJECT:law_industry_banned = {
+
+	modifier = {
+		country_institution_economy_max_investment_add = -5
+	}
+	institution = institution_economy
+	institution_modifier = {	
+	}
+}
+

@@ -189,3 +189,7 @@ country_bpm_change_primary_culture_to_overlord = {
 	color = good
 	boolean = yes
 }
+country_bpm_add_overlord_primary_culture = {
+	color = good
+	boolean = yes
+}

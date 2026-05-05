@@ -34,19 +34,6 @@ REPLACE:law_monarchy = {
 		country_bpm_labor_consciousness_target_mult = -0.25
 	}
 	
-#	pop_support = {
-#		value = 0	
-#		add = {
-#			desc = "POP_ARISTOCRATS"
-#			if = {
-#				limit = { 
-#					is_pop_type = aristocrats
-#				}
-#				value = 0.33
-#			}
-#		}
-#	}
-	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
@@ -186,6 +173,24 @@ REPLACE:law_presidential_republic = {
 		}
 		scripted_effect_parties_emergence = yes
 		bpm_deactivate_syndicalism = yes
+		if = {
+			limit = { 
+				country_is_colonial_or_company = yes
+				is_subject = yes
+			}
+			random_law = {
+				limit = {
+					type = law_type:law_presidential_republic
+				}
+				save_scope_as = relevant_law
+			}
+			scope:relevant_law = {
+				add_amendment = {
+					type = bpm_amendment_colonial_government
+					sponsor = PREV.ig:ig_petty_bourgeoisie
+				}
+			}
+		}
 	}
 	
 	modifier = {
@@ -196,26 +201,6 @@ REPLACE:law_presidential_republic = {
 		country_liberal_consciousness_change_add = 0.05
 		country_bpm_labor_consciousness_target_mult = -0.35
 	}
-	
-#	pop_support = {
-#		value = 0
-#
-#		add = {
-#			desc = "POP_ANGRY_UNSTABLE"
-#			
-#			if = {
-#				limit = { 
-#					owner = { 
-#						var:bpm_political_stability <= 33	
-#					}
-#					NOT = { strata = upper }
-#				}
-#				add = {
-#					value = pop_radical_fraction
-#				}
-#			}
-#		}		
-#	}
 	
 	ai_will_do = {
 		exists = ruler
@@ -311,6 +296,24 @@ REPLACE:law_parliamentary_republic = {
 		}
 		scripted_effect_parties_emergence = yes
 		bpm_deactivate_syndicalism = yes
+		if = {
+			limit = { 
+				country_is_colonial_or_company = yes
+				is_subject = yes
+			}
+			random_law = {
+				limit = {
+					type = law_type:law_presidential_republic
+				}
+				save_scope_as = relevant_law
+			}
+			scope:relevant_law = {
+				add_amendment = {
+					type = bpm_amendment_colonial_government
+					sponsor = PREV.ig:ig_petty_bourgeoisie
+				}
+			}
+		}
 	}
 
 	is_visible = {
@@ -413,20 +416,6 @@ REPLACE:law_theocracy = {
 		country_legitimacy_ideological_incoherence_mult = 0.25
 		country_bpm_labor_consciousness_target_mult = -0.25
 	}
-
-#	pop_support = {
-#		value = 0
-#		
-#		add = {
-#			desc = "POP_CLERGYMEN"
-#			if = {
-#				limit = { 
-#					is_pop_type = clergymen
-#				}
-#				value = 0.33
-#			}
-#		}
-#	}
 	
 	ai_will_do = {
 		always = no
@@ -521,26 +510,6 @@ REPLACE:law_council_republic = {
 		state_pop_pol_str_add = 2
 		country_bpm_labor_consciousness_target_mult = 0.35
 	}
-	
-#	pop_support = {
-#		value = 0
-#
-#		add = {
-#			desc = "POP_ANGRY_UNSTABLE"
-#			
-#			if = {
-#				limit = { 
-#					owner = { 
-#						var:bpm_political_stability <= 33	
-#					}
-#					NOT = { strata = upper }
-#				}
-#				add = {
-#					value = pop_radical_fraction
-#				}
-#			}
-#		}		
-#	}
 	
 	ai_will_do = {
 		exists = ruler
