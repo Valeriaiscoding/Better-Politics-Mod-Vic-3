@@ -4,6 +4,6 @@
   bpm_amendment_colonial_government:0 "Colonial Government"
   bpm_amendment_colonial_government_desc:0 "This country goverment is colonial administration rather than independent polity"
   bpm_amendment_widespread_clerical_land_ownership:0 "Widespred Clerical Land Ownership"
-  bpm_amendment_widespread_clerical_land_ownership_desc:0 "Significant portion of country's land owned by religious instituions such as [Amendment.GetSponsor.GetName] rather than secular [GetInterestGroupVariant('ig_landowners',Amendment.GetAttachedLaw.GetCountry).GetName]." 
+  bpm_amendment_widespread_clerical_land_ownership_desc:0 "Significant portion of country's land owned by religious instituions such as [Amendment.GetSponsor.GetName] rather than secular landowners." 
   country_bpm_add_overlord_primary_culture: "Overlords Primary Culture is considered primary"
   country_bpm_add_overlord_primary_culture_desc: "Country will adopt its overlord primary cultures while keeping its original cultures"
