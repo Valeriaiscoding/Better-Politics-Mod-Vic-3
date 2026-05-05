@@ -522,3 +522,12 @@ building_manor_house_clergymen_shares_add = {
 		ai_value=0
 	}
 }
+
+building_manor_house_aristocrats_shares_add = {
+	decimals = 0
+	color = neutral
+	percent = no
+	game_data = {
+		ai_value=0
+	}
+}

@@ -1351,7 +1351,19 @@ bpm_empowered_church_institutions = {
 	interest_group_pol_str_mult = 0.15
 }
 
-bpm_clergymen_shares_modifier = {
+bpm_clergymen_shares_modifier_positive = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_clergy_positive.dds
 	building_clergymen_shares_add = 1
+}
+bpm_clergymen_shares_modifier_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_clergy_negative.dds
+	building_clergymen_shares_add = 1
+}
+bpm_aristocrats_shares_modifier_positive = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_aristocrat_positive.dds
+	building_aristocrats_shares_add = 1
+}
+bpm_aristocrats_shares_modifier_negative = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_aristocrat_negative.dds
+	building_aristocrats_shares_add = 1
 }

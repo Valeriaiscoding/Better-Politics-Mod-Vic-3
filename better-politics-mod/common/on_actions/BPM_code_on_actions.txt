@@ -1482,9 +1482,6 @@ on_bpm_game_started = {
 
 on_bpm_monthly_pulse_state = {
 	effect = {
-		bpm_building_shares_effect = {
-			BUILDING = building_manor_house
-			POPTYPE = clergymen
-		}
+		bpm_state_set_ownership_modifiers = yes
 	}
 }

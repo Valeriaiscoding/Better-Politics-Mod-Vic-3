@@ -1,13 +1,32 @@
 bpm_building_shares_effect = {
 	random_scope_building = {
 			limit = { is_building_type = $BUILDING$ }
-			remove_modifier = bpm_$POPTYPE$_shares_modifier
+			remove_modifier = bpm_$POPTYPE$_shares_modifier_positive
+			remove_modifier = bpm_$POPTYPE$_shares_modifier_negative
 			if = {
 				limit = { owner.modifier:$BUILDING$_$POPTYPE$_shares_add > 0 }
 				add_modifier = {
-					name = bpm_$POPTYPE$_shares_modifier
+					name = bpm_$POPTYPE$_shares_modifier_positive
+					multiplier = owner.modifier:$BUILDING$_$POPTYPE$_shares_add
+				}
+			}
+			else_if = {
+				limit = { owner.modifier:$BUILDING$_$POPTYPE$_shares_add < 0 }
+				add_modifier = {
+					name = bpm_$POPTYPE$_shares_modifier_negative
 					multiplier = owner.modifier:$BUILDING$_$POPTYPE$_shares_add
 				}
 			}
 		}
+}
+
+bpm_state_set_ownership_modifiers = {
+	bpm_building_shares_effect = {
+		BUILDING = building_manor_house
+		POPTYPE = clergymen
+	}
+	bpm_building_shares_effect = {
+		BUILDING = building_manor_house
+		POPTYPE = aristocrats
+	}
 }

@@ -550,6 +550,7 @@ bpm_amendment_widespread_clerical_land_ownership = {
 
 	modifier = {
 		building_manor_house_clergymen_shares_add = 2
+		building_manor_house_aristocrats_shares_add = -2
 		interest_group_ig_devout_pol_str_mult = 0.1
 		interest_group_ig_landowners_pol_str_mult = -0.1
 	}
