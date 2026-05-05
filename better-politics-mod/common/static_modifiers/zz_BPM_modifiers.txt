@@ -1350,3 +1350,8 @@ bpm_empowered_church_institutions = {
 	
 	interest_group_pol_str_mult = 0.15
 }
+
+bpm_clergymen_shares_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_clergy_positive.dds
+	building_clergymen_shares_add = 1
+}

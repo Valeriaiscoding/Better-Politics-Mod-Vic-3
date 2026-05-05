@@ -281,13 +281,15 @@ GLOBAL = {
 				sponsor = prev.ig:ig_landowners
 			}
 		}
+		active_law:lawgroup_land_reform = {
+			add_amendment = {
+				type = bpm_amendment_widespread_clerical_land_ownership
+				sponsor = prev.ig:ig_devout
+			}
+		}
 		ig:ig_intelligentsia = {
 			bpm_remove_all_rel_ideologies = yes
 			add_ideology = ideology_rel_secularist
-		}
-		ig:ig_devout = {
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_conservative_agrarian
 		}
 
 		add_to_variable_list = {

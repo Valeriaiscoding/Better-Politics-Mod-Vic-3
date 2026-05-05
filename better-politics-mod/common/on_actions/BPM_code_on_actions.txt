@@ -166,6 +166,12 @@ on_new_ruler = {
 # 	}
 # }
 
+on_monthly_pulse_state = {
+	on_actions = {
+		on_bpm_monthly_pulse_state
+	}
+}
+
 on_bpm_five_year_pulse_country = {
 	effect = {
 		every_interest_group = {
@@ -1470,6 +1476,15 @@ on_bpm_game_started = {
 			trigger_event = { id = bpm_misc.5 }
 			bpm_update_consciousness = yes
 			bpm_auto_cabinet_appoint = yes
+		}
+	}
+}
+
+on_bpm_monthly_pulse_state = {
+	effect = {
+		bpm_building_shares_effect = {
+			BUILDING = building_manor_house
+			POPTYPE = clergymen
 		}
 	}
 }

@@ -513,3 +513,12 @@ REPLACE:country_shopkeepers_pol_str_mult={
 		ai_value=0
 	}
 }
+
+building_manor_house_clergymen_shares_add = {
+	decimals = 0
+	color = neutral
+	percent = no
+	game_data = {
+		ai_value=0
+	}
+}

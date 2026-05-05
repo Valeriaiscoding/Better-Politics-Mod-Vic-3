@@ -1,0 +1,13 @@
+bpm_building_shares_effect = {
+	random_scope_building = {
+			limit = { is_building_type = $BUILDING$ }
+			remove_modifier = bpm_$POPTYPE$_shares_modifier
+			if = {
+				limit = { owner.modifier:$BUILDING$_$POPTYPE$_shares_add > 0 }
+				add_modifier = {
+					name = bpm_$POPTYPE$_shares_modifier
+					multiplier = owner.modifier:$BUILDING$_$POPTYPE$_shares_add
+				}
+			}
+		}
+}
