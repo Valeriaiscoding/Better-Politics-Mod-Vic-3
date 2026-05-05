@@ -242,15 +242,15 @@ GLOBAL = {
 			add_ideology = ideology_exe_strong_dynamic
 		}
 		ig:ig_petty_bourgeoisie = {
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_colonialist
+			# bpm_remove_all_eco_ideologies = yes
+			# add_ideology = ideology_eco_colonialist
 			bpm_remove_all_exe_ideologies = yes
 			add_ideology = ideology_exe_strong_dynamic
 		}
-		ig:ig_industrialists = {
-			bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_eco_colonialist
-		}
+		# ig:ig_industrialists = {
+		# 	bpm_remove_all_eco_ideologies = yes
+		# 	add_ideology = ideology_eco_colonialist
+		# }
 		ig:ig_reactionaries = {
 			bpm_remove_all_exe_ideologies = yes
 			add_ideology = ideology_exe_strong_dynamic

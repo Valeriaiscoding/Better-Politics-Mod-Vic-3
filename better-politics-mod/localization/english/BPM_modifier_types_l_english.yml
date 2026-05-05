@@ -52,8 +52,8 @@
   
   building_group_bg_rubber_allowed_collectivization_add: "Minimum Worker-Owned $bg_rubber$ $concept_building$ Levels"
   building_group_bg_rubber_allowed_collectivization_add_desc: "$building_group_bg_rubber_allowed_collectivization_add$"
-
-
+  building_manor_house_clergymen_shares_add: "$clergymen$ shares in $building_manor_house$ buildings"
+  building_manor_house_clergymen_shares_add_desc: "$building_manor_house_clergymen_shares_add$"
 
   country_synergy_base_add: "Base Synergy"
   country_synergy_base_add_desc: "A bonus or penalty to the base synergy of the country"

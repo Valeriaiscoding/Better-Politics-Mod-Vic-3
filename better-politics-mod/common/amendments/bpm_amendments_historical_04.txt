@@ -517,9 +517,10 @@ bpm_amendment_colonial_government = {
 	parent = law_colonial_administration
 	modifier = {
 		country_bpm_add_overlord_primary_culture = yes
-		interst_group_ig_petty_bourgeoisie_pol_str_mult = 0.5
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.5
 		country_bureaucrats_pol_str_mult = 0.5
 		country_officers_pol_str_mult = 0.25
+		state_pop_pol_str_add = -1
 	}
 	possible = {
 		country_is_colonial_or_company = yes
@@ -563,23 +564,17 @@ bpm_amendment_widespread_clerical_land_ownership = {
 		ig:ig_devout = {
 			bpm_remove_all_eco_ideologies = yes
 			if = {
-				limit = { has_law_or_variant = law_type:law_debt_slavery }
+				limit = { owner = { has_law_or_variant = law_type:law_debt_slavery } }
 				add_ideology = ideology_eco_debt_serf_economy
 			}
 			else_if = {
-				limit = { has_law_or_variant = law_type:law_serfdom }
+				limit = { owner = { has_law_or_variant = law_type:law_serfdom } }
 				add_ideology = ideology_eco_serf_economy
 			}
 			else = {
 				add_ideology = ideology_eco_conservative_agrarian
 			}
 			bpm_reorder_ideologies = yes
-		}
-		every_scope_state = {
-			bpm_building_shares_effect = {
-				BUILDING = building_manor_house
-				POPTYPE = clergymen
-			}
 		}
 	}
 	on_deactivate = {
@@ -594,12 +589,6 @@ bpm_amendment_widespread_clerical_land_ownership = {
 				}
 				bpm_remove_all_eco_ideologies = yes
 				bpm_reorder_ideologies = yes
-			}
-		}
-		every_scope_state = {
-			bpm_building_shares_effect = {
-				BUILDING = building_manor_house
-				POPTYPE = clergymen
 			}
 		}
 	}
