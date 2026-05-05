@@ -249,6 +249,7 @@ bpm_initialize_natlibs = {
 					prev = {
 						OR = {
 							this = c:USA
+							this = c:PHI
 							country_has_primary_culture = cu:north_german
 							country_has_primary_culture = cu:south_german
 							country_has_primary_culture = cu:north_italian
@@ -398,6 +399,7 @@ bpm_initialize_marlibs = {
 					OR = {
 						prev = c:USA
 						prev = c:BIC
+						prev = c:PHI
 					}
 				}
 				add_ideology = ideology_rel_secularist
