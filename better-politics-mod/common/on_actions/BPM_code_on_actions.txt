@@ -432,6 +432,29 @@ on_bpm_monthly_pulse_country = {
 			}
 			bpm_colony_reset_primary_culture = yes
 		}
+		if = {
+			limit = {
+				modifier:country_bpm_add_overlord_primary_culture = yes
+				NOT = { has_variable = added_overlord_primary_culture }
+			}
+			trigger_event = { id = bpm_colony_events.4 days = 1 }
+		}
+		if = {
+			limit = {
+				modifier:country_bpm_add_overlord_primary_culture = yes
+				has_variable = bpm_current_overlord
+				NOT = { var:bpm_current_overlord = top_overlord }
+			}
+			bpm_remove_overlord_primary_culture = yes
+			trigger_event = { id = bpm_colony_events.4 days = 1 }
+		}
+		if = {
+			limit = {
+				modifier:country_bpm_add_overlord_primary_culture = no
+				has_variable = added_overlord_primary_culture
+			}
+			bpm_remove_overlord_primary_culture = yes
+		}
 		owner = { 
 			bpm_update_ai_cheats = yes
 			bpm_update_political_stability = yes
