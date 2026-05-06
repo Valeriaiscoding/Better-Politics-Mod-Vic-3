@@ -508,7 +508,7 @@ bpm_setup_country_mil_cit_ideologies = {
 		}
 		ig:ig_landowners = {
 			bpm_remove_all_cit_ideologies = yes
-			add_ideology = ideology:ideology_cit_caste_supremacist
+			add_ideology = ideology:ideology_cit_upper_caste
 		}
 	}
 	if = {

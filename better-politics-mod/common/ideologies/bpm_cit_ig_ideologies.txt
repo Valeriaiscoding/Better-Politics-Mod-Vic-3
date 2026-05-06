@@ -495,7 +495,7 @@ ideology_cit_lower_caste = {
 	}
 }
 
-ideology_cit_caste_supremacist = {
+ideology_cit_upper_caste = {
 	icon = "gfx/interface/icons/ideology_icons/cit_ideology/traditional_culture.dds"
 	priority = 1000
 	lawgroup_citizenship = {
