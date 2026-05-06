@@ -59,6 +59,14 @@ bpm_initialize_trade_unions = {
 			add_ideology = ideology_mil_antimilitarist
 			add_ideology = ideology_wel_expanded_public_welfare
 			add_ideology = ideology_dop_unionist
+			if = {
+				limit = { 
+					owner = {
+						has_social_hierarchy = british_indian_caste_system
+					}
+				}
+				add_ideology = ideology_cit_lower_caste
+			}
 			# Vanilla ideologies
 			add_ideology = ideology_proletarian
 			add_ideology = ideology_egalitarian

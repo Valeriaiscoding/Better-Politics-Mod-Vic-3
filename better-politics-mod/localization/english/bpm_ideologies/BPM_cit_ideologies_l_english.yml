@@ -31,3 +31,9 @@
 
  ideology_cit_samurai: "Traditional Samurai Culture"
  ideology_cit_samurai_desc: "#lore This group does not have any clear citizenship policies, but they are generally oriented towards preserving traditional culture and the status of the Samurai. #!"
+
+ ideology_cit_upper_caste: "Traditional Hindu Culture"
+ ideology_cit_upper_caste_desc: "#lore This group does not have any clear citizenship policies, but they are generally oriented towards preserving traditional culture and priviliges of hindu upper castes. #!"
+
+ ideology_cit_lower_caste: "Lower Caste"
+ ideology_cit_lower_caste_desc: "#lore This group does not have any clear citizenship policies, but they are generally oriented towards protecting rights of lower castes. #!"
