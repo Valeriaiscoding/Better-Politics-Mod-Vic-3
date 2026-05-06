@@ -1,0 +1,30 @@
+bpm_amendment_colonial_government = {
+
+	parent = law_colonial_administration
+
+	allowed_laws = {
+		law_presidential_republic
+		law_parliamentary_republic
+	}
+	
+	modifier = {
+		country_bpm_add_overlord_primary_culture = yes
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.5
+		country_bureaucrats_pol_str_mult = 0.5
+		country_officers_pol_str_mult = 0.5
+		state_pop_pol_str_add = -2
+	}
+	possible = {
+		country_is_colonial_or_company = yes
+		is_subject = yes
+	}
+	can_repeal = { 
+		is_subject = no
+	}
+	would_sponsor = {
+		is_interest_group_type = ig_petty_bourgeoisie
+	}
+	ai_will_revoke = {
+		always = yes
+	}
+}
