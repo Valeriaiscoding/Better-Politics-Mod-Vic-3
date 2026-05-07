@@ -426,6 +426,7 @@ INJECT:law_extraction_economy = {
 		state_shopkeepers_investment_pool_efficiency_mult = 0.15
 		state_bureaucrats_investment_pool_efficiency_mult = 0.15
 		state_capitalists_investment_pool_efficiency_mult = 0.15
+		state_pop_pol_str_add = -1
 	}
 }
 
