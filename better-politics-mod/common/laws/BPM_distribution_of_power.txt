@@ -196,6 +196,7 @@ REPLACE:law_colonial_administration = {
 		# this way we can check if the law is active
 		# and apply the effect anyway
 		bpm_colonial_admin_activate_effect = yes
+		bpm_add_colonial_government_amendment = yes
 	}
 
 	is_visible = {
@@ -209,11 +210,14 @@ REPLACE:law_colonial_administration = {
 		country_legitimacy_ideological_incoherence_mult = 0.1
 		country_voting_power_base_add = 1
 		country_voting_power_wealth_threshold_add = 30
-		country_aristocrats_pol_str_mult = 0.80
-		country_bureaucrats_pol_str_mult = 0.40
-		country_capitalists_pol_str_mult = 0.80
-		country_officers_pol_str_mult = 0.80
+		country_aristocrats_pol_str_mult = 0.5
+		country_bureaucrats_pol_str_mult = 0.5
+		country_capitalists_pol_str_mult = 1
+		country_officers_pol_str_mult = 1
 		state_political_strength_from_wealth_mult = 0.25
+		interest_group_ig_industrialists_pol_str_mult = 1
+		interest_group_ig_petty_bourgeoisie_pol_str_mult = 1
+		interest_group_ig_armed_forces_pol_str_mult = 1
 		
 		country_liberty_desire_decrease_mult = 0.5
 		country_liberty_desire_increase_mult = -0.5
