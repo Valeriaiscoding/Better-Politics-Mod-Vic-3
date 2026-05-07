@@ -156,6 +156,32 @@ bpm_remove_overlord_primary_culture = {
     }
 }
 
+bpm_add_colonial_government_amendment = {
+    scope:relevant_law = {
+        hidden_effect = {
+            random_scope_amendment = {
+                limit = {
+                    type = amendment_type:bpm_amendment_colonial_government
+                }
+                remove_amendment = yes
+            }
+        }
+        if = {
+            limit = { is_country_type = company }
+            add_amendment = {
+                type = bpm_amendment_colonial_government
+                sponsor = PREV.ig:ig_industrialists
+            }
+        }
+        else = {
+            add_amendment = {
+                type = bpm_amendment_colonial_government
+                sponsor = PREV.ig:ig_petty_bourgeoisie
+            }
+        }
+    }
+}
+
 bpm_country_activate_colonial_laws = {
     activate_law = law_type:law_presidential_republic
     activate_law = law_type:law_colonial_administration

@@ -184,12 +184,7 @@ REPLACE:law_presidential_republic = {
 				}
 				save_scope_as = relevant_law
 			}
-			scope:relevant_law = {
-				add_amendment = {
-					type = bpm_amendment_colonial_government
-					sponsor = PREV.ig:ig_petty_bourgeoisie
-				}
-			}
+			bpm_add_colonial_government_amendment = yes
 		}
 	}
 	
@@ -307,12 +302,7 @@ REPLACE:law_parliamentary_republic = {
 				}
 				save_scope_as = relevant_law
 			}
-			scope:relevant_law = {
-				add_amendment = {
-					type = bpm_amendment_colonial_government
-					sponsor = PREV.ig:ig_petty_bourgeoisie
-				}
-			}
+			bpm_add_colonial_government_amendment = yes
 		}
 	}
 

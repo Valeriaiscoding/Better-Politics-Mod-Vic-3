@@ -7,9 +7,12 @@ bpm_amendment_colonial_government = {
 		law_parliamentary_republic
 	}
 	
+	sponsor_modifier = {
+		interest_group_pol_str_mult = 0.5
+	}
+
 	modifier = {
 		country_bpm_add_overlord_primary_culture = yes
-		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.5
 		country_bureaucrats_pol_str_mult = 0.5
 		country_officers_pol_str_mult = 0.5
 		state_pop_pol_str_add = -2
@@ -22,7 +25,10 @@ bpm_amendment_colonial_government = {
 		is_subject = no
 	}
 	would_sponsor = {
-		is_interest_group_type = ig_petty_bourgeoisie
+		OR = {
+			is_interest_group_type = ig_petty_bourgeoisie
+			is_interest_group_type = ig_industrialists
+		}
 	}
 	ai_will_revoke = {
 		always = yes
