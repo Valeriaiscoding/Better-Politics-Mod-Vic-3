@@ -119,6 +119,19 @@ bpm_setup_country_sta_ideologies = {
 			add_ideology = ideology_sta_minimal_state
 		}
 	}
+	if = {
+		limit = { has_technology_researched = corporatism }
+		ig:ig_trade_unions ?= {
+			if = {
+				limit = {
+					NOT = { has_ideology = ideology_sta_progressive_state }
+				}
+				bpm_remove_all_sta_ideologies = yes
+				add_ideology = ideology_sta_progressive_state
+				bpm_reorder_ideologies = yes
+			}
+		}
+	}
 }
 
 bpm_setup_country_rel_ideologies = {
@@ -405,11 +418,6 @@ bpm_setup_country_eco_ideologies = {
 			}
 		}
 	}
-
-	if = {
-		limit = { has_law_or_variant = law_type:law_extraction_economy }
-		bpm_make_igs_colonialist = yes
-	}
 }
 
 bpm_setup_country_mil_cit_ideologies = {
@@ -626,6 +634,24 @@ bpm_setup_country_wel_ideologies = {
 				}
 				remove_ideology = ideology_wel_no_welfare
 				add_ideology = ideology_wel_religious_welfare
+			}
+		}
+	}
+	if = {
+		limit = { 
+			has_technology_researched = corporatism 
+		}
+		if = {
+			limit = { 
+				NOT = { this = c:BIC }
+			}
+			ig:ig_industrialists = {
+				if = {
+					limit = { bpm_ig_is_colonialist = no }
+					bpm_remove_all_wel_ideologies = yes
+					add_ideology = ideology_wel_paternalistic_welfare
+					bpm_reorder_ideologies = yes
+				}
 			}
 		}
 	}

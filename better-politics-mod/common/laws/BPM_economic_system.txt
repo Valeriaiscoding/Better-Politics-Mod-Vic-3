@@ -397,6 +397,23 @@ REPLACE:law_command_economy = {
 }
 
 INJECT:law_extraction_economy = {
+	on_activate = {
+		ig:ig_petty_bourgeoisie = {
+			bpm_ig_make_colonialist = yes
+		}
+		ig:ig_industrialists = {
+			bpm_ig_make_colonialist = yes
+		}
+		ig:ig_intelligentsia = {
+			if = {
+				limit = { NOT = { has_ideology = ideology:ideology_eco_modernizer } }
+				bpm_remove_all_eco_ideologies = yes
+				add_ideology = ideology_eco_modernizer
+				bpm_reorder_ideologies = yes
+			}
+		}
+	}
+
 	modifier = {
 		
 		building_group_bg_agriculture_throughput_add = -0.1
