@@ -1,0 +1,48 @@
+﻿ideology_rel_ilustrado = {
+	icon = "gfx/interface/icons/ideology_icons/rel_ideology/radical_secularist.dds"
+
+    lawgroup_economic_system = {
+		law_traditionalism = strongly_disapprove
+		law_interventionism = approve
+		law_agrarianism = neutral
+		law_industry_banned = disapprove
+		law_laissez_faire = neutral
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_extraction_economy = disapprove
+	}
+
+	lawgroup_land_reform = {
+		law_serfdom = strongly_disapprove
+		law_tenant_farmers = disapprove
+		law_peasant_proprietorship = neutral
+		law_commercialized_agriculture = strongly_approve
+		law_collectivized_agriculture = strongly_disapprove
+	}
+
+	lawgroup_church_and_state = {
+		law_state_religion = strongly_disapprove
+		law_freedom_of_conscience = neutral
+		law_total_separation = approve
+		law_state_atheism = neutral
+	}
+
+	lawgroup_distribution_of_power = {
+		law_autocracy = strongly_disapprove
+		law_oligarchy = neutral
+		law_technocracy = neutral
+		law_military_junta = strongly_disapprove
+		law_landed_voting = neutral
+		law_wealth_voting = approve
+		law_census_voting = approve
+		law_universal_suffrage = neutral
+		law_anarchy = neutral
+	}
+
+	lawgroup_free_speech = {
+		law_protected_speech = strongly_approve
+		law_right_of_assembly = approve
+		law_censorship = disapprove
+		law_outlawed_dissent = strongly_disapprove
+	}
+}

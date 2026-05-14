@@ -852,6 +852,11 @@ REPLACE:movement_liberal = {
 	}	
 	on_created = {
 		add_movement_enthusiasm_modifier = yes
+		if = {
+			limit = { this = c:PHI }
+			set_core_ideology = ideology_rel_ilustrado
+			add_character_ideology = ideology:ideology_ilustrado_leader
+		}
 	}
 	
 	character_support_trigger = {
