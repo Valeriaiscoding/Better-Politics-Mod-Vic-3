@@ -80,7 +80,7 @@ GLOBAL = {
 		}
 		active_law:lawgroup_bureaucracy = {
 			add_amendment = {
-				type = amendment_preserved_bureaucratic_caste
+				type = bpm_amendment_comprador_bureaucrats
 				sponsor = prev.ig:ig_landowners
 			}
 		}
@@ -88,7 +88,6 @@ GLOBAL = {
 
 	c:BIC = {
 		activate_law = law_type:law_party_reactionary_only
-		#activate_law = law_type:law_caste_system_codified 
 
 		ig:ig_petty_bourgeoisie = {
 			bpm_remove_all_dop_ideologies = yes
@@ -281,7 +280,7 @@ GLOBAL = {
 		activate_law = law_type:law_agrarianism
 		active_law:lawgroup_bureaucracy = {
 			add_amendment = {
-				type = amendment_preserved_bureaucratic_caste
+				type = bpm_amendment_comprador_bureaucrats
 				sponsor = prev.ig:ig_landowners
 			}
 		}
@@ -293,7 +292,16 @@ GLOBAL = {
 		}
 		ig:ig_intelligentsia = {
 			bpm_remove_all_rel_ideologies = yes
+			#bpm_remove_all_eco_ideologies = yes
 			add_ideology = ideology_rel_secularist
+			#add_ideology = ideology_eco_modern_agrarian
+		}
+
+		ig:ig_liberals = {
+			bpm_remove_all_rel_ideologies = yes
+			#bpm_remove_all_eco_ideologies = yes
+			add_ideology = ideology_rel_secularist
+			#add_ideology = ideology_eco_modern_agrarian
 		}
 
 		add_to_variable_list = {

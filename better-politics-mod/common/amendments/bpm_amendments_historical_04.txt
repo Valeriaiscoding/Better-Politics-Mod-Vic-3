@@ -1,4 +1,4 @@
-REPLACE:amendment_american_second_amendment = {
+REPLACE_OR_CREATE:amendment_american_second_amendment = {
 
 	parent = law_national_guard
 
@@ -42,7 +42,7 @@ REPLACE:amendment_american_second_amendment = {
 	}
 }
 
-REPLACE:amendment_american_fugitive_slaves_act = {
+REPLACE_OR_CREATE:amendment_american_fugitive_slaves_act = {
 
 	parent = law_legacy_slavery
 
@@ -93,7 +93,7 @@ REPLACE:amendment_american_fugitive_slaves_act = {
 	}
 }
 
-REPLACE:amendment_200_franc_suffrage = {
+REPLACE_OR_CREATE:amendment_200_franc_suffrage = {
 
 	parent = law_landed_voting
 
@@ -137,7 +137,7 @@ REPLACE:amendment_200_franc_suffrage = {
 	}
 }
 
-REPLACE:amendment_chamber_of_procurators = {
+REPLACE_OR_CREATE:amendment_chamber_of_procurators = {
 
 	parent = law_landed_voting
 
@@ -182,7 +182,7 @@ REPLACE:amendment_chamber_of_procurators = {
 	}
 }
 
-REPLACE:amendment_chamber_of_gentleman_deputies = {
+REPLACE_OR_CREATE:amendment_chamber_of_gentleman_deputies = {
 
 	parent = law_landed_voting
 
@@ -230,7 +230,7 @@ REPLACE:amendment_chamber_of_gentleman_deputies = {
 	}
 }
 
-REPLACE:amendment_haiti_polish_naturalization = {
+REPLACE_OR_CREATE:amendment_haiti_polish_naturalization = {
 
 	parent = law_cultural_exclusion
 
@@ -268,7 +268,7 @@ REPLACE:amendment_haiti_polish_naturalization = {
 	}
 }
 
-REPLACE:amendment_racialized_subjecthood = {
+REPLACE_OR_CREATE:amendment_racialized_subjecthood = {
 
 	parent = law_racial_segregation
 
@@ -314,7 +314,7 @@ REPLACE:amendment_racialized_subjecthood = {
 	}
 }
 
-REPLACE:amendment_geheime_staatskonferenz = {
+REPLACE_OR_CREATE:amendment_geheime_staatskonferenz = {
 
 	parent = law_autocracy
 
@@ -359,7 +359,7 @@ REPLACE:amendment_geheime_staatskonferenz = {
 	}
 }
 
-REPLACE:amendment_electoral_clientelism = {
+REPLACE_OR_CREATE:amendment_electoral_clientelism = {
 
 	parent = law_oligarchy
 
@@ -420,7 +420,7 @@ REPLACE:amendment_electoral_clientelism = {
 	}
 }
 
-REPLACE:amendment_tradition_of_free_elections = {
+REPLACE_OR_CREATE:amendment_tradition_of_free_elections = {
 
 	parent = law_universal_suffrage
 

@@ -34,3 +34,40 @@ bpm_amendment_colonial_government = {
 		always = yes
 	}
 }
+
+bpm_amendment_comprador_bureaucrats = {
+
+	parent = law_colonial_administration
+
+	allowed_laws = {
+		law_elected_bureaucrats
+		law_appointed_bureaucrats
+	}
+	
+	sponsor_modifier = {
+		interest_group_pol_str_mult = 0.25
+	}
+
+	modifier = {
+		state_political_strength_from_wealth_mult = 0.1
+		state_pop_pol_str_add = -1
+		country_aristocrats_pol_str_mult = 0.25
+		country_liberty_desire_add = -0.05
+	}
+	possible = {
+		always = yes
+	}
+	can_repeal = { 
+		is_subject = no
+	}
+	would_sponsor = {
+		owner =  {
+			country_is_colonial_or_company = yes
+			is_subject = yes
+		}
+		is_interest_group_type = ig_landowners
+	}
+	ai_will_revoke = {
+		always = yes
+	}
+}
