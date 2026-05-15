@@ -467,8 +467,8 @@
 				scope:interest_group.modifier:interest_group_ig_devout_bpm_aristocrat_attraction_decreased_bool = yes
 			}
 			multiply = {
-				desc = "Secular Landowers"
-				value = 0.25 
+				desc = "bpm_amendment_widespread_clerical_land_ownership"
+				value = 0.1
 			}
 		}
 

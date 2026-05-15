@@ -531,3 +531,8 @@ building_manor_house_aristocrats_shares_add = {
 		ai_value=0
 	}
 }
+
+interest_group_ig_devout_bpm_aristocrat_attraction_decreased_bool = {
+	color = neutral
+	boolean = yes
+}

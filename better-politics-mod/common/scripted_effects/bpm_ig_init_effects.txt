@@ -23,7 +23,20 @@
 			#add_ideology = ideology_sta_decentralized_state
 			add_ideology = ideology_sta_minimal_state
 			add_ideology = ideology_cit_liberal_nationalist
-			add_ideology = ideology_rel_secularist
+			if = {
+				limit = { 
+					OR = {
+						this = c:PHI 
+						active_law:lawgroup_land_reform = {
+							has_amendment = amdendment_type:amendment_widespread_clerical_land_ownership
+						}
+					}
+				}
+				add_ideology = ideology_rel_radical_secularist
+			}
+			else = {
+				add_ideology = ideology_rel_secularist
+			}
 			add_ideology = ideology_mil_antimilitarist
 			add_ideology = ideology_ban_averse
 			# Vanilla ideologies
@@ -233,6 +246,9 @@ bpm_initialize_natlibs = {
 							country_has_primary_culture = cu:south_german
 							bpm_country_is_latin_american = yes
 							this = c:BIC
+							this = c:PHI
+							this = c:CUB
+							this = c:PCO
 						}
 					}
 				}
@@ -246,6 +262,7 @@ bpm_initialize_natlibs = {
 						OR ={ 
 							bpm_country_is_latin_american = yes
 							this = c:BIC
+							this = c:PHI
 						}
 					} 
 				}
@@ -272,14 +289,31 @@ bpm_initialize_natlibs = {
 				add_ideology = ideology_rel_pragmatic_moralist
 			}
 			else_if = {
-				limit = { prev = { bpm_country_is_latin_american = yes } }
+				limit = { 
+					prev = {
+						OR = {
+							bpm_country_is_latin_american = yes 
+							this = c:CUB
+							this = c:PCO
+						}
+					} 
+				}
 				add_ideology = ideology_rel_radical_secularist
 			}
 			else = { add_ideology = ideology_rel_moralist }
 			add_ideology = ideology_jingoist
 			# Latin american Positivists
 			if = {
-				limit = { prev = { bpm_country_is_latin_american = yes } }
+				limit = { 
+					prev = {
+						OR = {
+							bpm_country_is_latin_american = yes 
+							this = c:CUB
+							this = c:PCO
+							this = c:PHI
+						}
+					}
+				}
 				add_ideology = ideology_wel_public_welfare
 			}
 			else = { add_ideology = ideology_wel_paternalistic_welfare }
@@ -304,7 +338,15 @@ bpm_initialize_natlibs = {
 			}
 			else = { add_ideology = ideology_eco_interventionist }
 			if = {
-				limit = { prev = { bpm_country_is_latin_american = yes } }
+				limit = { 
+					prev = {
+						OR = {
+							bpm_country_is_latin_american = yes 
+							this = c:CUB
+							this = c:PCO
+						}
+					}
+				}
 				add_ideology = ideology_fem_gender_egalitarian
 			}
 			else = { add_ideology = ideology_fem_benevolent_sexism }
@@ -411,6 +453,14 @@ bpm_initialize_marlibs = {
 					}
 				}
 				add_ideology = ideology_rel_secularist
+			}
+			else_if = {
+				limit = {
+					active_law:lawgroup_land_reform = {
+						has_amendment = amdendment_type:amendment_widespread_clerical_land_ownership
+					}
+				}
+				add_ideology = ideology_rel_pragmatic_secularist
 			}
 			else = {
 				add_ideology = ideology_rel_moralist

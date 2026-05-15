@@ -521,9 +521,9 @@ bpm_amendment_widespread_clerical_land_ownership = {
 	}
 
 	modifier = {
-		interest_group_ig_devout_bpm_aristocrat_attraction_decreased_bool = yes # TODO modifier
-		building_manor_house_clergymen_shares_add = 3
-		building_manor_house_aristocrats_shares_add = -3
+		interest_group_ig_devout_bpm_aristocrat_attraction_decreased_bool = yes
+		building_manor_house_clergymen_shares_add = 2
+		building_manor_house_aristocrats_shares_add = -2
 		interest_group_ig_devout_pol_str_mult = 0.1
 		interest_group_ig_landowners_pol_str_mult = -0.1
 	}
@@ -540,11 +540,11 @@ bpm_amendment_widespread_clerical_land_ownership = {
 		is_interest_group_type = ig_devout
 	}
 	on_activate = {
-		# ig:ig_landowners = {
-		# 	bpm_remove_all_rel_ideologies = yes
-		# 	add_ideology = ideology_rel_secular_landowner
-		# 	bpm_reorder_ideologies = yes
-		# }
+		ig:ig_landowners = {
+			bpm_remove_all_rel_ideologies = yes
+			add_ideology = ideology_rel_pragmatic_secularist
+			bpm_reorder_ideologies = yes
+		}
 		ig:ig_devout = {
 			bpm_remove_all_eco_ideologies = yes
 			if = {
@@ -566,13 +566,21 @@ bpm_amendment_widespread_clerical_land_ownership = {
 		}
 	}
 	on_deactivate = {
-		# ig:ig_landowners = {
-		# 	if = {
-		# 		limit = { has_ideology = ideology:ideology_rel_secular_landowner }
-		# 		bpm_remove_all_rel_ideologies = yes
-		# 		bpm_reorder_ideologies = yes
-		# 	}
-		# }
+		ig:ig_landowners = {
+			if = {
+				limit = { has_ideology = ideology:ideology_rel_pragmatic_secularist }
+				bpm_remove_all_rel_ideologies = yes
+				bpm_reorder_ideologies = yes
+			}
+		}
+		every_interest_group = {
+			limit = {
+				has_ideology = ideology:ideology_rel_pragmatic_secularist
+			}
+			bpm_remove_all_rel_ideologies = yes
+			add_ideology = ideology_rel_secularist
+			bpm_reorder_ideologies = yes
+		}
 		ig:ig_devout = {
 			if = {
 				limit = { 
@@ -590,4 +598,43 @@ bpm_amendment_widespread_clerical_land_ownership = {
 	ai_will_revoke = {
 		always = yes
 	}
+	amendment_activism_multiplier = 2
+}
+
+amendment_debt_peonage = {
+	parent = law_debt_slavery 
+	allowed_laws = {
+		law_tenant_farmers
+		law_latifundias
+		law_expanded_latifundias
+		#law_commercialized_agriculture
+	}
+	sponsor_modifier = {
+		interest_group_pol_str_mult = 0.1
+	}
+	modifier = {
+		state_peasants_internal_migration_disallowed_bool = yes
+		state_peasants_education_access_add = -0.05
+		building_subsistence_output_mult = -0.1
+		building_peasants_standard_of_living_add = -2
+		building_group_bg_agriculture_throughput_add = 0.05
+		building_group_bg_ranching_throughput_add = 0.05
+		building_group_bg_plantation_throughput_add = 0.05
+	}
+	possible = {
+		NOT = {
+			has_law_or_variant = law_type:law_debt_slavery
+		}
+	}
+
+	can_repeal = { 
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+	would_sponsor = { 
+		has_ideology = ideology:ideology_eco_debt_serf_economy
+	}
+	ai_will_revoke = { 
+		always = yes
+	}
+	amendment_activism_multiplier = 2
 }
