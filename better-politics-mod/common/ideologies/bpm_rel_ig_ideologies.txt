@@ -126,3 +126,13 @@ ideology_rel_modern_moralist = {
 	}
 }
 
+ideology_rel_secular_landowner = { # TODO utils
+	icon = "gfx/interface/icons/ideology_icons/rel_ideology/modern_moralist.dds"
+	priority = 1000
+    lawgroup_church_and_state = {
+		law_state_religion = disapprove
+		law_freedom_of_conscience = disapprove
+		law_total_separation = neutral
+		law_state_atheism = neutral
+	}
+}

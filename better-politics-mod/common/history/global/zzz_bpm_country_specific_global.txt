@@ -932,6 +932,31 @@
 	}
 
 	every_country = {
+		limit = {
+			OR = {
+				has_law = law_type:law_serfdom
+				has_law_or_variant = law_type:law_tenant_farmers
+			}
+			this != c:CUB
+			this != c:PCO
+			this != c:BRZ
+			OR = {
+				this ?= c:TIB
+				this ?= c:SPC
+				bpm_country_is_latin_american = yes
+				country_has_primary_culture = cu:north_italian
+				country_has_primary_culture = cu:south_italian
+			}	
+		}
+		active_law:lawgroup_land_reform = {
+			add_amendment = {
+				type = bpm_amendment_widespread_clerical_land_ownership
+				sponsor = prev.ig:ig_devout
+			}
+		}
+	}
+
+	every_country = {
 		every_interest_group = {
 			limit = { bpm_ig_enabled = yes }
 			bpm_reorder_ideologies = yes
