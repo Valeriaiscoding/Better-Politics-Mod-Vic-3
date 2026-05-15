@@ -292,16 +292,21 @@ GLOBAL = {
 		}
 		ig:ig_intelligentsia = {
 			bpm_remove_all_rel_ideologies = yes
-			#bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_rel_secularist
-			#add_ideology = ideology_eco_modern_agrarian
+			bpm_remove_all_eco_ideologies = yes
+			#bpm_remove_all_cit_ideologies = yes
+			#bpm_remove_all_dop_ideologies = yes
+			add_ideology = ideology_rel_pragmatic_secularist
+			add_ideology = ideology_eco_modern_agrarian
+			#add_ideology = ideology_cit_civilizing_mission
 		}
 
 		ig:ig_liberals = {
 			bpm_remove_all_rel_ideologies = yes
-			#bpm_remove_all_eco_ideologies = yes
-			add_ideology = ideology_rel_secularist
-			#add_ideology = ideology_eco_modern_agrarian
+			bpm_remove_all_eco_ideologies = yes
+			#bpm_remove_all_cit_ideologies = yes
+			add_ideology = ideology_rel_pragmatic_secularist
+			add_ideology = ideology_eco_modern_agrarian
+			#add_ideology = ideology_cit_civilizing_mission
 		}
 
 		add_to_variable_list = {
